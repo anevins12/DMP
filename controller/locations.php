@@ -12,8 +12,9 @@
 class Locations {
 
 	function __construct() {
+//require('../vendor/Buzz/lib/Buzz/browser.php'  );
+		require '../vendor/autoload.php';
 
-		require_once( '../geocoder/src/autoload.php' );
 
 	}
 
@@ -42,4 +43,6 @@ class Locations {
 		var_dump($geocoder->geocode('68.145.37.34'));exit;
 	}
 }
+
+
 ?>
