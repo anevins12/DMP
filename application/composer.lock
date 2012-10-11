@@ -1,0 +1,22 @@
+{
+    "hash": "bc27b7cdfcf0e084b8210ff060df75f9",
+    "packages": [
+        {
+            "package": "kriswallsmith/buzz",
+            "version": "v0.7"
+        },
+        {
+            "package": "willdurand/geocoder",
+            "version": "1.0.7"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "willdurand/geocoder": 0,
+        "kriswallsmith/buzz": 0
+    }
+}

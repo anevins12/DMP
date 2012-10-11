@@ -1,0 +1,6 @@
+{
+    "require": {
+        "willdurand/geocoder": "@stable",
+		"kriswallsmith/buzz": "@stable"
+    }
+}
