@@ -64,7 +64,7 @@ class Tweetsmodel {
 
 	}
 
-	public function insertTweetCountryCode( $tweet_id, $country_code ) {
+	public function insertTweetCountryCode( $tweet_id, $city ) {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
 		$error = '';
@@ -73,7 +73,7 @@ class Tweetsmodel {
 			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 
-		$query = "UPDATE $this->tableName SET country_code = '" . $country_code . "' WHERE tweet_id = $tweet_id ";
+		$query = "UPDATE $this->tableName SET city = '" . $city . "' WHERE tweet_id = $tweet_id ";
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 
 		if ( $result ) {

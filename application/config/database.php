@@ -7,7 +7,8 @@
 @define('DATABASE'    ,    'twitter');
 
 //UWE SERVERS
-if ( $_SERVER['http_host'] != 'localhost' ) {
+
+if ( $_SERVER['HTTP_HOST'] != 'localhost' ) {
 
 	@define('HOSTNAME'    ,    'mysql');
 	@define('USERNAME'    ,    'fet09019549');

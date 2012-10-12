@@ -64,11 +64,13 @@ while (true) {
 	
 		if ( $geo_lat  && $geo_long ) {
 			if ( $user_object->location ) {
+
 				if ($oDB->in_table('users','user_id="' . $user_id . '"')) {
 				  $oDB->update('users',$field_values,'user_id = "' .$user_id . '"');
 				} else {
 				  $oDB->insert('users',$field_values);
 				}
+				
 			}
 		}
 		
@@ -89,9 +91,22 @@ while (true) {
         'name = "' . $name . '", ' .
         'entities ="' . base64_encode(serialize($entities)) . '", ' .
         'profile_image_url = "' . $profile_image_url . '"';
-	  
+
+	  // check if location exists before inserting
 	  if ( $geo_lat  && $geo_long ) {
-		$oDB->insert('tweets',$field_values);
+
+		  // Rob Hawkes' rectangle shape boundaries covering the UK
+		  // http://rawkes.com/articles/people-love-a-good-smooch-on-a-balcony
+		  $uk_bottom = 49.76707;
+		  $uk_left = -12.72216;
+		  $uk_top = 61.06891;
+		  $uk_right = 1.97753;
+
+		  // only insert tweets that latitude and longitude coordinates
+		  // range within the boundaries of the UK
+		  if ( ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
+				$oDB->insert('tweets',$field_values);
+		  }
 	  }
 
 	}

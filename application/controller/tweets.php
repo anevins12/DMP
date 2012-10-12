@@ -148,10 +148,11 @@ state,city,lat,lon,conditions&limit=100000');
 	function getGeocoder( $lat = 0, $long = 0 ) {
 		include_once ( '../controller/locations.php' );
 
-		$geocoder = new Locations();
-		$geocoder = $geocoder->geocoder();
-			
-		$result = $geocoder->geocode( $lat ,$long );
+		$locations = new Locations();
+		//initiate geocoder
+		$geocoder = $locations->geocoder();
+		
+		$result = $geocoder->reverse( $lat, $long );
 
 		return $result;
 
@@ -168,13 +169,13 @@ state,city,lat,lon,conditions&limit=100000');
 			if ( !empty ( $tweet->geo_lat ) && !empty ( $tweet->geo_long ) ) {
 				
 				$location = $this->getGeocoder( $tweet->geo_lat, $tweet->geo_long );
-				$countryCode = $location->getCountryCode();
+				$city = $location->getcity();
 				
 				// Check if the GeoCoder returns a country code that is not null/ empty
-				if ( !empty ( $countryCode ) || isset ( $countryCode ) ) {
+				if ( !empty ( $city ) || isset ( $city ) ) {
 
 					// Set the Country Code aside of each tweet.
-					$tweetsmodel->insertTweetCountryCode( $tweet->tweet_id, $countryCode );
+					$tweetsmodel->insertTweetcity( $tweet->tweet_id, $city );
 
 				}
 			}		
