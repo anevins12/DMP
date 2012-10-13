@@ -169,13 +169,13 @@ state,city,lat,lon,conditions&limit=100000');
 			if ( !empty ( $tweet->geo_lat ) && !empty ( $tweet->geo_long ) ) {
 				
 				$location = $this->getGeocoder( $tweet->geo_lat, $tweet->geo_long );
-				$city = $location->getcity();
+				$city = $location->getCity();
 				
 				// Check if the GeoCoder returns a country code that is not null/ empty
 				if ( !empty ( $city ) || isset ( $city ) ) {
 
 					// Set the Country Code aside of each tweet.
-					$tweetsmodel->insertTweetcity( $tweet->tweet_id, $city );
+					$tweetsmodel->insertTweetCity( $tweet->tweet_id, $city );
 
 				}
 			}		

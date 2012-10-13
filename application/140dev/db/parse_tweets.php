@@ -104,7 +104,7 @@ while (true) {
 
 	}
 
-	if ( $geo_lat  && $geo_long ) {
+	if ( ( $geo_lat  && $geo_long ) && ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
 		
 		// The mentions, tags, and URLs from the entities object are also
 		// parsed into separate tables so they can be data mined later

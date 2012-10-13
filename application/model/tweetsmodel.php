@@ -64,7 +64,7 @@ class Tweetsmodel {
 
 	}
 
-	public function insertTweetCountryCode( $tweet_id, $city ) {
+	public function insertTweetCity ( $tweet_id, $city ) {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
 		$error = '';
