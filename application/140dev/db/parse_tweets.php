@@ -62,7 +62,7 @@ while (true) {
       'time_zone = "' . $user_object->time_zone . '", ' .
       'last_update = "' . $oDB->date($tweet_object->created_at) . '"' ;
 	
-		if ( ( $geo_lat  && $geo_long ) && ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
+		if ( ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
 			if ( $user_object->location ) {
 
 				if ($oDB->in_table('users','user_id="' . $user_id . '"')) {
@@ -93,18 +93,16 @@ while (true) {
         'profile_image_url = "' . $profile_image_url . '"';
 
 	  // check if location exists before inserting
-	  if ( $geo_lat  && $geo_long ) {
 
-		  // only insert tweets that latitude and longitude coordinates
-		  // range within boundaries of the UK
-		  if ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) {
-			$oDB->insert('tweets',$field_values);
-		  }
+	  // only insert tweets that latitude and longitude coordinates
+	  // range within boundaries of the UK
+	  if ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) {
+		  $oDB->insert('tweets',$field_values);
 	  }
 
 	}
 
-	if ( ( $geo_lat  && $geo_long ) && ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
+	if ( ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
 		
 		// The mentions, tags, and URLs from the entities object are also
 		// parsed into separate tables so they can be data mined later

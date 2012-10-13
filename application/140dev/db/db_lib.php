@@ -117,7 +117,7 @@ class db
 	  $uk_top = 61.06891;
 	  $uk_right = 1.97753;
 
-	   if ( ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
+	   if ( isset( $geo_lat, $geo_long ) && ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
 		   return true;
 	   }
 	   
