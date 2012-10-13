@@ -25,7 +25,7 @@ define('STREAM_ACCOUNT', 'andrewnevins');
 define('STREAM_PASSWORD', '1906905438An');
 
 // MySQL time zone setting to normalize dates
-define('TIME_ZONE','America/New_York');
+define('TIME_ZONE','Europe/London');
 
 // Settings for monitor_tweets.php
 define('TWEET_ERROR_INTERVAL',10);
