@@ -105,6 +105,22 @@ class db
       ' WHERE ' . $where;
     mysqli_query($this->dbh,$query);
    $this->error_test('update',$query);
-  }  
+  }
+
+  // Check if the tweet is from the UK
+  public function isUKTweet( $geo_lat, $geo_long ) {
+
+	  // Rob Hawkes' rectangle shape boundaries covering the UK
+	  // http://rawkes.com/articles/people-love-a-good-smooch-on-a-balcony
+	  $uk_bottom = 49.76707;
+	  $uk_left = -12.72216;
+	  $uk_top = 61.06891;
+	  $uk_right = 1.97753;
+
+	   if ( ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
+		   return true;
+	   }
+	   return false;
+  }
 }  
 ?>

@@ -62,7 +62,7 @@ while (true) {
       'time_zone = "' . $user_object->time_zone . '", ' .
       'last_update = "' . $oDB->date($tweet_object->created_at) . '"' ;
 	
-		if ( $geo_lat  && $geo_long ) {
+		if ( ( $geo_lat  && $geo_long ) && ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
 			if ( $user_object->location ) {
 
 				if ($oDB->in_table('users','user_id="' . $user_id . '"')) {
@@ -95,17 +95,10 @@ while (true) {
 	  // check if location exists before inserting
 	  if ( $geo_lat  && $geo_long ) {
 
-		  // Rob Hawkes' rectangle shape boundaries covering the UK
-		  // http://rawkes.com/articles/people-love-a-good-smooch-on-a-balcony
-		  $uk_bottom = 49.76707;
-		  $uk_left = -12.72216;
-		  $uk_top = 61.06891;
-		  $uk_right = 1.97753;
-
 		  // only insert tweets that latitude and longitude coordinates
-		  // range within the boundaries of the UK
-		  if ( ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
-				$oDB->insert('tweets',$field_values);
+		  // range within boundaries of the UK
+		  if ( $oDB->isUKTweet( $geo_lat, $geo_long ) ) {
+			$oDB->insert('tweets',$field_values);
 		  }
 	  }
 
