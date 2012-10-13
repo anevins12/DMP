@@ -8,7 +8,7 @@
 
 //UWE SERVERS
 
-if ( $_SERVER['HTTP_HOST'] != 'localhost' ) {
+if ( isset($_SERVER['HTTP_HOST']) != 'localhost' ) {
 
 	@define('HOSTNAME'    ,    'mysql');
 	@define('USERNAME'    ,    'fet09019549');

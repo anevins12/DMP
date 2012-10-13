@@ -120,6 +120,7 @@ class db
 	   if ( ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
 		   return true;
 	   }
+	   
 	   return false;
 	   
   }

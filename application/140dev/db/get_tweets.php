@@ -24,11 +24,11 @@ class Consumer extends Phirehose
   // This function is called automatically by the Phirehose class
   // when a new tweet is received with the JSON data in $status
   public function enqueueStatus($status) {
+  require_once('./db_lib.php');
     $tweet_object = json_decode($status);
 
 	//Supresses undefined property notices
 	$tweet_id = @$tweet_object->id_str;
-
 
     // If there's a ", ', :, or ; in object elements, serialize() gets corrupted 
     // You should also use base64_encode() before saving this
@@ -36,7 +36,23 @@ class Consumer extends Phirehose
 		
     $field_values = 'raw_tweet = "' . $raw_tweet . '", ' .
       'tweet_id = ' . $tweet_id;
-    $this->oDB->insert('json_cache',$field_values);
+
+	// grab the coordinates to check later
+	if (@$tweet_object->geo) {
+
+		$coordinates = $tweet_object->coordinates->coordinates;
+
+		$geo_lat = $coordinates[1];
+		$geo_long = $coordinates[0];
+	}
+	else {
+		$geo_lat = 0;
+		$geo_long = 0;
+	}
+	// check if object && check if tweet from UK
+	if ( $tweet_object && ( $this->oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
+		$this->oDB->insert('json_cache',$field_values);
+	}
   }
 }
 
