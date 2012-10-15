@@ -86,7 +86,7 @@ class Tweetsmodel {
 
 	}
 
-	public function set140Sentiment( $sentiment_id, $tweet_text ) {
+	public function setSentiment( $tweet, $sentiment ) {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
 		$error = '';
@@ -95,7 +95,7 @@ class Tweetsmodel {
 			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 
-		$query = "UPDATE $this->tableName SET sentiment_id = '" . $sentiment_id . "' WHERE tweet_text = '$tweet_text'";
+		$query = "UPDATE $this->tableName SET sentiment = '" . $sentiment . "' WHERE tweet_id = '$tweet->tweet_id'";
 		
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 

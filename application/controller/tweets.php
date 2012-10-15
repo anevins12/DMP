@@ -23,53 +23,83 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets( NULL );
 
+		foreach ($tweets as $tweet){
+			$this->getANEWSentiment($tweet);
+		}
+		
 		$this->setLocations();
 
 //Getting the paramter to pass to the set140Sentiment function
-		$tweets_sentiment = $this->get140Sentiment($tweets);
-		$tweets_sentiment = json_decode($tweets_sentiment);
-		$tweets_sentiment = $tweets_sentiment->data;
-
-		$this->set140Sentiment($tweets_sentiment);
+//		$tweets_sentiment = $this->get140Sentiment($tweets);
+//		$tweets_sentiment = json_decode($tweets_sentiment);
+//		$tweets_sentiment = $tweets_sentiment->data;
+//
+//		$this->set140Sentiment($tweets_sentiment);
 
 		return $tweets;
 
 	}
 
 	public function getANEWSentiment( $tweet ) {
+
+		$anew_dataset_file    = file_get_contents('../anew_2010/ANEW2010All.txt');
+		$rows = explode( "\n", $anew_dataset_file );
+
+		//remove the headings
+		array_shift( $rows );
+		
+		$valence = array();
+
+		// Get the happiness value per word
+		foreach ( $rows as $row ) {
+			$explode = explode("	", $row );
+			$valence[$explode[0]] = $explode[2];
+		}
+
+		$happiness_array = $valence;
+
 		$words_array = array();
 		$sentiment = array();
 		$multiplication = array();
-		$anew_sentiment = 0;
-		//need ANEW dataset
+		$tweet_text = $tweet->tweet_text;
+		$tweet_words = explode( ' ' , $tweet_text );
+		$flag = false;
 
-		$words_array[] = str_word_count( $tweet->tweet_text, 1 );
+		foreach ( $tweet_words as $tweet_word ) {
 
-		foreach ( $words_array as $words_array_inner ) {
+			if ( $tweet_word ) {
+				
+				$frequency = substr_count( $tweet_text, $tweet_word );
 
-			foreach ( $words_array_inner as $word ) {
+				//check if the tweet's word is within the English language
+				if ( isset( $happiness_array[ $tweet_word ] ) ) {
 
-				$frequency = str_word_count($word);
+					//grab ANEW sentiment for that word
+					$happiness_word = $happiness_array[$tweet_word];
 
-				if( isset ( $anew_example[ $word ] ) ) {
-					$anew_sentiment = $anew_example[ $word ];
-					$multiplication[] = $frequency * $anew_sentiment;
+					//multiply the ANEW sentiment for that word, by the frequency
+					$multiplication[] =  $happiness_word * $frequency;
+
 				}
 
 			}
-
-			$multiplication_sum = array_sum( $multiplication );
-
+			
 		}
+		
+		$multiplication_sum = array_sum( $multiplication );
+		$count_multiplication_words = count ( $multiplication );
 
-		$sentiment = $multiplication_sum / $frequency;
+		if ( $count_multiplication_words ) {
+			$sentiment = $multiplication_sum / $count_multiplication_words;
 
-		$sentimentmodel = new sentimentmodel();
-		$sentimentmodel->insertSentiment( $tweet->tweet_id, $sentiment ); // find out why your sentiment is incrementing!!
-
+			//insert sentiment into the database
+			$this->setANEWSentiment( $tweet, $sentiment );
+			$flag = true;
+			
+		}
+		
+		//Clear the multiplication array for the next tweet
 		unset( $multiplication );
-
-		return $sentiment;
 
 	}
 
@@ -120,8 +150,22 @@ class Tweets extends Locations{
 			$sentiment_value = $tweet_sentiment->polarity;
 			$tweet_text = $tweet_sentiment->text;
 
-			$query = $tweetsmodel->set140Sentiment($sentiment_value, $tweet_text);
+			//wont work because I've changed the setSentiment function to work with ANEWSentiment
+			//$query = $tweetsmodel->setSentiment( $tweet_text, $sentiment_value );
 		}
+
+	}
+
+	function setANEWSentiment( $tweet, $sentiment ) {
+
+		$tweetsmodel = new Tweetsmodel;
+		$query = $tweetsmodel->setSentiment( $tweet, $sentiment );
+
+		if ( $query ) {
+			return true;
+		}
+		
+		return false;
 
 	}
 
