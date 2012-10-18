@@ -5,7 +5,7 @@ class Locationsmodel {
 	protected $tableName = "countries";
 
 	function __construct() {
-		include('../config/database.php');
+		include ( dirname(__FILE__) . '/../config/database.php' );
 	}
 
 	public function getCountry( $country_id ) {

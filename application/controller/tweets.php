@@ -14,8 +14,8 @@ include_once ( 'locations.php' );
 class Tweets extends Locations{
 
     function __construct() {
-		include_once ( '../model/tweetsmodel.php' );
-		include_once ( '../model/sentimentmodel.php' );
+		include_once ( dirname(__FILE__) . '/../model/tweetsmodel.php' );
+		include_once ( dirname(__FILE__) . '/../model/sentimentmodel.php' );
 	}
 
 	public function index() {
@@ -42,7 +42,7 @@ class Tweets extends Locations{
 
 	public function getANEWSentiment( $tweet ) {
 
-		$anew_dataset_file    = file_get_contents('../anew_2010/ANEW2010All.txt');
+		$anew_dataset_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/ANEW2010All.txt');
 		$rows = explode( "\n", $anew_dataset_file );
 
 		//remove the headings

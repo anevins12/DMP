@@ -5,7 +5,7 @@ class sentimentmodel {
 	protected $tableName = 'sentiment';
 
 	function __construct() {
-		include('../config/database.php');
+		include( dirname(__FILE__) . '/../config/database.php' );
 	}
 
 	public function insertSentiment( $tweet_id, $sentiment_value ) {

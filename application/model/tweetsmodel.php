@@ -5,7 +5,7 @@ class Tweetsmodel {
 	protected $tableName = "tweets";
 
 	function __construct(){
-		include_once('../config/database.php');
+		include_once( dirname(__FILE__) . '/../config/database.php' );
 	}
 
 	public function getTweets( $order = NULL, $limit = NULL ) {

@@ -13,7 +13,7 @@ class Locations {
 
 	function __construct() {
 		
-		require '../vendor/autoload.php';
+		include_once( dirname(__FILE__) . '/../vendor/autoload.php' );
 
 	}
 
