@@ -8,10 +8,11 @@
 * @license GNU Public License
 * @version BETA 0.10
 */
+
 require_once('./140dev_config.php');
 
 // Extend the Phirehose class to capture tweets in the json_cache MySQL table
-require_once( '../libraries/phirehose/phirehose.php');
+require_once(  dirname(__FILE__) . '/../libraries/phirehose/phirehose.php');
 class Consumer extends Phirehose
 {
   // A database connection is established at launch and kept open permanently
@@ -49,6 +50,7 @@ class Consumer extends Phirehose
 		$geo_lat = 0;
 		$geo_long = 0;
 	}
+        
 	// check if object && check if tweet from UK
 	if ( $tweet_object && ( $this->oDB->isUKTweet( $geo_lat, $geo_long ) ) ) {
 		$this->oDB->insert('json_cache',$field_values);

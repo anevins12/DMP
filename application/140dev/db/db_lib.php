@@ -8,6 +8,7 @@
 * @license GNU Public License
 * @version BETA 0.10
 */
+
 class db
 {
   public $dbh;
@@ -16,11 +17,16 @@ class db
   
   // Create a database connection for use by all functions in this class
   function __construct() {
-
-    require('../../config/database.php');
-    
-    if($this->dbh = mysqli_connect( HOSTNAME, USERNAME, PASSWORD, DATABASE )) {
-            
+      
+    if ( strstr( $_SERVER['HTTP_HOST'] , 'isa' ) ) {
+        require ( "/nas/students/a/a2-nevins/unix/public_html/year_4/dmp/application/config/database.php" );
+    }
+    else {
+         require ( dirname(__FILE__) . '/../../config/database.php' );
+    }
+        
+    if ( $this->dbh = mysqli_connect( HOSTNAME, USERNAME, PASSWORD, DATABASE )) {
+           
       // Set every possible option to utf-8
       mysqli_query($this->dbh, 'SET NAMES "utf8"');
       mysqli_query($this->dbh, 'SET CHARACTER SET "utf8"');
@@ -118,7 +124,7 @@ class db
 	  $uk_right = 1.97753;
 
 	   if ( isset( $geo_lat, $geo_long ) && ( $geo_lat >= $uk_bottom && $geo_lat <= $uk_top ) && ( $geo_long >= $uk_left && $geo_long <= $uk_right ) ) {
-		   return true;
+                return true;
 	   }
 	   
 	   return false;

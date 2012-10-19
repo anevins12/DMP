@@ -22,7 +22,7 @@ define('AJAX_URL', 'http://yoursite.com/140dev/');
 // Basic authorization settings for connecting to the Twitter streaming API
 // Fill in the values for a valid Twitter account
 define('STREAM_ACCOUNT', 'andrewnevins');
-define('STREAM_PASSWORD', '1906905438An');
+define('STREAM_PASSWORD', 'pHe9ruwu');
 
 // MySQL time zone setting to normalize dates
 define('TIME_ZONE','Europe/London');

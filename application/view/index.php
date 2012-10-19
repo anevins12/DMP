@@ -6,9 +6,6 @@
 	<title>Tweets</title>
 	<link type="text/css" href="../assets/css/style.css" rel="stylesheet" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript" language="javascript"></script>
-	<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q&sensor=false" type="text/javascript" language="javascript"></script>
-	<script type="text/javascript" src="../assets/js/raphael.min.js" language="javascript"></script>
-	<script type="text/javascript" src="../assets/js/cartographer.min.0.4.js" language="javascript"></script>
 	<script type="text/javascript" src="../assets/js/scripts.js" language="javascript"></script>
 </head>
 
@@ -18,8 +15,8 @@
 
 	<div class="testArea">
 	<?php 
-	
-	include_once( '../controller/tweets.php' );
+
+	include_once(  dirname(__FILE__) . '/../controller/tweets.php' );
 	
 	$tweets = new Tweets();
 	$allTweets = $tweets->index();
