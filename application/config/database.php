@@ -1,7 +1,7 @@
 <?php
 
 //UWE SERVERS
-if ( strstr($_SERVER['HTTP_HOST'], 'isa' ) ) {
+if ( strstr( @$_SERVER['HTTP_HOST'], 'isa' ) ) {
 
 	define('HOSTNAME'    ,    'mysql5');
 	define('USERNAME'    ,    'fet09019549');

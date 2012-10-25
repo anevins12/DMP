@@ -18,7 +18,7 @@ class db
   // Create a database connection for use by all functions in this class
   function __construct() {
       
-    if ( strstr( $_SERVER['HTTP_HOST'] , 'isa' ) ) {
+    if ( strstr( @$_SERVER['HTTP_HOST'] , 'isa' ) ) {
         require ( "/nas/students/a/a2-nevins/unix/public_html/year_4/dmp/application/config/database.php" );
     }
     else {
