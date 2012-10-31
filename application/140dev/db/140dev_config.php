@@ -28,7 +28,7 @@ define('STREAM_PASSWORD', 'pHe9ruwu');
 define('TIME_ZONE','Europe/London');
 
 // Settings for monitor_tweets.php
-define('TWEET_ERROR_INTERVAL',10);
+define('TWEET_ERROR_INTERVAL',1);
 // Fill in the email address for error messages
 define('TWEET_ERROR_ADDRESS','*****');
 ?>
