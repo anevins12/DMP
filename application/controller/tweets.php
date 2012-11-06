@@ -79,19 +79,21 @@ class Tweets extends Locations{
 
 				if ($c=preg_match_all ("/".$re1.$re2."/is", $tweet_word, $matches)) {
 					  $c1=$matches[1][0];
-					  $tweet_word = str_replace($c1, '', strtolower($tweet_word));
+					  $tweet_word_refined = str_replace($c1, '', strtolower($tweet_word));
+				}
+				else {
+					$tweet_word_refine = $tweet_word;
 				}
 				#end of generated code
 
 				//count how many times that word appears in the tweet
-				//can't use substr_count because that returns the string position. It's not what I'm looking for.
 				$frequency = substr_count( $tweet_text, $tweet_word);
 				
 				//check if the tweet's word is within the English language
-				if ( isset ( $happiness_array[ $tweet_word ] ) ) {
+				if ( isset ( $happiness_array[ $tweet_word_refined ] ) ) {
 					
 					//grab ANEW sentiment for that word
-					$happiness_word = $happiness_array[$tweet_word];
+					$happiness_word = $happiness_array[ $tweet_word_refined ];
 
 					//multiply the ANEW sentiment for that word, by the frequency
 					$multiplication[] =  $happiness_word * $frequency;
@@ -107,7 +109,6 @@ class Tweets extends Locations{
 		$count_multiplication_words = count ( $multiplication );
 
 		if ( $count_multiplication_words ) {
-
 			
 			//maybe need to convert integer to float
 			$sentiment = $multiplication_sum / $count_multiplication_words;
