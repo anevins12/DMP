@@ -27,7 +27,7 @@ class Tweets extends Locations{
 			$this->getANEWSentiment($tweet);
 		}
 		
-		$this->setLocations();
+		//$this->setLocations();
 
 //Getting the paramter to pass to the set140Sentiment function
 //		$tweets_sentiment = $this->get140Sentiment($tweets);
@@ -36,7 +36,7 @@ class Tweets extends Locations{
 //
 //		$this->set140Sentiment($tweets_sentiment);
 
-		return $tweets;
+		//return $tweets;
 
 	}
 
@@ -68,12 +68,28 @@ class Tweets extends Locations{
 		foreach ( $tweet_words as $tweet_word ) {
 
 			if ( $tweet_word ) {
+
+				//remove punctuation after each word
+				# URL that generated this code:
+				# http://txt2re.com/index-php.php3?s=Button.&-9
+
+
+				$re1='.*?';	# Non-greedy match on filler
+				$re2='(\\.)';	# Any Single Character 1
+
+				if ($c=preg_match_all ("/".$re1.$re2."/is", $tweet_word, $matches)) {
+					  $c1=$matches[1][0];
+					  $tweet_word = str_replace($c1, '', strtolower($tweet_word));
+				}
+				#end of generated code
+
+				//count how many times that word appears in the tweet
+				//can't use substr_count because that returns the string position. It's not what I'm looking for.
+				$frequency = substr_count( $tweet_text, $tweet_word);
 				
-				$frequency = substr_count( $tweet_text, $tweet_word );
-
 				//check if the tweet's word is within the English language
-				if ( isset( $happiness_array[ $tweet_word ] ) ) {
-
+				if ( isset ( $happiness_array[ $tweet_word ] ) ) {
+					
 					//grab ANEW sentiment for that word
 					$happiness_word = $happiness_array[$tweet_word];
 
@@ -81,15 +97,19 @@ class Tweets extends Locations{
 					$multiplication[] =  $happiness_word * $frequency;
 
 				}
+				
 
-			}
+			} 
 			
 		}
-		
+
 		$multiplication_sum = array_sum( $multiplication );
 		$count_multiplication_words = count ( $multiplication );
 
 		if ( $count_multiplication_words ) {
+
+			
+			//maybe need to convert integer to float
 			$sentiment = $multiplication_sum / $count_multiplication_words;
 
 			//insert sentiment into the database

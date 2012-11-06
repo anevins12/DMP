@@ -19,7 +19,7 @@
 	include_once(  dirname(__FILE__) . '/../controller/tweets.php' );
 	
 	$tweets = new Tweets();
-	$allTweets = $tweets->index();
+	$tweets->index();
 	
 
 	// testing functions
