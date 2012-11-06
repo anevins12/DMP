@@ -82,7 +82,7 @@ class Tweets extends Locations{
 					  $tweet_word_refined = str_replace($c1, '', strtolower($tweet_word));
 				}
 				else {
-					$tweet_word_refine = $tweet_word;
+					$tweet_word_refined = $tweet_word;
 				}
 				#end of generated code
 
@@ -94,13 +94,17 @@ class Tweets extends Locations{
 					
 					//grab ANEW sentiment for that word
 					$happiness_word = $happiness_array[ $tweet_word_refined ];
+					
+					//check if the word has already been calculated
+					if ( !in_array( $happiness_word * $frequency, $multiplication ) && $frequency ) {
 
-					//multiply the ANEW sentiment for that word, by the frequency
-					$multiplication[] =  $happiness_word * $frequency;
+						//multiply the ANEW sentiment for that word, by the frequency
+						$multiplication[] =  $happiness_word * $frequency;
+
+					}
 
 				}
 				
-
 			} 
 			
 		}
