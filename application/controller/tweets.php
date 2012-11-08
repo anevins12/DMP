@@ -23,18 +23,13 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets( NULL );
 
-		foreach ($tweets as $tweet){
-			$this->getANEWSentiment($tweet);
-		}
+		//set the sentiment values
+//		foreach ($tweets as $tweet){
+//			$this->getANEWSentiment($tweet);
+//		}
 		
-		//$this->setLocations();
-
-//Getting the paramter to pass to the set140Sentiment function
-//		$tweets_sentiment = $this->get140Sentiment($tweets);
-//		$tweets_sentiment = json_decode($tweets_sentiment);
-//		$tweets_sentiment = $tweets_sentiment->data;
-//
-//		$this->set140Sentiment($tweets_sentiment);
+//		$this->setLocations();
+		$this->getGoogleLineGraphFormat($tweets);
 
 		//return $tweets;
 
@@ -62,8 +57,11 @@ class Tweets extends Locations{
 		$sentiment = array();
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
+		/*Test tweet text */
+//		$tweet_text = "me me me me me me me me me me";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
+		$count_multiplication_occurrence = 1;
 
 		foreach ( $tweet_words as $tweet_word ) {
 
@@ -87,20 +85,27 @@ class Tweets extends Locations{
 				#end of generated code
 
 				//count how many times that word appears in the tweet
-				$frequency = substr_count( $tweet_text, $tweet_word);
+				// at the moment the frequency is picking up whether the combination of letters appear in the sentece.
+				// its not counted whether that word is followed by a space, its counting if that word is anywhere in the sentence.
+				// for now I've used the spaces to represent the word, but this may exclude words at the start and end of sentences.
+				// including words with punctuation.
+				$frequency = substr_count( $tweet_text , ' ' . $tweet_word . ' ' );
 				
 				//check if the tweet's word is within the English language
 				if ( isset ( $happiness_array[ $tweet_word_refined ] ) ) {
 					
 					//grab ANEW sentiment for that word
 					$happiness_word = $happiness_array[ $tweet_word_refined ];
-					
-					//check if the word has already been calculated
-					if ( !in_array( $happiness_word * $frequency, $multiplication ) && $frequency ) {
+		
+					//increment the count of how many words have been calculated
+					$count_multiplication_occurrence++;
 
+					if ( in_array( $happiness_word * $frequency, $multiplication) && $frequency > 1)  {
+						// Don't apply the multiplication if the word has already been calculated
+					}
+					else {
 						//multiply the ANEW sentiment for that word, by the frequency
 						$multiplication[] =  $happiness_word * $frequency;
-
 					}
 
 				}
@@ -110,12 +115,11 @@ class Tweets extends Locations{
 		}
 
 		$multiplication_sum = array_sum( $multiplication );
-		$count_multiplication_words = count ( $multiplication );
 
-		if ( $count_multiplication_words ) {
+		if ( $count_multiplication_occurrence ) {
 			
 			//maybe need to convert integer to float
-			$sentiment = $multiplication_sum / $count_multiplication_words;
+			$sentiment = $multiplication_sum / $count_multiplication_occurrence;
 
 			//insert sentiment into the database
 			$this->setANEWSentiment( $tweet, $sentiment );
@@ -250,6 +254,10 @@ state,city,lat,lon,conditions&limit=100000');
 			}		
 
 		}
+		
+	}
+
+	function getGoogleLineGraphFormat( $data ) {
 		
 	}
 	
