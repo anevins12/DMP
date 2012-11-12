@@ -18,7 +18,7 @@ class Tweetsmodel {
 		}
 
 		//Just retrieve the rows that have sentiment and location values
-		$query = "SELECT * FROM $this->tableName WHERE `sentiment` != 0 AND `city` IS NOT NULL". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
+		$query = "SELECT * FROM $this->tableName WHERE `sentiment` != 0 AND `city` !='' ". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 
 		if ( $result ) {
@@ -74,17 +74,13 @@ class Tweetsmodel {
 			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 
-		$query = "UPDATE $this->tableName SET city = '" . $city . "' WHERE tweet_id = $tweet_id ";
+		$query = "UPDATE $this->tableName SET city = '" . $city . "' WHERE tweet_id = $tweet_id";
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 
 		if ( $result ) {
 			return true;
 		}
-
-		else {
-			return $error .= "Failed to insert.";
-		}
-
+			
 	}
 
 	public function setSentiment( $tweet, $sentiment ) {

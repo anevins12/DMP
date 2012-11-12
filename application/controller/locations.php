@@ -28,15 +28,16 @@ class Locations {
 		// Then, register all providers your want
 		$geocoder->registerProviders(array(
 
-			new \Geocoder\Provider\YahooProvider(
-				$adapter, '<YAHOO_API_KEY>'
-			),
-			new \Geocoder\Provider\IpInfoDbProvider(
-				$adapter, '<IPINFODB_API_KEY>'
-			),
-			new \Geocoder\Provider\HostIpProvider($adapter),
+//			new \Geocoder\Provider\YahooProvider(
+//				$adapter, '<YAHOO_API_KEY>'
+//			),
+//			new \Geocoder\Provider\IpInfoDbProvider(
+//				$adapter, '<IPINFODB_API_KEY>'
+//			),
+//			new \Geocoder\Provider\HostIpProvider($adapter),
 			
 			// your provider here
+			new \Geocoder\Provider\OpenStreetMapsProvider($adapter)
 		));
 
 		return $geocoder;
