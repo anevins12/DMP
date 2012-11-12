@@ -21,14 +21,14 @@ class Tweets extends Locations{
 	public function index() {
 
 		$tweetsmodel = new Tweetsmodel;
-		$tweets = $tweetsmodel->getTweets( NULL );
+		$tweets = $tweetsmodel->getTweets();
 
 		//set the sentiment values
 //		foreach ($tweets as $tweet){
 //			$this->getANEWSentiment($tweet);
 //		}
 		
-//		$this->setLocations();
+		$this->setLocations($tweets);
 //		$this->getGoogleLineGraphFormat($tweets);
 
 		return $tweets;
@@ -231,10 +231,7 @@ state,city,lat,lon,conditions&limit=100000');
 
 	}
 
-	function setLocations() {
-
-		$tweetsmodel = new Tweetsmodel;
-		$tweets = $tweetsmodel->getTweets( NULL );
+	function setLocations( $tweets ) {
 
 		foreach ( $tweets as $tweet ) {
 
@@ -291,47 +288,43 @@ state,city,lat,lon,conditions&limit=100000');
 
 		foreach( $data as $tweet ) {
 
-
 			$time = $tweet->created_at;
 			$day = substr( $time, 0, 10 );
-			$explode_day = explode("-", $day);
-			$implode_day = implode('', $explode_day);
-			$implode_day = intval($implode_day);
-
-			//DAY1
-
+			$explode_day = explode( "-", $day );
+			$implode_day = implode( '', $explode_day );
+			$implode_day = intval( $implode_day );
 				
-				if ($implode_day == $day1) {
-					$day1Tweets[] = $tweet;
-				}
-				if ($implode_day == $day2) {
-					$day2Tweets[] = $tweet;
-				}
-				if ($implode_day == $day3) {
-					$day3Tweets[] = $tweet;
-				}
-				if ($implode_day == $day4) {
-					$day4Tweets[] = $tweet;
-				}
-				if ($implode_day == $day5) {
-					$day5Tweets[] = $tweet;
-				}
-				if ($implode_day == $day6) {
-					$day6Tweets[] = $tweet;
-				}
-				if ($implode_day == $day7) {
-					$day7Tweets[] = $tweet;
-				}
-				if ($implode_day == $day8) {
-					$day8Tweets[] = $tweet;
-				}
-				if ($implode_day == $day9) {
-					$day9Tweets[] = $tweet;
-				}
+			if ( $implode_day == $day1 ) {
+				$day1Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day2 ) {
+				$day2Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day3 ) {
+				$day3Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day4 ) {
+				$day4Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day5 ) {
+				$day5Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day6 ) {
+				$day6Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day7 ) {
+				$day7Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day8 ) {
+				$day8Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day9 ) {
+				$day9Tweets[] = $tweet;
+			}
 			
-
-
 		}
+
+		
 		$days = array();
 		$days = array('day1' => array( $day1 => $day1Tweets ), 'day2' => array( $day2 => $day2Tweets ), 'day3' => array( $day3 => $day3Tweets ),
 				  'day4' => array( $day4 => $day4Tweets ), 'day5' => array( $day5 => $day5Tweets ), 'day6' => array( $day6 => $day6Tweets ),
@@ -348,19 +341,19 @@ state,city,lat,lon,conditions&limit=100000');
 		//average quantity of tweets, from 7 days. Day 2,3,4,5,6,8,9
 		$i= 0;
 
-		foreach ($days as $day) {
-			foreach ($day as $tweets){
+		foreach ( $days as $day ) {
+			
+			foreach ( $day as $tweets ){
 
-				foreach ($tweets as $tweet) {
+				foreach ( $tweets as $tweet ) {
 					$sentiment[] = $tweet->sentiment;
 				}
 
-			}
-			
+			}			
 			
 			//Get the Mean
-			$sentiment_sum = array_sum($sentiment);
-			$sentiment_no = count($sentiment);
+			$sentiment_sum = array_sum( $sentiment );
+			$sentiment_no = count( $sentiment );
 
 			$sentiment_mean = $sentiment_sum / $sentiment_no;
 
@@ -384,13 +377,13 @@ state,city,lat,lon,conditions&limit=100000');
 			}
 
 			//Sum all squares
-			$sum_squares = array_sum($squares);
+			$sum_squares = array_sum( $squares );
 
 			//Divide sum of squares by items in list - 1
 			$sum_squares_division = $sum_squares / ( count( $squares ) - 1);
 
 			//Square root of Division sum of squares by items in list -1 result
-			$deviation = sqrt($sum_squares_division);
+			$deviation = sqrt( $sum_squares_division );
 
 			$normalised_sentiment[] = $deviation;
 
@@ -398,7 +391,7 @@ state,city,lat,lon,conditions&limit=100000');
 
 
 		//not doing day1 & day8 because only 61 and 0 tweets were picked up
-		unset ($normalised_sentiment[0]);
+		unset ( $normalised_sentiment[ 0 ] );
 		
 		return $normalised_sentiment;
 

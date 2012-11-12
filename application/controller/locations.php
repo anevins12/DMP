@@ -37,7 +37,7 @@ class Locations {
 //			new \Geocoder\Provider\HostIpProvider($adapter),
 			
 			// your provider here
-			new \Geocoder\Provider\OpenStreetMapsProvider($adapter)
+			new \Geocoder\Provider\BingMapsProvider($adapter)
 		));
 
 		return $geocoder;
