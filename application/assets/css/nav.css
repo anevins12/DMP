@@ -8,11 +8,15 @@ header .logo {
 }
 
 header nav ul,
-header nav ul li a {
+header nav ul li a,
+#breadcrumbs ul,
+#breadcrumbs ul li a{
 	display: block;
 }
 
-header nav ul li {
+header nav ul li,
+#breadcrumbs ul li,
+#breadcrumbs ul li span{
 	float: left;
 }
 
@@ -57,10 +61,20 @@ header nav ul li a {
 
 }
 
-header nav ul li a:hover{
-	border-bottom: 2px solid #ccc;
-	margin-top:1px;
+header nav ul li a:hover {
+	border-bottom: 0;
+	margin-top:3px;
+	-webkit-box-shadow: inset 0px 0px 2px 0px #333;
+	box-shadow: inset 0px 0px 2px 0px #333;
 }
+
+header nav ul li a.selected {
+	background: #FF00FF;
+	border-color: #93278F;
+	color: #fff;
+	text-shadow: none;
+}
+
 
 header nav span.txt {
 	position: absolute;
@@ -70,22 +84,47 @@ header nav span.txt {
 
 header nav span.home,
 header nav span.cities,
-header nav span.graphs {
-	position: absolute;
-	top: 6px;
-	left: 4px;
+header nav span.graphs,
+#breadcrumbs span.icon {
+	background: url("/application/assets/i/nav-icons.png") no-repeat;
+}
+
+header nav span.home,
+header nav span.cities,
+header nav span.graphs,
+#breadcrumbs span.icon {
 	display: block;
 	height: 17px;
 	width: 20px;
-	background: url("/application/assets/i/nav-icons.png") no-repeat;
-	
 }
 
-header nav span.cities {
+header nav span.home,
+header nav span.cities,
+header nav span.graphs{
+	position: absolute;
+	top: 6px;
+	left: 4px;
+}
+
+header nav span.cities,
+#breadcrumbs span.cities{
 	background-position: -20px 0;
 }
-
 header nav span.graphs {
-	background-position: -40px 0;
 	top: 7px;
+}
+
+header nav span.graphs,
+#breadcrumbs span.graphs{
+	background-position: -40px 0;
+}
+
+#breadcrumbs {
+	font-size: 14px;
+	margin-bottom: 40px;
+}
+
+#breadcrumbs span.txt {
+	margin-top: 4px;
+	margin-left: 5px;
 }

@@ -19,7 +19,18 @@ header {
 	overflow: hidden;
 }
 
+header h1 {
+	margin-bottom: 25px;
+	line-height: 30px;
+	vertical-align: text-top;
+}
+
 header h2 {
-	color: #b3b3b3;
+	color: #e6e6e6;
 	font-size: 14px;
+	padding-bottom: 0px;
+}
+
+#main {
+	margin-top:22px;
 }
