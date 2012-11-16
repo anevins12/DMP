@@ -29,7 +29,6 @@ class Tweets extends Locations{
 //		}
 		
 		$this->setLocations($tweets);
-//		$this->getGoogleLineGraphFormat($tweets);
 
 		return $tweets;
 
@@ -71,25 +70,37 @@ class Tweets extends Locations{
 				# URL that generated this code:
 				# http://txt2re.com/index-php.php3?s=Button.&-9
 
-
 				$re1='.*?';	# Non-greedy match on filler
 				$re2='(\\.)';	# Any Single Character 1
 
 				if ($c=preg_match_all ("/".$re1.$re2."/is", $tweet_word, $matches)) {
-					  $c1=$matches[1][0];
-					  $tweet_word_refined = str_replace($c1, '', strtolower($tweet_word));
+					 $c1=$matches[1][0];
+					  
+					 $tweet_word_refined = str_replace($c1, '', strtolower($tweet_word));
 				}
 				else {
 					$tweet_word_refined = $tweet_word;
 				}
 				#end of generated code
 
+				//refine tweet sentence
+				//http://stackoverflow.com/questions/5233734/how-to-strip-punctuation-in-php
+				$tweet_text_refined = preg_replace( "/(?![.=$'€%-])\p{P}/u", "", $tweet_text );
+
+				//send each word into an array, to check frequency later
+				$tweet_text_refined_array = explode( ' ', $tweet_text_refined );
+				
+
 				//count how many times that word appears in the tweet
-				// at the moment the frequency is picking up whether the combination of letters appear in the sentece.
-				// its not counted whether that word is followed by a space, its counting if that word is anywhere in the sentence.
-				// for now I've used the spaces to represent the word, but this may exclude words at the start and end of sentences.
-				// including words with punctuation.
-				$frequency = substr_count( $tweet_text , ' ' . $tweet_word . ' ' );
+				$frequency = array_count_values( $tweet_text_refined_array );
+
+				if ( isset($frequency[$tweet_word_refined]) ) {
+					$frequency = $frequency[ $tweet_word_refined ];
+				}
+				else {
+					$frequency = 1;
+				}
+
 				
 				//check if the tweet's word is within the English language
 				if ( isset ( $happiness_array[ $tweet_word_refined ] ) ) {
@@ -233,6 +244,8 @@ state,city,lat,lon,conditions&limit=100000');
 
 	function setLocations( $tweets ) {
 
+		$tweetsmodel = new Tweetsmodel;
+
 		foreach ( $tweets as $tweet ) {
 
 			// Check for empty locations on tweets
@@ -246,7 +259,7 @@ state,city,lat,lon,conditions&limit=100000');
 				
 				// Check if the GeoCoder returns a country code that is not null/ empty
 				if ( !empty ( $city ) || isset ( $city ) ) {
-
+					
 					// Set the Country Code aside of each tweet.
 					$tweetsmodel->insertTweetCity( $tweet->tweet_id, $city );
 

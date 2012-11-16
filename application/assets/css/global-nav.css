@@ -1,0 +1,91 @@
+header {
+	padding: 20px 0 10px;
+	background-color: #000;
+}
+
+header .logo {
+	
+}
+
+header nav ul,
+header nav ul li a {
+	display: block;
+}
+
+header nav ul li {
+	float: left;
+}
+
+header nav ul li a {
+	position: relative;
+	height: 20px;
+	
+	/* Button styles generated http://css3button.net/ */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	background: -moz-linear-gradient(
+		top,
+		#f2f2f2 0%,
+		#f2f2f2);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#f2f2f2),
+		to(#f2f2f2));
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 0px solid #2ea100;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.2),
+		0px 1px 0px rgba(255,255,255,1);
+
+	border-bottom: 3px solid #ccc;
+	padding: 5px 0;
+	position: relative;
+
+	font-size: 12px;
+
+}
+
+header nav ul li a:hover{
+	border-bottom: 2px solid #ccc;
+	margin-top:1px;
+}
+
+header nav span.txt {
+	position: absolute;
+	top: 11px;
+	left: 30px;
+}
+
+header nav span.home,
+header nav span.cities,
+header nav span.graphs {
+	position: absolute;
+	top: 6px;
+	left: 4px;
+	display: block;
+	height: 17px;
+	width: 20px;
+	background: url("/application/assets/i/nav-icons.png") no-repeat;
+	
+}
+
+header nav span.cities {
+	background-position: -20px 0;
+}
+
+header nav span.graphs {
+	background-position: -40px 0;
+	top: 7px;
+}

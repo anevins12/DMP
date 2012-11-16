@@ -11,25 +11,15 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-body {
-	 background:url(
-		data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAO0lEQVQYV43MSQ4AIAgEQeb/j8agwbgwQJ8rDWmkoorKLQSk0JHNKDwRhS8KYYQ+yNAFM7RhhSbsIIMDCAseCNwvlWIAAAAASUVORK5CYII=
-	 ) repeat;
-
-	 font-family: sans-serif;
-	 color: #212121;
-}
-
-#map {
-	height: 400px;
-}
-
-h1, #map, div.testarea {
-	padding: 20px;
-	background-color: #fff;
-	border-bottom: 5px solid #212121;
-}
-
 h1 {
-	width: 30%;
+	font-size: 60px;
+}
+
+header {
+	overflow: hidden;
+}
+
+header h2 {
+	color: #b3b3b3;
+	font-size: 14px;
 }

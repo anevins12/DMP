@@ -18,7 +18,7 @@ class Tweetsmodel {
 		}
 
 		//Just retrieve the rows that have sentiment and location values
-		$query = "SELECT * FROM $this->tableName WHERE `sentiment` != 0 AND `city` !='' ". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
+		$query = "SELECT * FROM $this->tableName WHERE `sentiment` != '0' ". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 
 		if ( $result ) {

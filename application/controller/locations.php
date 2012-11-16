@@ -35,9 +35,9 @@ class Locations {
 //				$adapter, '<IPINFODB_API_KEY>'
 //			),
 //			new \Geocoder\Provider\HostIpProvider($adapter),
-			
+//
 			// your provider here
-			new \Geocoder\Provider\BingMapsProvider($adapter)
+			new \Geocoder\Provider\OpenStreetMapsProvider($adapter)
 		));
 
 		return $geocoder;
