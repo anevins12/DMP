@@ -76,9 +76,13 @@ h3 a {
 	padding: 10px;
 }
 
-h3 a:hover {
-	margin-top: 3px;
-	border: 0;
+#main h3:hover {
+	border-top: 3px solid white;
+}
+
+#main h3:hover > a,
+#main h3 a:hover {
+	border:0;
 }
 
 .pointer {
@@ -93,7 +97,8 @@ h3 a:hover {
 	border-top: 10px solid #ccc;
 }
 
-h3 a:hover .pointer {
+h3 a:hover .pointer,
+#main h3:hover .pointer{
 	bottom: -11px;
 	border-top: 10px solid #ff00ff;
 }
