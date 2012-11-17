@@ -52,18 +52,20 @@ header nav ul li a {
 
 }
 
-header nav ul li a:hover {
+header nav ul li a.selected,
+header nav ul li a:active {
 	border-bottom: 0;
 	margin-top:3px;
 	-webkit-box-shadow: inset 0px 0px 2px 0px #333;
 	box-shadow: inset 0px 0px 2px 0px #333;
 }
 
-header nav ul li a.selected {
+header nav ul li a:hover {
 	background: #FF00FF;
 	border-color: #93278F;
 	color: #fff;
 	text-shadow: none;
+	-webkit-transition:background-color 0.1s linear;
 }
 
 

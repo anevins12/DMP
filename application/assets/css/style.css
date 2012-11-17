@@ -45,7 +45,7 @@ header h2 {
 
 h3 a {
 	position: relative;
-
+	text-shadow: 0 1px 0 #fff;
 	display: block;
 	/* Button styles generated http://css3button.net/ */
 	background: -moz-linear-gradient(
@@ -74,20 +74,33 @@ h3 a {
 	padding: 5px 0;
 	position: relative;
 	padding: 10px;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-#main h3:hover {
+#main h3:active {
 	border-top: 3px solid white;
 }
 
-#main h3:hover > a,
 #main h3 a:hover {
+	background: #ff00ff;
+	border-color: #93278F;
+	color: #fff;
+	-webkit-transition:background-color 0.1s linear;
+	text-shadow: 0 1px 0 #000;
+}
+
+#main h3:active > a,
+#main h3 a:active {
 	border:0;
+	-webkit-box-shadow: inset 0px 0px 2px 0px #333;
+	box-shadow: inset 0px 0px 2px 0px #333;
+	text-shadow: none;
+	color: #fcfcfc;
 }
 
 .pointer {
 	position: absolute;
-	bottom: -13px;
+	bottom: -10px;
 	left: 100px;
 	display: block;
 	
@@ -99,15 +112,15 @@ h3 a {
 
 h3 a:hover .pointer,
 #main h3:hover .pointer{
-	bottom: -11px;
+	bottom: -9px;
 	border-top: 10px solid #ff00ff;
 }
 
 #main h3:hover ~ div img,
 #main .image img:hover {
-	background-color: #fcfcfc;
+	background-color: #f2f2f2;
 	opacity: 0.6;
-	border: 1px solid #ff00ff;
+	-webkit-transition:background-color 0.2s linear;
 }
 
 #main .description {
@@ -127,8 +140,10 @@ h3 a:hover .pointer,
 	border: 1px solid #fff;
 	display: block;
 	border-radius: 5px;
-	border-bottom: 1px solid #ff00ff;
 	padding-bottom:10px;
+	
+	-webkit-box-shadow:  0px 0px 3px 0px #f2f2f2;
+	box-shadow:  0px 0px 3px 0px #f2f2f2;
 }
 
 #footer {
