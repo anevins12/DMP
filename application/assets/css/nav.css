@@ -1,12 +1,3 @@
-header {
-	padding: 20px 0 10px;
-	background-color: #000;
-}
-
-header .logo {
-	
-}
-
 header nav ul,
 header nav ul li a,
 #breadcrumbs ul,
@@ -122,6 +113,12 @@ header nav span.graphs,
 #breadcrumbs {
 	font-size: 14px;
 	margin-bottom: 40px;
+}
+
+#breadcrumbs ul {
+	background-color: #fafafa;
+	padding: 10px 15px 10px 10px;
+	float: left;
 }
 
 #breadcrumbs span.txt {

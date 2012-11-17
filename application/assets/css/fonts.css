@@ -10,11 +10,24 @@
 		font-style: normal;
 }
 
+@font-face {
+		font-family: 'Lane-Narrow';
+		src: url('/application/assets/fonts/lanenar_.eot');
+		src: url('/application/assets/fonts/lanenar_.eot?#iefix') format('embedded-opentype'),
+				 url('/application/assets/fonts/lanenar_.woff') format('woff'),
+				 url('/application/assets/fonts/lanenar_.ttf') format('truetype'),
+				 url('/application/assets/fonts/lanenar_.svg#lanenar_') format('svg');
+		font-weight: normal;
+		font-style: normal;
+}
+
 a, p, li,
-header h2 {
+h2, h3, h4, h5, h6 {
 	font-family: verdana;
 }
-h1, h2, h3, h4, h5, h6,
+
+h1,
 header h1 a {
 	font-family: 'Lane-Upper', sans-serif;
 }
+

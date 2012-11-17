@@ -11,12 +11,19 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+#wrapper {
+	position: relative;
+	min-height: 100%;
+}
+
 h1 {
 	font-size: 60px;
 }
 
 header {
 	overflow: hidden;
+	padding: 20px 0 10px;
+	background-color: #fafafa;
 }
 
 header h1 {
@@ -26,11 +33,104 @@ header h1 {
 }
 
 header h2 {
-	color: #e6e6e6;
+	color: #333;
 	font-size: 14px;
 	padding-bottom: 0px;
+	text-shadow: 0 1px 0 #fff;
 }
 
 #main {
-	margin-top:22px;
+	margin-top:10px;
+}
+
+h3 a {
+	position: relative;
+
+	display: block;
+	/* Button styles generated http://css3button.net/ */
+	background: -moz-linear-gradient(
+		top,
+		#f2f2f2 0%,
+		#f2f2f2);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#f2f2f2),
+		to(#f2f2f2));
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 0px solid #2ea100;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	
+	border-bottom: 3px solid #ccc;
+	padding: 5px 0;
+	position: relative;
+	padding: 10px;
+}
+
+h3 a:hover {
+	margin-top: 3px;
+	border: 0;
+}
+
+.pointer {
+	position: absolute;
+	bottom: -13px;
+	left: 100px;
+	display: block;
+	
+	/* http://css-tricks.com/snippets/css/css-triangle/ */
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #ccc;
+}
+
+h3 a:hover .pointer {
+	bottom: -11px;
+	border-top: 10px solid #ff00ff;
+}
+
+#main h3:hover ~ div img,
+#main .image img:hover {
+	background-color: #fcfcfc;
+	opacity: 0.6;
+	border: 1px solid #ff00ff;
+}
+
+#main .description {
+	margin-top: 80px;
+}
+
+#main .description p {
+	line-height: 1.3em;
+}
+
+#main .image {
+	padding: 20px 0 10px;
+	margin-top: 10px;
+}
+
+#main .image img {
+	border: 1px solid #fff;
+	display: block;
+	border-radius: 5px;
+	border-bottom: 1px solid #ff00ff;
+	padding-bottom:10px;
+}
+
+#footer {
+	background:url(
+		data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAP0lEQVQYV43M2QkAIAwEUdPB9l/ldqBEUDxyzfdjpBUi2SVzigBICBfSmQtP5MIXmdBCH/TQBSO0YYYmrCCFA8YkJ9p6Ri7kAAAAAElFTkSuQmCC
+    ) repeat;
+	position: relative;
+	height: 150px;
+	margin-top: 100px;
 }
