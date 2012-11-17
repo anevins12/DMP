@@ -10,6 +10,9 @@
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
+.show {
+	display: block !important;
+}
 
 #wrapper {
 	position: relative;
@@ -21,7 +24,7 @@ h1 {
 }
 
 header {
-	overflow: hidden;
+	float: left;
 	padding: 20px 0 10px;
 	background-color: #fafafa;
 }
@@ -41,6 +44,13 @@ header h2 {
 
 #main {
 	margin-top:10px;
+	border-top: 3px solid #fff;
+	border-radius: 5px;
+}
+
+#main.selected {
+	background-color: #fafafa;
+	-webkit-transition: background-color 1s ease-in;
 }
 
 h3 a {

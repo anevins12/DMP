@@ -21,7 +21,15 @@
 					</hgroup>
 					<nav class="grid_6">
 						<ul>
-							<li class="grid_2 alpha"><a href="#" class="selected"><span class="home"></span><span class="txt">Home</span></a></li>
+							<li class="grid_2 alpha">
+								<a href="#" class="selected">
+									<span class="home"></span>
+									<span class="txt">Home</span>
+									<div class="arrow">
+										<div class="tip"></div>
+									</div>
+								</a>
+							</li>
 							<li class="grid_2"><a href="#"><span class="cities"></span><span class="txt">Happiest Cities</span></a></li>
 							<li class="grid_2 omega"><a href="#"><span class="graphs"></span><span class="txt">Mood Graphs</span></a></li>
 						</ul>
@@ -69,5 +77,15 @@
 				<!-- nothing to go in here -->
 			</div>
 		</div>
+		<script type="text/javascript">
+
+		jQuery(document).ready(function($) {
+			$('header nav a.selected').hover(function(){
+				$('header .arrow').toggleClass('show');
+				$('#main').toggleClass('selected');
+			});
+		});
+
+		</script>
 	</body>
 </html>

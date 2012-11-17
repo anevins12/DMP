@@ -127,3 +127,26 @@ header nav span.graphs,
 	margin-top: 4px;
 	margin-left: 5px;
 }
+
+header .arrow,
+header .arrow .tip {
+	position: absolute;
+}
+
+header .arrow {
+	display: none;
+	background-color: #ff00ff;
+	height: 48px;
+	width: 10px;
+	bottom: -46px;
+	left: 69px;
+}
+
+header div.arrow .tip {
+	left: -5px;
+	bottom: -9px;
+	/* http://css-tricks.com/snippets/css/css-triangle/ */
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #ff00ff;
+}
