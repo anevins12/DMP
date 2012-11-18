@@ -16,7 +16,7 @@
 			<div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
-						<h1><a href="/application/">How Happy</a></h1>
+						<h1><a href="/application/view/">How Happy</a></h1>
 						<h2>Measuring Happiness un UK Cities from Twitter</h2>
 					</hgroup>
 					<nav class="grid_6">
@@ -30,8 +30,31 @@
 									</div>
 								</a>
 							</li>
-							<li class="grid_2"><a href="#"><span class="cities"></span><span class="txt">Happiest Cities</span></a></li>
-							<li class="grid_2 omega"><a href="#"><span class="graphs"></span><span class="txt">Mood Graphs</span></a></li>
+							<li class="grid_2">
+								<a href="#">
+									<span class="cities"></span>
+									<span class="txt">Happiest Cities</span>
+									<div class="arrow">
+										<div class="tip"></div>
+									</div>
+								</a>
+							</li>
+							<li class="grid_2 omega">
+								<a href="#" class="dropdown">
+									<span class="graphs"></span>
+									<span class="txt">Mood Graphs</span>				
+									<span class="pointer"></span>
+									<div class="arrow">
+										<div class="tip"></div>
+									</div>
+								</a>
+								<div class="submenu">
+									<ul>
+										<li><a href="#">Halloween <br />&amp; Fireworks</a></li>
+										<li><a href="#">Christmas</a></li>
+									</ul>
+								</div>
+							</li>
 						</ul>
 					</nav>
 				</header>
@@ -81,8 +104,14 @@
 
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){
-				$('header .arrow').toggleClass('show');
+				$('header nav a.selected .arrow').toggleClass('show');
 				$('#main').toggleClass('selected');
+			});
+			$('.submenu').hover(function() {
+				$(this).siblings().toggleClass('hover');
+				$(this).siblings(function(){
+					$('.pointer').toggleClass('hover');
+				});
 			});
 		});
 

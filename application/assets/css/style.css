@@ -121,7 +121,8 @@ h3 a {
 }
 
 h3 a:hover .pointer,
-#main h3:hover .pointer{
+#main h3:hover .pointer
+header pointer.hover{
 	bottom: -9px;
 	border-top: 10px solid #ff00ff;
 }

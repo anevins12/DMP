@@ -13,6 +13,10 @@ header nav ul li,
 
 header nav ul li a {
 	position: relative;
+}
+
+header nav ul li a,
+header nav ul ul li a{
 	height: 20px;
 	
 	/* Button styles generated http://css3button.net/ */
@@ -46,7 +50,6 @@ header nav ul li a {
 
 	border-bottom: 3px solid #ccc;
 	padding: 5px 0;
-	position: relative;
 
 	font-size: 12px;
 
@@ -60,12 +63,12 @@ header nav ul li a:active {
 	box-shadow: inset 0px 0px 2px 0px #333;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover,
+header nav ul li a.hover{
 	background: #FF00FF;
 	border-color: #93278F;
 	color: #fff;
 	text-shadow: none;
-	-webkit-transition:background-color 0.1s linear;
 }
 
 
@@ -74,6 +77,60 @@ header nav span.txt {
 	top: 11px;
 	left: 30px;
 }
+
+/*DROPDOWN*/
+header nav ul ul {
+	float:left;
+	background-color: #ccc;
+	padding: 7px;
+	-webkit-box-shadow: inset 0px 0px 2px 0px #333;
+	box-shadow: inset 0px 0px 2px 0px #333;
+	border-radius: 5px;
+}
+header nav ul div.submenu{
+	display: none;
+}
+
+header nav ul ul li {
+	float: none;
+	margin-top: 10px;
+}
+
+header nav ul ul li a{
+	width: 126px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+header nav ul ul li:first-child {
+	margin-top: 0;
+}
+
+header nav ul li:active ul li:last-child a:active {
+	top: 2px;
+	padding-bottom: 8px;
+}
+
+header nav ul li:hover > div.submenu {
+	display: block;
+}
+
+header nav ul div.submenu {
+	position: absolute;
+	top: 50px;
+	padding-top: 9px;
+}
+
+/*DROPDOWN POINTER*/
+header nav .pointer {
+	left: 65px ;
+}
+
+header nav ul li a:hover > .pointer {
+	border-top-color: #ff00ff;
+	bottom: -9px;
+}
+
 
 header nav span.home,
 header nav span.cities,
