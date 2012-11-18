@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title></title>
-		<link type="text/css" rel="stylesheet" href="/application/assets/css/resets.css" />
-		<link type="text/css" rel="stylesheet" href="/application/assets/css/fonts.css" />
-		<link type="text/css" rel="stylesheet" href="/application/assets/css/960_12_col.css" />
-		<link type="text/css" rel="stylesheet" href="/application/assets/css/nav.css" />
-		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/application/assets/js/modernizr-2.5.3.min.js"></script>
-	</head>
-
-	<body>
-		<div id="wrapper">
-			<div class="container_12">
+<?php include('head.php'); ?>
+<div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
 						<h1><a href="/application/view/">How Happy</a></h1>
@@ -42,7 +28,7 @@
 							<li class="grid_2 omega">
 								<a href="#" class="dropdown">
 									<span class="graphs"></span>
-									<span class="txt">Mood Graphs</span>				
+									<span class="txt">Mood Graphs</span>
 									<span class="pointer"></span>
 									<div class="arrow">
 										<div class="tip"></div>
@@ -50,8 +36,14 @@
 								</a>
 								<div class="submenu">
 									<ul>
-										<li><a href="#">Halloween <br />&amp; Fireworks</a></li>
-										<li><a href="#">Christmas</a></li>
+										<li>
+											<span class="halloween"></span>
+											<a href="#">Halloween <br />&amp; Fireworks</a>
+										</li>
+										<li>
+											<span class="christmas"></span>
+											<a href="#" class="christmas">Christmas</a>
+										</li>
 									</ul>
 								</div>
 							</li>

@@ -50,7 +50,7 @@ header h2 {
 
 #main.selected {
 	background-color: #fafafa;
-	-webkit-transition: background-color 1s ease-in;
+	-webkit-transition: background-color 0.3s ease-in;
 }
 
 h3 a {
@@ -102,8 +102,8 @@ h3 a {
 #main h3:active > a,
 #main h3 a:active {
 	border:0;
-	-webkit-box-shadow: inset 0px 0px 2px 0px #333;
-	box-shadow: inset 0px 0px 2px 0px #333;
+	-webkit-box-shadow: inset 0px 0px 3px 1px #93278F;
+	box-shadow: inset 0px 0px 3px 1px #93278F;
 	text-shadow: none;
 	color: #fcfcfc;
 }
@@ -120,11 +120,16 @@ h3 a {
 	border-top: 10px solid #ccc;
 }
 
-h3 a:hover .pointer,
+#main h3 a:hover .pointer,
 #main h3:hover .pointer,
 header nav ul li .pointer.hover {
 	bottom: -9px;
 	border-top: 10px solid #ff00ff;
+}
+
+#main h3 a:active .pointer,
+#main h3:active .pointer {
+	bottom: -6px;
 }
 
 #main h3:hover ~ div img,

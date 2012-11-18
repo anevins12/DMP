@@ -59,8 +59,13 @@ header nav ul li a.selected,
 header nav ul li a:active {
 	border-bottom: 0;
 	margin-top:3px;
-	-webkit-box-shadow: inset 0px 0px 2px 0px #333;
-	box-shadow: inset 0px 0px 2px 0px #333;
+	-webkit-box-shadow: inset 0px 0px 3px 1px #ccc;
+	box-shadow: inset 0px 0px 3px 1px #ccc;
+}
+
+header nav ul li a.selected:hover {
+	background-color: #f2f2f2;
+	color: #000;
 }
 
 header nav ul li a:hover,
@@ -94,12 +99,14 @@ header nav ul div.submenu{
 header nav ul ul li {
 	float: none;
 	margin-top: 10px;
+	position:relative;
 }
 
 header nav ul ul li a{
 	width: 126px;
 	text-align: center;
 	vertical-align: middle;
+	position: relative;
 }
 
 header nav ul ul li:first-child {
@@ -131,10 +138,11 @@ header nav ul li a:hover > .pointer {
 	bottom: -9px;
 }
 
-
 header nav span.home,
 header nav span.cities,
 header nav span.graphs,
+header nav span.halloween,
+header nav span.christmas,
 #breadcrumbs span.icon {
 	background: url("/application/assets/i/nav-icons.png") no-repeat;
 }
@@ -142,6 +150,8 @@ header nav span.graphs,
 header nav span.home,
 header nav span.cities,
 header nav span.graphs,
+header nav span.halloween,
+header nav span.christmas,
 #breadcrumbs span.icon {
 	display: block;
 	height: 17px;
@@ -156,18 +166,46 @@ header nav span.graphs{
 	left: 4px;
 }
 
+
+header nav span.halloween,
+header nav span.christmas {
+	position: absolute;
+	top: 7px;
+	left: 4px;
+	z-index: 1;
+}
+
 header nav span.cities,
 #breadcrumbs span.cities{
 	background-position: -20px 0;
 }
+
 header nav span.graphs {
 	top: 7px;
+}
+
+header nav ul ul a.christmas {
+	vertical-align: top;
+	line-height: 25px;
+}
+
+header nav ul li:active ul li:last-child:active span {
+	margin-top: 2px;
 }
 
 header nav span.graphs,
 #breadcrumbs span.graphs{
 	background-position: -40px 0;
 }
+
+header nav span.halloween {
+	background-position: -60px 0;
+}
+
+header nav span.christmas {
+	background-position: -80px 0;
+}
+
 
 #breadcrumbs {
 	font-size: 14px;
@@ -192,10 +230,10 @@ header .arrow .tip {
 
 header .arrow {
 	display: none;
-	background-color: #ff00ff;
+	background-color: #f2f2f2;
 	height: 48px;
 	width: 10px;
-	bottom: -46px;
+	bottom: -45px;
 	left: 69px;
 }
 
@@ -205,5 +243,5 @@ header div.arrow .tip {
 	/* http://css-tricks.com/snippets/css/css-triangle/ */
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-top: 10px solid #ff00ff;
+	border-top: 10px solid #f2f2f2;
 }
