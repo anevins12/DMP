@@ -131,11 +131,24 @@ header nav ul div.submenu {
 /*DROPDOWN POINTER*/
 header nav .pointer {
 	left: 65px ;
+	border-left-width: 6px;
+	border-right-width: 6px;
 }
 
 header nav ul li a:hover > .pointer {
 	border-top-color: #ff00ff;
-	bottom: -9px;
+	bottom: -5px;
+}
+
+header nav .pointer {
+	border-top-width: 6px;
+	z-index: 0;
+	bottom: -6px;
+}
+
+header nav ul li .pointer.hover {
+	border-top-color: #ff00ff;
+	bottom: -5px;
 }
 
 header nav span.home,
@@ -216,6 +229,20 @@ header nav span.christmas {
 	background-color: #fafafa;
 	padding: 10px 15px 10px 10px;
 	float: left;
+}
+
+#breadcrumbs li {
+	margin-right: 10px;
+}
+
+#breadcrumbs li span.separator {
+	font-size: 12px;
+	margin-top: 4px;
+	margin-right: 10px;
+}
+
+#breadcrumbs li a:hover {
+	text-decoration: underline;
 }
 
 #breadcrumbs span.txt {

@@ -1,4 +1,4 @@
-<?php include('head.php'); ?>
+<?php require('../head.php'); ?>
 <div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
@@ -8,7 +8,7 @@
 					<nav class="grid_6">
 						<ul>
 							<li class="grid_2 alpha">
-								<a href="#" class="selected">
+								<a href="#">
 									<span class="home"></span>
 									<span class="txt">Home</span>
 									<div class="arrow">
@@ -26,7 +26,7 @@
 								</a>
 							</li>
 							<li class="grid_2 omega">
-								<a href="#" class="dropdown">
+								<a href="#" class="dropdown selected">
 									<span class="graphs"></span>
 									<span class="txt">Mood Graphs</span>
 									<span class="pointer"></span>
@@ -58,7 +58,8 @@
 			<div class="container_12" id="main">
 				<nav class="grid_12 alpha" id="breadcrumbs">
 					<ul>
-						<li><span class="home icon"></span><span class="txt">Home</span></li>
+						<li><span class="home icon"></span><span class="txt"><a href="/application/view/">Home</a></span></li>
+						<li><span class="separator">&raquo;</span><span class="graphs icon"></span><span class="txt">Mood Graphs</span></li>
 					</ul>
 				</nav>
 				<div class="grid_3 alpha description">
@@ -69,18 +70,18 @@
 					</p>
 				</div>
 				<div class="grid_3">
-					<h3><a href="#">Happiest Cities<span class="pointer"></span></a></h3>
+					<h3><a class="halloween" href="#">Halloween &amp; Fireworks<span class="pointer"></span></a></h3>
 					<div class="image">
 						<a href="#">
-							<img src="/application/assets/i/home-icon-1.png" alt="Happiest Cities" />
+							<img src="/application/assets/i/home-icon-2.png" alt="Halloween &amp; Fireworks" />
 						</a>
 					</div>
 				</div>
 				<div class="grid_3">
-					<h3><a href="/application/view/moodgraphs/">Mood Graphs<span class="pointer"></span></a></h3>
+					<h3><a href="#">Christmas<span class="pointer"></span></a></h3>
 					<div class="image">
 						<a href="#">
-							<img src="/application/assets/i/home-icon-2.png" alt="Mood Graphs" />
+							<img src="/application/assets/i/home-icon-2.png" alt="Christmas" />
 						</a>
 					</div>
 				</div>
