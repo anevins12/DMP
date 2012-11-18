@@ -109,9 +109,8 @@
 			});
 			$('.submenu').hover(function() {
 				$(this).siblings().toggleClass('hover');
-				$(this).siblings(function(){
-					$('.pointer').toggleClass('hover');
-				});
+				$(this).hover().parent().children('a').children('.pointer').toggleClass('hover');
+
 			});
 		});
 
