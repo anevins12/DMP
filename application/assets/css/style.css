@@ -175,7 +175,10 @@ h3 a {
 	left: 200px;
 }
 
-
+/*MOOD GRAPH (SINGULAR) PAGE*/
+#chart {
+	top: 0;
+}
 
 
 #footer {

@@ -28,7 +28,7 @@ class Tweets extends Locations{
 //			$this->getANEWSentiment($tweet);
 //		}
 		
-		$this->setLocations($tweets);
+	//	$this->setLocations($tweets);
 
 		return $tweets;
 

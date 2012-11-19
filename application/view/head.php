@@ -11,6 +11,4 @@
 		<script type="text/javascript" src="/application/assets/js/modernizr-2.5.3.min.js"></script>
 	</head>
 
-	<body>
-		<div id="wrapper">
 			

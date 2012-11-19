@@ -1,5 +1,8 @@
 <?php include('head.php'); ?>
-<div class="container_12">
+
+	<body id="graphs">
+		<div id="wrapper">
+			<div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
 						<h1><a href="/application/view/">How Happy</a></h1>

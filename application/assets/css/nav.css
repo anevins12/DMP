@@ -109,6 +109,10 @@ header nav ul ul li a{
 	position: relative;
 }
 
+header nav ul.dropdown li span:hover.text {
+	text-shadow: 0 1px 0;
+}
+
 header nav ul ul li:first-child {
 	margin-top: 0;
 }
@@ -211,7 +215,8 @@ header nav span.graphs,
 	background-position: -40px 0;
 }
 
-header nav span.halloween {
+header nav span.halloween,
+#breadcrumbs span.halloween{
 	background-position: -60px 0;
 }
 
@@ -235,8 +240,11 @@ header nav span.christmas {
 	margin-right: 10px;
 }
 
-#breadcrumbs li span.separator {
+#breadcrumbs span {
 	font-size: 12px;
+}
+
+#breadcrumbs li span.separator {
 	margin-top: 4px;
 	margin-right: 10px;
 }

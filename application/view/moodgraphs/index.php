@@ -70,9 +70,9 @@
 					</p>
 				</div>
 				<div class="grid_3">
-					<h3><a class="halloween" href="#">Halloween &amp; Fireworks<span class="pointer"></span></a></h3>
+					<h3><a class="halloween" href="halloween-and-fireworks/">Halloween &amp; Fireworks<span class="pointer"></span></a></h3>
 					<div class="image">
-						<a href="#">
+						<a href="halloween-and-fireworks/">
 							<img src="/application/assets/i/home-icon-2.png" alt="Halloween &amp; Fireworks" />
 						</a>
 					</div>
