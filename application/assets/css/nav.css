@@ -137,6 +137,10 @@ header nav .dropdown .pointer {
 	bottom: -9px;
 }
 
+header nav .dropdown.selected .pointer {
+	bottom: -5px;
+}
+
 header nav .pointer {
 	left: 65px ;
 	border-left-width: 6px;
@@ -226,7 +230,7 @@ header nav span.graphs,
 }
 
 header nav span.halloween,
-#breadcrumbs span.halloween
+#breadcrumbs span.halloween,
 #next .halloween {
 	background-position: -60px 0;
 }

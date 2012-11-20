@@ -155,7 +155,7 @@
 			]);
 
 			var options = {
-			  title: 'Halloween to Fireworks Night Mood Graph'
+			  title: '10 Days of Christmas Mood Graph'
 			};
 
 			var chart = new google.visualization.LineChart(document.getElementById('chart'));

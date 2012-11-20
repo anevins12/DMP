@@ -82,7 +82,7 @@
 				<div class="grid_3">
 					<h3><a href="/application/view/moodgraphs/">Mood Graphs<span class="pointer"></span></a></h3>
 					<div class="image">
-						<a href="#">
+						<a href="/application/view/moodgraphs/">
 							<img src="/application/assets/i/home-icon-2.png" alt="Mood Graphs" />
 						</a>
 					</div>
