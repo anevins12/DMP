@@ -10,8 +10,8 @@
 					</hgroup>
 					<nav class="grid_6">
 						<ul>
-							<li class="grid_2 alpha">
-								<a href="#" class="selected">
+							<li class="grid_2 alpha selected">
+								<a href="/application/view/">
 									<span class="home"></span>
 									<span class="txt">Home</span>
 									<div class="arrow">
@@ -29,7 +29,7 @@
 								</a>
 							</li>
 							<li class="grid_2 omega">
-								<a href="#" class="dropdown">
+								<a href="/application/view/moodgraphs/" class="dropdown">
 									<span class="graphs"></span>
 									<span class="txt">Mood Graphs</span>
 									<span class="pointer"></span>
@@ -40,13 +40,13 @@
 								<div class="submenu">
 									<ul>
 										<li>
-											<a href="#">
+											<a href="/application/view/moodgraphs/halloween-and-fireworks/">
 												<span class="halloween"></span>
 												Halloween <br />&amp; Fireworks
 											</a>
 										</li>
 										<li>
-											<a href="#" class="christmas">
+											<a href="/application/view/moodgraphs/christmas/" class="christmas">
 												<span class="christmas"></span>
 												Christmas
 											</a>

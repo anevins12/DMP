@@ -57,7 +57,8 @@ header h2 {
 	-webkit-transition: background-color 0.3s ease-in;
 }
 
-h3 a {
+h3 a,
+h4 a {
 	position: relative;
 	text-shadow: 0 1px 0 #fff;
 	display: block;
@@ -91,11 +92,13 @@ h3 a {
     transition: box-shadow 0.3s ease-in-out;
 }
 
-#main h3:active {
+#main h3:active,
+#next h4:active {
 	border-top: 3px solid white;
 }
 
-#main h3 a:hover {
+#main h3 a:hover,
+#next h4 a:hover{
 	background: #ff00ff;
 	border-color: #93278F;
 	color: #fff;
@@ -104,7 +107,8 @@ h3 a {
 }
 
 #main h3:active > a,
-#main h3 a:active {
+#main h3 a:active,
+#next h4 a:active{
 	border:0;
 	-webkit-box-shadow: inset 0px 0px 3px 1px #93278F;
 	box-shadow: inset 0px 0px 3px 1px #93278F;
@@ -178,7 +182,64 @@ h3 a {
 /*MOOD GRAPH (SINGULAR) PAGE*/
 #chart {
 	top: 0;
+	left: -35px;
 }
+
+#key {
+	background-color: #f4f4f4;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#key h3 {
+	text-align: left;
+	font-size: 18px;
+}
+
+#description p {
+	margin: 10px 0;
+	margin-left: 10px;
+}
+
+#next {
+	margin-top: 20px;
+	text-align: center;
+}
+
+#next .icon.christmas {
+	left: 90px;
+	top: 11px;
+}
+
+#next span.text {
+	padding-left: 20px;
+}
+
+#next span.arrow-right {
+	position: absolute;
+	right: -6px;
+	top: 16px;
+
+	width: 0;
+	height: 0;
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent;
+	border-left: 6px solid #ccc;
+}
+
+#next a {
+	font-size: 20px;
+}
+
+#next a:hover span.arrow-right {
+	border-left-color: #ff00ff;
+}
+
+#next a:active span.icon {
+	margin-top: 1px;
+}
+
+
 
 
 #footer {

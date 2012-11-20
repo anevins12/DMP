@@ -8,7 +8,7 @@
 					<nav class="grid_6">
 						<ul>
 							<li class="grid_2 alpha">
-								<a href="#">
+								<a href="/application/view/">
 									<span class="home"></span>
 									<span class="txt">Home</span>
 									<div class="arrow">
@@ -26,7 +26,7 @@
 								</a>
 							</li>
 							<li class="grid_2 omega">
-								<a href="#" class="dropdown selected">
+								<a href="/application/view/moodgraphs/" class="dropdown selected">
 									<span class="graphs"></span>
 									<span class="txt">Mood Graphs</span>
 									<span class="pointer"></span>
@@ -37,13 +37,13 @@
 								<div class="submenu">
 									<ul>
 										<li>
-											<a href="#">
+											<a href="/application/view/moodgraphs/halloween-and-fireworks/" >
 												<span class="halloween"></span>
 												Halloween <br />&amp; Fireworks
 											</a>
 										</li>
 										<li>
-											<a href="#" class="christmas">
+											<a href="/application/view/moodgraphs/christmas/" class="christmas">
 												<span class="christmas"></span>
 												Christmas
 											</a>
@@ -70,17 +70,17 @@
 					</p>
 				</div>
 				<div class="grid_3">
-					<h3><a class="halloween" href="halloween-and-fireworks/">Halloween &amp; Fireworks<span class="pointer"></span></a></h3>
+					<h3><a class="halloween" href="/application/view/moodgraphs/halloween-and-fireworks/">Halloween &amp; Fireworks<span class="pointer"></span></a></h3>
 					<div class="image">
-						<a href="halloween-and-fireworks/">
+						<a href="/application/view/moodgraphs/halloween-and-fireworks/">
 							<img src="/application/assets/i/home-icon-2.png" alt="Halloween &amp; Fireworks" />
 						</a>
 					</div>
 				</div>
 				<div class="grid_3">
-					<h3><a href="#">Christmas<span class="pointer"></span></a></h3>
+					<h3><a href="/application/view/moodgraphs/christmas/">Christmas<span class="pointer"></span></a></h3>
 					<div class="image">
-						<a href="#">
+						<a href="/application/view/moodgraphs/christmas/">
 							<img src="/application/assets/i/home-icon-2.png" alt="Christmas" />
 						</a>
 					</div>

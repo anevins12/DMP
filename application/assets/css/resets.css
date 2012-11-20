@@ -85,7 +85,8 @@ a {
 	color: #FF00FF;
 }
 
-p {
+p,
+li{
 	font-size: 12px;
 	color: #b3b3b3;
 }

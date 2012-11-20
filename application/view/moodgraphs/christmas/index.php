@@ -30,7 +30,7 @@
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/nav.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
 	</head>
-	
+
 	<div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
@@ -69,13 +69,13 @@
 								<div class="submenu">
 									<ul>
 										<li>
-											<a href="/application/view/moodgraphs/halloween-and-fireworks/" class="selected">
+											<a href="/application/view/moodgraphs/halloween-and-fireworks/">
 												<span class="halloween"></span>
 												Halloween <br />&amp; Fireworks
 											</a>
 										</li>
 										<li>
-											<a href="/application/view/moodgraphs/christmas/" class="christmas">
+											<a href="/application/view/moodgraphs/christmas/" class="christmas selected">
 												<span class="christmas"></span>
 												Christmas
 											</a>
@@ -92,7 +92,7 @@
 					<ul>
 						<li><span class="home icon"></span><span class="txt"><a href="/application/view/">Home</a></span></li>
 						<li><span class="separator">&raquo;</span><span class="graphs icon"></span><span class="txt"><a href="/application/view/moodgraphs/">Mood Graphs</a></span></li>
-						<li><span class="separator">&raquo;</span><span class="halloween icon"></span><span class="txt">Halloween</span></li>
+						<li><span class="separator">&raquo;</span><span class="christmas icon"></span><span class="txt">Christmas</span></li>
 					</ul>
 				</nav>
 				<div class="grid_8 alpha">
@@ -122,15 +122,15 @@
 					</div>
 					<div class="grid_4 alpha" id="next">
 						<h4>
-							<a href="../christmas/">
-								<span class="christmas icon"></span>
-								<span class="text">Christmas</span>
+							<a href="../halloween-and-fireworks/">
+								<span class="halloween icon"></span>
+								<span class="text">Halloween &amp; Fireworks</span>
 								<span class="arrow-right"></span>
 							</a>
 						</h4>
 					</div>
 				</div>
-				
+
 		</div>
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -155,13 +155,13 @@
 			]);
 
 			var options = {
-			  title: '10 Days of Christmas Mood Graph'
+			  title: 'Halloween to Fireworks Night Mood Graph'
 			};
 
 			var chart = new google.visualization.LineChart(document.getElementById('chart'));
 			chart.draw(data,  options);
 		  }
-		
+
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){
 				$('header nav a.selected .arrow').toggleClass('show');

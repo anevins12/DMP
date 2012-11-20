@@ -133,6 +133,10 @@ header nav ul div.submenu {
 }
 
 /*DROPDOWN POINTER*/
+header nav .dropdown .pointer {
+	bottom: -9px;
+}
+
 header nav .pointer {
 	left: 65px ;
 	border-left-width: 6px;
@@ -160,6 +164,8 @@ header nav span.cities,
 header nav span.graphs,
 header nav span.halloween,
 header nav span.christmas,
+#next .christmas,
+#next .halloween,
 #breadcrumbs span.icon {
 	background: url("/application/assets/i/nav-icons.png") no-repeat;
 }
@@ -169,6 +175,8 @@ header nav span.cities,
 header nav span.graphs,
 header nav span.halloween,
 header nav span.christmas,
+#next .christmas,
+#next .halloween,
 #breadcrumbs span.icon {
 	display: block;
 	height: 17px;
@@ -185,7 +193,9 @@ header nav span.graphs{
 
 
 header nav span.halloween,
-header nav span.christmas {
+header nav span.christmas,
+#next .christmas,
+#next .halloween {
 	position: absolute;
 	top: 7px;
 	left: 4px;
@@ -216,14 +226,16 @@ header nav span.graphs,
 }
 
 header nav span.halloween,
-#breadcrumbs span.halloween{
+#breadcrumbs span.halloween
+#next .halloween {
 	background-position: -60px 0;
 }
 
-header nav span.christmas {
+header nav span.christmas,
+#next .christmas,
+#breadcrumbs span.christmas{
 	background-position: -80px 0;
 }
-
 
 #breadcrumbs {
 	font-size: 14px;
@@ -238,6 +250,7 @@ header nav span.christmas {
 
 #breadcrumbs li {
 	margin-right: 10px;
+	color: #000;
 }
 
 #breadcrumbs span {
