@@ -122,7 +122,7 @@
 					</div>
 					<div class="grid_4 alpha" id="next">
 						<h4>
-							<a href="../christmas/">
+							<a href="/application/view/moodgraphs/christmas/">
 								<span class="christmas icon"></span>
 								<span class="text">Christmas</span>
 								<span class="arrow-right"></span>
