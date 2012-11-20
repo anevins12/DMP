@@ -11,7 +11,7 @@
 					<nav class="grid_6">
 						<ul>
 							<li class="grid_2 alpha selected">
-								<a href="/application/view/">
+								<a href="/application/view/" class="selected">
 									<span class="home"></span>
 									<span class="txt">Home</span>
 									<div class="arrow">
