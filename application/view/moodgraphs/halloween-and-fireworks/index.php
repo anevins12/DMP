@@ -2,20 +2,20 @@
 
 <?php
 
-	include_once(  dirname(__FILE__) . '/../../../controller/tweets.php' );
-
-	$tweets = new Tweets();
-	$allTweets = $tweets->index();
-
-	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
-	$day1 = $graphData[1];
-	$day2 = $graphData[2];
-	$day3 = $graphData[3];
-	$day4 = $graphData[4];
-	$day5 = $graphData[5];
-	$day6 = $graphData[6];
-	$day7 = $graphData[7];
-	$day8 = $graphData[8];
+//	include_once(  dirname(__FILE__) . '/../../../controller/tweets.php' );
+//
+//	$tweets = new Tweets();
+//	$allTweets = $tweets->index();
+//
+//	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
+//	$day1 = $graphData[1];
+//	$day2 = $graphData[2];
+//	$day3 = $graphData[3];
+//	$day4 = $graphData[4];
+//	$day5 = $graphData[5];
+//	$day6 = $graphData[6];
+//	$day7 = $graphData[7];
+//	$day8 = $graphData[8];
 
 
 	// testing functions
@@ -35,7 +35,7 @@
 				<header>
 					<hgroup class="logo grid_6">
 						<h1><a href="/application/view/">How Happy</a></h1>
-						<h2>Measuring Happiness un UK Cities from Twitter</h2>
+						<h2>Measuring Happiness in the UK from Twitter</h2>
 					</hgroup>
 					<nav class="grid_6">
 						<ul>
@@ -49,7 +49,7 @@
 								</a>
 							</li>
 							<li class="grid_2">
-								<a href="#">
+								<a href="/application/view/happiest-cities">
 									<span class="cities"></span>
 									<span class="txt">Happiest Cities</span>
 									<div class="arrow">
@@ -100,12 +100,12 @@
 					</div>
 				</div>
 				<div class="grid_4">
-					<div id="key">
+<!--					<div id="key">
 						<h3>Key</h3>
 						<ul>
 							<li class="info icon">More Information</li>
 						</ul>
-					</div>
+					</div>-->
 					<div class="" id="description">
 						<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -144,14 +144,21 @@
 		  function drawChart() {
 			var data = google.visualization.arrayToDataTable([
 			  ['Time', 'Sentiment'],
-			  ['2012-10-30',  <?php echo $day1 ?>],
-			  ['HALLOWEEN',  <?php echo $day2 ?>],
-			  ['2012-11-01',  <?php echo $day3 ?>],
-			  ['2012-11-02',  <?php echo $day4 ?>],
-			  ['2012-11-03',  <?php echo $day5 ?>],
-			  ['2012-11-04',  <?php echo $day6 ?>],
-			  ['FIREWORKS',  <?php echo $day7 ?>],
-			  ['2012-11-06',  <?php echo $day8 ?>]
+//			  ['2012-10-30',  <?php //echo $day1 ?>],
+//			  ['HALLOWEEN',  <?php //echo $day2 ?>],
+//			  ['2012-11-01',  <?php //echo $day3 ?>],
+//			  ['2012-11-02',  <?php //echo $day4 ?>],
+//			  ['2012-11-03',  <?php //echo $day5 ?>],
+//			  ['2012-11-04',  <?php //echo $day6 ?>],
+//			  ['FIREWORKS',  <?php //echo $day7 ?>],
+//			  ['2012-11-06',  <?php //echo $day8 ?>]
+			  ['2012-10-30',  1.31],
+			  ['HALLOWEEN',  2.03],
+			  ['2012-11-01',  1.9],
+			  ['2012-11-02',  1.6],
+			  ['2012-11-03',  2.4],
+			  ['2012-11-04',  0.6],
+			  ['FIREWORKS',  2.9]
 			]);
 
 			var options = {

@@ -170,6 +170,8 @@ header nav span.halloween,
 header nav span.christmas,
 #next .christmas,
 #next .halloween,
+h3 span.christmas,
+h3 span.halloween,
 #breadcrumbs span.icon {
 	background: url("/application/assets/i/nav-icons.png") no-repeat;
 }
@@ -181,6 +183,8 @@ header nav span.halloween,
 header nav span.christmas,
 #next .christmas,
 #next .halloween,
+h3 span.christmas,
+h3 span.halloween,
 #breadcrumbs span.icon {
 	display: block;
 	height: 17px;
@@ -199,7 +203,9 @@ header nav span.graphs{
 header nav span.halloween,
 header nav span.christmas,
 #next .christmas,
-#next .halloween {
+#next .halloween,
+h3 span.christmas,
+h3 span.halloween {
 	position: absolute;
 	top: 7px;
 	left: 4px;
@@ -231,13 +237,15 @@ header nav span.graphs,
 
 header nav span.halloween,
 #breadcrumbs span.halloween,
-#next .halloween {
+#next .halloween,
+h3 span.halloween {
 	background-position: -60px 0;
 }
 
 header nav span.christmas,
 #next .christmas,
-#breadcrumbs span.christmas{
+#breadcrumbs span.christmas,
+h3 span.christmas {
 	background-position: -80px 0;
 }
 

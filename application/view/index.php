@@ -6,7 +6,7 @@
 				<header>
 					<hgroup class="logo grid_6">
 						<h1><a href="/application/view/">How Happy</a></h1>
-						<h2>Measuring Happiness un UK Cities from Twitter</h2>
+						<h2>Measuring Happiness in the UK from Twitter</h2>
 					</hgroup>
 					<nav class="grid_6">
 						<ul>
@@ -20,7 +20,7 @@
 								</a>
 							</li>
 							<li class="grid_2">
-								<a href="#">
+								<a href="/application/view/happiest-cities">
 									<span class="cities"></span>
 									<span class="txt">Happiest Cities</span>
 									<div class="arrow">
@@ -72,9 +72,9 @@
 					</p>
 				</div>
 				<div class="grid_3">
-					<h3><a href="#">Happiest Cities<span class="pointer"></span></a></h3>
+					<h3><a href="/application/view/happiest-cities">Happiest Cities<span class="pointer"></span></a></h3>
 					<div class="image">
-						<a href="#">
+						<a href="/application/view/happiest-cities">
 							<img src="/application/assets/i/home-icon-1.png" alt="Happiest Cities" />
 						</a>
 					</div>

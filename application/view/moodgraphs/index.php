@@ -3,7 +3,7 @@
 				<header>
 					<hgroup class="logo grid_6">
 						<h1><a href="/application/view/">How Happy</a></h1>
-						<h2>Measuring Happiness un UK Cities from Twitter</h2>
+						<h2>Measuring Happiness in the UK from Twitter</h2>
 					</hgroup>
 					<nav class="grid_6">
 						<ul>
@@ -17,7 +17,7 @@
 								</a>
 							</li>
 							<li class="grid_2">
-								<a href="#">
+								<a href="/application/view/happiest-cities">
 									<span class="cities"></span>
 									<span class="txt">Happiest Cities</span>
 									<div class="arrow">
@@ -70,7 +70,12 @@
 					</p>
 				</div>
 				<div class="grid_3">
-					<h3><a class="halloween" href="/application/view/moodgraphs/halloween-and-fireworks/">Halloween &amp; Fireworks<span class="pointer"></span></a></h3>
+					<h3>
+						<a class="halloween" href="/application/view/moodgraphs/halloween-and-fireworks/">Halloween &amp; Fireworks
+							<span class="halloween"></span>
+							<span class="pointer"></span>
+						</a>
+					</h3>
 					<div class="image">
 						<a href="/application/view/moodgraphs/halloween-and-fireworks/">
 							<img src="/application/assets/i/home-icon-2.png" alt="Halloween &amp; Fireworks" />
@@ -78,7 +83,12 @@
 					</div>
 				</div>
 				<div class="grid_3">
-					<h3><a href="/application/view/moodgraphs/christmas/">Christmas<span class="pointer"></span></a></h3>
+					<h3>
+						<a href="/application/view/moodgraphs/christmas/">Christmas
+							<span class="christmas icon"></span>
+							<span class="pointer icon"></span>
+						</a>
+					</h3>
 					<div class="image">
 						<a href="/application/view/moodgraphs/christmas/">
 							<img src="/application/assets/i/home-icon-2.png" alt="Christmas" />

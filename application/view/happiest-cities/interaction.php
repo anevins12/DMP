@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-
-//	include_once(  dirname(__FILE__) . '/../../../controller/tweets.php' );
+//
+//	include_once(  dirname(__FILE__) . '/../../controller/tweets.php' );
 //
 //	$tweets = new Tweets();
 //	$allTweets = $tweets->index();
@@ -29,8 +29,10 @@
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/960_12_col.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/nav.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
+		<script type="text/javascript" src="/application/assets/js/d3.v2.js" language="javascript"></script>
 	</head>
 
+	<body id="cities" class="interaction">
 	<div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
@@ -49,7 +51,7 @@
 								</a>
 							</li>
 							<li class="grid_2">
-								<a href="/application/view/happiest-cities">
+								<a href="/application/view/happiest-cities" class="selected">
 									<span class="cities"></span>
 									<span class="txt">Happiest Cities</span>
 									<div class="arrow">
@@ -58,7 +60,7 @@
 								</a>
 							</li>
 							<li class="grid_2 omega">
-								<a href="/application/view/moodgraphs/" class="dropdown selected">
+								<a href="/application/view/moodgraphs/" class="dropdown">
 									<span class="graphs"></span>
 									<span class="txt">Mood Graphs</span>
 									<span class="pointer"></span>
@@ -91,21 +93,17 @@
 				<nav class="grid_12 alpha" id="breadcrumbs">
 					<ul>
 						<li><span class="home icon"></span><span class="txt"><a href="/application/view/">Home</a></span></li>
-						<li><span class="separator">&raquo;</span><span class="graphs icon"></span><span class="txt"><a href="/application/view/moodgraphs/">Mood Graphs</a></span></li>
-						<li><span class="separator">&raquo;</span><span class="christmas icon"></span><span class="txt">Christmas</span></li>
+						<li><span class="separator">&raquo;</span><span class="cities icon"></span><span class="txt">Happiest Cities</span></li>
 					</ul>
 				</nav>
-				<div class="grid_8 alpha">
-					<div id="chart">
-					</div>
+				<div class="grid_8 alpha testArea">
+					<img src="/application/assets/i/happiest-cities-3.png" alt="" />
 				</div>
 				<div class="grid_4">
-<!--					<div id="key">
+					<div id="key">
 						<h3>Key</h3>
-						<ul>
-							<li class="info icon">More Information</li>
-						</ul>
-					</div>-->
+						<img src="/application/assets/i/happiest-cities-2.png" alt="" />
+					</div>
 					<div class="" id="description">
 						<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -120,15 +118,8 @@
 						Mauris risus odio, vestibulum at convallis vitae, vehicula eu.
 						</p>
 					</div>
-					<div class="grid_4 alpha" id="next">
-						<h4>
-							<a href="/application/view/moodgraphs/halloween-and-fireworks/">
-								<span class="halloween icon"></span>
-								<span class="text">Halloween &amp; Fireworks</span>
-								<span class="arrow-right"></span>
-							</a>
-						</h4>
-					</div>
+					<a class="interaction" href="/application/view/happiest-cities/"></a>
+					
 				</div>
 
 		</div>
@@ -137,29 +128,44 @@
 		<script type="text/javascript" src="/application/assets/js/modernizr-2.5.3.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 		<script type="text/javascript">
-		 google.load("visualization", "1", {packages:["corechart"]});
-		  google.setOnLoadCallback(drawChart);
-		  function drawChart() {
-			var data = google.visualization.arrayToDataTable([
-			  ['Time', 'Sentiment'],
-			  ['2012-12-21',  1.01],
-			  ['2012-12-22',  1.03],
-			  ['2012-12-23',  1.53],
-			  ['2012-12-24',  1.93],
-			  ['CHRISTMAS',  2.99],
-			  ['2012-12-26',  0.40],
-			  ['2012-12-27',  1.01]
-			]);
+//
+//		var dataset = [ 5, 10, 15, 20, 25 ];
+//		var h = 200;
+//		$i = 0;
+//
+//		var svg = d3.select(".testArea")
+//		.append("svg")
+//		.attr("width", "500")
+//		.attr("height", "500");
+//
+//		var circles = svg.selectAll("circle")
+//		.data(dataset)
+//		.enter()
+//		.append("circle");
+//
+//		circles.append("a")
+//		.attr("class", "more-info")
+//		.text("i");
+//
+//		circles.attr("cx", function(d, i) {
+//			return (i * 100) + 25;
+//		})
+//		.attr("cy", h/2)
+//		.attr("r", function(d) {
+//			return d * 3;
+//		})
+//		.attr("fill", "yellow")
+//		.attr("stroke", "#ccc")
+//		.attr("stroke-width", function(d){
+//			return d / 4;
+//		})
 
-			var options = {
-			  title: '7 Days of Christmas Mood Graph, 2012'
-			};
 
-			var chart = new google.visualization.LineChart(document.getElementById('chart'));
-			chart.draw(data,  options);
-		  }
+
+
+
 
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){
@@ -170,6 +176,7 @@
 				$(this).siblings().toggleClass('hover');
 				$(this).hover().parent().children('a').children('.pointer').toggleClass('hover');
 			});
+
 		});
 
 		</script>
