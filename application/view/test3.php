@@ -17,84 +17,115 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>Tweets</title>
 	<link type="text/css" href="../assets/css/style.css" rel="stylesheet" />
-	<script type="text/javascript" src="../assets/js/d3.v2.js" language="javascript"></script>
-	<script type="text/javascript" src="../assets/js/flare.json" language="javascript"></script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" language="javascript"></script>
 
-	<style>
-		svg {
-			width: 560px;
-			height: 200px;
-		}
-
-	</style>
 
 </head>
 
 <body>
 
-	<div class="testArea">
-
 	<h1>Happiest Cities</h1>
+	<div id="test">
 
+	</div>
 	<script type="text/javascript">
-		var r = 960,
-		format = d3.format(",d"),
-		fill = d3.scale.category20c();
 
-		var bubble = d3.layout.pack()
-			.sort(null)
-			.size([r, r])
-			.padding(1.5);
+	var diameter = 960,
+		format = d3.format(",d");
+//		color = d3.scale.category10();
+		
 
-		var vis = d3.select(".testArea").append("svg")
-			.attr("width", r)
-			.attr("height", r)
-			.attr("class", "bubble");
+	var bubble = d3.layout.pack()
+		.sort(null)
+		.size([diameter, diameter])
+		.padding(1.5);
 
-		d3.json("../data/flare.json", function(json) {
-		  var node = vis.selectAll("g.node")
-			  .data(bubble.nodes(classes(json))
-			  .filter(function(d) { return !d.children; }))
-			.enter().append("g")
+	var svg = d3.select("#test").append("svg")
+		.attr("width", diameter)
+		.attr("height", diameter)
+		.attr("class", "bubble");
+
+	d3.json("../assets/js/flare.json", function(error, root) {
+		var color = d3.rgb(255, 255, 0);
+
+	  var node = svg.selectAll(".node")
+		  .data(bubble.nodes(classes(root))
+		  .filter(function(d) { return !d.children; }))
+		.enter().append("g")
+		  .attr("class", "node")
+		  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+	  node.append("title")
+		  .text(function(d) { return d.className + ": " + format(d.value); });
+	  
+	  node.append("circle")
+		  .attr("r", function(d) { return d.r; }) 
+		  .style("fill", function(d) { return color.darker(d.value / 10000); })
+		  .attr("stroke", "#000")
+
+		  .attr("stroke-width", function(d){
+			return d.value / 10000;
+		  });
+
+	  node.append("text")
+		  .attr("dy", ".3em")
+		  .style("text-anchor", "middle")
+		  .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+		   //FORCE http://bl.ocks.org/950642
+
+		   d3.json("../assets/js/flare.json", function(json) {
+			  force
+				  .nodes(json.nodes)
+				  .links(json.links)
+				  .start();
+
+		   var width = 960,
+			   height = 500
+
+			var force = d3.layout.force()
+				.gravity(.05)
+				.distance(100)
+				.charge(-100)
+				.size([width, height]);
+
+			var node = svg.selectAll(".node")
+			  .data(json.nodes)
+			  .enter().append("g")
 			  .attr("class", "node")
-			  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+			  .call(force.drag);
+			  
+			  force.on("tick", function() {
+				link.attr("x1", function(d) { return d.source.x; })
+					.attr("y1", function(d) { return d.source.y; })
+					.attr("x2", function(d) { return d.target.x; })
+					.attr("y2", function(d) { return d.target.y; });
 
-		  node.append("title")
-			  .text(function(d) { return d.className + ": " + format(d.value); });
+				node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+			  });
+		   });
 
-		  node.append("circle")
-			  .attr("r", function(d) { return d.r; })
-			  .style("fill", function(d) { return fill(d.packageName); });
 
-		  node.append("text")
-			  .attr("text-anchor", "middle")
-			  .attr("dy", ".3em")
-			  .text(function(d) { return d.className.substring(0, d.r / 3); });
-		});
+	});
 
-		// Returns a flattened hierarchy containing all leaf nodes under the root.
-		function classes(root) {
-		  var classes = [];
+				// Returns a flattened hierarchy containing all leaf nodes under the root.
+				function classes(root) {
+				  var classes = [];
 
-		  function recurse(name, node) {
-			if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-			else classes.push({packageName: name, className: node.name, value: node.size});
-		  }
+				  function recurse(name, node) {
+					if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+					else classes.push({packageName: name, className: node.name, value: node.size});
+				  }
 
-		  recurse(null, root);
-		  return {children: classes};
-		}
+				  recurse(null, root);
+				  return {children: classes};
+				}
+
+				d3.select(self.frameElement).style("height", diameter + "px");
+
 
 	</script>
-	<style>
-		.bar {
-			display: inline-block;
-			width: 20px;
-			height: 75px;   /* We'll override this later */
-			background-color: teal;
-		}
-	</style>
-	</div>
+
 </body>
 
 </html>
