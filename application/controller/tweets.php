@@ -23,6 +23,9 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
 
+//		$happiest_cities = $tweetsmodel->getHappiestCities();
+//		$this->getAverageSentimentPerCity($happiest_cities);
+
 		//set the sentiment values
 //		foreach ($tweets as $tweet){
 //			$this->getANEWSentiment($tweet);
@@ -409,6 +412,44 @@ state,city,lat,lon,conditions&limit=100000');
 		return $normalised_sentiment;
 
 	}
+
+	function getAverageSentimentPerCity( $happiest_cities ) {
+
+		$cities = array();
+		$output = array();
+		$i = 1;
+
+		if ( !empty( $happiest_cities ) ) {
+
+			foreach ( $happiest_cities as $happiest_city ) {
+
+				$city = $happiest_city->city;
+				$sentiment = $happiest_city->sentiment;
+				$frequency = $i;
+
+				if (isset($cities[$city])) {
+				$cities[$city.'|'.$i++] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $frequency);
+				}
+				else {
+					$cities[$city] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $frequency);
+				}
+
+			}
+
+			$output = array();
+			
+			foreach ($cities as $city) {
+
+				//get the average sentiment per city (as cities may have had more than one tweet)
+				$output[$city['city']] = $city['sentiment'] + $city['frequency'] / $frequency;
+			}
+
+			return $output;
+
+
+		}
 	
+	}
+
 }
 ?>

@@ -32,7 +32,16 @@
 
 	var diameter = 960,
 		format = d3.format(",d");
-//		color = d3.scale.category10();
+
+	var width = 960,
+	height = 500;
+
+ //FORCE http://bl.ocks.org/950642
+
+	   var force = d3.layout.force()
+		.charge(-120)
+		.linkDistance(30)
+		.size([width, height]);
 		
 
 	var bubble = d3.layout.pack()
@@ -48,12 +57,17 @@
 	d3.json("../assets/js/flare.json", function(error, root) {
 		var color = d3.rgb(255, 255, 0);
 
-	  var node = svg.selectAll(".node")
+		var node = svg.selectAll(".node")
 		  .data(bubble.nodes(classes(root))
 		  .filter(function(d) { return !d.children; }))
 		.enter().append("g")
 		  .attr("class", "node")
 		  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+		  force.on("tick", function() {
+			  node.attr("cx", function(d) { return d.x; })
+			  .attr("cy", function(d) { return d.y; });
+		});
 
 	  node.append("title")
 		  .text(function(d) { return d.className + ": " + format(d.value); });
@@ -65,45 +79,17 @@
 
 		  .attr("stroke-width", function(d){
 			return d.value / 10000;
-		  });
+		  })
+
+		  .call(force.drag);
 
 	  node.append("text")
 		  .attr("dy", ".3em")
 		  .style("text-anchor", "middle")
 		  .text(function(d) { return d.className.substring(0, d.r / 3); });
 
-		   //FORCE http://bl.ocks.org/950642
+		  
 
-		   d3.json("../assets/js/flare.json", function(json) {
-			  force
-				  .nodes(json.nodes)
-				  .links(json.links)
-				  .start();
-
-		   var width = 960,
-			   height = 500
-
-			var force = d3.layout.force()
-				.gravity(.05)
-				.distance(100)
-				.charge(-100)
-				.size([width, height]);
-
-			var node = svg.selectAll(".node")
-			  .data(json.nodes)
-			  .enter().append("g")
-			  .attr("class", "node")
-			  .call(force.drag);
-			  
-			  force.on("tick", function() {
-				link.attr("x1", function(d) { return d.source.x; })
-					.attr("y1", function(d) { return d.source.y; })
-					.attr("x2", function(d) { return d.target.x; })
-					.attr("y2", function(d) { return d.target.y; });
-
-				node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-			  });
-		   });
 
 
 	});

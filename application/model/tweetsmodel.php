@@ -106,6 +106,34 @@ class Tweetsmodel {
 
 	}
 
+	public function getHappiestCities( ) {
+
+		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
+		$error = '';
+
+		if ( $mysqli->connect_errno ) {
+			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+
+		$query = "SELECT city, sentiment FROM $this->tableName WHERE city != '' AND sentiment !=0 ";
+		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
+
+		if ( $result ) {
+
+			while ( $row = $result->fetch_object() ){
+					$allTweets[] = $row;
+			}
+
+		}
+
+		else {
+			return $error .= '\n No Tweet Retrieved.';
+		}
+
+		return $allTweets ;
+
+	}
+
 }
 
 
