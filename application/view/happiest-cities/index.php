@@ -2,10 +2,12 @@
 
 <?php
 
-	include_once(  dirname(__FILE__) . '/../../controller/tweets.php' );
+	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
 
 	$tweets = new Tweets();
 	$allTweets = $tweets->index();
+
+	
 //
 //	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
 //	$day1 = $graphData[1];

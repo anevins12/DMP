@@ -7,6 +7,10 @@
 	$allTweets = $tweets->index();
 
 
+	$data = file_get_contents( dirname(__FILE__) . '/../assets/json/cities-average-tweets-quantity.json');
+
+
+
 
 	// testing functions
 
@@ -54,7 +58,7 @@
 		.attr("height", diameter)
 		.attr("class", "bubble");
 
-	d3.json("../assets/js/flare.json", function(error, root) {
+	d3.json("../assets/json/cities-average-tweets-quantity.json", function(error, root) {
 		var color = d3.rgb(255, 255, 0);
 
 		var node = svg.selectAll(".node")
@@ -70,10 +74,12 @@
 		});
 
 	  node.append("title")
+	  	.attr("IJDSAJIDIJSA", function(d){  return d  }   )
 		  .text(function(d) { return d.className + ": " + format(d.value); });
+
 	  
 	  node.append("circle")
-		  .attr("r", function(d) { return d.r; }) 
+		  .attr("r", function(d) { return d.r; })
 		  .style("fill", function(d) { return color.darker(d.value / 10000); })
 		  .attr("stroke", "#000")
 
@@ -85,12 +91,9 @@
 
 	  node.append("text")
 		  .attr("dy", ".3em")
+
 		  .style("text-anchor", "middle")
 		  .text(function(d) { return d.className.substring(0, d.r / 3); });
-
-		  
-
-
 
 	});
 
@@ -99,6 +102,7 @@
 				  var classes = [];
 
 				  function recurse(name, node) {
+					  
 					if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
 					else classes.push({packageName: name, className: node.name, value: node.size});
 				  }

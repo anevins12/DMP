@@ -22,9 +22,9 @@ class Tweets extends Locations{
 
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
-
-		$happiest_cities = $tweetsmodel->getHappiestCities();
-		$this->getAverageSentimentPerCity($happiest_cities);
+		
+		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
+		$this->writeJSONFile($AverageTweetsJSON, 'cities-average-tweets-quantity');
 
 		//set the sentiment values
 //		foreach ($tweets as $tweet){
@@ -444,13 +444,29 @@ state,city,lat,lon,conditions&limit=100000');
 			foreach ($cities as $city) {
 
 				//get the average sentiment per city (as cities may have had more than one tweet)
-				$output[$city['city']] = array( 'sentiment' => $city['sentiment'] + $city['frequency'] / $city['frequency'], 'tweet_quantity' => $city['frequency'] );
+				$output[] = array( 'name' => $city['city'], 'sentiment' => $city['sentiment'] + $city['frequency'] / $city['frequency'], 'tweet_quantity' => $city['frequency'] );
 			}
-
+			
+			$output = array( 'name' => 'happiest_cities', 'children' => $output );			
+			$output = json_encode($output);
+			
 			return $output;
 
 		}
 	
+	}
+
+	/*Specifying JSON because JSON should be the only input to write to the file */
+
+	function writeJSONFile( $JSON, $fileName ) {
+
+		if ( isset( $JSON ) && isset( $fileName ) ) {
+
+		 file_put_contents( dirname( __FILE__ ) . '/../assets/json/'. $fileName . '.json', $JSON);
+			
+		}
+
+
 	}
 
 }
