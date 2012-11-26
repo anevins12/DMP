@@ -23,8 +23,8 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
 
-//		$happiest_cities = $tweetsmodel->getHappiestCities();
-//		$this->getAverageSentimentPerCity($happiest_cities);
+		$happiest_cities = $tweetsmodel->getHappiestCities();
+		$this->getAverageSentimentPerCity($happiest_cities);
 
 		//set the sentiment values
 //		foreach ($tweets as $tweet){
@@ -417,7 +417,7 @@ state,city,lat,lon,conditions&limit=100000');
 
 		$cities = array();
 		$output = array();
-		$i = 1;
+		$i = 2;
 
 		if ( !empty( $happiest_cities ) ) {
 
@@ -427,25 +427,27 @@ state,city,lat,lon,conditions&limit=100000');
 				$sentiment = $happiest_city->sentiment;
 				$frequency = $i;
 
+				//if the city is already in the array, add a iterator to the first index
 				if (isset($cities[$city])) {
-				$cities[$city.'|'.$i++] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $frequency);
+					$cities[$city.'|'.$i++] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $i);
 				}
+				//otherwise don't add the iterator to the index
 				else {
-					$cities[$city] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $frequency);
+					$i = 2;
+					$cities[$city] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $i);
 				}
 
 			}
 
 			$output = array();
-			
+
 			foreach ($cities as $city) {
 
 				//get the average sentiment per city (as cities may have had more than one tweet)
-				$output[$city['city']] = $city['sentiment'] + $city['frequency'] / $frequency;
+				$output[$city['city']] = array( 'sentiment' => $city['sentiment'] + $city['frequency'] / $city['frequency'], 'tweet_quantity' => $city['frequency'] );
 			}
 
 			return $output;
-
 
 		}
 	
