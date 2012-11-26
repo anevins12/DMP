@@ -77,7 +77,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="/application/view/moodgraphs/christmas/" class="christmas selected">
+											<a href="/application/view/moodgraphs/christmas/" class="christmas">
 												<span class="christmas"></span>
 												Christmas
 											</a>
