@@ -504,11 +504,9 @@ $temp_city = '';
 		
 			foreach ($cities as $city) {
 
-				//get the average sentiment per city (as cities may have had more than one tweet)
-//				$output[] = array( 'name' => $city['name'], 'sentiment' => $city['sentiment'] , 'tweet_quantity' => $counts[$city['name']] );
-
 				$temp_city = $city['name'];
 
+				//taken from http://board.phpbuilder.com/showthread.php?10388043-How-To-Pick-Out-Array-Values-amp-Sum-Them&p=11019071#post11019071
 				$new_array[$city['name']][] = floatval($city['sentiment']);
 
 				//construct new array

@@ -160,7 +160,7 @@
 
 		  node.append("circle")
 			  .attr("r", function(d) { return d.r; })
-			  .style("fill", function(d) { return color.brighter(d.sentiment / 1.5 ); });
+			  .style("fill", function(d) { return color.brighter(d.sentiment  ); });
 
 		  node.append("text")
 			  .attr("dy", ".3em")
