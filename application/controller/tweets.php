@@ -441,10 +441,16 @@ state,city,lat,lon,conditions&limit=100000');
 
 			$output = array();
 
-			foreach ($cities as $city) {
+			$test = 0;
 
+			foreach ($cities as $city) {
+				$test++;
 				//get the average sentiment per city (as cities may have had more than one tweet)
 				$output[] = array( 'name' => $city['city'], 'sentiment' => $city['sentiment'] + $city['frequency'] / $city['frequency'], 'tweet_quantity' => $city['frequency'] );
+
+				if ($test > 10) {
+					break;
+				}
 			}
 			
 			$output = array( 'name' => 'happiest_cities', 'children' => $output );			

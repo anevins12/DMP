@@ -34,84 +34,57 @@
 	</div>
 	<script type="text/javascript">
 
-	var diameter = 960,
-		format = d3.format(",d");
+var diameter = 960,
+    format = d3.format(",d"),
+    color = d3.scale.category20c();
 
-	var width = 960,
-	height = 500;
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(1.5);
 
- //FORCE http://bl.ocks.org/950642
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
 
-	   var force = d3.layout.force()
-		.charge(-120)
-		.linkDistance(30)
-		.size([width, height]);
-		
+d3.json("../assets/json/cities-average-tweets-quantity.json", function(error, root) {
+	var color = d3.rgb(51,51,0);
 
-	var bubble = d3.layout.pack()
-		.sort(null)
-		.size([diameter, diameter])
-		.padding(1.5);
+  var node = svg.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+      .filter(function(d) { return !d.children; }))
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-	var svg = d3.select("#test").append("svg")
-		.attr("width", diameter)
-		.attr("height", diameter)
-		.attr("class", "bubble");
+  node.append("title")
+      .text(function(d) { return d.className + " - Sentiment: " + d.sentiment + " | Tweet Count: " + format(d.value); });
 
-	d3.json("../assets/json/cities-average-tweets-quantity.json", function(error, root) {
-		var color = d3.rgb(255, 255, 0);
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+	  .style("fill", function(d) { return color.brighter(d.sentiment / 1.5 ); });
 
-		var node = svg.selectAll(".node")
-		  .data(bubble.nodes(classes(root))
-		  .filter(function(d) { return !d.children; }))
-		.enter().append("g")
-		  .attr("class", "node")
-		  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3); });
+});
 
-		  force.on("tick", function() {
-			  node.attr("cx", function(d) { return d.x; })
-			  .attr("cy", function(d) { return d.y; });
-		});
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
 
-	  node.append("title")
-	  	.attr("IJDSAJIDIJSA", function(d){  return d  }   )
-		  .text(function(d) { return d.className + ": " + format(d.value); });
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
+  }
 
-	  
-	  node.append("circle")
-		  .attr("r", function(d) { return d.r; })
-		  .style("fill", function(d) { return color.darker(d.value / 10000); })
-		  .attr("stroke", "#000")
+  recurse(null, root);
+  return {children: classes};
+}
 
-		  .attr("stroke-width", function(d){
-			return d.value / 10000;
-		  })
-
-		  .call(force.drag);
-
-	  node.append("text")
-		  .attr("dy", ".3em")
-
-		  .style("text-anchor", "middle")
-		  .text(function(d) { return d.className.substring(0, d.r / 3); });
-
-	});
-
-				// Returns a flattened hierarchy containing all leaf nodes under the root.
-				function classes(root) {
-				  var classes = [];
-
-				  function recurse(name, node) {
-					  
-					if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-					else classes.push({packageName: name, className: node.name, value: node.size});
-				  }
-
-				  recurse(null, root);
-				  return {children: classes};
-				}
-
-				d3.select(self.frameElement).style("height", diameter + "px");
+d3.select(self.frameElement).style("height", diameter + "px");
 
 
 	</script>
