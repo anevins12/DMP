@@ -464,13 +464,13 @@ $temp_city = '';
 
 						//check if city name is within the list of cities (above)
 						//so you don't get the towns, which Geocoder picks up as 'cities'
-						if (strstr($cities_string, $city)) {
+//						if (strstr($cities_string, $city)) {
 							$frequency++;
 
 								$cities[] = array ('name' => $city, 'sentiment' => $sentiment);
 							
 
-						}
+//						}
 
 				}
 			}
@@ -498,20 +498,31 @@ $temp_city = '';
 			
 			$sentiment = 0;
 			$frequency = 0;
+			$new_array = array();
+			
 
 		
 			foreach ($cities as $city) {
 
 				//get the average sentiment per city (as cities may have had more than one tweet)
-				$output[] = array( 'name' => $city['name'], 'sentiment' => $city['sentiment'] , 'tweet_quantity' => $counts[$city['name']] );
+//				$output[] = array( 'name' => $city['name'], 'sentiment' => $city['sentiment'] , 'tweet_quantity' => $counts[$city['name']] );
 
 				$temp_city = $city['name'];
+
+				$new_array[$city['name']][] = floatval($city['sentiment']);
+
+				//construct new array
 			}
+
+			foreach ($new_array as $k => $v) {
+				$division = count($v);
+				$output[] = array('name' => $k, 'sentiment' => array_sum( $v ) / $division, 'tweet_quantity' => $division);
+			}
+
 			
 			$output = array( 'name' => 'happiest_cities', 'children' => $output );			
 			$output = json_encode($output);
 
-			
 			return $output;
 
 
