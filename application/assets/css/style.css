@@ -261,15 +261,18 @@ h3 span.halloween {
 }
 
 /*HAPPIEST CITIES*/
-#cities svg {
-	width: 560px;
-	height: 200px;
+#cities #breadcrumbs {
+	margin-bottom: 0;
 }
 
 #cities .more-info {
 	width: 10px;
 	height: 10px;
 	border: 1px solid #ff00ff;
+}
+
+#cities #key {
+	margin-top: 30px;
 }
 
 #cities #key h3 {

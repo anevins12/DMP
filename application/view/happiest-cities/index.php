@@ -31,7 +31,7 @@
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/960_12_col.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/nav.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
-		<script type="text/javascript" src="/application/assets/js/d3.v2.js" language="javascript"></script>
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" language="javascript"></script>
 	</head>
 
 	<body id="cities">
@@ -98,8 +98,8 @@
 						<li><span class="separator">&raquo;</span><span class="cities icon"></span><span class="txt">Happiest Cities</span></li>
 					</ul>
 				</nav>
-				<div class="grid_8 alpha testArea">
-					<img src="/application/assets/i/happiest-cities-1.png" alt="" />
+				<div class="grid_8 alpha testArea" id="test">
+<!--					<img src="/application/assets/i/happiest-cities-1.png" alt="" />-->
 				</div>
 				<div class="grid_4">
 					<div id="key">
@@ -120,7 +120,6 @@
 						Mauris risus odio, vestibulum at convallis vitae, vehicula eu.
 						</p>
 					</div>
-					<a class="interaction" href="/application/view/happiest-cities/interaction.php"></a>
 					
 				</div>
 
@@ -132,43 +131,58 @@
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 		<script type="text/javascript">
-//
-//		var dataset = [ 5, 10, 15, 20, 25 ];
-//		var h = 200;
-//		$i = 0;
-//
-//		var svg = d3.select(".testArea")
-//		.append("svg")
-//		.attr("width", "500")
-//		.attr("height", "500");
-//
-//		var circles = svg.selectAll("circle")
-//		.data(dataset)
-//		.enter()
-//		.append("circle");
-//
-//		circles.append("a")
-//		.attr("class", "more-info")
-//		.text("i");
-//
-//		circles.attr("cx", function(d, i) {
-//			return (i * 100) + 25;
-//		})
-//		.attr("cy", h/2)
-//		.attr("r", function(d) {
-//			return d * 3;
-//		})
-//		.attr("fill", "yellow")
-//		.attr("stroke", "#ccc")
-//		.attr("stroke-width", function(d){
-//			return d / 4;
-//		})
 
+		var diameter = 620,
+			format = d3.format(",d");
 
+		var bubble = d3.layout.pack()
+			.sort(null)
+			.size([diameter, diameter])
+			.padding(1.5);
 
-		
+		var svg = d3.select("#test").append("svg")
+			.attr("width", diameter)
+			.attr("height", 800)
+			.attr("class", "bubble");
 
-			
+		d3.json("../../assets/json/cities-average-tweets-quantity.json", function(error, root) {
+			var color = d3.rgb(51,51,0);
+
+		  var node = svg.selectAll(".node")
+			  .data(bubble.nodes(classes(root))
+			  .filter(function(d) { return !d.children; }))
+			.enter().append("g")
+			  .attr("class", "node")
+			  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+		  node.append("title")
+			  .text(function(d) { return d.className + " - Sentiment: " + d.sentiment + " | Tweet Count: " + format(d.value); });
+
+		  node.append("circle")
+			  .attr("r", function(d) { return d.r; })
+			  .style("fill", function(d) { return color.brighter(d.sentiment / 1.5 ); });
+
+		  node.append("text")
+			  .attr("dy", ".3em")
+			  .style("text-anchor", "middle")
+			  .text(function(d) { return d.className.substring(0, d.r / 3); });
+		});
+
+		// Returns a flattened hierarchy containing all leaf nodes under the root.
+		function classes(root) {
+		  var classes = [];
+
+		  function recurse(name, node) {
+			if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+			else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
+		  }
+
+		  recurse(null, root);
+		  return {children: classes};
+		}
+
+		d3.select(self.frameElement).style("height", diameter + "px");
+
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){
 				$('header nav a.selected .arrow').toggleClass('show');

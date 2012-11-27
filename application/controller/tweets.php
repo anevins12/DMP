@@ -417,53 +417,113 @@ state,city,lat,lon,conditions&limit=100000');
 
 		$cities = array();
 		$output = array();
-		$i = 2;
+		$frequency = 1;
+$count = 0;
 
+		$cities_string = '
+
+					 Bath	 Birmingham	 Bradford
+					 Brighton and Hove	 Bristol	 Cambridge
+					 Canterbury	 Carlisle	 Chester
+					 Chichester	 Coventry	 Derby
+					 Durham	 Ely	 Exeter
+					 Gloucester	 Hereford	 Kingston upon Hull
+					 Lancaster	 Leeds	 Leicester
+					 Lichfield	 Lincoln	 Liverpool
+					 City of London	 Manchester	 Newcastle upon Tyne
+					 Norwich	 Nottingham	 Oxford
+					 Peterborough	 Plymouth	 Portsmouth
+					 Preston	 Ripon	 Salford
+					 Salisbury	 Sheffield	 Southampton
+					 St Albans	 Stoke-on-Trent	 Sunderland
+					 Truro	 Wakefield	 Wells
+					 Westminster	 Winchester	 Wolverhampton
+					 Worcester	 York
+
+					 Bangor	 Cardiff	 Newport
+					 St Davids	 Swansea
+
+					 Aberdeen	 Dundee	 Edinburgh
+					 Glasgow	 Inverness	 Stirling
+
+					 Armagh	 Belfast	 Londonderry
+					 Lisburn	 Newry
+
+					';
+$temp_city = '';
 		if ( !empty( $happiest_cities ) ) {
 
 			foreach ( $happiest_cities as $happiest_city ) {
 
 				$city = $happiest_city->city;
 				$sentiment = $happiest_city->sentiment;
-				$frequency = $i;
 
-				//if the city is already in the array, add a iterator to the first index
-				if (isset($cities[$city])) {
-					$cities[$city.'|'.$i++] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $i);
-				}
-				//otherwise don't add the iterator to the index
-				else {
-					$i = 2;
-					$cities[$city] = array('sentiment' => $sentiment, 'city' => $city, 'frequency' => $i);
-				}
+				if ( !empty( $happiest_city->city ) ) {
 
+					$city = $happiest_city->city;
+
+						//check if city name is within the list of cities (above)
+						//so you don't get the towns, which Geocoder picks up as 'cities'
+						if (strstr($cities_string, $city)) {
+							$frequency++;
+
+								$cities[] = array ('name' => $city, 'sentiment' => $sentiment);
+							
+
+						}
+
+				}
 			}
 
+			
+
 			$output = array();
+			$counts = array();
 
-			$test = 0;
+			foreach ($cities as $key=>$subarr) {
+			  // Add to the current group count if it exists
+			  
+			  if (isset($counts[$subarr['name']])) {
+				$counts[$subarr['name']]++;
+			  }
+			  // or initialize to 1 if it doesn't exist
+			  else $counts[$subarr['name']] = 1;
 
+			  // Or the ternary one-liner version
+			  // instead of the preceding if/else block
+			  $counts[$subarr['name']] = isset($counts[$subarr['name']]) ? $counts[$subarr['name']]++ : 1;
+			}
+
+
+			
+			$sentiment = 0;
+			$frequency = 0;
+
+		
 			foreach ($cities as $city) {
-				$test++;
-				//get the average sentiment per city (as cities may have had more than one tweet)
-				$output[] = array( 'name' => $city['city'], 'sentiment' => $city['sentiment'] + $city['frequency'] / $city['frequency'], 'tweet_quantity' => $city['frequency'] );
 
-				if ($test > 10) {
-					break;
-				}
+				//get the average sentiment per city (as cities may have had more than one tweet)
+				$output[] = array( 'name' => $city['name'], 'sentiment' => $city['sentiment'] , 'tweet_quantity' => $counts[$city['name']] );
+
+				$temp_city = $city['name'];
 			}
 			
 			$output = array( 'name' => 'happiest_cities', 'children' => $output );			
 			$output = json_encode($output);
+
 			
 			return $output;
+
+
 
 		}
 	
 	}
 
-	/*Specifying JSON because JSON should be the only input to write to the file */
+	
 
+
+	/*Specifying JSON because JSON should be the only input to write to the file */
 	function writeJSONFile( $JSON, $fileName ) {
 
 		if ( isset( $JSON ) && isset( $fileName ) ) {
