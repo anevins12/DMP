@@ -145,6 +145,10 @@
 			.attr("height", 800)
 			.attr("class", "bubble");
 
+		var div = d3.select("#breadcrumbs").append("div")
+		.attr("class", "tooltip")
+        .style("opacity", 1e-6);
+
 		d3.json("../../assets/json/cities-average-tweets-quantity.json", function(error, root) {
 			var color = d3.rgb(51,51,0);
 
@@ -160,13 +164,43 @@
 
 		  node.append("circle")
 			  .attr("r", function(d) { return d.r; })
-			  .style("fill", function(d) { return color.brighter(d.sentiment  ); });
+			  .style("fill", function(d) { return color.brighter(d.sentiment); })
+			  //http://christopheviau.com/d3_tutorial/
+			  .on("mouseover", mouseover)
+			  .on("mousemove", function(d){mousemove(d);})
+			  .on("mouseout", mouseout)
+			  //.on("mouseout", function(){d3.select(this).style("fill", function(d) {  return color.brighter(d.sentiment ); }  ); });
 
 		  node.append("text")
 			  .attr("dy", ".3em")
 			  .style("text-anchor", "middle")
-			  .text(function(d) { return d.className.substring(0, d.r / 3); });
+			  .text(function(d) { return d.className.substring(0, d.r / 3); })
+			  .on("mouseover", mouseover)
+			  .on("mousemove", function(d){mousemove(d);})
+			  .on("mouseout", mouseout);
 		});
+		
+		//https://gist.github.com/2952964
+		function mouseover() {
+			div.transition()
+			.duration(100)
+			.style("opacity", 1)
+			.style("stroke", 1);
+		}
+
+		function mousemove(d) {
+			div
+			.text("City: " + d.className + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.value)
+			.style("left", (d3.event.pageX ) + "px")
+			.style("top", (d3.event.pageY) + "px");
+		}
+
+		function mouseout() {
+			div.transition()
+			.duration(300)
+			.style("opacity", 1e-6);
+		}
+
 
 		// Returns a flattened hierarchy containing all leaf nodes under the root.
 		function classes(root) {

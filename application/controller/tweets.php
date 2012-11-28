@@ -516,7 +516,6 @@ $temp_city = '';
 				$division = count($v);
 				$output[] = array('name' => $k, 'sentiment' => array_sum( $v ) / $division, 'tweet_quantity' => $division);
 			}
-
 			
 			$output = array( 'name' => 'happiest_cities', 'children' => $output );			
 			$output = json_encode($output);

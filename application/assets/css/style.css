@@ -261,8 +261,19 @@ h3 span.halloween {
 }
 
 /*HAPPIEST CITIES*/
+#test {
+	position: relative;
+}
+
 #cities #breadcrumbs {
 	margin-bottom: 0;
+}
+
+#cities .tooltip {
+	margin-left: 20px;
+	background-color: #eee;
+	padding: 10px 15px 10px 10px;
+	float: left;
 }
 
 #cities .more-info {
