@@ -2,10 +2,10 @@
 
 <?php
 
-	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
+//	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
 
-	$tweets = new Tweets();
-	$allTweets = $tweets->index();
+	//$tweets = new Tweets();
+	//$allTweets = $tweets->index();
 
 	
 //
@@ -150,6 +150,7 @@
         .style("opacity", 1e-6);
 
 		d3.json("../../assets/json/cities-average-tweets-quantity.json", function(error, root) {
+//		d3.json("../../assets/json/test.json", function(error, root) {
 			var color = d3.rgb(51,51,0);
 
 		  var node = svg.selectAll(".node")
@@ -164,12 +165,15 @@
 
 		  node.append("circle")
 			  .attr("r", function(d) { return d.r; })
-			  .style("fill", function(d) { return color.brighter(d.sentiment); })
+			  .style("fill", function(d) { return color.brighter(d.sentiment ); })
 			  //http://christopheviau.com/d3_tutorial/
+			  .attr("stroke", "#eee")
+			  .attr("stroke-width", function(d){
+			  	return d.value / 45;
+			  })
 			  .on("mouseover", mouseover)
 			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout)
-			  //.on("mouseout", function(){d3.select(this).style("fill", function(d) {  return color.brighter(d.sentiment ); }  ); });
+			  .on("mouseout", mouseout);
 
 		  node.append("text")
 			  .attr("dy", ".3em")

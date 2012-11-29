@@ -30,7 +30,7 @@ h1 {
 header {
 	float: left;
 	padding: 20px 0 10px;
-	background-color: #fafafa;
+	background-color: deepskyblue;
 }
 
 header h1 {
@@ -39,8 +39,12 @@ header h1 {
 	vertical-align: text-top;
 }
 
+header h1 a {
+	color: white;
+}
+
 header h2 {
-	color: #333;
+	color: #fafafa;
 	font-size: 14px;
 	padding-bottom: 0px;
 	text-shadow: 0 1px 0 #fff;
@@ -53,7 +57,6 @@ header h2 {
 }
 
 #main.selected {
-	background-color: #fafafa;
 	-webkit-transition: background-color 0.3s ease-in;
 }
 
@@ -99,7 +102,7 @@ h4 a {
 
 #main h3 a:hover,
 #next h4 a:hover{
-	background: #ff00ff;
+	background: deeppink;
 	border-color: #93278F;
 	color: #fff;
 	-webkit-transition:background-color 0.1s linear;
@@ -131,7 +134,7 @@ h4 a {
 #main h3 a:hover .pointer,
 #main h3:hover .pointer {
 	bottom: -9px;
-	border-top: 10px solid #ff00ff;
+	border-top: 10px solid deeppink;
 }
 
 #main h3 a:active .pointer,
@@ -141,8 +144,8 @@ h4 a {
 
 #main h3:hover ~ div img,
 #main .image img:hover {
-	background-color: #f2f2f2;
-	opacity: 0.6;
+	background-color: deeppink;
+	opacity: 1;
 	-webkit-transition:background-color 0.2s linear;
 }
 
@@ -186,7 +189,7 @@ h4 a {
 }
 
 #key {
-	background-color: #f4f4f4;
+	background-color: #eee;
 	padding: 10px;
 	border-radius: 5px;
 }
@@ -194,6 +197,11 @@ h4 a {
 #key h3 {
 	text-align: left;
 	font-size: 18px;
+	color: #000;
+}
+
+#key li {
+	color: #fff;
 }
 
 #description p {
@@ -232,7 +240,7 @@ h4 a {
 }
 
 #next a:hover span.arrow-right {
-	border-left-color: #ff00ff;
+	border-left-color: deeppink;
 }
 
 #next a:active span.icon {
@@ -271,15 +279,17 @@ h3 span.halloween {
 
 #cities .tooltip {
 	margin-left: 20px;
-	background-color: #eee;
-	padding: 10px 15px 10px 10px;
+	background-color: deeppink;
+	padding: 12px 15px 10px 10px;
 	float: left;
+	color: #fff;
+	font-family: verdana;
 }
 
 #cities .more-info {
 	width: 10px;
 	height: 10px;
-	border: 1px solid #ff00ff;
+	border: 1px solid deeppink;
 }
 
 #cities #key {
@@ -303,7 +313,7 @@ h3 span.halloween {
 
 #cities a:hover.interaction {
 	background: none;
-	border: 3px solid #ff00ff;
+	border: 3px solid deeppink;
 }
 
 #cities.interaction a.interaction {

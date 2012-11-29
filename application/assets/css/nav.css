@@ -53,6 +53,8 @@ header nav ul ul li a{
 
 	font-size: 12px;
 
+	background: #fff;
+
 }
 
 header nav ul li a.selected,
@@ -64,13 +66,13 @@ header nav ul li a:active {
 }
 
 header nav ul li a.selected:hover {
-	background-color: #f2f2f2;
+	background-color: #fff;
 	color: #000;
 }
 
 header nav ul li a:hover,
 header nav ul li a.hover{
-	background: #FF00FF;
+	background: deeppink;
 	border-color: #93278F;
 	color: #fff;
 	text-shadow: none;
@@ -148,7 +150,7 @@ header nav .pointer {
 }
 
 header nav ul li a:hover > .pointer {
-	border-top-color: #ff00ff;
+	border-top-color: deeppink;
 	bottom: -5px;
 }
 
@@ -159,7 +161,7 @@ header nav .pointer {
 }
 
 header nav ul li .pointer.hover {
-	border-top-color: #ff00ff;
+	border-top-color: deeppink;
 	bottom: -5px;
 }
 
@@ -255,7 +257,7 @@ h3 span.christmas {
 }
 
 #breadcrumbs ul {
-	background-color: #fafafa;
+	background-color: #eee;
 	padding: 10px 15px 10px 10px;
 	float: left;
 }
@@ -274,7 +276,7 @@ h3 span.christmas {
 	margin-right: 10px;
 }
 
-#breadcrumbs li a:hover {
+#breadcrumbs li a {
 	text-decoration: underline;
 }
 
@@ -290,11 +292,12 @@ header .arrow .tip {
 
 header .arrow {
 	display: none;
-	background-color: #f2f2f2;
-	height: 48px;
+	background-color: deepskyblue;
+	height: 46px;
 	width: 10px;
-	bottom: -45px;
+	bottom: -47px;
 	left: 69px;
+
 }
 
 header div.arrow .tip {
@@ -303,5 +306,5 @@ header div.arrow .tip {
 	/* http://css-tricks.com/snippets/css/css-triangle/ */
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-top: 10px solid #f2f2f2;
+	border-top: 10px solid deepskyblue;
 }
