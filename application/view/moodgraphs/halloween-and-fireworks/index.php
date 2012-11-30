@@ -95,22 +95,22 @@
 						<li><span class="separator">&raquo;</span><span class="halloween icon"></span><span class="txt">Halloween</span></li>
 					</ul>
 				</nav>
-				<div class="grid_8 alpha vis">
+				<div class="grid_12 alpha vis prefix_1">
 					<div id="chart">
 					</div>
-					<div id="smilies">
+					<div id="smilies" >
 						<img id="smiley-9" src="/application/assets/i/smiley-9.png" alt="Happiest" />
 						<img id="smiley-0" src="/application/assets/i/smiley-0.png" alt="Saddest" />
 					</div>
 				</div>
-				<div class="grid_4">
+				<div class="grid_12 alpha omega">
 <!--					<div id="key">
 						<h3>Key</h3>
 						<ul>
 							<li class="info icon">More Information</li>
 						</ul>
 					</div>-->
-					<div class="" id="description">
+					<div class="grid_8 alpha" id="description">
 						<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						</p>
@@ -124,7 +124,7 @@
 						Mauris risus odio, vestibulum at convallis vitae, vehicula eu.
 						</p>
 					</div>
-					<div class="grid_4 alpha" id="next">
+					<div class="grid_4 omega" id="next">
 						<h4>
 							<a href="/application/view/moodgraphs/christmas/">
 								<span class="christmas icon"></span>
@@ -169,7 +169,7 @@
 			  /*HALLOWEEN IMAGE http://farm4.staticflickr.com/3082/2574368726_e31c3e4bcc.jpg */
 			  /*FIREWORKS IMAGE http://farm2.staticflickr.com/1396/542701018_0857403a92.jpg */
 
-			  var options = { tooltip: {isHtml: true}};
+			  var options = { tooltip: {isHtml: true}, legend: {position: 'top'}, chartArea:{left:65,top:37} };
 			  var chart = new google.visualization.LineChart(document.getElementById('chart'));
 			  chart.draw(dataTable, options);
 			}

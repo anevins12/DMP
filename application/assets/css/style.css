@@ -195,15 +195,15 @@ h4 a {
 .vis #smiley-0,
 .vis #smiley-9 {
 	position: absolute;
-	left: -4px;
+	left: 50px;
 }
 
 .vis #smiley-9 {
-	top: 0;
+	top: 26px;
 }
 
 .vis #smiley-0 {
-	bottom: 0;
+	bottom: 31px;
 }
 
 #key {
