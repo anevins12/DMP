@@ -18,7 +18,6 @@
 	$day7 = $graphData[7];
 	$day8 = $graphData[8];
 
-
 	// testing functions
 
 ?>
@@ -141,35 +140,88 @@
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript">
 		 google.load("visualization", "1", {packages:["corechart"]});
-		  google.setOnLoadCallback(drawChart);
+		  google.setOnLoadCallback(drawChart); 
+		  
 		  function drawChart() {
-			var data = google.visualization.arrayToDataTable([
-			  ['Time', 'Sentiment'],
-			  ['2012-10-30',  <?php echo $day1 ?>],
-			  ['HALLOWEEN',  <?php echo $day2 ?>],
-			  ['2012-11-01',  <?php echo $day3 ?>],
-			  ['2012-11-02',  <?php echo $day4 ?>],
-			  ['2012-11-03',  <?php echo $day5 ?>],
-			  ['2012-11-04',  <?php echo $day6 ?>],
-			  ['FIREWORKS',  <?php echo $day7 ?>],
-			  ['2012-11-06',  <?php echo $day8 ?>]
-//			  ['2012-10-30',  1.31],
-//			  ['HALLOWEEN',  2.03],
-//			  ['2012-11-01',  1.9],
-//			  ['2012-11-02',  1.6],
-//			  ['2012-11-03',  2.4],
-//			  ['2012-11-04',  0.6],
-//			  ['FIREWORKS',  2.9]
-			]);
+			  var dataTable = new google.visualization.DataTable();
+			  dataTable.addColumn('string', 'Time');
+			  dataTable.addColumn('number', 'Sentiment');
+			  dataTable.addColumn({type: 'string', role: 'annotation'});
+			  dataTable.addColumn({type: 'string', role: 'annotationText', p: {html:true}});
+			  dataTable.addRows([
+				['2012-10-30',  <?php echo $day1 ?>, "", ""],
+			    ['2012-10-31',  <?php echo $day2 ?>, "Halloween", ""],
+			    ['2012-11-01',  <?php echo $day3 ?>, "", ""],
+			    ['2012-11-02',  <?php echo $day4 ?>, "", ""],
+			    ['2012-11-03',  <?php echo $day5 ?>, "", ""],
+			    ['2012-11-04',  <?php echo $day6 ?>, "", ""],
+			    ['2012-11-05',  <?php echo $day7 ?>, "Fireworks Nights", ""],
+			    ['2012-11-06',  <?php echo $day8 ?>, "", ""]
+			  ]);
 
-			var options = {
-			  title: 'Halloween to Fireworks Night Mood Graph'
-			};
+			  var options = { tooltip: {isHtml: true}};
+			  var chart = new google.visualization.LineChart(document.getElementById('chart'));
+			  chart.draw(dataTable, options);
+			}
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+//		  function drawChart() {
 
-			var chart = new google.visualization.LineChart(document.getElementById('chart'));
-			chart.draw(data,  options);
-		  }
-		
+//
+//			var data = google.visualization.arrayToDataTable([
+//			  ['Time', 'Sentiment'],
+//			  ['2012-10-30',  <?php// echo $day1 ?>],
+//			  ['HALLOWEEN',  <?php //echo $day2 ?>],
+//			  ['2012-11-01',  <?php //echo $day3 ?>],
+//			  ['2012-11-02',  <?php //echo $day4 ?>],
+//			  ['2012-11-03',  <?php //echo $day5 ?>],
+//			  ['2012-11-04',  <?php //echo $day6 ?>],
+//			  ['FIREWORKS',  <?php //echo $day7 ?>],
+//			  ['2012-11-06',  <?php //echo $day8 ?>]
+//			]);
+//
+//			  data.addColumn({type: 'string', role: 'annotation'});
+//			  data.addColumn({type: 'string', role: 'annotationText', p: {html:true}});
+//
+//			var options = {
+//			    title: 'Halloween to Fireworks Night Mood Graph'
+//			};
+//
+////			var chart = new google.visualization.LineChart(document.getElementById('chart'));
+////			chart.draw(data,  options);
+//
+//
+//		    // Create and draw the visualization.
+//			new google. visualization.LineChart(document.getElementById('chart')).draw(data, options);
+//		  }
+//
+//
+//		function createCustomHTMLContent(flagURL, totalGold, totalSilver, totalBronze) {
+//		  return '<div style="padding:5px 5px 5px 5px;">' +
+//			  '<img src="' + flagURL + '" style="width:75px;height:50px"><br/>' +
+//			  '<table id="medals_layout">' +
+//			  '<tr>' +
+//			  '<td><img src="http://upload.wikimedia.org/wikipedia/commons/1/15/Gold_medal.svg" style="width:25px;height:25px"/></td>' +
+//			  '<td><b>' + totalGold + '</b></td>' +
+//			  '</tr>' +
+//			  '<tr>' +
+//			  '<td><img src="http://upload.wikimedia.org/wikipedia/commons/0/03/Silver_medal.svg" style="width:25px;height:25px"/></td>' +
+//			  '<td><b>' + totalSilver + '</b></td>' +
+//			  '</tr>' +
+//			  '<tr>' +
+//			  '<td><img src="http://upload.wikimedia.org/wikipedia/commons/5/52/Bronze_medal.svg" style="width:25px;height:25px"/></td>' +
+//			  '<td><b>' + totalBronze + '</b></td>' +
+//			  '</tr>' +
+//			  '</table>' +
+//			  '</div>';
+//		}
+//
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){
 				$('header nav a.selected .arrow').toggleClass('show');
