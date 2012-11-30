@@ -145,19 +145,25 @@
 		  function drawChart() {
 			  var dataTable = new google.visualization.DataTable();
 			  dataTable.addColumn('string', 'Time');
-			  dataTable.addColumn('number', 'Sentiment');
+			  dataTable.addColumn('number', 'Normalised Sentiment');
+			  dataTable.addColumn({type: 'string', role: 'annotation'});
+			  dataTable.addColumn('number', 'Expected Normalised Sentiment');
 			  dataTable.addColumn({type: 'string', role: 'annotation'});
 			  dataTable.addColumn({type: 'string', role: 'annotationText', p: {html:true}});
 			  dataTable.addRows([
-				['2012-10-30',  <?php echo $day1 ?>, "", ""],
-			    ['2012-10-31',  <?php echo $day2 ?>, "Halloween", ""],
-			    ['2012-11-01',  <?php echo $day3 ?>, "", ""],
-			    ['2012-11-02',  <?php echo $day4 ?>, "", ""],
-			    ['2012-11-03',  <?php echo $day5 ?>, "", ""],
-			    ['2012-11-04',  <?php echo $day6 ?>, "", ""],
-			    ['2012-11-05',  <?php echo $day7 ?>, "Fireworks Nights", ""],
-			    ['2012-11-06',  <?php echo $day8 ?>, "", ""]
+				['2012-10-30',  <?php echo $day1 ?>, "", 1, "", ""],
+			    ['2012-10-31', <?php echo $day2 ?>, "Halloween", 2, "Halloween", createCustomHTMLContent("<img width=100px src='http://farm1.staticflickr.com/33/57850248_4c2697e0a8.jpg'>", <?php echo $day2?>)],
+			    ['2012-11-01',  <?php echo $day3 ?>, "", 1.7,"", ""],
+			    ['2012-11-02',  <?php echo $day4 ?>, "", 1.5, "", ""],
+			    ['2012-11-03',  <?php echo $day5 ?>, "", 1, "", ""],
+			    ['2012-11-04',  <?php echo $day6 ?>, "", 1.6, "", ""],
+			    ['2012-11-05',  <?php echo $day7 ?>, "Fireworks Nights", 2.1, "Fireworks Nights", createCustomHTMLContent("<img width=100px src='http://farm4.staticflickr.com/3596/3790283930_bdf5f56b73.jpg'>")],
+			    ['2012-11-06',  <?php echo $day8 ?>, "", 1.9, "", ""]
 			  ]);
+
+			  /*CREATIVE COMMONS LISENCE*/
+			  /*HALLOWEEN IMAGE http://farm1.staticflickr.com/33/57850248_4c2697e0a8.jpg */
+			  /*FIREWORKS IMAGE http://farm4.staticflickr.com/3596/3790283930_bdf5f56b73.jpg */
 
 			  var options = { tooltip: {isHtml: true}};
 			  var chart = new google.visualization.LineChart(document.getElementById('chart'));
@@ -166,7 +172,17 @@
 		  
 		  
 		  
-		  
+		  function createCustomHTMLContent(eventURL, sentimentValue) {
+  return '<div style="padding:5px 5px 5px 5px;">' +
+      '<img src="' + eventURL + '" style="width:75px;height:50px"><br/>' +
+      '<table id="medals_layout">' +
+      '<tr>' +
+      '<td><img src="/application/assets/i/smiley-2.png" /></td>' +
+      '<td><b>' + sentimentValue + '</b></td>' +
+      '</tr>' +
+      '</table>' +
+      '</div>';
+}
 		  
 		  
 		  
