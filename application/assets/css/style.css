@@ -183,9 +183,27 @@ h4 a {
 }
 
 /*MOOD GRAPH (SINGULAR) PAGE*/
-#chart {
+.vis {
+	position: relative;
+}
+
+.vis #chart {
 	top: 0;
 	left: -35px;
+}
+
+.vis #smiley-0,
+.vis #smiley-9 {
+	position: absolute;
+	left: -4px;
+}
+
+.vis #smiley-9 {
+	top: 0;
+}
+
+.vis #smiley-0 {
+	bottom: 0;
 }
 
 #key {

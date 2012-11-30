@@ -95,8 +95,12 @@
 						<li><span class="separator">&raquo;</span><span class="halloween icon"></span><span class="txt">Halloween</span></li>
 					</ul>
 				</nav>
-				<div class="grid_8 alpha">
+				<div class="grid_8 alpha vis">
 					<div id="chart">
+					</div>
+					<div id="smilies">
+						<img id="smiley-9" src="/application/assets/i/smiley-9.png" alt="Happiest" />
+						<img id="smiley-0" src="/application/assets/i/smiley-0.png" alt="Saddest" />
 					</div>
 				</div>
 				<div class="grid_4">
@@ -152,18 +156,18 @@
 			  dataTable.addColumn({type: 'string', role: 'annotationText', p: {html:true}});
 			  dataTable.addRows([
 				['2012-10-30',  <?php echo $day1 ?>, "", 1, "", ""],
-			    ['2012-10-31', <?php echo $day2 ?>, "Halloween", 2, "Halloween", createCustomHTMLContent("<img width=100px src='http://farm1.staticflickr.com/33/57850248_4c2697e0a8.jpg'>", <?php echo $day2?>)],
+			    ['2012-10-31', <?php echo $day2 ?>, "Halloween", 2, "Halloween", createCustomHTMLContent("http://farm4.staticflickr.com/3082/2574368726_e31c3e4bcc.jpg", 2, <?php echo $day2?>)],
 			    ['2012-11-01',  <?php echo $day3 ?>, "", 1.7,"", ""],
 			    ['2012-11-02',  <?php echo $day4 ?>, "", 1.5, "", ""],
 			    ['2012-11-03',  <?php echo $day5 ?>, "", 1, "", ""],
 			    ['2012-11-04',  <?php echo $day6 ?>, "", 1.6, "", ""],
-			    ['2012-11-05',  <?php echo $day7 ?>, "Fireworks Nights", 2.1, "Fireworks Nights", createCustomHTMLContent("<img width=100px src='http://farm4.staticflickr.com/3596/3790283930_bdf5f56b73.jpg'>")],
+			    ['2012-11-05',  <?php echo $day7 ?>, "Fireworks Nights", 2.4, "Fireworks Nights", createCustomHTMLContent("http://farm2.staticflickr.com/1396/542701018_0857403a92.jpg", 2.25, <?php echo $day2 ?>)],
 			    ['2012-11-06',  <?php echo $day8 ?>, "", 1.9, "", ""]
 			  ]);
 
 			  /*CREATIVE COMMONS LISENCE*/
-			  /*HALLOWEEN IMAGE http://farm1.staticflickr.com/33/57850248_4c2697e0a8.jpg */
-			  /*FIREWORKS IMAGE http://farm4.staticflickr.com/3596/3790283930_bdf5f56b73.jpg */
+			  /*HALLOWEEN IMAGE http://farm4.staticflickr.com/3082/2574368726_e31c3e4bcc.jpg */
+			  /*FIREWORKS IMAGE http://farm2.staticflickr.com/1396/542701018_0857403a92.jpg */
 
 			  var options = { tooltip: {isHtml: true}};
 			  var chart = new google.visualization.LineChart(document.getElementById('chart'));
@@ -172,72 +176,13 @@
 		  
 		  
 		  
-		  function createCustomHTMLContent(eventURL, sentimentValue) {
-  return '<div style="padding:5px 5px 5px 5px;">' +
-      '<img src="' + eventURL + '" style="width:75px;height:50px"><br/>' +
-      '<table id="medals_layout">' +
-      '<tr>' +
-      '<td><img src="/application/assets/i/smiley-2.png" /></td>' +
-      '<td><b>' + sentimentValue + '</b></td>' +
-      '</tr>' +
-      '</table>' +
-      '</div>';
-}
-		  
-		  
-		  
-		  
-//		  function drawChart() {
-
-//
-//			var data = google.visualization.arrayToDataTable([
-//			  ['Time', 'Sentiment'],
-//			  ['2012-10-30',  <?php// echo $day1 ?>],
-//			  ['HALLOWEEN',  <?php //echo $day2 ?>],
-//			  ['2012-11-01',  <?php //echo $day3 ?>],
-//			  ['2012-11-02',  <?php //echo $day4 ?>],
-//			  ['2012-11-03',  <?php //echo $day5 ?>],
-//			  ['2012-11-04',  <?php //echo $day6 ?>],
-//			  ['FIREWORKS',  <?php //echo $day7 ?>],
-//			  ['2012-11-06',  <?php //echo $day8 ?>]
-//			]);
-//
-//			  data.addColumn({type: 'string', role: 'annotation'});
-//			  data.addColumn({type: 'string', role: 'annotationText', p: {html:true}});
-//
-//			var options = {
-//			    title: 'Halloween to Fireworks Night Mood Graph'
-//			};
-//
-////			var chart = new google.visualization.LineChart(document.getElementById('chart'));
-////			chart.draw(data,  options);
-//
-//
-//		    // Create and draw the visualization.
-//			new google. visualization.LineChart(document.getElementById('chart')).draw(data, options);
-//		  }
-//
-//
-//		function createCustomHTMLContent(flagURL, totalGold, totalSilver, totalBronze) {
-//		  return '<div style="padding:5px 5px 5px 5px;">' +
-//			  '<img src="' + flagURL + '" style="width:75px;height:50px"><br/>' +
-//			  '<table id="medals_layout">' +
-//			  '<tr>' +
-//			  '<td><img src="http://upload.wikimedia.org/wikipedia/commons/1/15/Gold_medal.svg" style="width:25px;height:25px"/></td>' +
-//			  '<td><b>' + totalGold + '</b></td>' +
-//			  '</tr>' +
-//			  '<tr>' +
-//			  '<td><img src="http://upload.wikimedia.org/wikipedia/commons/0/03/Silver_medal.svg" style="width:25px;height:25px"/></td>' +
-//			  '<td><b>' + totalSilver + '</b></td>' +
-//			  '</tr>' +
-//			  '<tr>' +
-//			  '<td><img src="http://upload.wikimedia.org/wikipedia/commons/5/52/Bronze_medal.svg" style="width:25px;height:25px"/></td>' +
-//			  '<td><b>' + totalBronze + '</b></td>' +
-//			  '</tr>' +
-//			  '</table>' +
-//			  '</div>';
-//		}
-//
+		  function createCustomHTMLContent(eventURL, expectedValue, actualValue) {
+			  return '<div style="padding:5px 5px 5px 5px;">' +
+				  '<img src="' + eventURL + '" style="height:50px" /><br/>' +
+				  '<div id="medals_layout">' +
+				  '<img style="display:block; margin: 0 auto;" id="smiley" src="/application/assets/i/smiley-' +expectedValue * 4 +'.png" />' +
+				  '</div>';
+			}
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){
 				$('header nav a.selected .arrow').toggleClass('show');
