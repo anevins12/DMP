@@ -2,10 +2,10 @@
 
 <?php
 
-//	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
+	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
 
-	//$tweets = new Tweets();
-	//$allTweets = $tweets->index();
+	$tweets = new Tweets();
+	$allTweets = $tweets->index();
 
 	
 //
@@ -31,7 +31,10 @@
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/960_12_col.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/nav.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" language="javascript"></script>
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" language="javascript"></script>
+		<script type="text/javascript" src="http://keith-wood.name/js/jquery.svg.js" language="javascript"></script>
+		<script type="text/javascript" src="http://keith-wood.name/js/jquery.svgdom.js" language="javascript"></script>
 	</head>
 
 	<body id="cities">
@@ -98,6 +101,28 @@
 						<li><span class="separator">&raquo;</span><span class="cities icon"></span><span class="txt">Happiest Cities</span></li>
 					</ul>
 				</nav>
+<!--				<form method="get" name="search" onsubmit="findCity(this.form)">
+					<input type="text" name="keyword" value="Search a city" onblur="if (this.value == '') {this.value = 'Search a city';}" id="keyword"
+                                                     onfocus="if (this.value == 'Search a city') {this.value = '';}" />
+				</form>-->
+				<script>
+
+					function findCity(form) {
+
+						var keyword = $("#keyword").val();
+						var circles = $("circle");
+
+						for (var i = 0; i < circles.length; i++ ) {
+							
+							if ( circles[i].getAttribute('id') == keyword ) {
+								circles[i].setAttribute('class', 'selected');
+							}
+						}
+
+
+					}
+
+				</script>
 				<div class="grid_8 alpha testArea" id="test">
 <!--					<img src="/application/assets/i/happiest-cities-1.png" alt="" />-->
 				</div>
@@ -165,6 +190,7 @@
 
 		  node.append("circle")
 			  .attr("r", function(d) { return d.r; })
+			  .attr("id", function(d) { return d.className; })
 			  .style("fill", function(d) { return color.brighter(d.sentiment ); })
 			  //http://christopheviau.com/d3_tutorial/
 			  .attr("stroke", "#eee")
