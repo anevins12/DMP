@@ -101,6 +101,7 @@
 						<li><span class="separator">&raquo;</span><span class="cities icon"></span><span class="txt">Happiest Cities</span></li>
 					</ul>
 				</nav>
+				<h2>Happiest Cities of the United Kingdom</h2>
 <!--				<form method="get" name="search" onsubmit="findCity(this.form)">
 					<input type="text" name="keyword" value="Search a city" onblur="if (this.value == '') {this.value = 'Search a city';}" id="keyword"
                                                      onfocus="if (this.value == 'Search a city') {this.value = '';}" />
@@ -133,16 +134,14 @@
 					</div>
 					<div class="" id="description">
 						<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Based on tweets from Twitter, this Data Visualisation shows the happiest cities of the United Kingdom.
 						</p>
 						<p>
-						Vivamus cursus ultrices urna, vitae consequat massa suscipit eget. Aliquam erat volutpat.
+							Tweets were retrieved from the 29th of October to the 5th of November.
+							Sentimental values have been averaged from this entire time frame.
 						</p>
 						<p>
-						In hac habitasse platea dictumst. Aliquam erat volutpat. Duis id erat mi. Ut nec dui leo, eu molestie ante.
-						</p>
-						<p>
-						Mauris risus odio, vestibulum at convallis vitae, vehicula eu.
+							As you can see, there isn't much deviation. You can explore this in more detail on the <a href="/application/view/moodgraphs/halloween-and-fireworks/">Halloween and Fireworks Mood Graph</a>.
 						</p>
 					</div>
 					
@@ -197,7 +196,7 @@
 			  .attr("stroke-width", function(d){
 			  	return d.value / 45;
 			  })
-			  .on("mouseover", mouseover)
+			  .on("mouseover", function(d){mouseover(d);})
 			  .on("mousemove", function(d){mousemove(d);})
 			  .on("mouseout", mouseout);
 
@@ -211,7 +210,7 @@
 		});
 		
 		//https://gist.github.com/2952964
-		function mouseover() {
+		function mouseover(d) {
 			div.transition()
 			.duration(100)
 			.style("opacity", 1)
@@ -223,6 +222,7 @@
 			.text("City: " + d.className + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.value)
 			.style("left", (d3.event.pageX ) + "px")
 			.style("top", (d3.event.pageY) + "px");
+
 		}
 
 		function mouseout() {
@@ -248,6 +248,7 @@
 		d3.select(self.frameElement).style("height", diameter + "px");
 
 		jQuery(document).ready(function($) {
+		
 			$('header nav a.selected').hover(function(){
 				$('header nav a.selected .arrow').toggleClass('show');
 				$('#main').toggleClass('selected');
@@ -256,7 +257,6 @@
 				$(this).siblings().toggleClass('hover');
 				$(this).hover().parent().children('a').children('.pointer').toggleClass('hover');
 			});
-			
 		});
 
 		</script>

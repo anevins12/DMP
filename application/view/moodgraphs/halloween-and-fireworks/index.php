@@ -92,7 +92,7 @@
 					<ul>
 						<li><span class="home icon"></span><span class="txt"><a href="/application/view/">Home</a></span></li>
 						<li><span class="separator">&raquo;</span><span class="graphs icon"></span><span class="txt"><a href="/application/view/moodgraphs/">Mood Graphs</a></span></li>
-						<li><span class="separator">&raquo;</span><span class="halloween icon"></span><span class="txt">Halloween</span></li>
+						<li><span class="separator">&raquo;</span><span class="halloween icon"></span><span class="txt">Halloween &amp; Fireworks</span></li>
 					</ul>
 				</nav>
 				<div class="grid_12 alpha vis prefix_1">
@@ -112,16 +112,15 @@
 					</div>-->
 					<div class="grid_8 alpha" id="description">
 						<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							This Data Visualisation shows how-well public mood has been recorded from Twitter.
 						</p>
 						<p>
-						Vivamus cursus ultrices urna, vitae consequat massa suscipit eget. Aliquam erat volutpat.
+							Tweets were retrieved from the 29th of October to the 5th of November and sentimental values were
+							applied to each tweet.
 						</p>
 						<p>
-						In hac habitasse platea dictumst. Aliquam erat volutpat. Duis id erat mi. Ut nec dui leo, eu molestie ante.
-						</p>
-						<p>
-						Mauris risus odio, vestibulum at convallis vitae, vehicula eu.
+							Of each day, sentimental values are normalised. It is apparent there is no correlation between data gathered
+							and public mood, therefore it seems public mood has not been recorded.
 						</p>
 					</div>
 					<div class="grid_4 omega" id="next">
@@ -149,7 +148,7 @@
 		  function drawChart() {
 			  var dataTable = new google.visualization.DataTable();
 			  dataTable.addColumn('string', 'Time');
-			  dataTable.addColumn('number', 'Normalised Sentiment');
+			  dataTable.addColumn('number', 'Actual Normalised Sentiment');
 			  dataTable.addColumn({type: 'string', role: 'annotation'});
 			  dataTable.addColumn('number', 'Expected Normalised Sentiment');
 			  dataTable.addColumn({type: 'string', role: 'annotation'});
