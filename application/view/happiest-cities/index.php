@@ -33,8 +33,7 @@
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" language="javascript"></script>
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" language="javascript"></script>
-		<script type="text/javascript" src="http://keith-wood.name/js/jquery.svg.js" language="javascript"></script>
-		<script type="text/javascript" src="http://keith-wood.name/js/jquery.svgdom.js" language="javascript"></script>
+		<script type="text/javascript" src="/application/assets/js/geom.js" language="javascript"></script>
 	</head>
 
 	<body id="cities">
@@ -155,7 +154,6 @@
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 		<script type="text/javascript">
-
 		var diameter = 620,
 			format = d3.format(",d");
 
@@ -175,7 +173,22 @@
 
 		d3.json("../../assets/json/cities-average-tweets-quantity.json", function(error, root) {
 //		d3.json("../../assets/json/test.json", function(error, root) {
-			var color = d3.rgb(51,51,0);
+
+		var nodes = [],
+			links = [];
+
+		var path = d3.geo.path(),
+	    force = d3.layout.force().size([diameter, 800]);
+
+
+		var color = d3.rgb(51,51,0);
+
+		 force
+		  .gravity(0)
+		  .nodes(nodes)
+		  .links(links)
+		  .linkDistance(function(d) { return d.distance; })
+		  .start();
 
 		  var node = svg.selectAll(".node")
 			  .data(bubble.nodes(classes(root))
@@ -207,8 +220,16 @@
 			  .on("mouseover", mouseover)
 			  .on("mousemove", function(d){mousemove(d);})
 			  .on("mouseout", mouseout);
+
+
+		  force.start();
+		  force.on("tick", function() {
+			  node.attr("cx", function(d) { return d.x; })
+				  .attr("cy", function(d) { return d.y; });
+			});
+		node.call(force.drag)
 		});
-		
+
 		//https://gist.github.com/2952964
 		function mouseover(d) {
 			div.transition()
@@ -221,7 +242,34 @@
 			div
 			.text("City: " + d.className + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.value)
 			.style("left", (d3.event.pageX ) + "px")
-			.style("top", (d3.event.pageY) + "px");
+			.style("top", (d3.event.pageY) + "px")
+			.append("image")
+			.attr("src", function() {
+				var src = "/application/assets/i/smiley-";
+				var ext = ".png";
+				
+				if ( d.sentiment < 1 ) {
+					return src + 0 + ext;
+				}
+				if ( d.sentiment < 3 ) {
+					return src + 2 + ext;
+				}
+				if ( d.sentiment < 5 ) {
+					return src + 4 + ext;
+				}
+				if ( d.sentiment < 6 ) {
+					return src + 5 + ext;
+				}
+				if ( d.sentiment < 7 ) {
+					return src + 6 + ext;
+				}
+				if ( d.sentiment < 9 ) {
+					return src + 8 + ext;
+				}
+				if ( d.sentiment < 10 ) {
+					return src + 9 + ext;
+				}
+			});
 
 		}
 
@@ -260,5 +308,6 @@
 		});
 
 		</script>
+
 	</body>
 </html>
