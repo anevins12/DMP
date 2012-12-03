@@ -94,18 +94,27 @@
 				</header>
 			</div>
 			<div class="container_12" id="main">
-				<nav class="grid_12 alpha" id="breadcrumbs">
-					<ul>
-						<li><span class="home icon"></span><span class="txt"><a href="/application/view/">Home</a></span></li>
-						<li><span class="separator">&raquo;</span><span class="cities icon"></span><span class="txt">Happiest Cities</span></li>
+				<div class="grid_12 alpha omega">
+					<nav id="breadcrumbs">
+						<ul>
+							<li><span class="home icon"></span><span class="txt"><a href="/application/view/">Home</a></span></li>
+							<li><span class="separator">&raquo;</span><span class="cities icon"></span><span class="txt">Happiest Cities</span></li>
+						</ul>
+					</nav>
+					<ul class="tabContainer">
+						<!-- The jQuery generated tabs go here -->
 					</ul>
-				</nav>
-				<h2>Happiest Cities of the United Kingdom</h2>
+				</div>
+
+				<div class="" id="options">
+					<h2>The Happiest Cities in the United Kingdom</h2>
+					<h3>Based on Tweets gathered from the 29th Oct - 6th Nov</h3>
+				</div>
 <!--				<form method="get" name="search" onsubmit="findCity(this.form)">
 					<input type="text" name="keyword" value="Search a city" onblur="if (this.value == '') {this.value = 'Search a city';}" id="keyword"
                                                      onfocus="if (this.value == 'Search a city') {this.value = '';}" />
 				</form>-->
-				<script>
+				<script type="text/javascript">
 
 					function findCity(form) {
 
@@ -122,9 +131,14 @@
 
 					}
 
+
 				</script>
-				<div class="grid_8 alpha testArea" id="test">
-<!--					<img src="/application/assets/i/happiest-cities-1.png" alt="" />-->
+				<div class="grid_8 alpha testArea" id="contentHolder">
+					
+					<div id="contentHolder">
+						<!-- The AJAX fetched content goes here -->
+					</div>
+
 				</div>
 				<div class="grid_4">
 					<div id="key">
@@ -153,160 +167,8 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
-		<script type="text/javascript">
-		var diameter = 620,
-			format = d3.format(",d");
-
-		var bubble = d3.layout.pack()
-			.sort(null)
-			.size([diameter, diameter])
-			.padding(1.5);
-
-		var svg = d3.select("#test").append("svg")
-			.attr("width", diameter)
-			.attr("height", 800)
-			.attr("class", "bubble");
-
-		var div = d3.select("#breadcrumbs").append("div")
-		.attr("class", "tooltip")
-        .style("opacity", 1e-6);
-
-		d3.json("../../assets/json/cities-average-tweets-quantity.json", function(error, root) {
-//		d3.json("../../assets/json/test.json", function(error, root) {
-
-		var nodes = [],
-			links = [];
-
-		var path = d3.geo.path(),
-	    force = d3.layout.force().size([diameter, 800]);
-
-
-		var color = d3.rgb(51,51,0);
-
-		 force
-		  .gravity(0)
-		  .nodes(nodes)
-		  .links(links)
-		  .linkDistance(function(d) { return d.distance; })
-		  .start();
-
-		  var node = svg.selectAll(".node")
-			  .data(bubble.nodes(classes(root))
-			  .filter(function(d) { return !d.children; }))
-			.enter().append("g")
-			  .attr("class", "node")
-			  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-		  node.append("title")
-			  .text(function(d) { return d.className + " - Sentiment: " + d.sentiment + " | Tweet Count: " + format(d.value); });
-
-		  node.append("circle")
-			  .attr("r", function(d) { return d.r; })
-			  .attr("id", function(d) { return d.className; })
-			  .style("fill", function(d) { return color.brighter(d.sentiment ); })
-			  //http://christopheviau.com/d3_tutorial/
-			  .attr("stroke", "#eee")
-			  .attr("stroke-width", function(d){
-			  	return d.value / 45;
-			  })
-			  .on("mouseover", function(d){mouseover(d);})
-			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout);
-
-		  node.append("text")
-			  .attr("dy", ".3em")
-			  .style("text-anchor", "middle")
-			  .text(function(d) { return d.className.substring(0, d.r / 3); })
-			  .on("mouseover", mouseover)
-			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout);
-
-
-		  force.start();
-		  force.on("tick", function() {
-			  node.attr("cx", function(d) { return d.x; })
-				  .attr("cy", function(d) { return d.y; });
-			});
-		node.call(force.drag)
-		});
-
-		//https://gist.github.com/2952964
-		function mouseover(d) {
-			div.transition()
-			.duration(100)
-			.style("opacity", 1)
-			.style("stroke", 1);
-		}
-
-		function mousemove(d) {
-			div
-			.text("City: " + d.className + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.value)
-			.style("left", (d3.event.pageX ) + "px")
-			.style("top", (d3.event.pageY) + "px")
-			.append("image")
-			.attr("src", function() {
-				var src = "/application/assets/i/smiley-";
-				var ext = ".png";
-				
-				if ( d.sentiment < 1 ) {
-					return src + 0 + ext;
-				}
-				if ( d.sentiment < 3 ) {
-					return src + 2 + ext;
-				}
-				if ( d.sentiment < 5 ) {
-					return src + 4 + ext;
-				}
-				if ( d.sentiment < 6 ) {
-					return src + 5 + ext;
-				}
-				if ( d.sentiment < 7 ) {
-					return src + 6 + ext;
-				}
-				if ( d.sentiment < 9 ) {
-					return src + 8 + ext;
-				}
-				if ( d.sentiment < 10 ) {
-					return src + 9 + ext;
-				}
-			});
-
-		}
-
-		function mouseout() {
-			div.transition()
-			.duration(300)
-			.style("opacity", 1e-6);
-		}
-
-
-		// Returns a flattened hierarchy containing all leaf nodes under the root.
-		function classes(root) {
-		  var classes = [];
-
-		  function recurse(name, node) {
-			if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-			else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
-		  }
-
-		  recurse(null, root);
-		  return {children: classes};
-		}
-
-		d3.select(self.frameElement).style("height", diameter + "px");
-
-		jQuery(document).ready(function($) {
-		
-			$('header nav a.selected').hover(function(){
-				$('header nav a.selected .arrow').toggleClass('show');
-				$('#main').toggleClass('selected');
-			});
-			$('.submenu').hover(function() {
-				$(this).siblings().toggleClass('hover');
-				$(this).hover().parent().children('a').children('.pointer').toggleClass('hover');
-			});
-		});
-
+		<script>
+			tabs();
 		</script>
 
 	</body>

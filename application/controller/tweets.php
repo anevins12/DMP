@@ -23,8 +23,9 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
 		
-		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
-		$this->writeJSONFile($AverageTweetsJSON, 'cities-average-tweets-quantity');
+//		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
+//		$this->writeJSONFile($AverageTweetsJSON, 'cities-average-tweets-quantity');
+//		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
 		//set the sentiment values
 //		foreach ($tweets as $tweet){
@@ -464,13 +465,13 @@ $temp_city = '';
 
 						//check if city name is within the list of cities (above)
 						//so you don't get the towns, which Geocoder picks up as 'cities'
-						if (strstr($cities_string, $city)) {
+//						if (strstr($cities_string, $city)) {
 							$frequency++;
 
 								$cities[] = array ('name' => $city, 'sentiment' => $sentiment);
 							
 
-						}
+//						}
 
 				}
 			}

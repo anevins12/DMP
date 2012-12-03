@@ -61,7 +61,8 @@ header h2 {
 }
 
 h3 a,
-h4 a {
+h4 a,
+.tabContainer a {
 	position: relative;
 	text-shadow: 0 1px 0 #fff;
 	display: block;
@@ -96,12 +97,14 @@ h4 a {
 }
 
 #main h3:active,
-#next h4:active {
+#next h4:active,
+.tabContainer a:active{
 	border-top: 3px solid white;
 }
 
 #main h3 a:hover,
-#next h4 a:hover{
+#next h4 a:hover,
+.tabContainer a:hover {
 	background: deeppink;
 	border-color: #93278F;
 	color: #fff;
@@ -111,12 +114,17 @@ h4 a {
 
 #main h3:active > a,
 #main h3 a:active,
-#next h4 a:active{
+#next h4 a:active,
+.tabContainer a:active {
 	border:0;
 	-webkit-box-shadow: inset 0px 0px 3px 1px #93278F;
 	box-shadow: inset 0px 0px 3px 1px #93278F;
 	text-shadow: none;
 	color: #fcfcfc;
+}
+
+.tabContainer a:hover.selected {
+	-webkit-transition:0;
 }
 
 .pointer {
@@ -287,8 +295,9 @@ h3 span.halloween {
 }
 
 /*HAPPIEST CITIES*/
-#test {
+#contentHolder {
 	position: relative;
+	clear: left;
 }
 
 #cities #breadcrumbs {
@@ -296,12 +305,26 @@ h3 span.halloween {
 }
 
 #cities .tooltip {
-	margin-left: 20px;
 	background-color: deeppink;
 	padding: 12px 9px 8px 9px;
 	float: left;
-	color: #fff;
 	font-family: verdana;
+	position: absolute;
+	z-index: 10000;
+	margin-left: 20px;
+	color: white;
+
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 3px rgba(255,255,255,1);
+
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #cities .tooltip img {
@@ -327,9 +350,19 @@ h3 span.halloween {
 
 #cities #main h2 {
 	clear: both;
-	position: relative;
-	top: 15px;
 	font-weight: bold;
+}
+
+#cities #main #options h2 {
+	font-weight: normal;
+	font-size: 18px;
+	padding: 10px 0;
+}
+
+#cities #main #options h3 {
+	text-align: left;
+	font-size: 15px;
+	margin-bottom: 20px;
 }
 
 #cities a.interaction {
@@ -360,7 +393,7 @@ h3 span.halloween {
 }
 
 #cities svg {
-	top: -30px;
+	top: 0px;
 	position: relative;
 }
 
@@ -379,7 +412,56 @@ h3 span.halloween {
 	-webkit-transform: scale(1.2);
 }
 
+#cities .tabContainer {
+	float: right;
+}
 
+#cities .tabContainer ul {
+	display: block;
+}
+
+#cities .tabContainer li {
+	float: left;
+}
+
+#cities .tabContainer a {
+	display: block;
+}
+
+#cities .tabContainer li a:last-child {
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+#cities .tabContainer a.selected {
+	border-bottom: 0;
+	margin-top:3px;
+	-webkit-box-shadow: inset 0px 0px 3px 1px #aaa;
+	box-shadow: inset 0px 0px 3px 1px #aaa;
+	color: #333;
+}
+
+#cities .tabContainer a:active {
+	border-top: 3px solid white;
+}
+
+#cities .tabContainer a:hover.selected {
+	background: #f2f2f2;
+	text-shadow: none;
+}
+
+#cities .tabContainer a:active.selected {
+	border-top: 0;
+}
+
+img.preloader {
+	margin-top: 200px;
+	margin-left: 200px;
+}
+
+#overLine {
+	display: none !important;
+}
 
 #footer {
 	background:url(
