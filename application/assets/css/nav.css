@@ -132,6 +132,7 @@ header nav ul div.submenu {
 	position: absolute;
 	top: 50px;
 	padding-top: 9px;
+	z-index: 10000;
 }
 
 /*DROPDOWN POINTER*/

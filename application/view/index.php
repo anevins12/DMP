@@ -66,9 +66,7 @@
 				</nav>
 				<div class="grid_3 alpha description">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus cursus ultrices urna, vitae consequat massa suscipit eget.
-						Aliquam erat volutpat.
+						See the Happiest Cities in the United Kingdom, based on tweets.
 					</p>
 				</div>
 				<div class="grid_3">
@@ -89,9 +87,7 @@
 				</div>
 				<div class="grid_3 omega description">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus cursus ultrices urna, vitae consequat massa suscipit eget.
-						Aliquam erat volutpat.
+						Find out the mood of the United Kingdom throughout Fireworks, Halloween and Christmas.
 					</p>
 				</div>
 			</div>

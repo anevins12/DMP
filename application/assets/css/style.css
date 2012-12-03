@@ -190,6 +190,16 @@ h4 a,
 	left: 200px;
 }
 
+
+#mood_graph #breadcrumbs {
+	margin-bottom: 10px;
+}
+
+#mood_graph h2 {
+	margin-bottom: 20px;
+}
+
+
 /*MOOD GRAPH (SINGULAR) PAGE*/
 .vis {
 	position: relative;
@@ -353,6 +363,7 @@ h3 span.halloween {
 	font-weight: bold;
 }
 
+/* TITLEs */
 #cities #main #options h2 {
 	font-weight: normal;
 	font-size: 18px;
@@ -362,7 +373,12 @@ h3 span.halloween {
 #cities #main #options h3 {
 	text-align: left;
 	font-size: 15px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+}
+
+#cities #main #options h4 {
+	font-size: 13px;
+	color: #666;
 }
 
 #cities a.interaction {
@@ -455,8 +471,6 @@ h3 span.halloween {
 }
 
 img.preloader {
-	margin-top: 200px;
-	margin-left: 200px;
 }
 
 #overLine {

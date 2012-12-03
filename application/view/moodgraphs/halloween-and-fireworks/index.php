@@ -30,8 +30,8 @@
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/nav.css" />
 		<link type="text/css" rel="stylesheet" href="/application/assets/css/style.css" />
 	</head>
-	
-	<div class="container_12">
+	<body id="mood_graph">
+		<div class="container_12">
 				<header>
 					<hgroup class="logo grid_6">
 						<h1><a href="/application/view/">How Happy</a></h1>
@@ -95,6 +95,10 @@
 						<li><span class="separator">&raquo;</span><span class="halloween icon"></span><span class="txt">Halloween &amp; Fireworks</span></li>
 					</ul>
 				</nav>
+
+				<div class="" id="options">
+					<h2>The Happiest Cities in the United Kingdom</h2>
+				</div>
 				<div class="grid_12 alpha vis prefix_1">
 					<div id="chart">
 					</div>

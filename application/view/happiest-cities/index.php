@@ -109,6 +109,7 @@
 				<div class="" id="options">
 					<h2>The Happiest Cities in the United Kingdom</h2>
 					<h3>Based on Tweets gathered from the 29th Oct - 6th Nov</h3>
+					<h4>Sentiment Values: 9.0 Happiest | 0.0 Saddest</h4>
 				</div>
 <!--				<form method="get" name="search" onsubmit="findCity(this.form)">
 					<input type="text" name="keyword" value="Search a city" onblur="if (this.value == '') {this.value = 'Search a city';}" id="keyword"
