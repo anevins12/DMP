@@ -4,11 +4,16 @@
 
 	include_once(  dirname(__FILE__) . '/../../../controller/tweets.php' );
 
-	$tweets = new Tweets();
-	$allTweets = $tweets->index();
+//	$tweets = new Tweets();
+//	$allTweets = $tweets->index();
+//	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
 
-//
-	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
+	//taken from autumn (halloween & fireworks) period
+	//NORMALISED
+	$graphData = array(1 => 1.0921163490075, 2 => 1.0816360354867, 3 => 1.0852660295042, 
+					   4 => 1.0887165840278, 5 => 1.0825088603089, 6 => 1.0853934085242, 7 => 1.0890582223985, 
+					   8 => 1.0909382398095);
+	
 	$day1 = $graphData[1];
 	$day2 = $graphData[2];
 	$day3 = $graphData[3];

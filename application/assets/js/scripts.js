@@ -153,6 +153,9 @@ function happiestCities() {
 				if ( d.sentiment < 3 ) {
 					return src + 2 + ext;
 				}
+				if ( d.sentiment < 4 ) {
+					return src + 3 + ext;
+				}
 				if ( d.sentiment < 5 ) {
 					return src + 4 + ext;
 				}

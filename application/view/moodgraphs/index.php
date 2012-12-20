@@ -64,9 +64,7 @@
 				</nav>
 				<div class="grid_3 alpha description">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus cursus ultrices urna, vitae consequat massa suscipit eget.
-						Aliquam erat volutpat.
+						A line chart based on the tweets of October 29th - November 6th.
 					</p>
 				</div>
 				<div class="grid_3">
@@ -97,9 +95,7 @@
 				</div>
 				<div class="grid_3 omega description">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Vivamus cursus ultrices urna, vitae consequat massa suscipit eget.
-						Aliquam erat volutpat.
+						A line chart based on the tweets from December 20 - December 27.
 					</p>
 				</div>
 			</div>
