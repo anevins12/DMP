@@ -6,7 +6,7 @@ if ( strstr( $_SERVER['HTTP_HOST'], 'andrewnevins.co.uk' ) ) {
 
 	define('HOSTNAME'    ,    'maggie');
 	define('USERNAME'    ,    'andrewne_dmp');
-	define('PASSWORD'    ,    '.+yA7+9++20+');
+	define('PASSWORD'    ,    '*);
 	define('DATABASE'    ,    'andrewne_dmp');
 
 }
