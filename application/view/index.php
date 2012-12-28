@@ -1,4 +1,11 @@
-<?php include('head.php'); ?>
+<?php
+
+	include('head.php');
+	include(dirname(__FILE__) . '../../controller/tweets.php');
+	$tweets = new Tweets();
+	$tweets->index();
+
+?>
 
 	<body id="graphs">
 		<div id="wrapper">

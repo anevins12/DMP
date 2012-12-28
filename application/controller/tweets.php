@@ -32,7 +32,7 @@ class Tweets extends Locations{
 //			$this->getANEWSentiment($tweet);
 //		}
 		
-	//	$this->setLocations($tweets);
+		//$this->setLocations($tweets);
 
 		return $tweets;
 
@@ -61,7 +61,7 @@ class Tweets extends Locations{
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
 		/*Test tweet text */
-//		$tweet_text = "me me me me me me me me me me";
+		//$tweet_text = "@charliemurphy67 me me me me me me me me me me me me me me me me me me  me me me me me me me me me me me me me me me me me me ";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
 		$count_multiplication_occurrence = 1;
@@ -278,18 +278,17 @@ state,city,lat,lon,conditions&limit=100000');
 	function getGoogleLineGraphFormat( $data ) {
 
 		//sorry, hard-coding it because I can't get my head around it otherwise
-		//HALLOWEEN & FIREWORKS
+		//CHRISTMAS
 
-		
-		$day1 = 20121029;
-		$day2 = 20121030;
-		$day3 = 20121031;
-		$day4 = 20121101;
-		$day5 = 20121102;
-		$day6 = 20121103;
-		$day7 = 20121104;
-		$day8 = 20121105;
-		$day9 = 20121106;
+		$day1 = 20121220;
+		$day2 = 20121221;
+		$day3 = 20121222;
+		$day4 = 20121223;
+		$day5 = 20121224;
+		$day6 = 20121225;
+		$day7 = 20121226;
+		$day8 = 20121227;
+		$day9 = 20121228;
 
 		$day1Tweets = array();
 		$day2Tweets = array();
@@ -345,21 +344,23 @@ state,city,lat,lon,conditions&limit=100000');
 		$days = array();
 		$days = array('day1' => array( $day1 => $day1Tweets ), 'day2' => array( $day2 => $day2Tweets ), 'day3' => array( $day3 => $day3Tweets ),
 				  'day4' => array( $day4 => $day4Tweets ), 'day5' => array( $day5 => $day5Tweets ), 'day6' => array( $day6 => $day6Tweets ),
-				  'day7' => array( $day7 => $day7Tweets ), 'day8' => array( $day8 => $day8Tweets ), 'day9' => array( $day9 => $day9Tweets ));
-
+				  'day7' => array( $day7 => $day7Tweets ),
+				  'day8' => array( $day7 => $day8Tweets ),
+				  'day9' => array( $day7 => $day9Tweets ));
 
 		//now you can normalise the data for each day
 		// http://sonia.hubpages.com/hub/stddev
 
 		
 		$sentiment = array();
+		$means = array();
 		$normalised_sentiment = array();
 		
 		//average quantity of tweets, from 7 days. Day 2,3,4,5,6,8,9
 		$i= 0;
 
 		foreach ( $days as $day ) {
-			
+
 			foreach ( $day as $tweets ){
 
 				foreach ( $tweets as $tweet ) {
@@ -373,6 +374,7 @@ state,city,lat,lon,conditions&limit=100000');
 			$sentiment_no = count( $sentiment );
 
 			$sentiment_mean = $sentiment_sum / $sentiment_no;
+			$means[] = $sentiment_mean;
 
 
 			//Get the deviations
@@ -406,11 +408,11 @@ state,city,lat,lon,conditions&limit=100000');
 
 		}
 
-
 		//not doing day1 & day8 because only 61 and 0 tweets were picked up
-		unset ( $normalised_sentiment[ 0 ] );
-		
+		//unset ( $normalised_sentiment[ 0 ] );
+
 		return $normalised_sentiment;
+		//return $means;
 
 	}
 

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 
 <?php
+	include_once(  dirname(__FILE__) . '/../../../controller/tweets.php' );
 
-//	include_once(  dirname(__FILE__) . '/../../../controller/tweets.php' );
-//
-//	$tweets = new Tweets();
-//	$allTweets = $tweets->index();
-//
-//	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
-//	$day1 = $graphData[1];
-//	$day2 = $graphData[2];
-//	$day3 = $graphData[3];
-//	$day4 = $graphData[4];
-//	$day5 = $graphData[5];
-//	$day6 = $graphData[6];
-//	$day7 = $graphData[7];
-//	$day8 = $graphData[8];
+	$tweets = new Tweets();
+	$allTweets = $tweets->index();
 
+	$graphData = $tweets->getGoogleLineGraphFormat($allTweets);
+	
+	$day1 = $graphData[0];
+	$day2 = $graphData[1];
+	$day3 = $graphData[2];
+	$day4 = $graphData[3];
+	$day5 = $graphData[4];
+	$day6 = $graphData[5];
+	$day7 = $graphData[6];
+	$day8 = $graphData[7];
+	$day9 = $graphData[8];
 
 	// testing functions
 
@@ -95,11 +95,11 @@
 						<li><span class="separator">&raquo;</span><span class="christmas icon"></span><span class="txt">Christmas</span></li>
 					</ul>
 				</nav>
-				<div class="grid_8 alpha">
+				<div class="grid_12 alpha">
 					<div id="chart">
 					</div>
 				</div>
-				<div class="grid_4">
+				<div class="grid_12">
 <!--					<div id="key">
 						<h3>Key</h3>
 						<ul>
@@ -133,33 +133,40 @@
 
 		</div>
 
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/application/assets/js/modernizr-2.5.3.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript">
 		 google.load("visualization", "1", {packages:["corechart"]});
 		  google.setOnLoadCallback(drawChart);
 		  function drawChart() {
-			var data = google.visualization.arrayToDataTable([
-			  ['Time', 'Sentiment'],
-			  ['2012-12-21',  1.01],
-			  ['2012-12-22',  1.03],
-			  ['2012-12-23',  1.53],
-			  ['2012-12-24',  1.93],
-			  ['CHRISTMAS',  2.99],
-			  ['2012-12-26',  0.40],
-			  ['2012-12-27',  1.01]
-			]);
+			  var dataTable = new google.visualization.DataTable();
+			  dataTable.addColumn('string', 'Time');
+			  dataTable.addColumn('number', 'Actual Normalised Sentiment');
+			  dataTable.addColumn({type: 'string', role: 'annotation'});
+			  //dataTable.addColumn('number', 'Expected Normalised Sentiment');
+			  dataTable.addColumn({type: 'string', role: 'annotation'});
+			  dataTable.addColumn({type: 'string', role: 'annotationText', p: {html:true}});
+			  dataTable.addRows([
+				['2012-12-20',  <?php echo $day1 ?>, "", "", ""],
+				['2012-12-21',  <?php echo $day2 ?>, "", "", ""],
+				['2012-12-22',  <?php echo $day3 ?>, "", "", ""],
+			    ['2012-12-23', <?php echo $day4 ?>, "", "", ""],
+			    ['2012-12-24',  <?php echo $day5 ?>, "","", ""],
+			    ['2012-12-25',  <?php echo $day6 ?>, "Christmas Day", "", ""],
+			    ['2012-12-26',  <?php echo $day7 ?>, "", "", ""],
+			    ['2012-12-27',  <?php echo $day8 ?>, "", "", ""],
+			    ['2012-12-28',  <?php echo $day9 ?>, "", "", ""]
+			  ]);
 
-			var options = {
-			  title: '7 Days of Christmas Mood Graph, 2012'
-			};
+			  /*CREATIVE COMMONS LISENCE*/
+			  /*HALLOWEEN IMAGE http://farm4.staticflickr.com/3082/2574368726_e31c3e4bcc.jpg */
+			  /*FIREWORKS IMAGE http://farm2.staticflickr.com/1396/542701018_0857403a92.jpg */
 
-			var chart = new google.visualization.LineChart(document.getElementById('chart'));
-			chart.draw(data,  options);
-		  }
+			  var options = { tooltip: {isHtml: true}, legend: {position: 'top'}, chartArea:{left:65,top:37}, width: 1210, height: 400 };
+			  var chart = new google.visualization.LineChart(document.getElementById('chart'));
+			  chart.draw(dataTable, options);
+			}
 
 		jQuery(document).ready(function($) {
 			$('header nav a.selected').hover(function(){

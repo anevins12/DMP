@@ -17,7 +17,7 @@ class Tweetsmodel {
 			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 
-		//Just retrieve the rows that have sentiment and location values
+		//Just retrieve the rows that have sentiment and location values  ---WHERE `sentiment` != '0' ".
 		$query = "SELECT * FROM $this->tableName WHERE `sentiment` != '0' ". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 
