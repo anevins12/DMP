@@ -23,8 +23,8 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
 		
-//		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
-//		$this->writeJSONFile($AverageTweetsJSON, 'cities-average-tweets-quantity');
+		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
+		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities');
 //		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
 		//set the sentiment values
@@ -289,6 +289,8 @@ state,city,lat,lon,conditions&limit=100000');
 		$day7 = 20121226;
 		$day8 = 20121227;
 		$day9 = 20121228;
+		$day10 = 20121229;
+		$day11 = 20121230;
 
 		$day1Tweets = array();
 		$day2Tweets = array();
@@ -299,6 +301,8 @@ state,city,lat,lon,conditions&limit=100000');
 		$day7Tweets = array();
 		$day8Tweets = array();
 		$day9Tweets = array();
+		$day10Tweets = array();
+		$day11Tweets = array();
 
 	
 
@@ -337,6 +341,12 @@ state,city,lat,lon,conditions&limit=100000');
 			if ( $implode_day == $day9 ) {
 				$day9Tweets[] = $tweet;
 			}
+			if ( $implode_day == $day10 ) {
+				$day8Tweets[] = $tweet;
+			}
+			if ( $implode_day == $day11 ) {
+				$day9Tweets[] = $tweet;
+			}
 			
 		}
 
@@ -345,8 +355,10 @@ state,city,lat,lon,conditions&limit=100000');
 		$days = array('day1' => array( $day1 => $day1Tweets ), 'day2' => array( $day2 => $day2Tweets ), 'day3' => array( $day3 => $day3Tweets ),
 				  'day4' => array( $day4 => $day4Tweets ), 'day5' => array( $day5 => $day5Tweets ), 'day6' => array( $day6 => $day6Tweets ),
 				  'day7' => array( $day7 => $day7Tweets ),
-				  'day8' => array( $day7 => $day8Tweets ),
-				  'day9' => array( $day7 => $day9Tweets ));
+				  'day8' => array( $day8 => $day8Tweets ),
+				  'day9' => array( $day9 => $day9Tweets ),
+				  'day10' => array( $day10 => $day10Tweets ),
+				  'day11' => array( $day11 => $day11Tweets ));
 
 		//now you can normalise the data for each day
 		// http://sonia.hubpages.com/hub/stddev
@@ -467,13 +479,13 @@ $temp_city = '';
 
 						//check if city name is within the list of cities (above)
 						//so you don't get the towns, which Geocoder picks up as 'cities'
-//						if (strstr($cities_string, $city)) {
+						if (strstr($cities_string, $city)) {
 							$frequency++;
 
 								$cities[] = array ('name' => $city, 'sentiment' => $sentiment);
 							
 
-//						}
+						}
 
 				}
 			}

@@ -17,6 +17,8 @@
 	$day7 = $graphData[6];
 	$day8 = $graphData[7];
 	$day9 = $graphData[8];
+	$day10 = $graphData[9];
+	$day11 = $graphData[10];
 
 	// testing functions
 
@@ -156,7 +158,9 @@
 			    ['2012-12-25',  <?php echo $day6 ?>, "Christmas Day", "", ""],
 			    ['2012-12-26',  <?php echo $day7 ?>, "", "", ""],
 			    ['2012-12-27',  <?php echo $day8 ?>, "", "", ""],
-			    ['2012-12-28',  <?php echo $day9 ?>, "", "", ""]
+			    ['2012-12-28',  <?php echo $day9 ?>, "", "", ""],
+			    ['2012-12-29',  <?php echo $day10 ?>, "", "", ""],
+			    ['2012-12-30',  <?php echo $day11 ?>, "", "", ""]
 			  ]);
 
 			  /*CREATIVE COMMONS LISENCE*/

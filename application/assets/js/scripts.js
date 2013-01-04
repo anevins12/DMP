@@ -73,7 +73,7 @@ function happiestCities() {
 		.attr("class", "tooltip")
         .style("opacity", 1e-6);
 
-		d3.json("../../assets/json/cities-average-tweets-quantity.json", function(error, root) {
+		d3.json("../../../assets/json/christmas-cities.json", function(error, root) {
 //		d3.json("../../assets/json/test.json", function(error, root) {
 
 		var nodes = [],
