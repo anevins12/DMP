@@ -39,7 +39,7 @@ function cartograph() {
 	var map = new GMap2( document.getElementById( "map" ) );
 
 	// Colour ranges
-	var options = { colors: [ "#000", "#999", "#00aaff" ] };
+	var options = {colors: [ "#000", "#999", "#00aaff" ]};
 	
 	var cartographer = Cartographer ( map, options );
 
@@ -51,22 +51,22 @@ function cartograph() {
 	{region:"US-ND",val:0},
 	{region:"US-MI",val:4},
 	{region:"US-UT",val:2}
-	], { colorScheme:"BuPu"});
+	], {colorScheme:"BuPu"});
 
 }
 
 function happiestCities() {
-	var diameter = 620,
+	var diameter = 940,
 			format = d3.format(",d");
 
 		var bubble = d3.layout.pack()
 			.sort(null)
 			.size([diameter, diameter])
-			.padding(1.5);
+			.padding(200);
 
 		var svg = d3.select("#test").append("svg")
 			.attr("width", diameter)
-			.attr("height", 800)
+			.attr("height", diameter)
 			.attr("class", "bubble");
 
 		var div = d3.select("#breadcrumbs").append("div")
@@ -80,7 +80,7 @@ function happiestCities() {
 			links = [];
 
 		var path = d3.geo.path(),
-	    force = d3.layout.force().size([diameter, 800]);
+	    force = d3.layout.force().size([diameter, diameter]);
 
 
 		var color = d3.rgb(51,51,0);
@@ -89,24 +89,24 @@ function happiestCities() {
 		  .gravity(0)
 		  .nodes(nodes)
 		  .links(links)
-		  .linkDistance(function(d) { return d.distance; })
+		  .linkDistance(function(d) {return d.distance;})
 		  .start();
 
 		  var node = svg.selectAll(".node")
 			  .data(bubble.nodes(classes(root))
-			  .filter(function(d) { return !d.children; }))
+			  .filter(function(d) {return !d.children;}))
 			.enter().append("g")
 			  .attr("class", "node")
-			  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+			  .attr("transform", function(d) {return "translate(" + d.x   + "," + d.y  + ")";});
 
 		  node.append("circle")
-			  .attr("r", function(d) { return d.r; })
-			  .attr("id", function(d) { return d.className; })
-			  .style("fill", function(d) { return color.brighter(d.sentiment ); })
+			  .attr("r", function(d) {return 50;})
+			  .attr("id", function(d) {return d.className;})
+			  .style("fill", function(d) {return color.brighter(d.sentiment );})
 			  //http://christopheviau.com/d3_tutorial/
 			  .attr("stroke", "#eee")
 			  .attr("stroke-width", function(d){
-			  	return d.value / 45;
+			  	return d.r/25;
 			  })
 			  .on("mouseover", function(d){mouseover(d);})
 			  .on("mousemove", function(d){mousemove(d);})
@@ -115,7 +115,7 @@ function happiestCities() {
 		  node.append("text")
 			  .attr("dy", ".3em")
 			  .style("text-anchor", "middle")
-			  .text(function(d) { return d.className.substring(0, d.r / 3); })
+			  .text(function(d) {return d.className.substring(0, d.r  );})
 			  .on("mouseover", mouseover)
 			  .on("mousemove", function(d){mousemove(d);})
 			  .on("mouseout", mouseout);
@@ -123,8 +123,8 @@ function happiestCities() {
 
 		  force.start();
 		  force.on("tick", function() {
-			  node.attr("cx", function(d) { return d.x; })
-				  .attr("cy", function(d) { return d.y; });
+			  node.attr("cx", function(d) {return d.x;})
+				  .attr("cy", function(d) {return d.y;});
 			});
 		node.call(force.drag)
 		});
@@ -187,7 +187,7 @@ function happiestCities() {
 		  var classes = [];
 
 		  function recurse(name, node) {
-			if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+			if (node.children) node.children.forEach(function(child) {recurse(node.name, child);});
 			else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
 		  }
 
@@ -245,20 +245,20 @@ var diameter = 620,
 		  .gravity(0)
 		  .nodes(nodes)
 		  .links(links)
-		  .linkDistance(function(d) { return d.distance; })
+		  .linkDistance(function(d) {return d.distance;})
 		  .start();
 
 		  var node = svg.selectAll(".node")
 			  .data(bubble.nodes(classes(root))
-			  .filter(function(d) { return !d.children; }))
+			  .filter(function(d) {return !d.children;}))
 			.enter().append("g")
 			  .attr("class", "node")
-			  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+			  .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";});
 
 		  node.append("circle")
-			  .attr("r", function(d) { return d.r; })
-			  .attr("id", function(d) { return d.className; })
-			  .style("fill", function(d) { return color.brighter(d.sentiment ); })
+			  .attr("r", function(d) {return d.r;})
+			  .attr("id", function(d) {return d.className;})
+			  .style("fill", function(d) {return color.brighter(d.sentiment );})
 			  //http://christopheviau.com/d3_tutorial/
 			  .attr("stroke", "#eee")
 			  .attr("stroke-width", function(d){
@@ -271,7 +271,7 @@ var diameter = 620,
 		  node.append("text")
 			  .attr("dy", ".3em")
 			  .style("text-anchor", "middle")
-			  .text(function(d) { return d.className.substring(0, d.r / 3); })
+			  .text(function(d) {return d.className.substring(0, d.r / 3);})
 			  .on("mouseover", mouseover)
 			  .on("mousemove", function(d){mousemove(d);})
 			  .on("mouseout", mouseout);
@@ -279,8 +279,8 @@ var diameter = 620,
 
 		  force.start();
 		  force.on("tick", function() {
-			  node.attr("cx", function(d) { return d.x; })
-				  .attr("cy", function(d) { return d.y; });
+			  node.attr("cx", function(d) {return d.x;})
+				  .attr("cy", function(d) {return d.y;});
 			});
 		node.call(force.drag)
 		});
@@ -343,7 +343,7 @@ var diameter = 620,
 		  var classes = [];
 
 		  function recurse(name, node) {
-			if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+			if (node.children) node.children.forEach(function(child) {recurse(node.name, child);});
 			else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
 		  }
 

@@ -122,7 +122,7 @@
 
 
 				</script>
-				<div class="grid_8 alpha testArea" id="contentHolder">
+				<div class="grid_12 omega alpha testArea" id="contentHolder">
 					
 					<div id="contentHolder">
 						<!-- The AJAX fetched content goes here -->
