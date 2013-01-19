@@ -280,7 +280,6 @@ state,city,lat,lon,conditions&limit=100000');
 		//sorry, hard-coding it because I can't get my head around it otherwise
 		//CHRISTMAS
 
-		$day1 = 20121220;
 		$day2 = 20121221;
 		$day3 = 20121222;
 		$day4 = 20121223;
@@ -292,7 +291,6 @@ state,city,lat,lon,conditions&limit=100000');
 		$day10 = 20121229;
 		$day11 = 20121230;
 
-		$day1Tweets = array();
 		$day2Tweets = array();
 		$day3Tweets = array();
 		$day4Tweets = array();
@@ -314,9 +312,6 @@ state,city,lat,lon,conditions&limit=100000');
 			$implode_day = implode( '', $explode_day );
 			$implode_day = intval( $implode_day );
 				
-			if ( $implode_day == $day1 ) {
-				$day1Tweets[] = $tweet;
-			}
 			if ( $implode_day == $day2 ) {
 				$day2Tweets[] = $tweet;
 			}
@@ -352,7 +347,7 @@ state,city,lat,lon,conditions&limit=100000');
 
 		
 		$days = array();
-		$days = array('day1' => array( $day1 => $day1Tweets ), 'day2' => array( $day2 => $day2Tweets ), 'day3' => array( $day3 => $day3Tweets ),
+		$days = array( 'day2' => array( $day2 => $day2Tweets ), 'day3' => array( $day3 => $day3Tweets ),
 				  'day4' => array( $day4 => $day4Tweets ), 'day5' => array( $day5 => $day5Tweets ), 'day6' => array( $day6 => $day6Tweets ),
 				  'day7' => array( $day7 => $day7Tweets ),
 				  'day8' => array( $day8 => $day8Tweets ),

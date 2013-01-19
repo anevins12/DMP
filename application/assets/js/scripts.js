@@ -62,7 +62,7 @@ function happiestCities() {
 		var bubble = d3.layout.pack()
 			.sort(null)
 			.size([diameter, diameter])
-			.padding(200);
+			.padding(0);
 
 		var svg = d3.select("#test").append("svg")
 			.attr("width", diameter)
@@ -76,14 +76,12 @@ function happiestCities() {
 		d3.json("../../../assets/json/christmas-cities.json", function(error, root) {
 //		d3.json("../../assets/json/test.json", function(error, root) {
 
-		var nodes = [],
-			links = [];
-
+		var links, nodes = [];
 		var path = d3.geo.path(),
 	    force = d3.layout.force().size([diameter, diameter]);
 
 
-		var color = d3.rgb(51,51,0);
+		var color = d3.rgb(30,30,30);
 
 		 force
 		  .gravity(0)
@@ -100,7 +98,7 @@ function happiestCities() {
 			  .attr("transform", function(d) {return "translate(" + d.x   + "," + d.y  + ")";});
 
 		  node.append("circle")
-			  .attr("r", function(d) {return 50;})
+			  .attr("r", function(d) {return d.r;})
 			  .attr("id", function(d) {return d.className;})
 			  .style("fill", function(d) {return color.brighter(d.sentiment );})
 			  //http://christopheviau.com/d3_tutorial/
@@ -108,7 +106,8 @@ function happiestCities() {
 			  .attr("stroke-width", function(d){
 			  	return d.r/25;
 			  })
-			  .on("mouseover", function(d){mouseover(d);})
+			  
+			  .on("mouseover", function(d, i){ return mouseover(d, i);})
 			  .on("mousemove", function(d){mousemove(d);})
 			  .on("mouseout", mouseout);
 
@@ -130,7 +129,10 @@ function happiestCities() {
 		});
 
 		//https://gist.github.com/2952964
-		function mouseover(d) {
+		function mouseover(d, i) {
+			
+			d3.select("nodes" + i).style("fill", "red");
+
 			div.transition()
 			.duration(100)
 			.style("opacity", 1)
@@ -452,3 +454,20 @@ function tabs() {
 });
 
 }
+
+  function draw(words) {
+    d3.select("#tagcloud").append("svg")
+        .attr("width", 300)
+        .attr("height", 300)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
