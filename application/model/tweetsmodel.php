@@ -44,6 +44,53 @@ OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me
 
 	}
 
+	public function getTweetTags() {
+		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
+		$error = '';
+
+		if ( $mysqli->connect_errno ) {
+			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+
+		$query = "SELECT * FROM $this->tableName
+				INNER JOIN tweet_tags
+				ON tweets.tweet_id = tweet_tags.tweet_id
+				WHERE `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i feel%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i am feeling%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i\'m feeling%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i dont feel%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%I\'m%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%Im%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%I am%'
+				OR `sentiment` < 1.5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%makes me%'";
+
+		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
+
+		if ( $result ) {
+
+			while ( $row = $result->fetch_object() ){
+					$allTweets[] = $row;
+			}
+
+		}
+
+		else {
+			return $error .= '\n No Tweets Retrieved.';
+		}
+
+		$tags = array();
+
+		foreach ( $allTweets as $tweet ) {
+
+			$tags[] = array('word' => $tweet->tag, 'sentiment' => $tweet->sentiment);
+
+		}	
+		
+		$tags = json_encode($tags);
+		return $tags;
+
+	}
+
 	public function getTweet( $tweet_id ) {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );

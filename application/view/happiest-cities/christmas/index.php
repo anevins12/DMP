@@ -165,15 +165,10 @@
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 		<script>
 			var fill = d3.scale.category20();
-			var words = [
-			  {text: "abc", size: 2},
-			  {text: "def", size: 5},
-			  {text: "ghi", size: 3},
-			  {text: "jkl", size: 8}
-			];
+			var words = <?php echo $tweets->getTweetTags(); ?>;
 		  d3.layout.cloud().size([300, 300])
 			  .words(words.map(function(d) {
-				return {text: d.text, size: d.size * 10};
+				return {text: d.word, size: d.sentiment * 40};
 			  }))
 			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
 			  .font("Impact")

@@ -38,6 +38,13 @@ class Tweets extends Locations{
 
 	}
 
+	public function getTweetTags() {
+		$tweetsmodel = new Tweetsmodel;
+		$tagsSentimentOfTwo = $tweetsmodel->getTweetTags();
+
+		return $tagsSentimentOfTwo;
+	}
+
 	public function getANEWSentiment( $tweet ) {
 
 		$anew_dataset_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/ANEW2010All.txt');
