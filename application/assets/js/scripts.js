@@ -83,13 +83,6 @@ function happiestCities() {
 
 		var color = d3.rgb(30,30,30);
 
-		 force
-		  .gravity(0)
-		  .nodes(nodes)
-		  .links(links)
-		  .linkDistance(function(d) {return d.distance;})
-		  .start();
-
 		  var node = svg.selectAll(".node")
 			  .data(bubble.nodes(classes(root))
 			  .filter(function(d) {return !d.children;}))
@@ -454,20 +447,3 @@ function tabs() {
 });
 
 }
-
-  function draw(words) {
-    d3.select("#tagcloud").append("svg")
-        .attr("width", 300)
-        .attr("height", 300)
-      .append("g")
-        .attr("transform", "translate(150,150)")
-      .selectAll("text")
-        .data(words)
-      .enter().append("text")
-        .style("font-size", function(d) { return d.size + "px"; })
-        .attr("text-anchor", "middle")
-        .attr("transform", function(d) {
-          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-        })
-        .text(function(d) { return d.text; });
-  }

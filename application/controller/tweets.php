@@ -40,9 +40,9 @@ class Tweets extends Locations{
 
 	public function getTweetTags() {
 		$tweetsmodel = new Tweetsmodel;
-		$tagsSentimentOfTwo = $tweetsmodel->getTweetTags();
-
-		return $tagsSentimentOfTwo;
+		$tags= $tweetsmodel->getTweetTags();
+	
+		$this->writeJSONFile($tags, 'tweetTags');
 	}
 
 	public function getANEWSentiment( $tweet ) {

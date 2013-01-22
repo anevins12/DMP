@@ -148,53 +148,18 @@
 					</div>
 					
 				</div>
-				<div id="vis">
+				<div class="grid_8" id="test">
 					
 				</div>
 
 			</div>
 
-		<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/highlight.min.js" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/bbtree.js" language="javascript"></script>
 
-
-		<script type="text/javascript" src="/application/assets/js/modernizr-2.5.3.min.js"></script>
-<!--		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>-->
+		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
-		<script>
-			var fill = d3.scale.category20();
-			var words = <?php echo $tweets->getTweetTags(); ?>;
-		  d3.layout.cloud().size([300, 300])
-			  .words(words.map(function(d) {
-				return {text: d.word, size: d.sentiment * 40};
-			  }))
-			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
-			  .font("Impact")
-			  .fontSize(function(d) { return d.size; })
-			  .on("end", draw)
-			  .start();
+		<script>happiestCities()
 
-
-		  function draw(words) {
-			d3.select("#vis").append("svg")
-				.attr("width", 300)
-				.attr("height", 300)
-			  .append("g")
-				.attr("transform", "translate(150,150)")
-			  .selectAll("text")
-				.data(words)
-			  .enter().append("text")
-				.style("font-size", function(d) { return d.size + "px"; })
-				.style("font-family", "Impact")
-				.style("fill", function(d, i) { return fill(i); })
-				.attr("text-anchor", "middle")
-				.attr("transform", function(d) {
-				  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-				})
-				.text(function(d) { return d.text; });
-		  }
+			
 		</script>
 
 	</body>

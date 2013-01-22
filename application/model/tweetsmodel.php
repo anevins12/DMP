@@ -82,7 +82,7 @@ OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me
 
 		foreach ( $allTweets as $tweet ) {
 
-			$tags[] = array('word' => $tweet->tag, 'sentiment' => $tweet->sentiment);
+			$tags[] = array('word' => $tweet->tag, 'sentiment' => $tweet->sentiment, 'tweet' => $tweet->tweet_text);
 
 		}	
 		
