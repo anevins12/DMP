@@ -24,6 +24,7 @@ class Tweets extends Locations{
 		$tweets = $tweetsmodel->getTweets();
 		
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
+		return $AverageTweetsJSON;
 		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities');
 //		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
@@ -545,9 +546,6 @@ $temp_city = '';
 	
 	}
 
-	
-
-
 	/*Specifying JSON because JSON should be the only input to write to the file */
 	function writeJSONFile( $JSON, $fileName ) {
 
@@ -558,6 +556,15 @@ $temp_city = '';
 		}
 
 
+	}
+
+	function getSlangSentiment( $word ) {
+
+		//http://developer.dictionary.com/account/apikeys
+		$apikey = "t0851pyartj4wzhzbe643jabzsbrm04f1cl21jcsdv";
+		$definition = file_get_contents("http://api-pub.dictionary.com/v001?vid=$apikey&q=hey&type=define&site=slang");
+
+		var_dump($definition);exit;
 	}
 
 }

@@ -2,8 +2,10 @@
 
 	include('head.php');
 	include(dirname(__FILE__) . '../../controller/tweets.php');
+
+
 	$tweets = new Tweets();
-	$tweets->index();
+//	var_dump($tweets->getSlangSentiment('word'));exit;
 
 ?>
 

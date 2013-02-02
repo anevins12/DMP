@@ -55,23 +55,32 @@ function cartograph() {
 
 }
 
+
 function happiestCities() {
 	var diameter = 940,
 			format = d3.format(",d");
 
 		var bubble = d3.layout.pack()
-			.sort(null)
-			.size([diameter, diameter])
-			.padding(0);
+			.size([diameter, diameter]);
 
 		var svg = d3.select("#test").append("svg")
 			.attr("width", diameter)
 			.attr("height", diameter)
 			.attr("class", "bubble");
 
-		var div = d3.select("#breadcrumbs").append("div")
+		var force = d3.layout.force()
+			.gravity(0)
+			.charge(-10)
+			.size([diameter,diameter])
+			.on("tick", tick)
+			.start();
+
+		var nodes = force.nodes();
+		
+var div = d3.select("#breadcrumbs").append("div")
 		.attr("class", "tooltip")
         .style("opacity", 1e-6);
+		
 
 		d3.json("../../../assets/json/christmas-cities.json", function(error, root) {
 //		d3.json("../../assets/json/test.json", function(error, root) {
@@ -99,6 +108,7 @@ function happiestCities() {
 			  .attr("stroke-width", function(d){
 			  	return d.r/25;
 			  })
+
 			  
 			  .on("mouseover", function(d, i){ return mouseover(d, i);})
 			  .on("mousemove", function(d){mousemove(d);})
@@ -110,15 +120,57 @@ function happiestCities() {
 			  .text(function(d) {return d.className.substring(0, d.r  );})
 			  .on("mouseover", mouseover)
 			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout);
+			  .on("mouseout", mouseout)
 
+			  .call(force.drag);
 
-		  force.start();
-		  force.on("tick", function() {
-			  node.attr("cx", function(d) {return d.x;})
-				  .attr("cy", function(d) {return d.y;});
-			});
-		node.call(force.drag)
+			  function tick(e) {
+				  node
+					  .each(gravity(.2 * e.alpha))
+					  .each(collide(.5))
+					  .attr("cx", function(d) { return d.x; })
+					  .attr("cy", function(d) { return d.y; });
+			  }
+
+			  // Move nodes toward cluster focus.
+				function gravity(alpha) {
+				  return function(d) {
+					d.y += (d.cy - d.y) * alpha;
+					d.x += (d.cx - d.x) * alpha;
+				  };
+				}
+
+				// Resolve collisions between nodes.
+			function collide(alpha) {
+			  var quadtree = d3.geom.quadtree(nodes);
+			  return function(d) {
+				var r = d.radius + 12 + padding,
+					nx1 = d.x - r,
+					nx2 = d.x + r,
+					ny1 = d.y - r,
+					ny2 = d.y + r;
+				quadtree.visit(function(quad, x1, y1, x2, y2) {
+				  if (quad.point && (quad.point !== d)) {
+					var x = d.x - quad.point.x,
+						y = d.y - quad.point.y,
+						l = Math.sqrt(x * x + y * y),
+						r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
+					if (l < r) {
+					  l = (l - r) / l * alpha;
+					  d.x -= x *= l;
+					  d.y -= y *= l;
+					  quad.point.x += x;
+					  quad.point.y += y;
+					}
+				  }
+				  return x1 > nx2
+					  || x2 < nx1
+					  || y1 > ny2
+					  || y2 < ny1;
+				});
+			  };
+			}
+
 		});
 
 		//https://gist.github.com/2952964
