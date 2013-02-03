@@ -24,7 +24,7 @@ class Tweets extends Locations{
 		$tweets = $tweetsmodel->getTweets();
 		
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
-		return $AverageTweetsJSON;
+		
 		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities');
 //		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
@@ -436,7 +436,7 @@ state,city,lat,lon,conditions&limit=100000');
 		$cities = array();
 		$output = array();
 		$frequency = 1;
-$count = 0;
+		$count = 0;
 
 		$cities_string = '
 
@@ -468,8 +468,16 @@ $count = 0;
 					 Lisburn	 Newry
 
 					';
-$temp_city = '';
+		$temp_city = '';
+
 		if ( !empty( $happiest_cities ) ) {
+
+			//sort the array by sentiment ascending
+			//inspired by a comment on http://php.net/manual/en/function.array-multisort.php
+			foreach ( $happiest_cities as $k => $row ) {
+					$happiest_citiesSort[ $k ]  = $row->sentiment;
+			}
+			array_multisort( $happiest_citiesSort, SORT_ASC, $happiest_cities );
 
 			foreach ( $happiest_cities as $happiest_city ) {
 
@@ -483,24 +491,21 @@ $temp_city = '';
 						//check if city name is within the list of cities (above)
 						//so you don't get the towns, which Geocoder picks up as 'cities'
 						if (strstr($cities_string, $city)) {
-							$frequency++;
 
-								$cities[] = array ('name' => $city, 'sentiment' => $sentiment);
-							
+							$frequency++;
+							$cities[] = array ('name' => $city, 'sentiment' => $sentiment, 'tweet' => $happiest_city->tweet_text);
 
 						}
 
 				}
 			}
 
-			
-
 			$output = array();
 			$counts = array();
 
 			foreach ($cities as $key=>$subarr) {
+			
 			  // Add to the current group count if it exists
-			  
 			  if (isset($counts[$subarr['name']])) {
 				$counts[$subarr['name']]++;
 			  }
@@ -512,35 +517,33 @@ $temp_city = '';
 			  $counts[$subarr['name']] = isset($counts[$subarr['name']]) ? $counts[$subarr['name']]++ : 1;
 			}
 
-
-			
 			$sentiment = 0;
 			$frequency = 0;
 			$new_array = array();
 			
-
-		
 			foreach ($cities as $city) {
 
 				$temp_city = $city['name'];
 
 				//taken from http://board.phpbuilder.com/showthread.php?10388043-How-To-Pick-Out-Array-Values-amp-Sum-Them&p=11019071#post11019071
-				$new_array[$city['name']][] = floatval($city['sentiment']);
+				$new_array[$city['name']] = array(floatval($city['sentiment']), $city['tweet']);
 
-				//construct new array
 			}
 
+			//construct new array
+			
 			foreach ($new_array as $k => $v) {
+			
 				$division = count($v);
-				$output[] = array('name' => $k, 'sentiment' => array_sum( $v ) / $division, 'tweet_quantity' => $division);
+				$average = array_sum($v)/$division;
+
+				$output[] = array('name' => $k, 'sentiment' => $v[0], 'tweet' => $v[1]);
 			}
 			
 			$output = array( 'name' => 'happiest_cities', 'children' => $output );			
 			$output = json_encode($output);
 
 			return $output;
-
-
 
 		}
 	
