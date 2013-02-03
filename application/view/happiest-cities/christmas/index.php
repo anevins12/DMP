@@ -199,10 +199,10 @@ var div = d3.select("#breadcrumbs").append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
-var color = d3.rgb(50, 50, 50);
+var color = d3.rgb(30, 30, 30);
 
 nodes = nodes.map(function(obj) {
-    obj.radius = Math.sqrt(obj.tweet_quantity * 1500)/(Math.sqrt(obj.tweet_quantity )*.1+ 10) + 1;
+    obj.radius = Math.sqrt(obj.tweet_quantity * 500)/(Math.sqrt(obj.tweet_quantity * 500)*0.01+ 10) + 1;;
     obj.cx=width/2;
     obj.cy=height/2;
     return obj;
@@ -232,19 +232,14 @@ var circle = svg.selectAll("circle")
     	return nodes.radius/20;
     })
 	.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
-    .on("mousemove", function(nodes){mousemove(nodes);})
-    .on("mouseout", mouseout)
+//    .on("mousemove", function(nodes){mousemove(nodes);})
+//    .on("mouseout", mouseout)
     .attr("r", function(d) { return d.radius; })
     .call(force.drag);
+	
+	circle.append("title").text(function(d){return d.name +": " + d.sentiment;});
 
- circle.append("text")
-		  .attr("dy", ".3em")
-		  .style("text-anchor", "middle")
-		  .text(function(d) {return d.name.substring(0, d.radius  );})
-		  .on("mouseover", mouseover)
-		  .on("mousemove", function(d){mousemove(d);})
-		  .on("mouseout", mouseout)
-circle.append("title").text(function(d){return d.name +": " + d.sentiment;});
+
 function tick(e) {
   circle
       .each(gravity(.2 * e.alpha))
@@ -260,13 +255,10 @@ function mouseover(d, i) {
 
 	div.transition()
 	.duration(100)
-	.style("opacity", 1)
-	.style("stroke", 1);
-}
+	.style("opacity", 1);
 
-function mousemove(d) {
 	div
-	.text("City: " + d.name + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.tweet_quantity)
+	.text("City: " + d.name + " | Sentiment: " + d.sentiment )
 	.style("left", (d3.event.pageX ) + "px")
 	.style("top", (d3.event.pageY) + "px")
 	.append("image")
@@ -299,6 +291,10 @@ function mousemove(d) {
 			return src + 9 + ext;
 		}
 	});
+}
+
+function mousemove(d) {
+	
 
 }
 
