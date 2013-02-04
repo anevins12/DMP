@@ -570,5 +570,86 @@ state,city,lat,lon,conditions&limit=100000');
 		var_dump($definition);exit;
 	}
 
+# refineTweet function
+# returns integer
+# returned values reflect the amount of increasement / decreasement to multiply the tweet entire tweet against (after sentiment analysis per each word)
+#
+# Need to figure out a way to decrease/increase the sentiment of tweets, still within the range of 0 - 9,
+# that reflects certain words, characters or phrases in a tweet.
+	function refineTweet( $tweet ) {
+
+		#Grabbing laughter from tweets and returning a high sentiment value
+		if ( strstr($tweet, 'hehe' ) || strstr($tweet, ' ha ') || strstr($tweet, 'haha')  || strstr($tweet, ' lol '
+			|| strstr($tweet, ' lmao ')  || strstr($tweet, ' rofl ') || strstr($tweet, ' haa ') ) || strstr($tweet, ' :) ')
+			|| strstr($tweet, 'laughing out loud')) {
+
+			return .5;
+
+		}
+
+		#I changed 'hate' to have a value of 1 in the ANEW dataset | from 2.12
+		#I changed 'dead' to have a vlaue of 0 in the ANEW dataset | from 1.94
+
+		#If the tweet has the phrase, "in a good way", return a higher sentiment value;
+
+		if ( strstr($tweet, 'in a good way') ) {
+			return .5;
+		}
+
+		#if the sentence contains the word, "die" then give the sentiment a lower sentiment value;
+		if ( strstr($tweet, 'die') || strstr($tweet, 'died')) {
+			return -.5;
+		}
+
+		#if the tweet contains, "is best", give it a higher sentiment;
+		if ( strstr($tweet, 'is best')) {
+			return .5;
+		}
+
+		#superheros sourced http://en.wikipedia.org/wiki/List_of_superheroes_and_villains_without_superpowers
+		if ( $match = strstr($tweet, strtolower('i am') )) {
+			$superheros_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/superheros.txt');
+			$rows = explode( "\n", $superheros_file );
+			$superheros = $rows;
+
+			$words = array();
+			$words = explode(' ', $match);
+
+			foreach ( $superheros as $superhero ) {
+				if ($words[2] == $superhero) {
+					
+					return .5;
+					
+				}
+			}
+
+		}
+
+		#increasing sentiment in relation to recreational drug use
+		if ( strstr($tweet, 'got high')) {
+			return .5;
+		}
+
+		#increase sentiment if mention of "time of my life"
+		if ( strstr($tweet, 'time of my life')) {
+			return .5;
+		}
+
+		#increase sentiment if having time off work
+		if ( strstr($tweet, 'stay off') || strstr($tweet, 'time off')) {
+			return .5;
+		}
+
+		
+
+
+
+
+
+
+		
+
+	}
+
 }
 ?>
