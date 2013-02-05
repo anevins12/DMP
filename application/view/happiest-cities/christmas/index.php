@@ -199,10 +199,10 @@ var div = d3.select("#breadcrumbs").append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
-var color = d3.rgb(30, 30, 30);
+var color = d3.rgb(2,2,2);
 
 nodes = nodes.map(function(obj) {
-    obj.radius = 20;
+    obj.radius = obj.sentiment * 4.5;
     obj.cx=width/2;
     obj.cy=height/2;
     return obj;
@@ -225,7 +225,7 @@ var svg = d3.select("#test").append("svg")
 var circle = svg.selectAll("circle")
     .data(nodes)
     .enter().append("circle")
-	.style("fill", function(nodes) {return color.brighter(nodes.sentiment );})
+	.style("fill", function(nodes) {return color.brighter(nodes.sentiment / 1.5 );})
 	.style("text-anchor", "middle")
     .attr("stroke", "#eee")
     .attr("stroke-width", function(nodes){;
@@ -233,11 +233,9 @@ var circle = svg.selectAll("circle")
     })
 	.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
 //    .on("mousemove", function(nodes){mousemove(nodes);})
-//    .on("mouseout", mouseout)
+    .on("mouseout", mouseout)
     .attr("r", function(d) { return d.radius; })
     .call(force.drag);
-	
-	circle.append("title").text(function(d){return d.name +": " + d.sentiment;});
 
 
 function tick(e) {

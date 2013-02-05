@@ -638,16 +638,7 @@ state,city,lat,lon,conditions&limit=100000');
 		#increase sentiment if having time off work
 		if ( strstr($tweet, 'stay off') || strstr($tweet, 'time off')) {
 			return .5;
-		}
-
-		
-
-
-
-
-
-
-		
+		}	
 
 	}
 
