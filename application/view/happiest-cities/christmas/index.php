@@ -176,6 +176,7 @@ circle {
 
 
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
+		<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 		<script>
 //			happiestCities()
@@ -208,6 +209,7 @@ nodes = nodes.map(function(obj) {
     return obj;
 });
 
+//FORCE taken from https://gist.github.com/3161074
 var force = d3.layout.force()
     .nodes(nodes)
     .size([width, height])
@@ -228,9 +230,10 @@ var circle = svg.selectAll("circle")
 	.style("fill", function(nodes) {return color.brighter(nodes.sentiment / 1.5 );})
 	.style("text-anchor", "middle")
     .attr("stroke", "#eee")
-    .attr("stroke-width", function(nodes){;
+    .attr("stroke-width", function(nodes){
     	return nodes.radius/20;
     })
+	.attr("class", function(nodes, i) { return i; })
 	.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
 //    .on("mousemove", function(nodes){mousemove(nodes);})
     .on("mouseout", mouseout)
@@ -248,8 +251,13 @@ function tick(e) {
 
 //https://gist.github.com/2952964
 function mouseover(d, i) {
+//debugging
+//alert("circle." + i);
 
-	d3.select("circle" + i).style("fill", "red");
+var iterator = i;
+var cssClass = sprintf("circle.", iterator);
+
+	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
 
 	div.transition()
 	.duration(100)
