@@ -143,12 +143,12 @@ class Tweets extends Locations{
 			
 			//maybe need to convert integer to float
 			$sentiment = $multiplication_sum / $count_multiplication_occurrence;
-var_dump($sentiment, $tweet_text);
+
 
 			if ( $refined_sentiment = $this->refineTweet( $tweet ) ) {
 				$refined_sentiment = $refined_sentiment * $sentiment;
 			}
-var_dump($refined_sentiment);exit;
+
 			//insert sentiment into the database
 			$this->setANEWSentiment( $tweet, $refined_sentiment );
 			$flag = true;
