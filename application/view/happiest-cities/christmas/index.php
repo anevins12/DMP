@@ -257,7 +257,7 @@ function mouseover(d, i) {
 var iterator = i;
 var cssClass = sprintf("circle.", iterator);
 
-	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
+//	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
 
 	div.transition()
 	.duration(100)

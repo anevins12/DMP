@@ -23,15 +23,15 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
 		
-		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
+//		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 		
-		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities');
+//		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities');
 //		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
 		//set the sentiment values
-//		foreach ($tweets as $tweet){
-//			$this->getANEWSentiment($tweet);
-//		}
+		foreach ($tweets as $tweet){
+			$this->getANEWSentiment($tweet);
+		}
 		
 		//$this->setLocations($tweets);
 
@@ -69,7 +69,7 @@ class Tweets extends Locations{
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
 		/*Test tweet text */
-		//$tweet_text = "@charliemurphy67 me me me me me me me me me me me me me me me me me me  me me me me me me me me me me me me me me me me me me ";
+		$tweet_text = "@saoirsef24 haha....good one! Not if I'm feeling like this now! #FeelLikeShite";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
 		$count_multiplication_occurrence = 1;
@@ -143,9 +143,14 @@ class Tweets extends Locations{
 			
 			//maybe need to convert integer to float
 			$sentiment = $multiplication_sum / $count_multiplication_occurrence;
+var_dump($sentiment, $tweet_text);
 
+			if ( $refined_sentiment = $this->refineTweet( $tweet ) ) {
+				$refined_sentiment = $refined_sentiment * $sentiment;
+			}
+var_dump($refined_sentiment);exit;
 			//insert sentiment into the database
-			$this->setANEWSentiment( $tweet, $sentiment );
+			$this->setANEWSentiment( $tweet, $refined_sentiment );
 			$flag = true;
 			
 		}
@@ -578,12 +583,17 @@ state,city,lat,lon,conditions&limit=100000');
 # that reflects certain words, characters or phrases in a tweet.
 	function refineTweet( $tweet ) {
 
-		#Grabbing laughter from tweets and returning a high sentiment value
-		if ( strstr($tweet, 'hehe' ) || strstr($tweet, ' ha ') || strstr($tweet, 'haha')  || strstr($tweet, ' lol '
-			|| strstr($tweet, ' lmao ')  || strstr($tweet, ' rofl ') || strstr($tweet, ' haa ') ) || strstr($tweet, ' :) ')
-			|| strstr($tweet, 'laughing out loud')) {
+		$bad = false;
 
-			return .5;
+		$tweet = $tweet->tweet_text;
+
+
+		#Grabbing laughter from tweets and returning a high sentiment value
+		if ( strstr($tweet, 'hehe' ) || strstr($tweet, ' ha ') || strstr($tweet, 'haha')  || strstr($tweet, ' lol ') ||
+			strstr($tweet, ' lmao ')  || strstr($tweet, ' rofl ') || strstr($tweet, ' haa ') || strstr($tweet, ' :) ') ||
+			strstr($tweet, 'laughing out loud') ) {
+
+			$value = 1.5;
 
 		}
 
@@ -593,21 +603,22 @@ state,city,lat,lon,conditions&limit=100000');
 		#If the tweet has the phrase, "in a good way", return a higher sentiment value;
 
 		if ( strstr($tweet, 'in a good way') ) {
-			return .5;
+			$value = 1.5;
 		}
 
 		#if the sentence contains the word, "die" then give the sentiment a lower sentiment value;
 		if ( strstr($tweet, 'die') || strstr($tweet, 'died')) {
-			return -.5;
+			$value = .5;
+			$bad = true;
 		}
 
 		#if the tweet contains, "is best", give it a higher sentiment;
 		if ( strstr($tweet, 'is best')) {
-			return .5;
+			$value = 1.5;
 		}
 
 		#superheros sourced http://en.wikipedia.org/wiki/List_of_superheroes_and_villains_without_superpowers
-		if ( $match = strstr($tweet, strtolower('i am') )) {
+		if ( $match = strstr($tweet, strtolower('i am') || $match = strstr($tweet, strtolower('i\'m') )) ) {
 			$superheros_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/superheros.txt');
 			$rows = explode( "\n", $superheros_file );
 			$superheros = $rows;
@@ -618,7 +629,7 @@ state,city,lat,lon,conditions&limit=100000');
 			foreach ( $superheros as $superhero ) {
 				if ($words[2] == $superhero) {
 					
-					return .5;
+					$value = 1.5;
 					
 				}
 			}
@@ -627,18 +638,133 @@ state,city,lat,lon,conditions&limit=100000');
 
 		#increasing sentiment in relation to recreational drug use
 		if ( strstr($tweet, 'got high')) {
-			return .5;
+			$value =  1.5;
 		}
 
 		#increase sentiment if mention of "time of my life"
-		if ( strstr($tweet, 'time of my life')) {
-			return .5;
+		if ( strstr($tweet, 'time of my life') ) {
+			$value = 1.5;
 		}
 
 		#increase sentiment if having time off work
-		if ( strstr($tweet, 'stay off') || strstr($tweet, 'time off')) {
-			return .5;
-		}	
+		if ( strstr($tweet, 'stay off') || strstr($tweet, 'time off') ) {
+			$value = 1.5;
+		}
+
+		#hangover
+		if ( strstr($tweet, 'hangover') ) {
+			$value = 0.5;
+			$bad = true;
+		}
+
+		#ill
+		if ( strtolower(strstr($tweet, 'I don\'t feel well')) || strtolower(strstr($tweet, 'I dont feel well')) ) {
+			$value = 0.5;
+			$bad = true;
+		}
+
+		#gossip about tv show - http://www.imdb.com/search/title?countries=gb&sort=moviemeter&title_type=tv_series
+		
+		$tvshows_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/tvshows.txt');
+		$rows = explode( "\n", $tvshows_file );
+		$soap_operas = $rows;
+
+		$words = array();
+		$words = explode(' ', $match);
+
+		foreach ( $soap_operas as $soap ) {
+
+			strtolower($soap);
+
+			if (strstr($tweet, " $soap ")) {
+				$value = 1.2;
+			}
+
+		}
+
+		#calory counting - guilt - shame
+		if (strstr($tweet, 'full fat') || strstr($tweet, ' calories ')) {
+			$value = 0.5;
+			$bad = true;
+		}
+
+		#check uppercase - emphasis of word
+
+		#Smiley face
+		if (strstr($tweet, ' :) ')) {
+			$value = 1.5;
+		}
+
+		#Sad face
+		if (strstr($tweet, ' :( ')) {
+			$value = 0.5;
+			$bad = true;
+		}
+
+		#slang = stonker
+		if (strstr($tweet, ' stonker ')) {
+			$value = 1.5;
+			if ( $bad ) {
+				$value = 0.7;
+			}
+		}
+
+		#kiss
+		if ( strstr($tweet, 'xx') || strstr($tweet, ' x ')) {
+			$value = 1.5;
+			if ( $bad ) {
+				$value = 0.7;
+			}
+		}
+
+
+		#boo
+		if ( strstr($tweet, ' boo ')) {
+			$value = 0.7;
+		}
+
+		#mentioning a murder
+		if ( strtolower(strstr($tweet, ' i\'ll kill ')) || strtolower(strstr($tweet, 'ill kill')) || strtolower(strstr($tweet, 'i will kill')) ) {
+			$value = 0.3;
+		}
+
+		#Empathy for bad joke
+		if ( strtolower(strstr($tweet, 'i\'m joking') || strtolower(strstr($tweet, 'i am joking')) || strtolower (strstr($tweet, 'im joking')) )) {
+			$value = 0.9;
+		}
+
+		#Sympathy
+		if ( strtolower(strstr($tweet, 'don\'t worry about it')) || strtolower(strstr($tweet, ' dont worry '))) {
+			$value = 0.8;
+		}
+
+		#Given 'shock' a value of 2 from 4.03
+		if ( strtolower(strstr($tweet, 'shocking'))) {
+			$value = 0.5;
+		}
+
+		#self pitty
+		if ( strtolower(strstr($tweet, 'i\m fat')) || strtolower(strstr($tweet, 'i am fat')) || strtolower(strstr($tweet, 'im fat'))) {
+			$value = 0.5;
+		}
+
+		#excitement
+		if ( strstr($tweet, ' too excited ')) {
+			$value = 1.5;
+		}
+
+		#more murder
+		if ( strtolower(strstr($tweet, 'cut your head off'))) {
+			$value = 0.3;
+		}
+
+		if ( strstr($tweet, 'merry fucking christmas') || strstr($tweet, 'merry shitty christmas') || strstr($tweet, 'merry fuckin christmas')) {
+			$value = 0.3;
+		}
+
+		#hell given a higher sentiment of 4 from 2.24
+
+		return $value;
 
 	}
 
