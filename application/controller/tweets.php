@@ -546,8 +546,8 @@ state,city,lat,lon,conditions&limit=100000');
 				$quan = count($tweets) -1;
 				if ( $quan > 1 ) {
 					$index = rand( 0, $quan );
-					$tweets[$index];
-					$city['tweet'] = $tweets;
+					$random_tweet = $tweets[$index];
+					$city['tweet'] = $random_tweet;
 				}
 				else $city['tweet'] = $tweets[0];
 				
