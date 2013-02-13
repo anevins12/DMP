@@ -78,7 +78,7 @@ var div = d3.select("#christmas-bubble").append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
-var color = d3.rgb(2,2,2);
+var color = d3.rgb(1, 1, 1);
 
 nodes = nodes.map(function(obj) {
     obj.radius = obj.sentiment * 4.5;
@@ -105,7 +105,7 @@ var svg = d3.select("#christmas-bubble").append("svg")
 var circle = svg.selectAll("circle")
     .data(nodes)
     .enter().append("circle")
-	.style("fill", function(nodes) {return color.brighter(nodes.sentiment / 1.5 );})
+	.style("fill", function(nodes) {return color.brighter(nodes.sentiment / 1.8 );})
 	.style("text-anchor", "middle")
     .attr("stroke", "#eee")
     .attr("stroke-width", function(nodes){
