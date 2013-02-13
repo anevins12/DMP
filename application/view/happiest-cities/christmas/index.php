@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="/application/assets/js/geom.js" language="javascript"></script>
 		<script src="http://mbostock.github.com/d3/talk/20110921/d3/d3.js" language="javascript"></script>
 <!--		<script src="http://mbostock.github.com/d3/talk/20110921/d3/d3.layout.js"></script>-->
-		<!DOCTYPE html>
+	
 <meta charset="utf-8">
 <style>
 
@@ -37,7 +37,7 @@ circle {
 }
 
 </style>
-<body>
+
 <script src="http://mbostock.github.com/d3/d3.js?2.7.4"></script>
 <script src="http://d3js.org/d3.v2.js"></script>
 

@@ -23,19 +23,19 @@ class Tweets extends Locations{
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
 		
-//		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
+		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 		
-//		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities');
+		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities-13-02-2013');
 //		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
 		//set the sentiment values
-		foreach ($tweets as $tweet){
-			$this->getANEWSentiment($tweet);
-		}
+//		foreach ($tweets as $tweet){
+//			$this->getANEWSentiment($tweet);
+//		}
 		
 		//$this->setLocations($tweets);
 
-		return $tweets;
+		return $AverageTweetsJSON;
 
 	}
 
@@ -69,7 +69,7 @@ class Tweets extends Locations{
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
 		/*Test tweet text */
-		$tweet_text = "@saoirsef24 haha....good one! Not if I'm feeling like this now! #FeelLikeShite";
+//		$tweet_text = "@saoirsef24 haha....good one! Not if I'm feeling like this now! #FeelLikeShite";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
 		$count_multiplication_occurrence = 1;
@@ -489,7 +489,7 @@ state,city,lat,lon,conditions&limit=100000');
 				$city = $happiest_city->city;
 				$sentiment = $happiest_city->sentiment;
 
-				if ( !empty( $happiest_city->city ) ) {
+				if ( !empty( $city ) && $city != null ) {
 
 					$city = $happiest_city->city;
 
@@ -525,18 +525,39 @@ state,city,lat,lon,conditions&limit=100000');
 			$sentiment = 0;
 			$frequency = 0;
 			$new_array = array();
-			
+			$names_and_tweets = array();
+
+			foreach ($cities as $city) {
+				//count how many times the city name appears in the array
+				$names_and_tweets[] = array( $city['name'] => $city['tweet'] );
+				
+			}
 			foreach ($cities as $city) {
 
+				$tweets = array();
+				foreach ($names_and_tweets as $name_and_tweet) {
+
+					if ( isset( $name_and_tweet[$city['name']] )) {
+						$tweets[] = $name_and_tweet[$city['name']];
+					}
+
+				}
+				
+				$quan = count($tweets) -1;
+				if ( $quan > 1 ) {
+					$index = rand( 0, $quan );
+					$tweets[$index];
+					$city['tweet'] = $tweets;
+				}
+				else $city['tweet'] = $tweets[0];
+				
 				$temp_city = $city['name'];
 
 				//taken from http://board.phpbuilder.com/showthread.php?10388043-How-To-Pick-Out-Array-Values-amp-Sum-Them&p=11019071#post11019071
 				$new_array[$city['name']] = array(floatval($city['sentiment']), $city['tweet']);
 
 			}
-
 			//construct new array
-			
 			foreach ($new_array as $k => $v) {
 			
 				$division = count($v);
@@ -545,8 +566,12 @@ state,city,lat,lon,conditions&limit=100000');
 				$output[] = array('name' => $k, 'sentiment' => $v[0], 'tweet' => $v[1]);
 			}
 			
-			$output = array( 'name' => 'happiest_cities', 'children' => $output );			
+			$output = array( $output );		
 			$output = json_encode($output);
+
+			$array_of_objects = json_decode($output);
+			$object = $array_of_objects[0];
+			$output = json_encode($object);
 
 			return $output;
 
