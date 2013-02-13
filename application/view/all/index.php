@@ -48,9 +48,10 @@ circle {
 
 		<div id="christmas-bubble">
 
-
 		</div>
 
+		<h1>happiest cities</h1>
+		<h2>data gathered from christmas</h2>
 	</div>
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
@@ -67,8 +68,8 @@ circle {
 var nodes = <?php echo $allTweets ?>;
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
-    width = 620 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 1400 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 var n = 20,
     m = 1,
@@ -112,11 +113,16 @@ var circle = svg.selectAll("circle")
     	return nodes.radius/20;
     })
 	.attr("class", function(nodes, i) { return i; })
+	.attr("dy", ".3em")
+    .style("text-anchor", "middle")
+    .text(function(nodes) {return nodes.name.substring(0, nodes.radius / 3);})
 	.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
-//    .on("mousemove", function(nodes){mousemove(nodes);})
     .on("mouseout", mouseout)
     .attr("r", function(d) { return d.radius; })
     .call(force.drag);
+
+//	.append("text")
+
 
 
 function tick(e) {
@@ -178,11 +184,6 @@ var cssClass = sprintf("circle.", iterator);
 
 }
 
-function mousemove(d) {
-
-
-}
-
 function mouseout() {
 	div.transition()
 	.duration(300)
@@ -191,7 +192,7 @@ function mouseout() {
 
 // Move nodes toward cluster focus.
 function gravity(alpha) {
-  return function(d) {
+  return function(d) { 
     d.y += (d.cy - d.y) * alpha;
     d.x += (d.cx - d.x) * alpha;
   };
@@ -201,7 +202,7 @@ function gravity(alpha) {
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
   return function(d) {
-    var r = d.radius + 12 + padding,
+    var r = d.radius + 22 + padding,
         nx1 = d.x - r,
         nx2 = d.x + r,
         ny1 = d.y - r,
