@@ -529,11 +529,12 @@ state,city,lat,lon,conditions&limit=100000');
 
 			foreach ($cities as $city) {
 				//count how many times the city name appears in the array
+				$city['tweet'] = utf8_encode(htmlspecialchars( $city['tweet'], ENT_SUBSTITUTE ));
 				$names_and_tweets[] = array( $city['name'] => $city['tweet'] );
 				
 			}
 			foreach ($cities as $city) {
-
+			
 				$tweets = array();
 				foreach ($names_and_tweets as $name_and_tweet) {
 
@@ -557,6 +558,8 @@ state,city,lat,lon,conditions&limit=100000');
 				$new_array[$city['name']] = array(floatval($city['sentiment']), $city['tweet']);
 
 			}
+			
+
 			//construct new array
 			foreach ($new_array as $k => $v) {
 			
@@ -565,14 +568,8 @@ state,city,lat,lon,conditions&limit=100000');
 
 				$output[] = array('name' => $k, 'sentiment' => $v[0], 'tweet' => $v[1]);
 			}
-			
-			$output = array( $output );		
+
 			$output = json_encode($output);
-
-			$array_of_objects = json_decode($output);
-			$object = $array_of_objects[0];
-			$output = json_encode($object);
-
 			return $output;
 
 		}
