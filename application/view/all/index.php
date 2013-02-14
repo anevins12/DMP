@@ -26,7 +26,6 @@
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/geom.js" language="javascript"></script>
 		<script src="http://mbostock.github.com/d3/talk/20110921/d3/d3.js" language="javascript"></script>
-<!--		<script src="http://mbostock.github.com/d3/talk/20110921/d3/d3.layout.js"></script>-->
 
 <meta charset="utf-8">
 <style>
@@ -52,19 +51,27 @@ circle {
 
 		<h1>happiest cities</h1>
 		<h2>data gathered from christmas</h2>
+		
 	</div>
+		
+	<div id="tagCloud">
+
+
+
+	</div>
+
+		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
+		<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
+
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
-		<script>
-//			happiestCities()
-
-
-		</script>
 
 		<script>
 			var data = <?php echo $allTweets ?>;
 			happiestCitiesImproved(data);
+			tagCloud();
+
 		</script>
 
 </body>
