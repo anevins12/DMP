@@ -494,32 +494,34 @@ img.preloader {
 	margin-top: 100px;
 }
 
-#christmas-bubble {
-	background: #fcfcfc;
-}
- h1,h2 {
+h1,h2 {
 	text-transform: uppercase;
 	font-size: 1000%;
 	font-family: georgia !important;
 	color: #fafafa;
-	font-style: italic;
 	width: 100%;
 }
 
-#christmas-bubble svg {
-	background: url(http://www.freechristmaswallpapers.net/images/wallpapers/Nice-Christmas-Wreath-316730.jpeg) no-repeat;
+#cities {
+
+	background: url(http://fc02.deviantart.net/fs71/f/2011/311/c/1/christmas_snow_wallpaper_by_dweechullie-d4fe2k2.jpg) no-repeat;
 	background-size: 100%;
-	background-position: -40px;
-	border-bottom: 10px solid #eee;
+
 }
 
 h2 {
-	background: #2D6F4B;
-	font-size: 250%;
+	font-size: 193%;
+	text-shadow: 0 2px 0 #fff;
+	font-style: normal;
+	font-family: kalinga, sans-serif !important;
+	letter-spacing: 0.1em;
 	text-align: center;
+	color: #aaa;
 }
 
 h1 {
-	background: #CD0A1A;
-	text-shadow: 0 2px 0 #eee;
+	line-height: 84%;
+	background: none;
+	color: #fff;
+	text-shadow: 0 2px 0 #aaa;
 }
