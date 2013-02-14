@@ -518,11 +518,12 @@ h2 {
 	letter-spacing: 0.1em;
 	text-align: center;
 	color: #aaa;
+	background: #fff;
+	opacity: 0.5;
+	padding-top: 8px;
 }
 
 h1 {
-	border-bottom: 1px solid #eee;
-	margin-bottom: 5px;
 	line-height: 84%;
 	background: none;
 	color: #fff;
