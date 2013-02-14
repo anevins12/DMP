@@ -148,10 +148,12 @@ var cssClass = sprintf("circle.", iterator);
 	.style("opacity", 1);
 
 	div
-	.text("City: " + d.name + " | Sentiment: " + d.sentiment + " | Sample tweet: " + d.tweet )
+	.text(d.name)
 	.style("left", (d3.event.pageX ) + "px")
 	.style("top", (d3.event.pageY) + "px")
-	.append("image")
+	.style("font-size", "200%");
+
+	div.append("image")
 	.attr("src", function() {
 		var src = "/application/assets/i/smiley-";
 		var ext = ".png";
@@ -180,7 +182,13 @@ var cssClass = sprintf("circle.", iterator);
 		if ( d.sentiment < 10 ) {
 			return src + 9 + ext;
 		}
-	});
+		});
+	div
+	.append('p').attr("class", "tweet")
+	.text("Sample tweet: “" + d.tweet + "” ")
+	.style("left", (d3.event.pageX ) + "px")
+	.style("top", (d3.event.pageY) + "px")
+
 
 }
 

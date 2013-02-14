@@ -315,15 +315,15 @@ h3 span.halloween {
 }
 
 #cities .tooltip {
-	background-color: #CD0A1A;
+	background-color: #fff;
 	line-height: 1em;
 	padding: 12px 9px 8px 9px;
 	float: left;
 	font-family: verdana;
 	position: absolute;
 	z-index: 10000;
-	margin-left: 20px;
-	color: white;
+	margin-left: 30px;
+	color: #000;
 
 	-moz-box-shadow:
 		0px 1px 3px rgba(000,000,000,0.5),
@@ -417,6 +417,7 @@ h3 span.halloween {
 }
 
 #cities svg {
+	width: 100%;
 	top: 0px;
 	position: relative;
 }
@@ -511,7 +512,7 @@ h1,h2 {
 
 h2 {
 	font-size: 193%;
-	text-shadow: 0 2px 0 #fff;
+	text-shadow: 0 1px 0 #fff;
 	font-style: normal;
 	font-family: kalinga, sans-serif !important;
 	letter-spacing: 0.1em;
@@ -524,4 +525,17 @@ h1 {
 	background: none;
 	color: #fff;
 	text-shadow: 0 2px 0 #aaa;
+}
+
+.tweet {
+	background-color: #eee;
+	margin-top: 10px;
+	padding: 20px;
+	font-family: georgia, serif;
+	color: #111;
+	line-height: 1.1em;
+}
+
+.tweet p {
+	margin-top: 10px;
 }
