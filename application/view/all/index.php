@@ -56,6 +56,7 @@ circle {
 
 	<div id="tags">
 		<h2>Sad Tweet Tags</h2>
+		<span class="pointer"></span>
 		<div id="tagCloud">
 
 		</div>

@@ -542,3 +542,27 @@ h1 {
 .tweet p {
 	margin-top: 10px;
 }
+
+#tags {
+	background: #222;
+}
+
+#tags h2 {
+	opacity: 1;
+    background: #111;
+	text-shadow: none;
+	color: #eee;
+	padding: 20px 0 10px;
+}
+
+#tags .pointer {
+	position: inherit;
+	display: block;
+	margin: 0 auto;
+	width: 0;
+
+	/* http://css-tricks.com/snippets/css/css-triangle/ */
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-top: 40px solid #111;
+}
