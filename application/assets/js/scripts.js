@@ -680,15 +680,14 @@ function happiestCitiesImproved(nodes) {
 function tagCloud() {
 
 	d3.json("../../assets/json/tweetTags.json", function(json) {
-	  
 
 	  var fill = d3.scale.category20();
 
-	  d3.layout.cloud().size([800, 1200])
-		  .words(json.map(function(d) {;
-				return {text: d.word, size: d.sentiment * 40, tweet: d.tweet};
+	  d3.layout.cloud().size([1400, 500])
+		  .words(json.map(function(d) {
+				return {text: d.word, size: d.sentiment * 20, tweet: d.tweet};
 		   }))
-		  .rotate(function(d) { return ~~(Math.random() * 2) * 90; })
+		  .rotate(function(d) { return ~~(Math.random() * 0) * 90; })
 		  .font("Impact")
 		  .fontSize(function(d) { return d.size; })
 		  .on("end", draw)
@@ -696,8 +695,8 @@ function tagCloud() {
 
 	  function draw(words) {
 		  d3.select("#tagCloud").append("svg")
-			  .attr("width", 1200).attr("height", 1200)
-			  .append("g").attr("transform", "translate(500,700)")
+			  .attr("height", 500)
+			  .append("g").attr("transform", "translate(640,300)")
 			  .selectAll("text").data(words)
 			  .enter().append("text")
 			  .style("font-size", function(d) { return d.size + "px"; })

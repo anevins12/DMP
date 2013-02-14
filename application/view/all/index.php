@@ -53,11 +53,12 @@ circle {
 		<h2>data gathered from christmas</h2>
 		
 	</div>
-		
-	<div id="tagCloud">
 
+	<div id="tags">
+		<h2>Sad Tweet Tags</h2>
+		<div id="tagCloud">
 
-
+		</div>
 	</div>
 
 		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
