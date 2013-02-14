@@ -32,7 +32,7 @@ class Tweets extends Locations{
 //		foreach ($tweets as $tweet){
 //			$this->getANEWSentiment($tweet);
 //		}
-		
+
 		//$this->setLocations($tweets);
 
 		return $AverageTweetsJSON;
@@ -69,7 +69,7 @@ class Tweets extends Locations{
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
 		/*Test tweet text */
-//		$tweet_text = "@saoirsef24 haha....good one! Not if I'm feeling like this now! #FeelLikeShite";
+//		$tweet_text = "@FahimaKhan_LFC I'm not bad at writing ;) haha I shall do 'love' on my other wrist and then I'll send it :) ";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
 		$count_multiplication_occurrence = 1;
@@ -606,6 +606,7 @@ state,city,lat,lon,conditions&limit=100000');
 	function refineTweet( $tweet ) {
 
 		$bad = false;
+		$value = 1;
 
 		$tweet = $tweet->tweet_text;
 
@@ -629,7 +630,7 @@ state,city,lat,lon,conditions&limit=100000');
 		}
 
 		#if the sentence contains the word, "die" then give the sentiment a lower sentiment value;
-		if ( strstr($tweet, 'die') || strstr($tweet, 'died')) {
+		if ( strstr($tweet, ' die ') || strstr($tweet, ' died ')) {
 			$value = .5;
 			$bad = true;
 		}
@@ -705,10 +706,16 @@ state,city,lat,lon,conditions&limit=100000');
 		}
 
 		#calory counting - guilt - shame
-		if (strstr($tweet, 'full fat') || strstr($tweet, ' calories ')) {
+		if ( strstr($tweet, ' calories ')) {
 			$value = 0.5;
 			$bad = true;
 		}
+
+		#enjoyment of food/drink
+		if ( strstr($tweet, ' full fat ')) {
+			$value = 1.5;
+		}
+		
 
 		#check uppercase - emphasis of word
 
@@ -770,6 +777,8 @@ state,city,lat,lon,conditions&limit=100000');
 			$value = 0.5;
 		}
 
+		#Note 'fat' added more sentiment in ANEW dataset - from 2.28 to 4
+
 		#excitement
 		if ( strstr($tweet, ' too excited ')) {
 			$value = 1.5;
@@ -780,8 +789,19 @@ state,city,lat,lon,conditions&limit=100000');
 			$value = 0.3;
 		}
 
+		#sarcasm, frustration
 		if ( strstr($tweet, 'merry fucking christmas') || strstr($tweet, 'merry shitty christmas') || strstr($tweet, 'merry fuckin christmas')) {
 			$value = 0.3;
+		}
+
+		#acknowledgement
+		if ( strstr($tweet, ' not bad ') ) {
+			$value = 1.5;
+		}
+
+		#angry
+		if ( strstr($tweet, ' fuckers ') ) {
+			$value = 0.5;
 		}
 
 		#hell given a higher sentiment of 4 from 2.24
