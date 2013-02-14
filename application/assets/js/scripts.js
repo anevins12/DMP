@@ -498,5 +498,181 @@ function tabs() {
 	the_tabs.eq(0).click();
 });
 
+}
+
+
+function happiestCitiesImproved(nodes) {
+
+	var nodes = nodes;
+
+	var margin = {top: 0, right: 0, bottom: 0, left: 0},
+		width = 1400 - margin.left - margin.right,
+		height = 400 - margin.top - margin.bottom;
+
+	var n = 20,
+		m = 1,
+		padding = 6;
+
+	var div = d3.select("#christmas-bubble").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 1e-6);
+
+	var color = d3.rgb(1, 1, 1);
+
+	nodes = nodes.map(function(obj) {
+		obj.radius = obj.sentiment * 4.5;
+		obj.cx=width/2;
+		obj.cy=height/2;
+		return obj;
+	});
+
+	//FORCE taken from https://gist.github.com/3161074
+	var force = d3.layout.force()
+		.nodes(nodes)
+		.size([width, height])
+		.gravity(0)
+		.charge(0)
+		.on("tick", tick)
+		.start();
+	var nodes = force.nodes();
+	var svg = d3.select("#christmas-bubble").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		;
+
+	var circle = svg.selectAll("circle")
+		.data(nodes)
+		.enter().append("circle")
+		.style("fill", function(nodes) {return color.brighter(nodes.sentiment / 1.8 );})
+		.style("text-anchor", "middle")
+		.attr("stroke", "#eee")
+		.attr("stroke-width", function(nodes){
+			return nodes.radius/20;
+		})
+		.attr("class", function(nodes, i) { return i; })
+		.attr("dy", ".3em")
+		.style("text-anchor", "middle")
+		.text(function(nodes) {return nodes.name.substring(0, nodes.radius / 3);})
+		.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
+		.on("mouseout", mouseout)
+		.attr("r", function(d) { return d.radius; })
+		.call(force.drag);
+
+	//	.append("text")
+
+
+
+	function tick(e) {
+	  circle
+		  .each(gravity(.2 * e.alpha))
+		  .each(collide(.5))
+		  .attr("cx", function(d) { return d.x; })
+		  .attr("cy", function(d) { return d.y; });
+	}
+
+	//https://gist.github.com/2952964
+	function mouseover(d, i) {
+	//debugging
+	//alert("circle." + i);
+
+	var iterator = i;
+	var cssClass = sprintf("circle.", iterator);
+
+	//	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
+
+		div.transition()
+		.duration(100)
+		.style("opacity", 1);
+
+		div
+		.text(d.name)
+		.style("left", (d3.event.pageX ) + "px")
+		.style("top", (d3.event.pageY) + "px")
+		.style("font-size", "200%");
+
+		div.append("image")
+		.attr("src", function() {
+			var src = "/application/assets/i/smiley-";
+			var ext = ".png";
+
+			if ( d.sentiment < 1 ) {
+				return src + 0 + ext;
+			}
+			if ( d.sentiment < 3 ) {
+				return src + 2 + ext;
+			}
+			if ( d.sentiment < 4 ) {
+				return src + 3 + ext;
+			}
+			if ( d.sentiment < 5 ) {
+				return src + 4 + ext;
+			}
+			if ( d.sentiment < 6 ) {
+				return src + 5 + ext;
+			}
+			if ( d.sentiment < 7 ) {
+				return src + 6 + ext;
+			}
+			if ( d.sentiment < 9 ) {
+				return src + 8 + ext;
+			}
+			if ( d.sentiment < 10 ) {
+				return src + 9 + ext;
+			}
+			});
+		div
+		.append('p').attr("class", "tweet")
+		.text("Sample tweet: “" + d.tweet + "” ")
+		.style("left", (d3.event.pageX ) + "px")
+		.style("top", (d3.event.pageY) + "px")
+
+
+	}
+
+	function mouseout() {
+		div.transition()
+		.duration(300)
+		.style("opacity", 1e-6);
+	}
+
+	// Move nodes toward cluster focus.
+	function gravity(alpha) {
+	  return function(d) {
+		d.y += (d.cy - d.y) * alpha;
+		d.x += (d.cx - d.x) * alpha;
+	  };
+	}
+
+	// Resolve collisions between nodes.
+	function collide(alpha) {
+	  var quadtree = d3.geom.quadtree(nodes);
+	  return function(d) {
+		var r = d.radius + 22 + padding,
+			nx1 = d.x - r,
+			nx2 = d.x + r,
+			ny1 = d.y - r,
+			ny2 = d.y + r;
+		quadtree.visit(function(quad, x1, y1, x2, y2) {
+		  if (quad.point && (quad.point !== d)) {
+			var x = d.x - quad.point.x,
+				y = d.y - quad.point.y,
+				l = Math.sqrt(x * x + y * y),
+				r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
+			if (l < r) {
+			  l = (l - r) / l * alpha;
+			  d.x -= x *= l;
+			  d.y -= y *= l;
+			  quad.point.x += x;
+			  quad.point.y += y;
+			}
+		  }
+		  return x1 > nx2
+			  || x2 < nx1
+			  || y1 > ny2
+			  || y2 < ny1;
+		});
+	  };
+	}
 
 }
