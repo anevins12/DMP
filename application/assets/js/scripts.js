@@ -681,7 +681,7 @@ function tagCloud() {
 
 	d3.json("../../assets/json/tweetTags.json", function(json) {
 
-	  var fill = d3.scale.category20();
+	  var fill = d3.scale.category20c();
 
 	  d3.layout.cloud().size([1400, 500])
 		  .words(json.map(function(d) {
@@ -696,7 +696,7 @@ function tagCloud() {
 	  function draw(words) {
 		  d3.select("#tagCloud").append("svg")
 			  .attr("height", 500)
-			  .append("g").attr("transform", "translate(640,300)")
+			  .append("g").attr("transform", "translate(700,300)")
 			  .selectAll("text").data(words)
 			  .enter().append("text")
 			  .style("font-size", function(d) { return d.size + "px"; })
