@@ -108,7 +108,7 @@ class Tweets extends Locations{
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
 		/*Test tweet text */
-//		$tweet_text = "@FahimaKhan_LFC I'm not bad at writing ;) haha I shall do 'love' on my other wrist and then I'll send it :) ";
+//		$tweet_text = "Imagine if you won the lottery tonight. Would be the best thing in the world!";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
 		$count_multiplication_occurrence = 1;
@@ -182,7 +182,6 @@ class Tweets extends Locations{
 			
 			//maybe need to convert integer to float
 			$sentiment = $multiplication_sum / $count_multiplication_occurrence;
-
 
 			if ( $refined_sentiment = $this->refineTweet( $tweet ) ) {
 				$refined_sentiment = $refined_sentiment * $sentiment;

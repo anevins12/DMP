@@ -42,17 +42,59 @@ circle {
 	</head>
 
 	<body>
+		
+	<div id="intro">
+		<h2>Explore the Christmas spirit of 2012</h2>
+	</div>
+
+	<div id="desc">
+
+	<h2>Quick Explanation</h2>
+	<p>This webpage illustrates feelings of each main city of the United Kingdom, that was recorded from December 22 - December 29 2012.</p>
+	<ul>
+		<li>Feelings are:
+			<ul>
+				<li>Represented in grayscale.
+				<li>The brighter the gray, the happier the feeling. The darker the gray, the more sad the feeling
+				</li>
+				<li>
+					Feelings are also represented in numeric values, from 0 to 10. 
+					<ul>
+						<li>0 represents the worst feeling and 10 the happiest.</li>
+						<li>Smiley faces illustrate these values.</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	</div>
+
 	<div id="cities">
 
 		<div id="christmas-bubble">
 		</div>
 
-		<h1>happiest cities</h1>
-		<h2>data gathered from christmas</h2>
+		<h1>christmas spirit</h1>
+		<h2>data gathered from UK-based tweets of twitter</h2>
 		
 	</div>
 		
 	<div id="quantities">
+
+		<div class="desc">
+			<p>Out of 5002 tweets</p>
+<!--			<p>
+				Feelings are represented in grayscales. The brighter the gray, the happier the feeling. The darker the gray, the more sad the feeling
+			</p>
+			<p>
+				Feelings are also represented in numeric values, from 0 to 10. Zero represents the worst feeling and Ten the happiest.
+			</p>
+			<p>
+				Smiley faces have been used to help communicate the feeling of these 0 to 10 values.
+			</p>-->
+		</div>
+
 	</div>
 
 	<div id="tags">

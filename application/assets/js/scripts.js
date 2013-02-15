@@ -506,7 +506,7 @@ function happiestCitiesImproved(nodes) {
 	var nodes = nodes;
 
 	var margin = {top: 0, right: 0, bottom: 0, left: 0},
-		width = 1150 - margin.left - margin.right,
+		width = 1170 - margin.left - margin.right,
 		height = 400 - margin.top - margin.bottom;
 
 	var n = 20,
@@ -588,7 +588,7 @@ function happiestCitiesImproved(nodes) {
 		div
 		.text(d.name)
 		.style("left", (d3.event.pageX) + 30 + "px")
-		.style("top", (d3.event.pageY)  + "px")
+		.style("top", (d3.event.pageY)  + 30 + "px")
 		.style("font-size", "200%");
 
 		div.append("image")
@@ -686,7 +686,7 @@ function tagCloud() {
 
 	  var fill = d3.scale.category20c();
 
-	  d3.layout.cloud().size([1400, 500])
+	  d3.layout.cloud().size([1300, 400])
 		  .words(json.map(function(d) {
 				return {text: d.word, size: d.sentiment * 50 , tweet: d.tweet};
 		   }))
@@ -699,7 +699,7 @@ function tagCloud() {
 	  function draw(words) {
 		  d3.select("#tagCloud").append("svg")
 			  .attr("height", 500)
-			  .append("g").attr("transform", "translate(700,300)")
+			  .append("g").attr("transform", "translate(700,200)")
 			  .selectAll("text").data(words)
 			  .enter().append("text")
 			  .style("font-size", function(d) { return d.size + "px"; })
