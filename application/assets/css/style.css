@@ -310,15 +310,23 @@ h3 span.halloween {
 	clear: left;
 }
 
+#cities {
+	border-top: 10px solid #111;
+}
+
 #cities #breadcrumbs {
 	margin-bottom: 0;
 }
 
+.tooltip .tweet {
+
+}
+
 #cities .tooltip {
+	max-width: 250px;
 	background-color: #fff;
 	line-height: 1em;
 	padding: 12px 9px 8px 9px;
-	float: left;
 	font-family: verdana;
 	position: absolute;
 	z-index: 10000;
@@ -525,6 +533,7 @@ h2 {
 
 h1 {
 	line-height: 84%;
+	margin-top: 20px;
 	background: none;
 	color: #fff;
 	text-shadow: 0 2px 0 #aaa;
@@ -566,4 +575,10 @@ h1 {
 	border-left: 40px solid transparent;
 	border-right: 40px solid transparent;
 	border-top: 40px solid #111;
+}
+
+#quantities {
+	position: absolute;
+	top: 20px;
+	left: 0;
 }

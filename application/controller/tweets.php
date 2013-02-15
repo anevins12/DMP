@@ -40,6 +40,44 @@ class Tweets extends Locations{
 
 	}
 
+	public function getTweetQuantities() {
+
+		$tweetsmodel = new Tweetsmodel;
+		$tweets = $tweetsmodel->getTweets();
+		
+		$two = 0;
+		$four = 0;
+		$six = 0;
+		$eight = 0;
+		$ten = 0;
+		$quantities = array();
+
+		foreach ($tweets as $tweet) {
+			$sentiment = $tweet->sentiment;
+			if ($sentiment <= 2) {
+					$two++;
+			}
+
+			if ($sentiment > 2 && $sentiment <= 4) {
+				$four++;
+			}
+
+			if ($sentiment > 4 && $sentiment <= 6) {
+				$six++;
+			}
+
+			if ($sentiment > 6 && $sentiment <= 8) {
+				$eight++;
+			}
+
+			if ($sentiment > 8 && $sentiment <= 10) {
+				$ten++;
+			}
+
+		}
+		
+	}
+
 	public function getTweetTags() {
 		$tweetsmodel = new Tweetsmodel;
 		$tags= $tweetsmodel->getTweetTags();

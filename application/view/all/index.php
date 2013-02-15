@@ -7,7 +7,6 @@
 	$tweets = new Tweets();
 	$allTweets = $tweets->index();
 
-
 ?>
 <html>
 	<head>
@@ -46,12 +45,14 @@ circle {
 	<div id="cities">
 
 		<div id="christmas-bubble">
-
 		</div>
 
 		<h1>happiest cities</h1>
 		<h2>data gathered from christmas</h2>
 		
+	</div>
+		
+	<div id="quantities">
 	</div>
 
 	<div id="tags">
@@ -61,6 +62,7 @@ circle {
 
 		</div>
 	</div>
+
 
 		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
@@ -73,6 +75,54 @@ circle {
 			var data = <?php echo $allTweets ?>;
 			happiestCitiesImproved(data);
 			tagCloud();
+
+			//http://bl.ocks.org/3887193
+			var width = 400,
+				height = 400,
+				radius = Math.min(width, height) / 2;
+
+			var color = d3.scale.ordinal()
+				.range(["#3c3c3c", "#5B5B5B", "#727272", "#848484", "#969696", "#A8A8A8", "#BABABA"]);
+
+			var arc = d3.svg.arc()
+				.outerRadius(radius - 10)
+				.innerRadius(radius - 70);
+
+			var pie = d3.layout.pie()
+				.sort(null)
+				.value(function(d) { return d.tweets; });
+
+			var svg = d3.select("#quantities").append("svg")
+				.attr("width", width)
+				.attr("height", height)
+			  .append("g")
+				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+			d3.csv("../../assets/csv/tweet_quantities.csv", function(data) {
+
+			  data.forEach(function(d) {
+				d.tweets = +d.tweets;
+			  });
+
+			  var g = svg.selectAll(".arc")
+				  .data(pie(data))
+				.enter().append("g")
+				  .attr("class", "arc");
+
+			  g.append("path")
+				  .attr("d", arc)
+				  .style("fill", function(d) { return color(d.data.sentiment); });
+
+			  g.append("text")
+				  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+				  .attr("dy", ".35em")
+				  .style("fill", "#fff")
+				  .style("text-anchor", "middle")
+				  .text(function(d) { return d.data.sentiment; });
+
+			});
+
+
 
 		</script>
 

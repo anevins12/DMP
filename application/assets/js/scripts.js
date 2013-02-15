@@ -506,7 +506,7 @@ function happiestCitiesImproved(nodes) {
 	var nodes = nodes;
 
 	var margin = {top: 0, right: 0, bottom: 0, left: 0},
-		width = 1400 - margin.left - margin.right,
+		width = 1150 - margin.left - margin.right,
 		height = 400 - margin.top - margin.bottom;
 
 	var n = 20,
@@ -538,7 +538,7 @@ function happiestCitiesImproved(nodes) {
 	var svg = d3.select("#christmas-bubble").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
-		.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		.append("g").attr("transform", "translate(" + 200 + "," + margin.top + ")")
 		;
 
 	var circle = svg.selectAll("circle")
@@ -587,8 +587,8 @@ function happiestCitiesImproved(nodes) {
 
 		div
 		.text(d.name)
-		.style("left", (d3.event.pageX ) + "px")
-		.style("top", (d3.event.pageY) + "px")
+		.style("left", (d3.event.pageX) + 30 + "px")
+		.style("top", (d3.event.pageY)  + "px")
 		.style("font-size", "200%");
 
 		div.append("image")
@@ -620,11 +620,14 @@ function happiestCitiesImproved(nodes) {
 			if ( d.sentiment < 10 ) {
 				return src + 9 + ext;
 			}
-			});
+			}); 
+		div
+		.append('p').text('Feeling value: '+ d.sentiment +'(/10)');
+
 		div
 		.append('p').attr("class", "tweet")
 		.text("Sample tweet: “" + d.tweet + "” ")
-		.style("left", (d3.event.pageX ) + "px")
+		.style("left", (d3.event.pageX) + "px")
 		.style("top", (d3.event.pageY) + "px")
 
 
@@ -632,7 +635,7 @@ function happiestCitiesImproved(nodes) {
 
 	function mouseout() {
 		div.transition()
-		.duration(300)
+		.duration(100)
 		.style("opacity", 1e-6);
 	}
 
@@ -685,7 +688,7 @@ function tagCloud() {
 
 	  d3.layout.cloud().size([1400, 500])
 		  .words(json.map(function(d) {
-				return {text: d.word, size: d.sentiment * 20, tweet: d.tweet};
+				return {text: d.word, size: d.sentiment * 50 , tweet: d.tweet};
 		   }))
 		  .rotate(function(d) { return ~~(Math.random() * 0) * 90; })
 		  .font("Impact")
