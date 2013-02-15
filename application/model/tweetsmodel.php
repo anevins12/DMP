@@ -17,14 +17,14 @@ class Tweetsmodel {
 			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 		
-		$query = "SELECT * FROM $this->tableName WHERE `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i feel%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i am feeling%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i\'m feeling%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i dont feel%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%I\'m%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%Im%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%I am%'
-OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me%'  ". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
+		$query = "SELECT * FROM $this->tableName WHERE `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i feel%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i am feeling%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i\'m feeling%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i dont feel%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%I\'m%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%Im%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%I am%'
+OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me%'  ". ( $order ? " ORDER BY $order" : "" ) . ( $limit? " LIMIT $limit" : "" );
 		
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 
@@ -62,7 +62,8 @@ OR `sentiment` != 0 AND `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me
 				OR `sentiment` < 4 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%I\'m%'
 				OR `sentiment` < 4 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%Im%'
 				OR `sentiment` < 4 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%I am%'
-				OR `sentiment` < 4 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%makes me%'";
+				OR `sentiment` < 4 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%makes me%'
+				LIMIT 20";
 
 		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
 

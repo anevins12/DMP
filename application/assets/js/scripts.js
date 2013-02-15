@@ -639,8 +639,8 @@ function happiestCitiesImproved(nodes) {
 	// Move nodes toward cluster focus.
 	function gravity(alpha) {
 	  return function(d) {
-		d.y += (d.cy - d.y) * alpha;
-		d.x += (d.cx - d.x) * alpha;
+		d.y += (d.cy - d.y) * alpha / 1;
+		d.x += (d.cx - d.x) * alpha / 5;
 	  };
 	}
 
@@ -657,10 +657,10 @@ function happiestCitiesImproved(nodes) {
 		  if (quad.point && (quad.point !== d)) {
 			var x = d.x - quad.point.x,
 				y = d.y - quad.point.y,
-				l = Math.sqrt(x * x + y * y),
+				l = Math.sqrt(x * x + y * y ),
 				r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
 			if (l < r) {
-			  l = (l - r) / l * alpha;
+			  l = (l - r) / l * alpha ;
 			  d.x -= x *= l;
 			  d.y -= y *= l;
 			  quad.point.x += x;

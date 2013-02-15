@@ -24,7 +24,6 @@ class Tweets extends Locations{
 		$tweets = $tweetsmodel->getTweets();
 
 		$this->getTweetTags();
-
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 		
 		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities-13-02-2013');
