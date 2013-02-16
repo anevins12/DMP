@@ -10,6 +10,13 @@
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
+
+::selection {
+	background: #eee; /* Safari */
+	}
+::-moz-selection {
+	background: #eee; /* Firefox */
+}
 .show {
 	display: block !important;
 }
@@ -546,7 +553,7 @@ h2, p, li {
 	color: #eee;
 	border-bottom: 2px solid #eee;
 	margin: 0 auto;
-	padding-top: 30px;
+	padding-top: 20px;
 	width: 200px;
 }
 
@@ -656,4 +663,24 @@ h1 {
 	color: #b3b3b3;
 	font-size: 13px;
 	margin-bottom: 20px;
+}
+
+#recentTweets ul {
+	text-align: center;
+}
+
+#recentTweets li {
+	background: #eee;
+	border-top: 20px solid #fff;
+	color: #555;
+	padding: 10px;
+	font-size: 17px;
+}
+
+#recentTweets li:first-child {
+	border-top:0;
+}
+
+#recentTweets h2 {
+	margin-top: 10px;
 }

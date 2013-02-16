@@ -517,7 +517,7 @@ function happiestCitiesImproved(nodes) {
 		.attr("class", "tooltip")
 		.style("opacity", 1e-6);
 
-	var color = d3.rgb(1, 1, 1);
+	var color = d3.rgb(10, 10, 10);
 
 	nodes = nodes.map(function(obj) {
 		obj.radius = obj.sentiment * 4.5;
@@ -700,8 +700,8 @@ function tagCloud() {
 
 	  function draw(words) {
 		  d3.select("#tagCloud").append("svg")
-			  .attr("height", 500)
-			  .append("g").attr("transform", "translate(700,240)")
+			  .attr("height", 370)
+			  .append("g").attr("transform", "translate(700,200)")
 			  .selectAll("text").data(words)
 			  .enter().append("text")
 			  .style("font-size", function(d) { return d.size + "px"; })

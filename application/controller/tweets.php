@@ -21,8 +21,8 @@ class Tweets extends Locations{
 	public function index() {
 
 		$tweetsmodel = new Tweetsmodel;
-		$tweets = $tweetsmodel->getTweets();
-
+		$tweets = $tweetsmodel->getTweets();		
+		
 		$this->getTweetTags();
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 		
@@ -37,6 +37,15 @@ class Tweets extends Locations{
 		//$this->setLocations($tweets);
 
 		return $AverageTweetsJSON;
+
+	}
+
+	public function getRecentTweets() {
+
+		$tweetsmodel = new Tweetsmodel;
+		$recent_tweets = $tweetsmodel->getRecentTweets();
+
+		return $recent_tweets;
 
 	}
 

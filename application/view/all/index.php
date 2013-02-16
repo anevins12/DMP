@@ -6,7 +6,8 @@
 
 	$tweets = new Tweets();
 	$allTweets = $tweets->index();
-
+	$recentTweets = $tweets->getRecentTweets();
+	
 ?>
 <html>
 	<head>
@@ -103,6 +104,15 @@ circle {
 		<div id="tagCloud">
 
 		</div>
+	</div>
+
+	<div id="recentTweets">
+		<h2>Recent Tweets</h2>
+		<ul>
+		<?php foreach ( $recentTweets as $tweet ) {?>
+			<li> <?php echo $tweet->tweet_text; ?> </li>
+		<?php } ?>
+		</ul>
 	</div>
 
 

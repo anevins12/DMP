@@ -8,6 +8,41 @@ class Tweetsmodel {
 		include_once( dirname(__FILE__) . '/../config/database.php' );
 	}
 
+	public function getRecentTweets() {
+		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
+		$error = '';
+
+		if ( $mysqli->connect_errno ) {
+			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+
+		$query = "SELECT * FROM $this->tableName
+				  WHERE `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i feel%'
+				  OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i am feeling%'
+				  OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i\'m feeling%'
+				  OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%i dont feel%'
+				  OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%I\'m%'
+				  OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%Im%'
+		          OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%I am%'
+			 	  OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me%'
+				  ORDER BY `created_at` DESC LIMIT 0, 10";
+		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
+
+		if ( $result ) {
+
+			while ( $row = $result->fetch_object() ){
+					$allTweets[] = $row;
+			}
+
+		}
+
+		else {
+			return $error .= '\n No Tweets Retrieved.';
+		}
+
+		return $allTweets ;
+	}
+
 	public function getTweets( $order = NULL, $limit = NULL ) {
 		
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
