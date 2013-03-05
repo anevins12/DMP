@@ -431,25 +431,28 @@ h3 span.halloween {
 	border: none;
 }
 
-#cities svg {
+#cities .bubble svg {
 	width: 100%;
-	top: 0px;
 	position: relative;
 }
 
-#cities svg circle:hover {
+#cities .bubble svg circle:hover {
 	stroke-width: 4px !important;
 	stroke: #CD0A1A !important;
 	-webkit-transition: all .2s ease-in-out;
+	cursor: pointer;
 }
 
-#cities svg circle {
-	-webkit-transform: scale(1);
+#cities .bubble svg circle:active {
+	stroke-dasharray: 8 4;
+	cursor: move;
+}
+
+#cities .bubble svg circle {
 	z-index: 1;
 }
 
-#cities svg circle:hover {
-	-webkit-transform: scale(1.2);
+#cities .bubble svg circle:hover {
 }
 
 #cities .tabContainer {
@@ -520,7 +523,7 @@ h1,h2 {
 
 #cities {
 
-	background: url(http://fc02.deviantart.net/fs71/f/2011/311/c/1/christmas_snow_wallpaper_by_dweechullie-d4fe2k2.jpg) no-repeat;
+	background: url(/application/assets/i/snowflake.jpg) no-repeat;
 	background-size: 100%;
 
 }
@@ -571,7 +574,7 @@ h2, p, li {
 
 #quantities {
 	position: absolute;
-	top: 290px;
+	
 	left: 20px;
 }
 
@@ -665,6 +668,10 @@ h1 {
 	margin-bottom: 20px;
 }
 
+#recentTweets {
+	margin-bottom: 20px;
+}
+
 #recentTweets ul {
 	text-align: center;
 }
@@ -675,6 +682,8 @@ h1 {
 	color: #555;
 	padding: 10px;
 	font-size: 17px;
+	display: inline-block;
+	margin: 0 10px;
 }
 
 #recentTweets li:first-child {
@@ -684,3 +693,145 @@ h1 {
 #recentTweets h2 {
 	margin-top: 10px;
 }
+
+#recentTweets span {
+	margin-right: 10px;
+}
+
+#sadTagCloud,
+#happyTagCloud {
+	float: left;
+	width: 600px;
+}
+
+#tags {
+	overflow: hidden;
+}
+
+#tags h2 {
+	margin-bottom: 20px;
+}
+
+#key {
+	position: absolute;
+	top: -30px;
+	right: 0;
+	border-radius: 0;
+	width: 110px;
+	background: #fcfcfc;
+}
+
+#key .circle {
+	height: 20px;
+	width: 20px;
+	display: block;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+#key .circle.happy {
+	background: #b1b1b1;
+}
+
+#key .circle.sad {
+	background: #3c3c3c;
+}
+
+#key li {
+	color: #000;
+	font-size: 12px;
+	float: left;
+}
+
+#key li:nth-child(2n+1) {
+	clear: left;
+}
+
+#key li:nth-child(2n) {
+	line-height: 41px;
+	vertical-align: middle;
+}
+
+#cities {
+	position: relative;
+}
+
+div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left: 300px}
+
+#test2 {width: 100px; height: 100px; padding: 0.5em;border:2px solid; z-index: 100;}
+
+.ui-state-highlight  {
+	background: red !important;
+	
+}
+
+#sidebar {
+	width: 100px;
+	position: absolute;
+	z-index: 10000;
+	top: 100px;
+}
+
+#sidebar #opacity {
+	position: relative;
+	background: black;
+		/* Required for IE 5, 6, 7 */
+	/* ...or something to trigger hasLayout, like zoom: 1; */
+	width: 100%;
+	width: 120px;
+	height: 75px;
+
+	/* Theoretically for IE 8 & 9 (more valid) */
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+	/* This works in IE 8 & 9 too */
+	/* ... but also 5, 6, 7 */
+	filter: alpha(opacity=50);
+
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.5;
+
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.5;
+
+	/* Modern!
+	/* Firefox 0.9+, Safari 2?, Chrome any?
+	/* Opera 9+, IE 9+ */
+	opacity: 0.5;
+}
+
+#sidebar ul {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: block;
+	width: 100px;
+}
+
+#sidebar a {
+	margin-bottom: 10px;
+	display: block;
+	color: #f3f3f3;
+	text-decoration: underline;
+}
+
+#sidebar a:hover {
+	color: white;
+}
+
+.container {
+	width: 1350px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#tags .container {
+	width: 1220px;
+}
+
+#desc .container {
+	width: 800px;
+}
+

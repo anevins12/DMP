@@ -505,9 +505,9 @@ function happiestCitiesImproved(nodes) {
 
 	var nodes = nodes;
 
-	var margin = {top: 0, right: 0, bottom: 0, left: 0},
+	var margin = {top: 0, right: 150, bottom: 0, left: 0},
 		width = 1170 - margin.left - margin.right,
-		height = 400 - margin.top - margin.bottom;
+		height = 400 ;
 
 	var n = 20,
 		m = 1,
@@ -538,7 +538,7 @@ function happiestCitiesImproved(nodes) {
 	var svg = d3.select("#christmas-bubble").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
-		.append("g").attr("transform", "translate(" + 200 + "," + margin.top + ")")
+		.append("g").attr("transform", "translate(" + 400 + "," + 0 + ")")
 		;
 
 	var circle = svg.selectAll("circle")
@@ -558,6 +558,7 @@ function happiestCitiesImproved(nodes) {
 		.on("mouseout", mouseout)
 		.attr("r", function(d) { return d.radius; })
 		.call(force.drag);
+
 
 	//	.append("text")
 
@@ -587,8 +588,8 @@ function happiestCitiesImproved(nodes) {
 
 		div
 		.text(d.name)
-		.style("left", (d3.event.pageX) + 30 + "px")
-		.style("top", (d3.event.pageY)  + 30 + "px")
+		.style("left", (d3.event.pageX) + - 30 + "px")
+		.style("top", (d3.event.pageY)  + - 170 + "px")
 		.style("font-size", "200%");
 
 		div.append("image")
@@ -680,17 +681,53 @@ function happiestCitiesImproved(nodes) {
 
 }
 
-function tagCloud() {
+function sadTagCloud() {
 
-	d3.json("../../assets/json/tweetTags.json", function(json) {
+	d3.json("../../assets/json/sadTweetTags.json", function(json) {
 
 	var fill = d3.scale.ordinal()
 		.range([ "#5B5B5B", "#727272", "#848484", "#969696", "#A8A8A8", "#BABABA", "#CECECE"]);
 
-
-	  d3.layout.cloud().size([1300, 400])
+	  d3.layout.cloud().size([600, 400])
 		  .words(json.map(function(d) {
-				return {text: d.word, size: d.sentiment * 50 , tweet: d.tweet};
+				return {text: d.word, size: d.sentiment * 25 , tweet: d.tweet};
+		   }))
+		  .rotate(function(d) { return ~~(Math.random() * 0) * 90; })
+		  .font("Impact")
+		  .fontSize(function(d) { return d.size; })
+		  .on("end", draw)
+		  .start();
+
+	  function draw(words) { 
+		  d3.select("#sadTagCloud").append("svg")
+			  .attr("height", 370)
+			  .append("g").attr("transform", "translate(300,200)")
+			  .selectAll("text").data(words)
+			  .enter().append("text")
+			  .style("font-size", function(d) { return d.size + "px"; })
+			  .style("font-family", "Impact")
+			  .style("fill", function(d, i) { return fill(i); })
+			  .attr("text-anchor", "middle")
+			  .attr("transform", function(d) {
+				  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+			  })
+			  .text(function(d) { return d.text; }).append("svg:title")
+			  .text(function(d) { return d.tweet; } );
+		  }
+	});
+
+}
+
+function happyTagCloud() {
+
+	d3.json("../../assets/json/happyTweetTags.json", function(json) {
+
+	var fill = d3.scale.ordinal()
+		.range([ "#DAE3E6", "#d1dce0", "#E3EAEC", "#EDF1F3", "#F6F8F9", "#DFEEF4", "#C8D2D6", "#CED4D6"]);
+
+	  d3.layout.cloud().size([600, 400])
+		  .words(json.map(function(d) { 
+				return {text: d.word, size: d.sentiment * 6};
 		   }))
 		  .rotate(function(d) { return ~~(Math.random() * 0) * 90; })
 		  .font("Impact")
@@ -699,9 +736,10 @@ function tagCloud() {
 		  .start();
 
 	  function draw(words) {
-		  d3.select("#tagCloud").append("svg")
+		  console.log(words);
+		  d3.select("#happyTagCloud").append("svg")
 			  .attr("height", 370)
-			  .append("g").attr("transform", "translate(700,200)")
+			  .append("g").attr("transform", "translate(300,200)")
 			  .selectAll("text").data(words)
 			  .enter().append("text")
 			  .style("font-size", function(d) { return d.size + "px"; })

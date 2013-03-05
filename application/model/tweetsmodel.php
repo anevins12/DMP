@@ -79,7 +79,8 @@ OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me%'  ". ( $order ? " O
 
 	}
 
-	public function getTweetTags() {
+	public function getSadTweetTags() {
+
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
 		$error = '';
 
@@ -118,10 +119,58 @@ OR `sentiment` IS NOT NULL AND `tweet_text` LIKE '%makes me%'  ". ( $order ? " O
 
 		foreach ( $allTweets as $tweet ) {
 
-			$tags[] = array('word' => $tweet->tag, 'sentiment' => $tweet->sentiment, 'tweet' => $tweet->tweet_text);
+			$tags[] = array('word' => $tweet->tag, 'sentiment' => $tweet->sentiment);
 
 		}	
 		
+		$tags = json_encode($tags);
+		return $tags;
+
+	}
+
+	public function getHappyTweetTags() {
+		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
+		$error = '';
+
+		if ( $mysqli->connect_errno ) {
+			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+
+		$query = "SELECT DISTINCT * FROM $this->tableName
+				INNER JOIN tweet_tags
+				ON tweets.tweet_id = tweet_tags.tweet_id
+				WHERE `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i feel%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i am feeling%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i\'m feeling%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%i dont feel%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%I\'m%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%Im%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%I am%'
+				OR `sentiment` > 5 AND `sentiment` IS NOT NULL AND `sentiment` <> 0 AND `tweet_text` LIKE '%makes me%'
+				LIMIT 20";
+
+		$result = $mysqli->query( $query, MYSQLI_USE_RESULT );
+
+		if ( $result ) {
+
+			while ( $row = $result->fetch_object() ){
+					$allTweets[] = $row;
+			}
+
+		}
+
+		else {
+			return $error .= '\n No Tweets Retrieved.';
+		}
+
+		$tags = array();
+
+		foreach ( $allTweets as $tweet ) {
+
+			$tags[] = array('word' => $tweet->tag, 'sentiment' => $tweet->sentiment);
+
+		}
+
 		$tags = json_encode($tags);
 		return $tags;
 

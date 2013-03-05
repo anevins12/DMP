@@ -27,92 +27,138 @@
 		<script type="text/javascript" src="/application/assets/js/geom.js" language="javascript"></script>
 		<script src="http://mbostock.github.com/d3/talk/20110921/d3/d3.js" language="javascript"></script>
 
-<meta charset="utf-8">
-<style>
+	<meta charset="utf-8">
+	<style>
 
-circle {
-  stroke: #fff;
-}
+	circle {
+	  stroke: #fff;
+	}
 
-</style>
-
-<script src="http://mbostock.github.com/d3/d3.js?2.7.4"></script>
-<script src="http://d3js.org/d3.v2.js"></script>
-
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+	<script src="http://mbostock.github.com/d3/d3.js?2.7.4"></script>
+	<script src="http://d3js.org/d3.v2.js"></script>
 
 	</head>
 
 	<body>
-		
+
+	<div id="sidebar">
+		<div id="opacity">
+		</div>
+		<ul>
+			<li><a href="#christmas-bubble">Happiest Cities</a></li>
+			<li><a href="#tags">Tweet Tags</a></li>
+			<li><a href="#recentTweets">Recent Tweets</a></li>
+		</ul>
+	</div>
 	<div id="intro">
 		<h2>Explore the Christmas spirit of 2012</h2>
 	</div>
 
 	<div id="desc">
-
-	<h2>Quick Explanation</h2>
-	<p>This webpage illustrates feelings of each main city of the United Kingdom, that was recorded from December 22 - December 29 2012.</p>
-	<ul>
-		<li>Feelings are:
+		<div class="container">
+			<h2>Quick Explanation</h2>
+			<p>This webpage illustrates feelings of each main city of the United Kingdom, that was recorded from December 22 - December 29 2012.</p>
 			<ul>
-				<li>Represented in grayscale.
-				<li>The brighter the gray, the happier the feeling. The darker the gray, the more sad the feeling
-				</li>
-				<li>
-					Feelings are also represented in numeric values, from 0 to 10. 
+				<li>Feelings are:
 					<ul>
-						<li>0 represents the worst feeling and 10 the happiest.</li>
-						<li>Smiley faces illustrate these values.</li>
+						<li>Represented in grayscale.
+						<li>The brighter the gray, the happier the feeling. The darker the gray, the more sad the feeling
+						</li>
+						<li>
+							Feelings are also represented in numeric values, from 0 to 10.
+							<ul>
+								<li>0 represents the worst feeling and 10 the happiest.</li>
+								<li>Smiley faces illustrate these values.</li>
+							</ul>
+						</li>
 					</ul>
 				</li>
 			</ul>
-		</li>
-	</ul>
-
+		</div>
 	</div>
 
 	<div id="cities">
+		<div class="container">
+			<div id="quantities">
 
-		<div id="christmas-bubble">
+				<div class="desc">
+					<p>Out of 5002 tweets</p>
+				</div>
+
+			</div>
+			
+			<div id="key">
+				<ul>
+					<li><span class="circle happy"></span></li><li>Happy City</li>
+					<li><span class="circle sad"></span></li><li>Sad City</li>
+				</ul>
+			</div>
+			<div class="bubble">
+				<div id="christmas-bubble">
+				</div>
+
+				<h1>christmas spirit</h1>
+				<h2>data gathered from UK-based tweets of twitter</h2>
+			</div>
 		</div>
-
-		<h1>christmas spirit</h1>
-		<h2>data gathered from UK-based tweets of twitter</h2>
 		
-	</div>
-		
-	<div id="quantities">
-
-		<div class="desc">
-			<p>Out of 5002 tweets</p>
-<!--			<p>
-				Feelings are represented in grayscales. The brighter the gray, the happier the feeling. The darker the gray, the more sad the feeling
-			</p>
-			<p>
-				Feelings are also represented in numeric values, from 0 to 10. Zero represents the worst feeling and Ten the happiest.
-			</p>
-			<p>
-				Smiley faces have been used to help communicate the feeling of these 0 to 10 values.
-			</p>-->
-		</div>
-
 	</div>
 
 	<div id="tags">
-		<h2>Sad Tweet Tags</h2>
-		<span class="pointer"></span>
-		<div id="tagCloud">
-
+		<div class="container">
+			<div id="sadTagCloud">
+				<h2>Sad Tags</h2>
+			</div>
+			<div id="happyTagCloud">
+				<h2>Happy Tags</h2>
+			</div>
 		</div>
 	</div>
 
 	<div id="recentTweets">
+		<div class="container">
 		<h2>Recent Tweets</h2>
-		<ul>
-		<?php foreach ( $recentTweets as $tweet ) {?>
-			<li> <?php echo $tweet->tweet_text; ?> </li>
-		<?php } ?>
-		</ul>
+			<ul>
+			<?php foreach ( $recentTweets as $tweet ) {?>
+				<li>
+				<?php
+				$imgPath = '../../assets/i/smiley-';
+				$imgExt = '.png';
+				$tweet->sentiment = (float)$tweet->sentiment;
+				$sentiment = $tweet->sentiment;
+
+				if ( $sentiment < 1 ) {
+					$img = $imgPath . 0 . $imgExt;
+				}
+				elseif ( $sentiment < 3 ) {
+					$img = $imgPath . 2 . $imgExt;
+				}
+				elseif ( $sentiment < 4 ) {
+					$img = $imgPath . 3 . $imgExt;
+				}
+				elseif ( $sentiment < 5 ) {
+					$img = $imgPath . 4 . $imgExt;
+				}
+				elseif ( $sentiment < 6 ) {
+					$img = $imgPath . 5 . $imgExt;
+				}
+				elseif ( $sentiment < 7 ) {
+					$img = $imgPath . 5 . $imgExt;
+				}
+				elseif ( $sentiment < 9 ) {
+					$img = $imgPath . 8 . $imgExt;
+				}
+				elseif ( $sentiment < 10 ) {
+					$img = $imgPath . 9 . $imgExt;
+				}
+				echo "<span><img src='$img' alt='feeling' /></span>";
+				echo $tweet->tweet_text;
+				?> </li>
+			<?php } ?>
+			</ul>
+		</div>
 	</div>
 
 
@@ -126,7 +172,8 @@ circle {
 		<script>
 			var data = <?php echo $allTweets ?>;
 			happiestCitiesImproved(data);
-			tagCloud();
+			sadTagCloud();
+			happyTagCloud();
 
 			//http://bl.ocks.org/3887193
 			var width = 400,
@@ -173,10 +220,61 @@ circle {
 				  .text(function(d) { return d.data.sentiment; });
 
 			});
+			
+			//http://css-tricks.com/scrollfollow-sidebar/
+			$(function() {
+
+				var $sidebar   = $("#sidebar"),
+					$window    = $(window),
+					offset     = $sidebar.offset(),
+					topPadding = 15;
+
+				$window.scroll(function() {
+					if ($window.scrollTop() > offset.top) {
+						$sidebar.stop().animate({
+							marginTop: $window.scrollTop() - offset.top + topPadding
+						});
+					} else {
+						$sidebar.stop().animate({
+							marginTop: 0
+						});
+					}
+				});
+
+				$('#sidebar a[href^="#"]').bind('click.smoothscroll',function (e) {
+					e.preventDefault();
+					var target = this.hash;
+						$target = $(target);
+					$('html, body').stop().animate({
+						'scrollTop': $target.offset().top
+					}, 500, 'swing', function () {
+						window.location.hash = target;
+					});
+				});
+			});
 
 
+//		  $(function() {
+//
+//			$( "circle" ).click(function(){
+//				$(this).draggable();
+//				$(this).mouseup(function(d) {
+//					console.log("HII");
+//				});
+//			});
+//
+//			$( "#test" ).droppable({
+//			  drop: function( event, ui ) {
+//				$( this )
+//				  .toggleClass( "ui-state-highlight" )
+//				  .find( "p" )
+//					.html( "Dropped!" );
+//			  }
+//			});
+//
+//		  });
 
-		</script>
 
+</script>
 </body>
 </html>

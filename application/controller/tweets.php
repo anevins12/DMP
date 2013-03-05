@@ -89,9 +89,11 @@ class Tweets extends Locations{
 
 	public function getTweetTags() {
 		$tweetsmodel = new Tweetsmodel;
-		$tags= $tweetsmodel->getTweetTags();
+		$sadTags= $tweetsmodel->getSadTweetTags();
+		$happyTags = $tweetsmodel->getHappyTweetTags();
 	
-		$this->writeJSONFile($tags, 'tweetTags');
+//		$this->writeJSONFile($sadTags, 'sadTweetTags');
+//		$this->writeJSONFile($happyTags, 'happyTweetTags');
 	}
 
 	public function getANEWSentiment( $tweet ) {
@@ -550,7 +552,7 @@ state,city,lat,lon,conditions&limit=100000');
 						}
 
 				}
-			}
+			} 
 
 			$output = array();
 			$counts = array();
@@ -592,7 +594,7 @@ state,city,lat,lon,conditions&limit=100000');
 				}
 				
 				$quan = count($tweets) -1;
-				if ( $quan > 1 ) {
+				if ( $quan > 1 ) { 
 					$index = rand( 0, $quan );
 					$random_tweet = $tweets[$index];
 					$city['tweet'] = $random_tweet;
@@ -605,7 +607,6 @@ state,city,lat,lon,conditions&limit=100000');
 				$new_array[$city['name']] = array(floatval($city['sentiment']), $city['tweet']);
 
 			}
-			
 
 			//construct new array
 			foreach ($new_array as $k => $v) {
@@ -614,6 +615,7 @@ state,city,lat,lon,conditions&limit=100000');
 				$average = array_sum($v)/$division;
 
 				$output[] = array('name' => $k, 'sentiment' => $v[0], 'tweet' => $v[1]);
+				
 			}
 
 			$output = json_encode($output);
