@@ -26,7 +26,7 @@ class Tweets extends Locations{
 		$this->getTweetTags();
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 		
-		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities-13-02-2013');
+//		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities-13-02-2013');
 //		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
 
 		//set the sentiment values
@@ -552,8 +552,9 @@ state,city,lat,lon,conditions&limit=100000');
 						}
 
 				}
-			} 
 
+			}
+			
 			$output = array();
 			$counts = array();
 
@@ -582,6 +583,7 @@ state,city,lat,lon,conditions&limit=100000');
 				$names_and_tweets[] = array( $city['name'] => $city['tweet'] );
 				
 			}
+			
 			foreach ($cities as $city) {
 			
 				$tweets = array();
@@ -592,6 +594,9 @@ state,city,lat,lon,conditions&limit=100000');
 					}
 
 				}
+
+				//store the city name and all of its tweets so you can access them later
+				$cities_tweets[] = array( $city['name'] => $tweets );
 				
 				$quan = count($tweets) -1;
 				if ( $quan > 1 ) { 
@@ -607,6 +612,7 @@ state,city,lat,lon,conditions&limit=100000');
 				$new_array[$city['name']] = array(floatval($city['sentiment']), $city['tweet']);
 
 			}
+			
 
 			//construct new array
 			foreach ($new_array as $k => $v) {
@@ -618,8 +624,11 @@ state,city,lat,lon,conditions&limit=100000');
 				
 			}
 
-			$output = json_encode($output);
-			return $output;
+			$data = array();
+			$data['json'] = json_encode($output);
+			$data['cities_tweets'] = $cities_tweets;
+			
+			return $data;
 
 		}
 	

@@ -5,9 +5,8 @@
 	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
 
 	$tweets = new Tweets();
-	$allTweets = $tweets->index();
-	$recentTweets = $tweets->getRecentTweets();
-	
+	$allTweets = $tweets->index(); 
+	$recentTweets = $tweets->getRecentTweets(); 
 ?>
 <html>
 	<head>
@@ -170,7 +169,7 @@
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 
 		<script>
-			var data = <?php echo $allTweets ?>;
+			var data = <?php  echo $allTweets['json']; ?>;
 			happiestCitiesImproved(data);
 			sadTagCloud();
 			happyTagCloud();
