@@ -1,0 +1,830 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Phirehose</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Buzz.html"><i class="icon-th"></i> Buzz</a></li>
+<li><a href="../namespaces/Composer.html"><i class="icon-th"></i> Composer</a></li>
+<li><a href="../namespaces/Geocoder.html"><i class="icon-th"></i> Geocoder</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">933</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Create a new Phirehose object attached to the appropriate twitter stream method."><span class="description">Create a new Phirehose object attached to the appropriate twitter stream method.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_consume" title="consume :: Connects to the stream API and consumes the stream."><span class="description">Connects to the stream API and consumes the stream.</span><pre>consume()</pre></a></li>
+<li class="method public "><a href="#method_enqueueStatus" title="enqueueStatus :: This is the one and only method that must be implemented additionally."><span class="description">This is the one and only method that must be implemented additionally.</span><pre>enqueueStatus()</pre></a></li>
+<li class="method public "><a href="#method_getFollow" title="getFollow :: Returns an array of followed Twitter userIds (integers)"><span class="description">Returns an array of followed Twitter userIds (integers)</span><pre>getFollow()</pre></a></li>
+<li class="method public "><a href="#method_getLastErrorMsg" title="getLastErrorMsg :: Returns the last error message (TCP or HTTP) that occured with the streaming API or client."><span class="description">Returns the last error message (TCP or HTTP) that occured with the streaming API or client.</span><pre>getLastErrorMsg()</pre></a></li>
+<li class="method public "><a href="#method_getLastErrorNo" title="getLastErrorNo :: Returns the last error number that occured with the streaming API or client."><span class="description">Returns the last error number that occured with the streaming API or client.</span><pre>getLastErrorNo()</pre></a></li>
+<li class="method public "><a href="#method_getLocations" title="getLocations :: Returns an array of 4 element arrays that denote the monitored location bounding boxes for tweets using the
+Geotagging API."><span class="description">Returns an array of 4 element arrays that denote the monitored location bounding boxes for tweets using the
+Geotagging API.</span><pre>getLocations()</pre></a></li>
+<li class="method public "><a href="#method_getTrack" title="getTrack :: Returns an array of keywords being tracked"><span class="description">Returns an array of keywords being tracked</span><pre>getTrack()</pre></a></li>
+<li class="method public "><a href="#method_heartbeat" title="heartbeat :: Reports a periodic heartbeat."><span class="description">Reports a periodic heartbeat.</span><pre>heartbeat()</pre></a></li>
+<li class="method public "><a href="#method_setCount" title="setCount :: Sets the number of previous statuses to stream before transitioning to the live stream."><span class="description">Sets the number of previous statuses to stream before transitioning to the live stream.</span><pre>setCount()</pre></a></li>
+<li class="method public "><a href="#method_setFollow" title="setFollow :: Returns public statuses from or in reply to a set of users."><span class="description">Returns public statuses from or in reply to a set of users.</span><pre>setFollow()</pre></a></li>
+<li class="method public "><a href="#method_setLocations" title="setLocations :: Specifies a set of bounding boxes to track as an array of 4 element lon/lat pairs denoting &lt;south-west point&gt;,
+&lt;north-east point&gt;."><span class="description">Specifies a set of bounding boxes to track as an array of 4 element lon/lat pairs denoting &lt;south-west point&gt;,
+&lt;north-east point&gt;.</span><pre>setLocations()</pre></a></li>
+<li class="method public "><a href="#method_setLocationsByCircle" title="setLocationsByCircle :: Convenience method that sets location bounding boxes by an array of lon/lat/radius sets, rather than manually
+specified bounding boxes."><span class="description">Convenience method that sets location bounding boxes by an array of lon/lat/radius sets, rather than manually
+specified bounding boxes.</span><pre>setLocationsByCircle()</pre></a></li>
+<li class="method public "><a href="#method_setTrack" title="setTrack :: Specifies keywords to track."><span class="description">Specifies keywords to track.</span><pre>setTrack()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_checkFilterPredicates" title="checkFilterPredicates :: Method called as frequently as practical (every 5+ seconds) that is responsible for checking if filter predicates
+(ie: track words or follow IDs) have changed."><span class="description">Method called as frequently as practical (every 5+ seconds) that is responsible for checking if filter predicates
+(ie: track words or follow IDs) have changed.</span><pre>checkFilterPredicates()</pre></a></li>
+<li class="method protected "><a href="#method_connect" title="connect :: Connects to the stream URL using the configured method."><span class="description">Connects to the stream URL using the configured method.</span><pre>connect()</pre></a></li>
+<li class="method protected "><a href="#method_disconnect" title="disconnect :: Performs forcible disconnect from stream (if connected) and cleanup."><span class="description">Performs forcible disconnect from stream (if connected) and cleanup.</span><pre>disconnect()</pre></a></li>
+<li class="method protected "><a href="#method_getAuthorizationHeader" title="getAuthorizationHeader :: "><span class="description">getAuthorizationHeader()
+        </span><pre>getAuthorizationHeader()</pre></a></li>
+<li class="method protected "><a href="#method_log" title="log :: Basic log function that outputs logging to the standard error_log() handler."><span class="description">Basic log function that outputs logging to the standard error_log() handler.</span><pre>log()</pre></a></li>
+<li class="method protected "><a href="#method_statusUpdate" title="statusUpdate :: Called every $this-&gt;avgPeriod (default=60) seconds, and this default implementation
+calculates some rates, logs them, and resets the counters."><span class="description">Called every $this-&gt;avgPeriod (default=60) seconds, and this default implementation
+calculates some rates, logs them, and resets the counters.</span><pre>statusUpdate()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method_reconnect" title="reconnect :: Reconnects as quickly as possible."><span class="description">Reconnects as quickly as possible.</span><pre>reconnect()</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_avgElapsed" title="$avgElapsed :: Seconds since the last call to statusUpdate()"><span class="description"></span><pre>$avgElapsed</pre></a></li>
+<li class="property protected "><a href="#property_avgPeriod" title="$avgPeriod :: "><span class="description"></span><pre>$avgPeriod</pre></a></li>
+<li class="property protected "><a href="#property_buff" title="$buff :: "><span class="description"></span><pre>$buff</pre></a></li>
+<li class="property protected "><a href="#property_conn" title="$conn :: "><span class="description"></span><pre>$conn</pre></a></li>
+<li class="property protected "><a href="#property_connectFailuresMax" title="$connectFailuresMax :: "><span class="description"></span><pre>$connectFailuresMax</pre></a></li>
+<li class="property protected "><a href="#property_connectTimeout" title="$connectTimeout :: "><span class="description"></span><pre>$connectTimeout</pre></a></li>
+<li class="property protected "><a href="#property_count" title="$count :: "><span class="description"></span><pre>$count</pre></a></li>
+<li class="property protected "><a href="#property_enqueueSpent" title="$enqueueSpent :: Total number of seconds (fractional) spent in the enqueueStatus() calls (i.e."><span class="description"></span><pre>$enqueueSpent</pre></a></li>
+<li class="property protected "><a href="#property_enqueueTimeMS" title="$enqueueTimeMS :: Time spent on each call to enqueueStatus() (i.e."><span class="description"></span><pre>$enqueueTimeMS</pre></a></li>
+<li class="property protected "><a href="#property_fdrPool" title="$fdrPool :: "><span class="description"></span><pre>$fdrPool</pre></a></li>
+<li class="property protected "><a href="#property_filterChanged" title="$filterChanged :: "><span class="description"></span><pre>$filterChanged</pre></a></li>
+<li class="property protected "><a href="#property_filterCheckCount" title="$filterCheckCount :: The number of calls to $this-&gt;checkFilterPredicates()."><span class="description"></span><pre>$filterCheckCount</pre></a></li>
+<li class="property protected "><a href="#property_filterCheckMin" title="$filterCheckMin :: "><span class="description"></span><pre>$filterCheckMin</pre></a></li>
+<li class="property protected "><a href="#property_filterCheckSpent" title="$filterCheckSpent :: Total number of seconds (fractional) spent in the checkFilterPredicates() calls"><span class="description"></span><pre>$filterCheckSpent</pre></a></li>
+<li class="property protected "><a href="#property_filterCheckTimeMS" title="$filterCheckTimeMS :: Like $enqueueTimeMS but for the checkFilterPredicates() function."><span class="description"></span><pre>$filterCheckTimeMS</pre></a></li>
+<li class="property protected "><a href="#property_filterUpdMin" title="$filterUpdMin :: "><span class="description"></span><pre>$filterUpdMin</pre></a></li>
+<li class="property protected "><a href="#property_followIds" title="$followIds :: "><span class="description"></span><pre>$followIds</pre></a></li>
+<li class="property protected "><a href="#property_format" title="$format :: "><span class="description"></span><pre>$format</pre></a></li>
+<li class="property protected "><a href="#property_httpBackoff" title="$httpBackoff :: "><span class="description"></span><pre>$httpBackoff</pre></a></li>
+<li class="property protected "><a href="#property_httpBackoffMax" title="$httpBackoffMax :: "><span class="description"></span><pre>$httpBackoffMax</pre></a></li>
+<li class="property protected "><a href="#property_idlePeriod" title="$idlePeriod :: Number of seconds since the last tweet arrived (or the keep-alive newline)"><span class="description"></span><pre>$idlePeriod</pre></a></li>
+<li class="property protected "><a href="#property_idleReconnectTimeout" title="$idleReconnectTimeout :: "><span class="description"></span><pre>$idleReconnectTimeout</pre></a></li>
+<li class="property protected "><a href="#property_lastErrorMsg" title="$lastErrorMsg :: "><span class="description"></span><pre>$lastErrorMsg</pre></a></li>
+<li class="property protected "><a href="#property_lastErrorNo" title="$lastErrorNo :: "><span class="description"></span><pre>$lastErrorNo</pre></a></li>
+<li class="property protected "><a href="#property_locationBoxes" title="$locationBoxes :: "><span class="description"></span><pre>$locationBoxes</pre></a></li>
+<li class="property protected "><a href="#property_maxIdlePeriod" title="$maxIdlePeriod :: The maximum value $this-&gt;idlePeriod has reached."><span class="description"></span><pre>$maxIdlePeriod</pre></a></li>
+<li class="property protected "><a href="#property_method" title="$method :: "><span class="description"></span><pre>$method</pre></a></li>
+<li class="property protected "><a href="#property_password" title="$password :: "><span class="description"></span><pre>$password</pre></a></li>
+<li class="property protected "><a href="#property_readTimeout" title="$readTimeout :: "><span class="description"></span><pre>$readTimeout</pre></a></li>
+<li class="property protected "><a href="#property_reconnect" title="$reconnect :: "><span class="description"></span><pre>$reconnect</pre></a></li>
+<li class="property protected "><a href="#property_statusCount" title="$statusCount :: Number of tweets received."><span class="description"></span><pre>$statusCount</pre></a></li>
+<li class="property protected "><a href="#property_statusRate" title="$statusRate :: The number of tweets received per second in previous minute; calculated fresh
+just before each call to statusUpdate()
+I.e."><span class="description"></span><pre>$statusRate</pre></a></li>
+<li class="property protected "><a href="#property_status_length_base" title="$status_length_base :: "><span class="description"></span><pre>$status_length_base</pre></a></li>
+<li class="property protected "><a href="#property_tcpBackoff" title="$tcpBackoff :: "><span class="description"></span><pre>$tcpBackoff</pre></a></li>
+<li class="property protected "><a href="#property_tcpBackoffMax" title="$tcpBackoffMax :: "><span class="description"></span><pre>$tcpBackoffMax</pre></a></li>
+<li class="property protected "><a href="#property_trackWords" title="$trackWords :: "><span class="description"></span><pre>$trackWords</pre></a></li>
+<li class="property protected "><a href="#property_userAgent" title="$userAgent :: "><span class="description"></span><pre>$userAgent</pre></a></li>
+<li class="property protected "><a href="#property_username" title="$username :: Member Attribs"><span class="description"></span><pre>$username</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_EARTH_RADIUS_KM" title="EARTH_RADIUS_KM :: "><span class="description">EARTH_RADIUS_KM</span><pre>EARTH_RADIUS_KM</pre></a></li>
+<li class="constant  "><a href="#constant_FORMAT_JSON" title="FORMAT_JSON :: "><span class="description">FORMAT_JSON</span><pre>FORMAT_JSON</pre></a></li>
+<li class="constant  "><a href="#constant_FORMAT_XML" title="FORMAT_XML :: "><span class="description">FORMAT_XML</span><pre>FORMAT_XML</pre></a></li>
+<li class="constant  "><a href="#constant_METHOD_FILTER" title="METHOD_FILTER :: "><span class="description">METHOD_FILTER</span><pre>METHOD_FILTER</pre></a></li>
+<li class="constant  "><a href="#constant_METHOD_FIREHOSE" title="METHOD_FIREHOSE :: "><span class="description">METHOD_FIREHOSE</span><pre>METHOD_FIREHOSE</pre></a></li>
+<li class="constant  "><a href="#constant_METHOD_RETWEET" title="METHOD_RETWEET :: "><span class="description">METHOD_RETWEET</span><pre>METHOD_RETWEET</pre></a></li>
+<li class="constant  "><a href="#constant_METHOD_SAMPLE" title="METHOD_SAMPLE :: "><span class="description">METHOD_SAMPLE</span><pre>METHOD_SAMPLE</pre></a></li>
+<li class="constant  "><a href="#constant_URL_BASE" title="URL_BASE :: Class constants"><span class="description">Class constants</span><pre>URL_BASE</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Phirehose"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Phirehose.html">Phirehose</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">A class that makes it easy to connect to and consume the Twitter stream via the Streaming API.</p>
+<div class="details">
+<div class="long_description"><p>Note: This is beta software - Please read the following carefully before using:
+ - http://code.google.com/p/phirehose/wiki/Introduction
+ - http://dev.twitter.com/pages/streaming_api</p></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="mailto:fenn.bailey@gmail.com">Fenn Bailey</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>0.2.gitmaster</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Create a new Phirehose object attached to the appropriate twitter stream method.</h2>
+<pre>__construct(string $username, string $password, string $method, string $format) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Methods are: METHOD_FIREHOSE, METHOD_RETWEET, METHOD_SAMPLE, METHOD_FILTER
+Formats are: FORMAT_JSON, FORMAT_XML</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="140dev.libraries.phirehose.phirehose.html#%5CPhirehose::METHOD_SAMPLE">\Phirehose::METHOD_SAMPLE</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="140dev.libraries.phirehose.phirehose.html#%5CPhirehose::FORMAT_JSON">\Phirehose::FORMAT_JSON</a></td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>string</code><p>Any twitter username</p></div>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code><p>Any twitter password</p></div>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$format</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_consume"></a><div class="element clickable method public method_consume" data-toggle="collapse" data-target=".method_consume .collapse">
+<h2>Connects to the stream API and consumes the stream.</h2>
+<pre>consume(boolean $reconnect) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Each status update in the stream will cause a call to the
+handleStatus() method.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\handleStatus()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$reconnect</h4>
+<code>boolean</code><p>Reconnects as per recommended</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.errorexception.php">\ErrorException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_enqueueStatus"></a><div class="element clickable method public method_enqueueStatus" data-toggle="collapse" data-target=".method_enqueueStatus .collapse">
+<h2>This is the one and only method that must be implemented additionally.</h2>
+<pre>enqueueStatus(string $status) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>As per the streaming API documentation,
+statuses should NOT be processed within the same process that is performing collection</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$status</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_getFollow"></a><div class="element clickable method public method_getFollow" data-toggle="collapse" data-target=".method_getFollow .collapse">
+<h2>Returns an array of followed Twitter userIds (integers)</h2>
+<pre>getFollow() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getLastErrorMsg"></a><div class="element clickable method public method_getLastErrorMsg" data-toggle="collapse" data-target=".method_getLastErrorMsg .collapse">
+<h2>Returns the last error message (TCP or HTTP) that occured with the streaming API or client.</h2>
+<pre>getLastErrorMsg() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>State is cleared upon
+successful reconnect</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getLastErrorNo"></a><div class="element clickable method public method_getLastErrorNo" data-toggle="collapse" data-target=".method_getLastErrorNo .collapse">
+<h2>Returns the last error number that occured with the streaming API or client.</h2>
+<pre>getLastErrorNo() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Numbers correspond to either the
+fsockopen() error states (in the case of TCP errors) or HTTP error codes from Twitter (in the case of HTTP errors).</p>
+
+<p>State is cleared upon successful reconnect.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getLocations"></a><div class="element clickable method public method_getLocations" data-toggle="collapse" data-target=".method_getLocations .collapse">
+<h2>Returns an array of 4 element arrays that denote the monitored location bounding boxes for tweets using the
+Geotagging API.</h2>
+<pre>getLocations() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\setLocations()</a></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getTrack"></a><div class="element clickable method public method_getTrack" data-toggle="collapse" data-target=".method_getTrack .collapse">
+<h2>Returns an array of keywords being tracked</h2>
+<pre>getTrack() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_heartbeat"></a><div class="element clickable method public method_heartbeat" data-toggle="collapse" data-target=".method_heartbeat .collapse">
+<h2>Reports a periodic heartbeat.</h2>
+<pre>heartbeat() : NULL</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Keep execution time minimal.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>NULL</code></div>
+</div></div>
+</div>
+<a id="method_setCount"></a><div class="element clickable method public method_setCount" data-toggle="collapse" data-target=".method_setCount .collapse">
+<h2>Sets the number of previous statuses to stream before transitioning to the live stream.</h2>
+<pre>setCount(integer $count) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Applies only to firehose
+and filter + track methods. This is generally used internally and should not be needed by client applications.
+Applies to: METHOD_FILTER, METHOD_FIREHOSE</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$count</h4>
+<code>integer</code>
+</div>
+</div></div>
+</div>
+<a id="method_setFollow"></a><div class="element clickable method public method_setFollow" data-toggle="collapse" data-target=".method_setFollow .collapse">
+<h2>Returns public statuses from or in reply to a set of users.</h2>
+<pre>setFollow(array $userIds) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Mentions ("Hello @user!") and implicit replies
+("@user Hello!" created without pressing the reply button) are not matched. It is up to you to find the integer
+IDs of each twitter user.
+Applies to: METHOD_FILTER</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$userIds</h4>
+<code>array</code><p>Array of Twitter integer userIDs</p></div>
+</div></div>
+</div>
+<a id="method_setLocations"></a><div class="element clickable method public method_setLocations" data-toggle="collapse" data-target=".method_setLocations .collapse">
+<h2>Specifies a set of bounding boxes to track as an array of 4 element lon/lat pairs denoting &lt;south-west point&gt;,
+&lt;north-east point&gt;.</h2>
+<pre>setLocations(array $boundingBoxes) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Only tweets that are both created using the Geotagging API and are placed from within a tracked
+bounding box will be included in the stream. The user's location field is not used to filter tweets. Bounding boxes
+are logical ORs and must be less than or equal to 1 degree per side. A locations parameter may be combined with
+track parameters, but note that all terms are logically ORd.</p>
+
+<p>NOTE: The argument order is Longitude/Latitude (to match the Twitter API and GeoJSON specifications).</p>
+
+<p>Applies to: METHOD_FILTER</p>
+
+<p>See: http://apiwiki.twitter.com/Streaming-API-Documentation#locations</p>
+
+<p>Eg:
+ setLocations(array(
+     array(-122.75, 36.8, -121.75, 37.8), // San Francisco
+     array(-74, 40, -73, 41),             // New York
+ ));</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$boundingBoxes</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_setLocationsByCircle"></a><div class="element clickable method public method_setLocationsByCircle" data-toggle="collapse" data-target=".method_setLocationsByCircle .collapse">
+<h2>Convenience method that sets location bounding boxes by an array of lon/lat/radius sets, rather than manually
+specified bounding boxes.</h2>
+<pre>setLocationsByCircle(array $locations) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Each array element should contain 3 element subarray containing a latitude, longitude and
+radius. Radius is specified in kilometers and is approximate (as boxes are square).</p>
+
+<p>NOTE: The argument order is Longitude/Latitude (to match the Twitter API and GeoJSON specifications).</p>
+
+<p>Eg:
+ setLocationsByCircle(array(
+     array(144.9631, -37.8142, 30), // Melbourne, 3km radius
+     array(-0.1262, 51.5001, 25),   // London 10km radius
+ ));</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\setLocations()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$locations</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_setTrack"></a><div class="element clickable method public method_setTrack" data-toggle="collapse" data-target=".method_setTrack .collapse">
+<h2>Specifies keywords to track.</h2>
+<pre>setTrack(array $trackWords) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Track keywords are case-insensitive logical ORs. Terms are exact-matched, ignoring
+punctuation. Phrases, keywords with spaces, are not supported. Queries are subject to Track Limitations.
+Applies to: METHOD_FILTER</p>
+
+<p>See: http://apiwiki.twitter.com/Streaming-API-Documentation#TrackLimiting</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$trackWords</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_checkFilterPredicates"></a><div class="element clickable method protected method_checkFilterPredicates" data-toggle="collapse" data-target=".method_checkFilterPredicates .collapse">
+<h2>Method called as frequently as practical (every 5+ seconds) that is responsible for checking if filter predicates
+(ie: track words or follow IDs) have changed.</h2>
+<pre>checkFilterPredicates() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If they have, they should be set using the setTrack() and setFollow()
+methods respectively within the overridden implementation.</p>
+
+<p>Note that even if predicates are changed every 5 seconds, an actual reconnect will not happen more frequently than
+every 2 minutes (as per Twitter Streaming API documentation).</p>
+
+<p>Note also that this method is called upon every connect attempt, so if your predicates are causing connection
+errors, they should be checked here and corrected.</p>
+
+<p>This should be implemented/overridden in any subclass implementing the FILTER method.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\setTrack()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\setFollow()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="140dev.libraries.phirehose.phirehose.html#%5CPhirehose::METHOD_FILTER">\Phirehose::METHOD_FILTER</a></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_connect"></a><div class="element clickable method protected method_connect" data-toggle="collapse" data-target=".method_connect .collapse">
+<h2>Connects to the stream URL using the configured method.</h2>
+<pre>connect() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.errorexception.php">\ErrorException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_disconnect"></a><div class="element clickable method protected method_disconnect" data-toggle="collapse" data-target=".method_disconnect .collapse">
+<h2>Performs forcible disconnect from stream (if connected) and cleanup.</h2>
+<pre>disconnect() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getAuthorizationHeader"></a><div class="element clickable method protected method_getAuthorizationHeader" data-toggle="collapse" data-target=".method_getAuthorizationHeader .collapse">
+<h2>getAuthorizationHeader()
+        </h2>
+<pre>getAuthorizationHeader() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_log"></a><div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
+<h2>Basic log function that outputs logging to the standard error_log() handler.</h2>
+<pre>log($message, String $level) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This should generally be overridden
+to suit the application environment.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\error_log()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$message</h4></div>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>String</code><p>'error', 'info', 'notice'. Defaults to 'notice', so you should set this
+    parameter on the more important error messages.
+    'info' is used for problems that the class should be able to recover from automatically.
+    'error' is for exceptional conditions that may need human intervention. (For instance, emailing
+         them to a system administrator may make sense.)</p>
+</div>
+</div></div>
+</div>
+<a id="method_statusUpdate"></a><div class="element clickable method protected method_statusUpdate" data-toggle="collapse" data-target=".method_statusUpdate .collapse">
+<h2>Called every $this-&gt;avgPeriod (default=60) seconds, and this default implementation
+calculates some rates, logs them, and resets the counters.</h2>
+<pre>statusUpdate() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_reconnect"></a><div class="element clickable method private method_reconnect" data-toggle="collapse" data-target=".method_reconnect .collapse">
+<h2>Reconnects as quickly as possible.</h2>
+<pre>reconnect() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Should be called whenever a reconnect is required rather that connect/disconnect
+to preserve streams reconnect state</p></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_avgElapsed"> </a><div class="element clickable property protected property_avgElapsed" data-toggle="collapse" data-target=".property_avgElapsed .collapse">
+<h2></h2>
+<pre>$avgElapsed : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Reset to zero after each call to statusUpdate()
+Highest value it should ever reach is $this->avgPeriod</p></div></div></div>
+</div>
+<a id="property_avgPeriod"> </a><div class="element clickable property protected property_avgPeriod" data-toggle="collapse" data-target=".property_avgPeriod .collapse">
+<h2></h2>
+<pre>$avgPeriod </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_buff"> </a><div class="element clickable property protected property_buff" data-toggle="collapse" data-target=".property_buff .collapse">
+<h2></h2>
+<pre>$buff </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_conn"> </a><div class="element clickable property protected property_conn" data-toggle="collapse" data-target=".property_conn .collapse">
+<h2></h2>
+<pre>$conn </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_connectFailuresMax"> </a><div class="element clickable property protected property_connectFailuresMax" data-toggle="collapse" data-target=".property_connectFailuresMax .collapse">
+<h2></h2>
+<pre>$connectFailuresMax </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_connectTimeout"> </a><div class="element clickable property protected property_connectTimeout" data-toggle="collapse" data-target=".property_connectTimeout .collapse">
+<h2></h2>
+<pre>$connectTimeout </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_count"> </a><div class="element clickable property protected property_count" data-toggle="collapse" data-target=".property_count .collapse">
+<h2></h2>
+<pre>$count </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_enqueueSpent"> </a><div class="element clickable property protected property_enqueueSpent" data-toggle="collapse" data-target=".property_enqueueSpent .collapse">
+<h2></h2>
+<pre>$enqueueSpent : float</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>the customized
+function that handles each received tweet).</p></div></div></div>
+</div>
+<a id="property_enqueueTimeMS"> </a><div class="element clickable property protected property_enqueueTimeMS" data-toggle="collapse" data-target=".property_enqueueTimeMS .collapse">
+<h2></h2>
+<pre>$enqueueTimeMS : float</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>average time spent, in milliseconds,
+spent processing received tweet).</p>
+
+<p>Simply: enqueueSpent divided by statusCount
+Note: by default, calculated fresh for past 60 seconds, every 60 seconds.</p></div></div></div>
+</div>
+<a id="property_fdrPool"> </a><div class="element clickable property protected property_fdrPool" data-toggle="collapse" data-target=".property_fdrPool .collapse">
+<h2></h2>
+<pre>$fdrPool </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_filterChanged"> </a><div class="element clickable property protected property_filterChanged" data-toggle="collapse" data-target=".property_filterChanged .collapse">
+<h2></h2>
+<pre>$filterChanged </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_filterCheckCount"> </a><div class="element clickable property protected property_filterCheckCount" data-toggle="collapse" data-target=".property_filterCheckCount .collapse">
+<h2></h2>
+<pre>$filterCheckCount : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>By default it is called every 5 seconds, so if doing statusUpdates every
+60 seconds and then resetting it, this will usually be 12.</p></div></div></div>
+</div>
+<a id="property_filterCheckMin"> </a><div class="element clickable property protected property_filterCheckMin" data-toggle="collapse" data-target=".property_filterCheckMin .collapse">
+<h2></h2>
+<pre>$filterCheckMin </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_filterCheckSpent"> </a><div class="element clickable property protected property_filterCheckSpent" data-toggle="collapse" data-target=".property_filterCheckSpent .collapse">
+<h2></h2>
+<pre>$filterCheckSpent : float</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_filterCheckTimeMS"> </a><div class="element clickable property protected property_filterCheckTimeMS" data-toggle="collapse" data-target=".property_filterCheckTimeMS .collapse">
+<h2></h2>
+<pre>$filterCheckTimeMS : float</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_filterUpdMin"> </a><div class="element clickable property protected property_filterUpdMin" data-toggle="collapse" data-target=".property_filterUpdMin .collapse">
+<h2></h2>
+<pre>$filterUpdMin </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_followIds"> </a><div class="element clickable property protected property_followIds" data-toggle="collapse" data-target=".property_followIds .collapse">
+<h2></h2>
+<pre>$followIds </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_format"> </a><div class="element clickable property protected property_format" data-toggle="collapse" data-target=".property_format .collapse">
+<h2></h2>
+<pre>$format </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_httpBackoff"> </a><div class="element clickable property protected property_httpBackoff" data-toggle="collapse" data-target=".property_httpBackoff .collapse">
+<h2></h2>
+<pre>$httpBackoff </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_httpBackoffMax"> </a><div class="element clickable property protected property_httpBackoffMax" data-toggle="collapse" data-target=".property_httpBackoffMax .collapse">
+<h2></h2>
+<pre>$httpBackoffMax </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_idlePeriod"> </a><div class="element clickable property protected property_idlePeriod" data-toggle="collapse" data-target=".property_idlePeriod .collapse">
+<h2></h2>
+<pre>$idlePeriod : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_idleReconnectTimeout"> </a><div class="element clickable property protected property_idleReconnectTimeout" data-toggle="collapse" data-target=".property_idleReconnectTimeout .collapse">
+<h2></h2>
+<pre>$idleReconnectTimeout </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_lastErrorMsg"> </a><div class="element clickable property protected property_lastErrorMsg" data-toggle="collapse" data-target=".property_lastErrorMsg .collapse">
+<h2></h2>
+<pre>$lastErrorMsg </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_lastErrorNo"> </a><div class="element clickable property protected property_lastErrorNo" data-toggle="collapse" data-target=".property_lastErrorNo .collapse">
+<h2></h2>
+<pre>$lastErrorNo </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_locationBoxes"> </a><div class="element clickable property protected property_locationBoxes" data-toggle="collapse" data-target=".property_locationBoxes .collapse">
+<h2></h2>
+<pre>$locationBoxes </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_maxIdlePeriod"> </a><div class="element clickable property protected property_maxIdlePeriod" data-toggle="collapse" data-target=".property_maxIdlePeriod .collapse">
+<h2></h2>
+<pre>$maxIdlePeriod : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_method"> </a><div class="element clickable property protected property_method" data-toggle="collapse" data-target=".property_method .collapse">
+<h2></h2>
+<pre>$method </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_password"> </a><div class="element clickable property protected property_password" data-toggle="collapse" data-target=".property_password .collapse">
+<h2></h2>
+<pre>$password </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_readTimeout"> </a><div class="element clickable property protected property_readTimeout" data-toggle="collapse" data-target=".property_readTimeout .collapse">
+<h2></h2>
+<pre>$readTimeout </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_reconnect"> </a><div class="element clickable property protected property_reconnect" data-toggle="collapse" data-target=".property_reconnect .collapse">
+<h2></h2>
+<pre>$reconnect </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_statusCount"> </a><div class="element clickable property protected property_statusCount" data-toggle="collapse" data-target=".property_statusCount .collapse">
+<h2></h2>
+<pre>$statusCount : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Note: by default this is the sum for last 60 seconds, and is therefore
+reset every 60 seconds.
+To change this behaviour write a custom statusUpdate() function.</p></div></div></div>
+</div>
+<a id="property_statusRate"> </a><div class="element clickable property protected property_statusRate" data-toggle="collapse" data-target=".property_statusRate .collapse">
+<h2></h2>
+<pre>$statusRate : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>if fewer than 30 tweets in last minute then this will be zero; if 30 to 90 then it
+will be 1, if 90 to 150 then 2, etc.</p></div></div></div>
+</div>
+<a id="property_status_length_base"> </a><div class="element clickable property protected property_status_length_base" data-toggle="collapse" data-target=".property_status_length_base .collapse">
+<h2></h2>
+<pre>$status_length_base </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_tcpBackoff"> </a><div class="element clickable property protected property_tcpBackoff" data-toggle="collapse" data-target=".property_tcpBackoff .collapse">
+<h2></h2>
+<pre>$tcpBackoff </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_tcpBackoffMax"> </a><div class="element clickable property protected property_tcpBackoffMax" data-toggle="collapse" data-target=".property_tcpBackoffMax .collapse">
+<h2></h2>
+<pre>$tcpBackoffMax </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_trackWords"> </a><div class="element clickable property protected property_trackWords" data-toggle="collapse" data-target=".property_trackWords .collapse">
+<h2></h2>
+<pre>$trackWords </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_userAgent"> </a><div class="element clickable property protected property_userAgent" data-toggle="collapse" data-target=".property_userAgent .collapse">
+<h2></h2>
+<pre>$userAgent </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_username"> </a><div class="element clickable property protected property_username" data-toggle="collapse" data-target=".property_username .collapse">
+<h2></h2>
+<pre>$username </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_EARTH_RADIUS_KM"> </a><div class="element clickable constant  constant_EARTH_RADIUS_KM" data-toggle="collapse" data-target=".constant_EARTH_RADIUS_KM .collapse">
+<h2>EARTH_RADIUS_KM</h2>
+<pre>EARTH_RADIUS_KM </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FORMAT_JSON"> </a><div class="element clickable constant  constant_FORMAT_JSON" data-toggle="collapse" data-target=".constant_FORMAT_JSON .collapse">
+<h2>FORMAT_JSON</h2>
+<pre>FORMAT_JSON </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FORMAT_XML"> </a><div class="element clickable constant  constant_FORMAT_XML" data-toggle="collapse" data-target=".constant_FORMAT_XML .collapse">
+<h2>FORMAT_XML</h2>
+<pre>FORMAT_XML </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_METHOD_FILTER"> </a><div class="element clickable constant  constant_METHOD_FILTER" data-toggle="collapse" data-target=".constant_METHOD_FILTER .collapse">
+<h2>METHOD_FILTER</h2>
+<pre>METHOD_FILTER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_METHOD_FIREHOSE"> </a><div class="element clickable constant  constant_METHOD_FIREHOSE" data-toggle="collapse" data-target=".constant_METHOD_FIREHOSE .collapse">
+<h2>METHOD_FIREHOSE</h2>
+<pre>METHOD_FIREHOSE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_METHOD_RETWEET"> </a><div class="element clickable constant  constant_METHOD_RETWEET" data-toggle="collapse" data-target=".constant_METHOD_RETWEET .collapse">
+<h2>METHOD_RETWEET</h2>
+<pre>METHOD_RETWEET </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_METHOD_SAMPLE"> </a><div class="element clickable constant  constant_METHOD_SAMPLE" data-toggle="collapse" data-target=".constant_METHOD_SAMPLE .collapse">
+<h2>METHOD_SAMPLE</h2>
+<pre>METHOD_SAMPLE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_URL_BASE"> </a><div class="element clickable constant  constant_URL_BASE" data-toggle="collapse" data-target=".constant_URL_BASE .collapse">
+<h2>Class constants</h2>
+<pre>URL_BASE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-03-18T19:37:53Z.<br></footer></div>
+</div>
+</body>
+</html>

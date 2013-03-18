@@ -1,0 +1,1430 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » Default</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Buzz.html"><i class="icon-th"></i> Buzz</a></li>
+<li><a href="../namespaces/Composer.html"><i class="icon-th"></i> Composer</a></li>
+<li><a href="../namespaces/Geocoder.html"><i class="icon-th"></i> Geocoder</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">933</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/Default.html" title="Default"><i class="icon-folder-open"></i>Default</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-function"></i> Functions</li>
+<li class="function  "><a href="#function_error_email" title="error_email :: "><span class="description">error_email()
+        </span><pre>error_email</pre></a></li>
+<li class="function  "><a href="#function_linkify" title="linkify :: linkify.php
+Convert entities into links within a tweet's text
+Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library/"><span class="description">linkify.php
+Convert entities into links within a tweet's text
+Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library/</span><pre>linkify</pre></a></li>
+<li class="function  "><a href="#function_twitter_time" title="twitter_time :: "><span class="description">twitter_time()
+        </span><pre>twitter_time</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-interface"></i> Interfaces</li>
+<li><a href="#BatchClientInterface" title="">BatchClientInterface</a></li>
+<li><a href="#ClientInterface" title="">ClientInterface</a></li>
+<li><a href="#ListenerInterface" title="">ListenerInterface</a></li>
+<li><a href="#FactoryInterface" title="">FactoryInterface</a></li>
+<li><a href="#FormRequestInterface" title="An HTTP request message sent by a web form.">FormRequestInterface</a></li>
+<li><a href="#FormUploadInterface" title="An HTTP message.">FormUploadInterface</a></li>
+<li><a href="#MessageInterface" title="An HTTP message.">MessageInterface</a></li>
+<li><a href="#RequestInterface" title="An HTTP request message.">RequestInterface</a></li>
+<li><a href="#DumperInterface" title="">DumperInterface</a></li>
+<li><a href="#FormatterInterface" title="">FormatterInterface</a></li>
+<li><a href="#GeocoderInterface" title="">GeocoderInterface</a></li>
+<li><a href="#HttpAdapterInterface" title="">HttpAdapterInterface</a></li>
+<li><a href="#ProviderInterface" title="">ProviderInterface</a></li>
+<li><a href="#ResultInterface" title="">ResultInterface</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#db" title="db_lib.php
+General purpose database library for use by all 140dev code">db</a></li>
+<li><a href="#Consumer" title="A class that makes it easy to connect to and consume the Twitter stream via the Streaming API.">Consumer</a></li>
+<li><a href="#Phirehose" title="A class that makes it easy to connect to and consume the Twitter stream via the Streaming API.">Phirehose</a></li>
+<li><a href="#PhirehoseException" title="">PhirehoseException</a></li>
+<li><a href="#PhirehoseNetworkException" title="">PhirehoseNetworkException</a></li>
+<li><a href="#PhirehoseConnectLimitExceeded" title="">PhirehoseConnectLimitExceeded</a></li>
+<li><a href="#utility" title="">utility</a></li>
+<li><a href="#Cities" title="">Cities</a></li>
+<li><a href="#Locations" title="Description of locations">Locations</a></li>
+<li><a href="#Tweets" title="Description of locations">Tweets</a></li>
+<li><a href="#Locationsmodel" title="">Locationsmodel</a></li>
+<li><a href="#sentimentmodel" title="">sentimentmodel</a></li>
+<li><a href="#Tweetsmodel" title="">Tweetsmodel</a></li>
+<li><a href="#ComposerAutoloaderInit" title="">ComposerAutoloaderInit</a></li>
+<li><a href="#ClassLoader" title="ClassLoader implements a PSR-0 class loader">ClassLoader</a></li>
+<li><a href="#Browser" title="">Browser</a></li>
+<li><a href="#AbstractClient" title="">AbstractClient</a></li>
+<li><a href="#AbstractCurl" title="Base client class with helpers for working with cURL.">AbstractCurl</a></li>
+<li><a href="#AbstractStream" title="">AbstractStream</a></li>
+<li><a href="#Curl" title="Base client class with helpers for working with cURL.">Curl</a></li>
+<li><a href="#FileGetContents" title="">FileGetContents</a></li>
+<li><a href="#MultiCurl" title="Base client class with helpers for working with cURL.">MultiCurl</a></li>
+<li><a href="#CallbackListener" title="">CallbackListener</a></li>
+<li><a href="#Entry" title="">Entry</a></li>
+<li><a href="#Journal" title="">Journal</a></li>
+<li><a href="#HistoryListener" title="">HistoryListener</a></li>
+<li><a href="#ListenerChain" title="">ListenerChain</a></li>
+<li><a href="#LoggerListener" title="">LoggerListener</a></li>
+<li><a href="#AbstractMessage" title="">AbstractMessage</a></li>
+<li><a href="#Factory" title="">Factory</a></li>
+<li><a href="#FormRequest" title="FormRequest.">FormRequest</a></li>
+<li><a href="#FormUpload" title="">FormUpload</a></li>
+<li><a href="#Request" title="">Request</a></li>
+<li><a href="#Response" title="">Response</a></li>
+<li><a href="#Cookie" title="">Cookie</a></li>
+<li><a href="#CookieJar" title="">CookieJar</a></li>
+<li><a href="#Url" title="">Url</a></li>
+<li><a href="#BrowserTest" title="">BrowserTest</a></li>
+<li><a href="#StreamClient" title="">StreamClient</a></li>
+<li><a href="#AbstractStreamTest" title="">AbstractStreamTest</a></li>
+<li><a href="#FileGetContentsTest" title="">FileGetContentsTest</a></li>
+<li><a href="#FunctionalTest" title="">FunctionalTest</a></li>
+<li><a href="#CallbackListenerTest" title="">CallbackListenerTest</a></li>
+<li><a href="#EntryTest" title="">EntryTest</a></li>
+<li><a href="#JournalTest" title="">JournalTest</a></li>
+<li><a href="#HistoryListenerTest" title="">HistoryListenerTest</a></li>
+<li><a href="#ListenerChainTest" title="">ListenerChainTest</a></li>
+<li><a href="#LoggerListenerTest" title="">LoggerListenerTest</a></li>
+<li><a href="#Message" title="">Message</a></li>
+<li><a href="#AbstractMessageTest" title="">AbstractMessageTest</a></li>
+<li><a href="#FactoryTest" title="">FactoryTest</a></li>
+<li><a href="#FormRequestTest" title="FormRequestTest">FormRequestTest</a></li>
+<li><a href="#FormUploadTest" title="">FormUploadTest</a></li>
+<li><a href="#RequestTest" title="">RequestTest</a></li>
+<li><a href="#ResponseTest" title="">ResponseTest</a></li>
+<li><a href="#CookieJarTest" title="">CookieJarTest</a></li>
+<li><a href="#CookieTest" title="">CookieTest</a></li>
+<li><a href="#UrlTest" title="">UrlTest</a></li>
+<li><a href="#GeoJsonDumper" title="">GeoJsonDumper</a></li>
+<li><a href="#GpxDumper" title="">GpxDumper</a></li>
+<li><a href="#KmlDumper" title="">KmlDumper</a></li>
+<li><a href="#WkbDumper" title="">WkbDumper</a></li>
+<li><a href="#WktDumper" title="">WktDumper</a></li>
+<li><a href="#UnsupportedException" title="">UnsupportedException</a></li>
+<li><a href="#Formatter" title="">Formatter</a></li>
+<li><a href="#Geocoder" title="">Geocoder</a></li>
+<li><a href="#BuzzHttpAdapter" title="">BuzzHttpAdapter</a></li>
+<li><a href="#CurlHttpAdapter" title="">CurlHttpAdapter</a></li>
+<li><a href="#GuzzleHttpAdapter" title="Http adapter for the Guzzle framework">GuzzleHttpAdapter</a></li>
+<li><a href="#SocketAdapter" title="">SocketAdapter</a></li>
+<li><a href="#ZendHttpAdapter" title="">ZendHttpAdapter</a></li>
+<li><a href="#AbstractProvider" title="">AbstractProvider</a></li>
+<li><a href="#BingMapsProvider" title="">BingMapsProvider</a></li>
+<li><a href="#CloudMadeProvider" title="">CloudMadeProvider</a></li>
+<li><a href="#FreeGeoIpProvider" title="">FreeGeoIpProvider</a></li>
+<li><a href="#GeoipProvider" title="">GeoipProvider</a></li>
+<li><a href="#GoogleMapsProvider" title="">GoogleMapsProvider</a></li>
+<li><a href="#HostIpProvider" title="">HostIpProvider</a></li>
+<li><a href="#IpInfoDbProvider" title="">IpInfoDbProvider</a></li>
+<li><a href="#OpenStreetMapsProvider" title="">OpenStreetMapsProvider</a></li>
+<li><a href="#YahooProvider" title="">YahooProvider</a></li>
+<li><a href="#Geocoded" title="">Geocoded</a></li>
+<li><a href="#GeoJsonDumperTest" title="">GeoJsonDumperTest</a></li>
+<li><a href="#GpxDumperTest" title="">GpxDumperTest</a></li>
+<li><a href="#TestableGpxDumper" title="">TestableGpxDumper</a></li>
+<li><a href="#KmlDumperTest" title="">KmlDumperTest</a></li>
+<li><a href="#WkbDumperTest" title="">WkbDumperTest</a></li>
+<li><a href="#WktDumperTest" title="">WktDumperTest</a></li>
+<li><a href="#FormatterTest" title="">FormatterTest</a></li>
+<li><a href="#GeocoderTest" title="">GeocoderTest</a></li>
+<li><a href="#MockProvider" title="">MockProvider</a></li>
+<li><a href="#MockProviderWithData" title="">MockProviderWithData</a></li>
+<li><a href="#MockProviderWithRequestCount" title="">MockProviderWithRequestCount</a></li>
+<li><a href="#TestableGeocoder" title="">TestableGeocoder</a></li>
+<li><a href="#BuzzHttpAdapterTest" title="">BuzzHttpAdapterTest</a></li>
+<li><a href="#CurlHttpAdapterTest" title="">CurlHttpAdapterTest</a></li>
+<li><a href="#GuzzleHttpAdapterTest" title="">GuzzleHttpAdapterTest</a></li>
+<li><a href="#SocketAdapterTest" title="">SocketAdapterTest</a></li>
+<li><a href="#ZendHttpAdapterTest" title="">ZendHttpAdapterTest</a></li>
+<li><a href="#AbstractProviderTest" title="">AbstractProviderTest</a></li>
+<li><a href="#MockProvider" title="">MockProvider</a></li>
+<li><a href="#MockHttpAdapter" title="">MockHttpAdapter</a></li>
+<li><a href="#BingMapsProviderTest" title="">BingMapsProviderTest</a></li>
+<li><a href="#CloudMadeProviderTest" title="">CloudMadeProviderTest</a></li>
+<li><a href="#FreeGeoIpProviderTest" title="">FreeGeoIpProviderTest</a></li>
+<li><a href="#GeoipProviderTest" title="">GeoipProviderTest</a></li>
+<li><a href="#GoogleMapsProviderTest" title="">GoogleMapsProviderTest</a></li>
+<li><a href="#HostIpProviderTest" title="">HostIpProviderTest</a></li>
+<li><a href="#IpInfoDbProviderTest" title="">IpInfoDbProviderTest</a></li>
+<li><a href="#OpenStreetMapsProviderTest" title="">OpenStreetMapsProviderTest</a></li>
+<li><a href="#YahooProviderTest" title="">YahooProviderTest</a></li>
+<li><a href="#GeocodedTest" title="">GeocodedTest</a></li>
+<li><a href="#TestCase" title="">TestCase</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#constant_AFRICA" title="AFRICA :: "><span class="description">AFRICA</span><pre>AFRICA</pre></a></li>
+<li class="constant  "><a href="#constant_AJAX_URL" title="AJAX_URL :: "><span class="description">AJAX_URL</span><pre>AJAX_URL</pre></a></li>
+<li class="constant  "><a href="#constant_ANTARCTICA" title="ANTARCTICA :: "><span class="description">ANTARCTICA</span><pre>ANTARCTICA</pre></a></li>
+<li class="constant  "><a href="#constant_ASIA" title="ASIA :: "><span class="description">ASIA</span><pre>ASIA</pre></a></li>
+<li class="constant  "><a href="#constant_AUTH_TWEETS" title="AUTH_TWEETS :: "><span class="description">AUTH_TWEETS</span><pre>AUTH_TWEETS</pre></a></li>
+<li class="constant  "><a href="#constant_CODE_DIR" title="CODE_DIR :: "><span class="description">CODE_DIR</span><pre>CODE_DIR</pre></a></li>
+<li class="constant  "><a href="#constant_DATABASE" title="DATABASE :: "><span class="description">DATABASE</span><pre>DATABASE</pre></a></li>
+<li class="constant  "><a href="#constant_DATABASE" title="DATABASE :: "><span class="description">DATABASE</span><pre>DATABASE</pre></a></li>
+<li class="constant  "><a href="#constant_DB_CONFIG_DIR" title="DB_CONFIG_DIR :: "><span class="description">DB_CONFIG_DIR</span><pre>DB_CONFIG_DIR</pre></a></li>
+<li class="constant  "><a href="#constant_ENT_SUBSTITUTE" title="ENT_SUBSTITUTE :: "><span class="description">ENT_SUBSTITUTE</span><pre>ENT_SUBSTITUTE</pre></a></li>
+<li class="constant  "><a href="#constant_EUROPE" title="EUROPE :: "><span class="description">EUROPE</span><pre>EUROPE</pre></a></li>
+<li class="constant  "><a href="#constant_FEEL_FINE_API" title="FEEL_FINE_API :: "><span class="description">FEEL_FINE_API</span><pre>FEEL_FINE_API</pre></a></li>
+<li class="constant  "><a href="#constant_HASHTAG_TITLE" title="HASHTAG_TITLE :: "><span class="description">HASHTAG_TITLE</span><pre>HASHTAG_TITLE</pre></a></li>
+<li class="constant  "><a href="#constant_HASHTAG_URL" title="HASHTAG_URL :: "><span class="description">HASHTAG_URL</span><pre>HASHTAG_URL</pre></a></li>
+<li class="constant  "><a href="#constant_HOSTNAME" title="HOSTNAME :: "><span class="description">HOSTNAME</span><pre>HOSTNAME</pre></a></li>
+<li class="constant  "><a href="#constant_HOSTNAME" title="HOSTNAME :: "><span class="description">HOSTNAME</span><pre>HOSTNAME</pre></a></li>
+<li class="constant  "><a href="#constant_LAT_LONG_SEPARATOR" title="LAT_LONG_SEPARATOR :: "><span class="description">LAT_LONG_SEPARATOR</span><pre>LAT_LONG_SEPARATOR</pre></a></li>
+<li class="constant  "><a href="#constant_MORE_BUTTON" title="MORE_BUTTON :: "><span class="description">MORE_BUTTON</span><pre>MORE_BUTTON</pre></a></li>
+<li class="constant  "><a href="#constant_NEW_COUNT_REFRESH" title="NEW_COUNT_REFRESH :: "><span class="description">NEW_COUNT_REFRESH</span><pre>NEW_COUNT_REFRESH</pre></a></li>
+<li class="constant  "><a href="#constant_NEW_TWEETS_MESSAGE" title="NEW_TWEETS_MESSAGE :: "><span class="description">NEW_TWEETS_MESSAGE</span><pre>NEW_TWEETS_MESSAGE</pre></a></li>
+<li class="constant  "><a href="#constant_NEW_TWEET_MESSAGE" title="NEW_TWEET_MESSAGE :: "><span class="description">NEW_TWEET_MESSAGE</span><pre>NEW_TWEET_MESSAGE</pre></a></li>
+<li class="constant  "><a href="#constant_NORTH_AMERICA" title="NORTH_AMERICA :: "><span class="description">NORTH_AMERICA</span><pre>NORTH_AMERICA</pre></a></li>
+<li class="constant  "><a href="#constant_PASSWORD" title="PASSWORD :: "><span class="description">PASSWORD</span><pre>PASSWORD</pre></a></li>
+<li class="constant  "><a href="#constant_PASSWORD" title="PASSWORD :: "><span class="description">PASSWORD</span><pre>PASSWORD</pre></a></li>
+<li class="constant  "><a href="#constant_SAMPLE_TWEETS_API" title="SAMPLE_TWEETS_API :: "><span class="description">SAMPLE_TWEETS_API</span><pre>SAMPLE_TWEETS_API</pre></a></li>
+<li class="constant  "><a href="#constant_SOUTH_AMERICA" title="SOUTH_AMERICA :: "><span class="description">SOUTH_AMERICA</span><pre>SOUTH_AMERICA</pre></a></li>
+<li class="constant  "><a href="#constant_STREAM_ACCOUNT" title="STREAM_ACCOUNT :: "><span class="description">STREAM_ACCOUNT</span><pre>STREAM_ACCOUNT</pre></a></li>
+<li class="constant  "><a href="#constant_STREAM_PASSWORD" title="STREAM_PASSWORD :: "><span class="description">STREAM_PASSWORD</span><pre>STREAM_PASSWORD</pre></a></li>
+<li class="constant  "><a href="#constant_TIME_ZONE" title="TIME_ZONE :: "><span class="description">TIME_ZONE</span><pre>TIME_ZONE</pre></a></li>
+<li class="constant  "><a href="#constant_TWEET_DISPLAY_COUNT" title="TWEET_DISPLAY_COUNT :: "><span class="description">TWEET_DISPLAY_COUNT</span><pre>TWEET_DISPLAY_COUNT</pre></a></li>
+<li class="constant  "><a href="#constant_TWEET_DISPLAY_TITLE" title="TWEET_DISPLAY_TITLE :: "><span class="description">TWEET_DISPLAY_TITLE</span><pre>TWEET_DISPLAY_TITLE</pre></a></li>
+<li class="constant  "><a href="#constant_TWEET_ERROR_ADDRESS" title="TWEET_ERROR_ADDRESS :: "><span class="description">TWEET_ERROR_ADDRESS</span><pre>TWEET_ERROR_ADDRESS</pre></a></li>
+<li class="constant  "><a href="#constant_TWEET_ERROR_INTERVAL" title="TWEET_ERROR_INTERVAL :: "><span class="description">TWEET_ERROR_INTERVAL</span><pre>TWEET_ERROR_INTERVAL</pre></a></li>
+<li class="constant  "><a href="#constant_USERNAME" title="USERNAME :: "><span class="description">USERNAME</span><pre>USERNAME</pre></a></li>
+<li class="constant  "><a href="#constant_USERNAME" title="USERNAME :: "><span class="description">USERNAME</span><pre>USERNAME</pre></a></li>
+<li class="constant  "><a href="#constant_USER_MENTION_TITLE" title="USER_MENTION_TITLE :: "><span class="description">USER_MENTION_TITLE</span><pre>USER_MENTION_TITLE</pre></a></li>
+<li class="constant  "><a href="#constant_USER_MENTION_URL" title="USER_MENTION_URL :: "><span class="description">USER_MENTION_URL</span><pre>USER_MENTION_URL</pre></a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/Default.html">Default</a></li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a id="function_error_email"></a><div class="element clickable function  function_error_email" data-toggle="collapse" data-target=".function_error_email .collapse">
+<h2>error_email()
+        </h2>
+<pre>error_email($subject, $message) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$subject</h4></div>
+<div class="subelement argument"><h4>$message</h4></div>
+</div></div>
+</div>
+<a id="function_linkify"></a><div class="element clickable function  function_linkify" data-toggle="collapse" data-target=".function_linkify .collapse">
+<h2>linkify.php
+Convert entities into links within a tweet's text
+Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library/</h2>
+<pre>linkify($tweet_text, $entities) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="mailto:140dev@gmail.com">Adam Green</a></td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="">GNU Public License</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>BETA 0.10</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$tweet_text</h4></div>
+<div class="subelement argument"><h4>$entities</h4></div>
+</div></div>
+</div>
+<a id="function_twitter_time"></a><div class="element clickable function  function_twitter_time" data-toggle="collapse" data-target=".function_twitter_time .collapse">
+<h2>twitter_time()
+        </h2>
+<pre>twitter_time($time) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$time</h4></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="BatchClientInterface" class="element ajax clickable interface">
+<h1>BatchClientInterface<a href="../classes/Buzz.Client.BatchClientInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.BatchClientInterface.html" class="more">« More »</a>
+</div>
+<div id="ClientInterface" class="element ajax clickable interface">
+<h1>ClientInterface<a href="../classes/Buzz.Client.ClientInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.ClientInterface.html" class="more">« More »</a>
+</div>
+<div id="ListenerInterface" class="element ajax clickable interface">
+<h1>ListenerInterface<a href="../classes/Buzz.Listener.ListenerInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.ListenerInterface.html" class="more">« More »</a>
+</div>
+<div id="FactoryInterface" class="element ajax clickable interface">
+<h1>FactoryInterface<a href="../classes/Buzz.Message.Factory.FactoryInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Factory.FactoryInterface.html" class="more">« More »</a>
+</div>
+<div id="FormRequestInterface" class="element ajax clickable interface">
+<h1>FormRequestInterface<a href="../classes/Buzz.Message.Form.FormRequestInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP request message sent by a web form.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormRequestInterface.html" class="more">« More »</a>
+</div>
+<div id="FormUploadInterface" class="element ajax clickable interface">
+<h1>FormUploadInterface<a href="../classes/Buzz.Message.Form.FormUploadInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP message.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormUploadInterface.html" class="more">« More »</a>
+</div>
+<div id="MessageInterface" class="element ajax clickable interface">
+<h1>MessageInterface<a href="../classes/Buzz.Message.MessageInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP message.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.MessageInterface.html" class="more">« More »</a>
+</div>
+<div id="RequestInterface" class="element ajax clickable interface">
+<h1>RequestInterface<a href="../classes/Buzz.Message.RequestInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP request message.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.RequestInterface.html" class="more">« More »</a>
+</div>
+<div id="DumperInterface" class="element ajax clickable interface">
+<h1>DumperInterface<a href="../classes/Geocoder.Dumper.DumperInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Dumper.DumperInterface.html" class="more">« More »</a>
+</div>
+<div id="FormatterInterface" class="element ajax clickable interface">
+<h1>FormatterInterface<a href="../classes/Geocoder.Formatter.FormatterInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Formatter.FormatterInterface.html" class="more">« More »</a>
+</div>
+<div id="GeocoderInterface" class="element ajax clickable interface">
+<h1>GeocoderInterface<a href="../classes/Geocoder.GeocoderInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.GeocoderInterface.html" class="more">« More »</a>
+</div>
+<div id="HttpAdapterInterface" class="element ajax clickable interface">
+<h1>HttpAdapterInterface<a href="../classes/Geocoder.HttpAdapter.HttpAdapterInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.HttpAdapter.HttpAdapterInterface.html" class="more">« More »</a>
+</div>
+<div id="ProviderInterface" class="element ajax clickable interface">
+<h1>ProviderInterface<a href="../classes/Geocoder.Provider.ProviderInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.ProviderInterface.html" class="more">« More »</a>
+</div>
+<div id="ResultInterface" class="element ajax clickable interface">
+<h1>ResultInterface<a href="../classes/Geocoder.Result.ResultInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Result.ResultInterface.html" class="more">« More »</a>
+</div>
+<div id="Browser" class="element ajax clickable class">
+<h1>Browser<a href="../classes/Buzz.Browser.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Browser.html" class="more">« More »</a>
+</div>
+<div id="AbstractClient" class="element ajax clickable class">
+<h1>AbstractClient<a href="../classes/Buzz.Client.AbstractClient.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.AbstractClient.html" class="more">« More »</a>
+</div>
+<div id="AbstractCurl" class="element ajax clickable class">
+<h1>AbstractCurl<a href="../classes/Buzz.Client.AbstractCurl.html">¶</a>
+</h1>
+<p class="short_description">Base client class with helpers for working with cURL.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.AbstractCurl.html" class="more">« More »</a>
+</div>
+<div id="AbstractStream" class="element ajax clickable class">
+<h1>AbstractStream<a href="../classes/Buzz.Client.AbstractStream.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.AbstractStream.html" class="more">« More »</a>
+</div>
+<div id="Curl" class="element ajax clickable class">
+<h1>Curl<a href="../classes/Buzz.Client.Curl.html">¶</a>
+</h1>
+<p class="short_description">Base client class with helpers for working with cURL.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.Curl.html" class="more">« More »</a>
+</div>
+<div id="FileGetContents" class="element ajax clickable class">
+<h1>FileGetContents<a href="../classes/Buzz.Client.FileGetContents.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.FileGetContents.html" class="more">« More »</a>
+</div>
+<div id="MultiCurl" class="element ajax clickable class">
+<h1>MultiCurl<a href="../classes/Buzz.Client.MultiCurl.html">¶</a>
+</h1>
+<p class="short_description">Base client class with helpers for working with cURL.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.MultiCurl.html" class="more">« More »</a>
+</div>
+<div id="CallbackListener" class="element ajax clickable class">
+<h1>CallbackListener<a href="../classes/Buzz.Listener.CallbackListener.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.CallbackListener.html" class="more">« More »</a>
+</div>
+<div id="HistoryListener" class="element ajax clickable class">
+<h1>HistoryListener<a href="../classes/Buzz.Listener.HistoryListener.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.HistoryListener.html" class="more">« More »</a>
+</div>
+<div id="Entry" class="element ajax clickable class">
+<h1>Entry<a href="../classes/Buzz.Listener.History.Entry.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.History.Entry.html" class="more">« More »</a>
+</div>
+<div id="Journal" class="element ajax clickable class">
+<h1>Journal<a href="../classes/Buzz.Listener.History.Journal.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.History.Journal.html" class="more">« More »</a>
+</div>
+<div id="ListenerChain" class="element ajax clickable class">
+<h1>ListenerChain<a href="../classes/Buzz.Listener.ListenerChain.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.ListenerChain.html" class="more">« More »</a>
+</div>
+<div id="LoggerListener" class="element ajax clickable class">
+<h1>LoggerListener<a href="../classes/Buzz.Listener.LoggerListener.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.LoggerListener.html" class="more">« More »</a>
+</div>
+<div id="AbstractMessage" class="element ajax clickable class">
+<h1>AbstractMessage<a href="../classes/Buzz.Message.AbstractMessage.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.AbstractMessage.html" class="more">« More »</a>
+</div>
+<div id="Factory" class="element ajax clickable class">
+<h1>Factory<a href="../classes/Buzz.Message.Factory.Factory.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Factory.Factory.html" class="more">« More »</a>
+</div>
+<div id="FormRequest" class="element ajax clickable class">
+<h1>FormRequest<a href="../classes/Buzz.Message.Form.FormRequest.html">¶</a>
+</h1>
+<p class="short_description">FormRequest.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormRequest.html" class="more">« More »</a>
+</div>
+<div id="FormUpload" class="element ajax clickable class">
+<h1>FormUpload<a href="../classes/Buzz.Message.Form.FormUpload.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormUpload.html" class="more">« More »</a>
+</div>
+<div id="Request" class="element ajax clickable class">
+<h1>Request<a href="../classes/Buzz.Message.Request.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Request.html" class="more">« More »</a>
+</div>
+<div id="Response" class="element ajax clickable class">
+<h1>Response<a href="../classes/Buzz.Message.Response.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Response.html" class="more">« More »</a>
+</div>
+<div id="BrowserTest" class="element ajax clickable class">
+<h1>BrowserTest<a href="../classes/Buzz.Test.BrowserTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.BrowserTest.html" class="more">« More »</a>
+</div>
+<div id="AbstractStreamTest" class="element ajax clickable class">
+<h1>AbstractStreamTest<a href="../classes/Buzz.Test.Client.AbstractStreamTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.AbstractStreamTest.html" class="more">« More »</a>
+</div>
+<div id="FileGetContentsTest" class="element ajax clickable class">
+<h1>FileGetContentsTest<a href="../classes/Buzz.Test.Client.FileGetContentsTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.FileGetContentsTest.html" class="more">« More »</a>
+</div>
+<div id="FunctionalTest" class="element ajax clickable class">
+<h1>FunctionalTest<a href="../classes/Buzz.Test.Client.FunctionalTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.FunctionalTest.html" class="more">« More »</a>
+</div>
+<div id="StreamClient" class="element ajax clickable class">
+<h1>StreamClient<a href="../classes/Buzz.Test.Client.StreamClient.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.StreamClient.html" class="more">« More »</a>
+</div>
+<div id="CookieJarTest" class="element ajax clickable class">
+<h1>CookieJarTest<a href="../classes/Buzz.Test.Cookie.CookieJarTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Cookie.CookieJarTest.html" class="more">« More »</a>
+</div>
+<div id="CookieTest" class="element ajax clickable class">
+<h1>CookieTest<a href="../classes/Buzz.Test.Cookie.CookieTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Cookie.CookieTest.html" class="more">« More »</a>
+</div>
+<div id="EntryTest" class="element ajax clickable class">
+<h1>EntryTest<a href="../classes/Buzz.Test.History.EntryTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.History.EntryTest.html" class="more">« More »</a>
+</div>
+<div id="JournalTest" class="element ajax clickable class">
+<h1>JournalTest<a href="../classes/Buzz.Test.History.JournalTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.History.JournalTest.html" class="more">« More »</a>
+</div>
+<div id="CallbackListenerTest" class="element ajax clickable class">
+<h1>CallbackListenerTest<a href="../classes/Buzz.Test.Listener.CallbackListenerTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.CallbackListenerTest.html" class="more">« More »</a>
+</div>
+<div id="HistoryListenerTest" class="element ajax clickable class">
+<h1>HistoryListenerTest<a href="../classes/Buzz.Test.Listener.HistoryListenerTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.HistoryListenerTest.html" class="more">« More »</a>
+</div>
+<div id="ListenerChainTest" class="element ajax clickable class">
+<h1>ListenerChainTest<a href="../classes/Buzz.Test.Listener.ListenerChainTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.ListenerChainTest.html" class="more">« More »</a>
+</div>
+<div id="LoggerListenerTest" class="element ajax clickable class">
+<h1>LoggerListenerTest<a href="../classes/Buzz.Test.Listener.LoggerListenerTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.LoggerListenerTest.html" class="more">« More »</a>
+</div>
+<div id="AbstractMessageTest" class="element ajax clickable class">
+<h1>AbstractMessageTest<a href="../classes/Buzz.Test.Message.AbstractMessageTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.AbstractMessageTest.html" class="more">« More »</a>
+</div>
+<div id="FactoryTest" class="element ajax clickable class">
+<h1>FactoryTest<a href="../classes/Buzz.Test.Message.FactoryTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.FactoryTest.html" class="more">« More »</a>
+</div>
+<div id="FormRequestTest" class="element ajax clickable class">
+<h1>FormRequestTest<a href="../classes/Buzz.Test.Message.FormRequestTest.html">¶</a>
+</h1>
+<p class="short_description">FormRequestTest</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.FormRequestTest.html" class="more">« More »</a>
+</div>
+<div id="FormUploadTest" class="element ajax clickable class">
+<h1>FormUploadTest<a href="../classes/Buzz.Test.Message.FormUploadTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.FormUploadTest.html" class="more">« More »</a>
+</div>
+<div id="Message" class="element ajax clickable class">
+<h1>Message<a href="../classes/Buzz.Test.Message.Message.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.Message.html" class="more">« More »</a>
+</div>
+<div id="RequestTest" class="element ajax clickable class">
+<h1>RequestTest<a href="../classes/Buzz.Test.Message.RequestTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.RequestTest.html" class="more">« More »</a>
+</div>
+<div id="ResponseTest" class="element ajax clickable class">
+<h1>ResponseTest<a href="../classes/Buzz.Test.Message.ResponseTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.ResponseTest.html" class="more">« More »</a>
+</div>
+<div id="UrlTest" class="element ajax clickable class">
+<h1>UrlTest<a href="../classes/Buzz.Test.Util.UrlTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Util.UrlTest.html" class="more">« More »</a>
+</div>
+<div id="Cookie" class="element ajax clickable class">
+<h1>Cookie<a href="../classes/Buzz.Util.Cookie.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Util.Cookie.html" class="more">« More »</a>
+</div>
+<div id="CookieJar" class="element ajax clickable class">
+<h1>CookieJar<a href="../classes/Buzz.Util.CookieJar.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Util.CookieJar.html" class="more">« More »</a>
+</div>
+<div id="Url" class="element ajax clickable class">
+<h1>Url<a href="../classes/Buzz.Util.Url.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Util.Url.html" class="more">« More »</a>
+</div>
+<div id="Cities" class="element ajax clickable class">
+<h1>Cities<a href="../classes/Cities.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Cities.html" class="more">« More »</a>
+</div>
+<div id="ComposerAutoloaderInit" class="element ajax clickable class">
+<h1>ComposerAutoloaderInit<a href="../classes/ComposerAutoloaderInit.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/ComposerAutoloaderInit.html" class="more">« More »</a>
+</div>
+<div id="ClassLoader" class="element ajax clickable class">
+<h1>ClassLoader<a href="../classes/Composer.Autoload.ClassLoader.html">¶</a>
+</h1>
+<p class="short_description">ClassLoader implements a PSR-0 class loader</p>
+<div class="details collapse"></div>
+<a href="../classes/Composer.Autoload.ClassLoader.html" class="more">« More »</a>
+</div>
+<div id="Consumer" class="element ajax clickable class">
+<h1>Consumer<a href="../classes/Consumer.html">¶</a>
+</h1>
+<p class="short_description">A class that makes it easy to connect to and consume the Twitter stream via the Streaming API.</p>
+<div class="details collapse"></div>
+<a href="../classes/Consumer.html" class="more">« More »</a>
+</div>
+<div id="GeoJsonDumper" class="element ajax clickable class">
+<h1>GeoJsonDumper<a href="../classes/Geocoder.Dumper.GeoJsonDumper.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Dumper.GeoJsonDumper.html" class="more">« More »</a>
+</div>
+<div id="GpxDumper" class="element ajax clickable class">
+<h1>GpxDumper<a href="../classes/Geocoder.Dumper.GpxDumper.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Dumper.GpxDumper.html" class="more">« More »</a>
+</div>
+<div id="KmlDumper" class="element ajax clickable class">
+<h1>KmlDumper<a href="../classes/Geocoder.Dumper.KmlDumper.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Dumper.KmlDumper.html" class="more">« More »</a>
+</div>
+<div id="WkbDumper" class="element ajax clickable class">
+<h1>WkbDumper<a href="../classes/Geocoder.Dumper.WkbDumper.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Dumper.WkbDumper.html" class="more">« More »</a>
+</div>
+<div id="WktDumper" class="element ajax clickable class">
+<h1>WktDumper<a href="../classes/Geocoder.Dumper.WktDumper.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Dumper.WktDumper.html" class="more">« More »</a>
+</div>
+<div id="UnsupportedException" class="element ajax clickable class">
+<h1>UnsupportedException<a href="../classes/Geocoder.Exception.UnsupportedException.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Exception.UnsupportedException.html" class="more">« More »</a>
+</div>
+<div id="Formatter" class="element ajax clickable class">
+<h1>Formatter<a href="../classes/Geocoder.Formatter.Formatter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Formatter.Formatter.html" class="more">« More »</a>
+</div>
+<div id="Geocoder" class="element ajax clickable class">
+<h1>Geocoder<a href="../classes/Geocoder.Geocoder.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Geocoder.html" class="more">« More »</a>
+</div>
+<div id="BuzzHttpAdapter" class="element ajax clickable class">
+<h1>BuzzHttpAdapter<a href="../classes/Geocoder.HttpAdapter.BuzzHttpAdapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.HttpAdapter.BuzzHttpAdapter.html" class="more">« More »</a>
+</div>
+<div id="CurlHttpAdapter" class="element ajax clickable class">
+<h1>CurlHttpAdapter<a href="../classes/Geocoder.HttpAdapter.CurlHttpAdapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.HttpAdapter.CurlHttpAdapter.html" class="more">« More »</a>
+</div>
+<div id="GuzzleHttpAdapter" class="element ajax clickable class">
+<h1>GuzzleHttpAdapter<a href="../classes/Geocoder.HttpAdapter.GuzzleHttpAdapter.html">¶</a>
+</h1>
+<p class="short_description">Http adapter for the Guzzle framework</p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.HttpAdapter.GuzzleHttpAdapter.html" class="more">« More »</a>
+</div>
+<div id="SocketAdapter" class="element ajax clickable class">
+<h1>SocketAdapter<a href="../classes/Geocoder.HttpAdapter.SocketAdapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.HttpAdapter.SocketAdapter.html" class="more">« More »</a>
+</div>
+<div id="ZendHttpAdapter" class="element ajax clickable class">
+<h1>ZendHttpAdapter<a href="../classes/Geocoder.HttpAdapter.ZendHttpAdapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.HttpAdapter.ZendHttpAdapter.html" class="more">« More »</a>
+</div>
+<div id="AbstractProvider" class="element ajax clickable class">
+<h1>AbstractProvider<a href="../classes/Geocoder.Provider.AbstractProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.AbstractProvider.html" class="more">« More »</a>
+</div>
+<div id="BingMapsProvider" class="element ajax clickable class">
+<h1>BingMapsProvider<a href="../classes/Geocoder.Provider.BingMapsProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.BingMapsProvider.html" class="more">« More »</a>
+</div>
+<div id="CloudMadeProvider" class="element ajax clickable class">
+<h1>CloudMadeProvider<a href="../classes/Geocoder.Provider.CloudMadeProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.CloudMadeProvider.html" class="more">« More »</a>
+</div>
+<div id="FreeGeoIpProvider" class="element ajax clickable class">
+<h1>FreeGeoIpProvider<a href="../classes/Geocoder.Provider.FreeGeoIpProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.FreeGeoIpProvider.html" class="more">« More »</a>
+</div>
+<div id="GeoipProvider" class="element ajax clickable class">
+<h1>GeoipProvider<a href="../classes/Geocoder.Provider.GeoipProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.GeoipProvider.html" class="more">« More »</a>
+</div>
+<div id="GoogleMapsProvider" class="element ajax clickable class">
+<h1>GoogleMapsProvider<a href="../classes/Geocoder.Provider.GoogleMapsProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.GoogleMapsProvider.html" class="more">« More »</a>
+</div>
+<div id="HostIpProvider" class="element ajax clickable class">
+<h1>HostIpProvider<a href="../classes/Geocoder.Provider.HostIpProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.HostIpProvider.html" class="more">« More »</a>
+</div>
+<div id="IpInfoDbProvider" class="element ajax clickable class">
+<h1>IpInfoDbProvider<a href="../classes/Geocoder.Provider.IpInfoDbProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.IpInfoDbProvider.html" class="more">« More »</a>
+</div>
+<div id="OpenStreetMapsProvider" class="element ajax clickable class">
+<h1>OpenStreetMapsProvider<a href="../classes/Geocoder.Provider.OpenStreetMapsProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.OpenStreetMapsProvider.html" class="more">« More »</a>
+</div>
+<div id="YahooProvider" class="element ajax clickable class">
+<h1>YahooProvider<a href="../classes/Geocoder.Provider.YahooProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Provider.YahooProvider.html" class="more">« More »</a>
+</div>
+<div id="Geocoded" class="element ajax clickable class">
+<h1>Geocoded<a href="../classes/Geocoder.Result.Geocoded.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Result.Geocoded.html" class="more">« More »</a>
+</div>
+<div id="GeoJsonDumperTest" class="element ajax clickable class">
+<h1>GeoJsonDumperTest<a href="../classes/Geocoder.Tests.Dumper.GeoJsonDumperTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Dumper.GeoJsonDumperTest.html" class="more">« More »</a>
+</div>
+<div id="GpxDumperTest" class="element ajax clickable class">
+<h1>GpxDumperTest<a href="../classes/Geocoder.Tests.Dumper.GpxDumperTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Dumper.GpxDumperTest.html" class="more">« More »</a>
+</div>
+<div id="KmlDumperTest" class="element ajax clickable class">
+<h1>KmlDumperTest<a href="../classes/Geocoder.Tests.Dumper.KmlDumperTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Dumper.KmlDumperTest.html" class="more">« More »</a>
+</div>
+<div id="TestableGpxDumper" class="element ajax clickable class">
+<h1>TestableGpxDumper<a href="../classes/Geocoder.Tests.Dumper.TestableGpxDumper.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Dumper.TestableGpxDumper.html" class="more">« More »</a>
+</div>
+<div id="WkbDumperTest" class="element ajax clickable class">
+<h1>WkbDumperTest<a href="../classes/Geocoder.Tests.Dumper.WkbDumperTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Dumper.WkbDumperTest.html" class="more">« More »</a>
+</div>
+<div id="WktDumperTest" class="element ajax clickable class">
+<h1>WktDumperTest<a href="../classes/Geocoder.Tests.Dumper.WktDumperTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Dumper.WktDumperTest.html" class="more">« More »</a>
+</div>
+<div id="FormatterTest" class="element ajax clickable class">
+<h1>FormatterTest<a href="../classes/Geocoder.Tests.Formatter.FormatterTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Formatter.FormatterTest.html" class="more">« More »</a>
+</div>
+<div id="GeocoderTest" class="element ajax clickable class">
+<h1>GeocoderTest<a href="../classes/Geocoder.Tests.GeocoderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.GeocoderTest.html" class="more">« More »</a>
+</div>
+<div id="BuzzHttpAdapterTest" class="element ajax clickable class">
+<h1>BuzzHttpAdapterTest<a href="../classes/Geocoder.Tests.HttpAdapter.BuzzHttpAdapterTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.HttpAdapter.BuzzHttpAdapterTest.html" class="more">« More »</a>
+</div>
+<div id="CurlHttpAdapterTest" class="element ajax clickable class">
+<h1>CurlHttpAdapterTest<a href="../classes/Geocoder.Tests.HttpAdapter.CurlHttpAdapterTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.HttpAdapter.CurlHttpAdapterTest.html" class="more">« More »</a>
+</div>
+<div id="GuzzleHttpAdapterTest" class="element ajax clickable class">
+<h1>GuzzleHttpAdapterTest<a href="../classes/Geocoder.Tests.HttpAdapter.GuzzleHttpAdapterTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.HttpAdapter.GuzzleHttpAdapterTest.html" class="more">« More »</a>
+</div>
+<div id="SocketAdapterTest" class="element ajax clickable class">
+<h1>SocketAdapterTest<a href="../classes/Geocoder.Tests.HttpAdapter.SocketAdapterTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.HttpAdapter.SocketAdapterTest.html" class="more">« More »</a>
+</div>
+<div id="ZendHttpAdapterTest" class="element ajax clickable class">
+<h1>ZendHttpAdapterTest<a href="../classes/Geocoder.Tests.HttpAdapter.ZendHttpAdapterTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.HttpAdapter.ZendHttpAdapterTest.html" class="more">« More »</a>
+</div>
+<div id="MockProvider" class="element ajax clickable class">
+<h1>MockProvider<a href="../classes/Geocoder.Tests.MockProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.MockProvider.html" class="more">« More »</a>
+</div>
+<div id="MockProviderWithData" class="element ajax clickable class">
+<h1>MockProviderWithData<a href="../classes/Geocoder.Tests.MockProviderWithData.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.MockProviderWithData.html" class="more">« More »</a>
+</div>
+<div id="MockProviderWithRequestCount" class="element ajax clickable class">
+<h1>MockProviderWithRequestCount<a href="../classes/Geocoder.Tests.MockProviderWithRequestCount.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.MockProviderWithRequestCount.html" class="more">« More »</a>
+</div>
+<div id="AbstractProviderTest" class="element ajax clickable class">
+<h1>AbstractProviderTest<a href="../classes/Geocoder.Tests.Provider.AbstractProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.AbstractProviderTest.html" class="more">« More »</a>
+</div>
+<div id="BingMapsProviderTest" class="element ajax clickable class">
+<h1>BingMapsProviderTest<a href="../classes/Geocoder.Tests.Provider.BingMapsProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.BingMapsProviderTest.html" class="more">« More »</a>
+</div>
+<div id="CloudMadeProviderTest" class="element ajax clickable class">
+<h1>CloudMadeProviderTest<a href="../classes/Geocoder.Tests.Provider.CloudMadeProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.CloudMadeProviderTest.html" class="more">« More »</a>
+</div>
+<div id="FreeGeoIpProviderTest" class="element ajax clickable class">
+<h1>FreeGeoIpProviderTest<a href="../classes/Geocoder.Tests.Provider.FreeGeoIpProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.FreeGeoIpProviderTest.html" class="more">« More »</a>
+</div>
+<div id="GeoipProviderTest" class="element ajax clickable class">
+<h1>GeoipProviderTest<a href="../classes/Geocoder.Tests.Provider.GeoipProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.GeoipProviderTest.html" class="more">« More »</a>
+</div>
+<div id="GoogleMapsProviderTest" class="element ajax clickable class">
+<h1>GoogleMapsProviderTest<a href="../classes/Geocoder.Tests.Provider.GoogleMapsProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.GoogleMapsProviderTest.html" class="more">« More »</a>
+</div>
+<div id="HostIpProviderTest" class="element ajax clickable class">
+<h1>HostIpProviderTest<a href="../classes/Geocoder.Tests.Provider.HostIpProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.HostIpProviderTest.html" class="more">« More »</a>
+</div>
+<div id="IpInfoDbProviderTest" class="element ajax clickable class">
+<h1>IpInfoDbProviderTest<a href="../classes/Geocoder.Tests.Provider.IpInfoDbProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.IpInfoDbProviderTest.html" class="more">« More »</a>
+</div>
+<div id="MockHttpAdapter" class="element ajax clickable class">
+<h1>MockHttpAdapter<a href="../classes/Geocoder.Tests.Provider.MockHttpAdapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.MockHttpAdapter.html" class="more">« More »</a>
+</div>
+<div id="MockProvider" class="element ajax clickable class">
+<h1>MockProvider<a href="../classes/Geocoder.Tests.Provider.MockProvider.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.MockProvider.html" class="more">« More »</a>
+</div>
+<div id="OpenStreetMapsProviderTest" class="element ajax clickable class">
+<h1>OpenStreetMapsProviderTest<a href="../classes/Geocoder.Tests.Provider.OpenStreetMapsProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.OpenStreetMapsProviderTest.html" class="more">« More »</a>
+</div>
+<div id="YahooProviderTest" class="element ajax clickable class">
+<h1>YahooProviderTest<a href="../classes/Geocoder.Tests.Provider.YahooProviderTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Provider.YahooProviderTest.html" class="more">« More »</a>
+</div>
+<div id="GeocodedTest" class="element ajax clickable class">
+<h1>GeocodedTest<a href="../classes/Geocoder.Tests.Result.GeocodedTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.Result.GeocodedTest.html" class="more">« More »</a>
+</div>
+<div id="TestCase" class="element ajax clickable class">
+<h1>TestCase<a href="../classes/Geocoder.Tests.TestCase.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.TestCase.html" class="more">« More »</a>
+</div>
+<div id="TestableGeocoder" class="element ajax clickable class">
+<h1>TestableGeocoder<a href="../classes/Geocoder.Tests.TestableGeocoder.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Geocoder.Tests.TestableGeocoder.html" class="more">« More »</a>
+</div>
+<div id="Locations" class="element ajax clickable class">
+<h1>Locations<a href="../classes/Locations.html">¶</a>
+</h1>
+<p class="short_description">Description of locations</p>
+<div class="details collapse"></div>
+<a href="../classes/Locations.html" class="more">« More »</a>
+</div>
+<div id="Locationsmodel" class="element ajax clickable class">
+<h1>Locationsmodel<a href="../classes/Locationsmodel.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Locationsmodel.html" class="more">« More »</a>
+</div>
+<div id="Phirehose" class="element ajax clickable class">
+<h1>Phirehose<a href="../classes/Phirehose.html">¶</a>
+</h1>
+<p class="short_description">A class that makes it easy to connect to and consume the Twitter stream via the Streaming API.</p>
+<div class="details collapse"></div>
+<a href="../classes/Phirehose.html" class="more">« More »</a>
+</div>
+<div id="PhirehoseConnectLimitExceeded" class="element ajax clickable class">
+<h1>PhirehoseConnectLimitExceeded<a href="../classes/PhirehoseConnectLimitExceeded.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PhirehoseConnectLimitExceeded.html" class="more">« More »</a>
+</div>
+<div id="PhirehoseException" class="element ajax clickable class">
+<h1>PhirehoseException<a href="../classes/PhirehoseException.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PhirehoseException.html" class="more">« More »</a>
+</div>
+<div id="PhirehoseNetworkException" class="element ajax clickable class">
+<h1>PhirehoseNetworkException<a href="../classes/PhirehoseNetworkException.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/PhirehoseNetworkException.html" class="more">« More »</a>
+</div>
+<div id="Tweets" class="element ajax clickable class">
+<h1>Tweets<a href="../classes/Tweets.html">¶</a>
+</h1>
+<p class="short_description">Description of locations</p>
+<div class="details collapse"></div>
+<a href="../classes/Tweets.html" class="more">« More »</a>
+</div>
+<div id="Tweetsmodel" class="element ajax clickable class">
+<h1>Tweetsmodel<a href="../classes/Tweetsmodel.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Tweetsmodel.html" class="more">« More »</a>
+</div>
+<div id="db" class="element ajax clickable class">
+<h1>db<a href="../classes/db.html">¶</a>
+</h1>
+<p class="short_description">db_lib.php
+General purpose database library for use by all 140dev code</p>
+<div class="details collapse"></div>
+<a href="../classes/db.html" class="more">« More »</a>
+</div>
+<div id="sentimentmodel" class="element ajax clickable class">
+<h1>sentimentmodel<a href="../classes/sentimentmodel.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/sentimentmodel.html" class="more">« More »</a>
+</div>
+<div id="utility" class="element ajax clickable class">
+<h1>utility<a href="../classes/utility.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/utility.html" class="more">« More »</a>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_AFRICA"> </a><div class="element clickable constant  constant_AFRICA" data-toggle="collapse" data-target=".constant_AFRICA .collapse">
+<h2>AFRICA</h2>
+<pre>AFRICA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_AJAX_URL"> </a><div class="element clickable constant  constant_AJAX_URL" data-toggle="collapse" data-target=".constant_AJAX_URL .collapse">
+<h2>AJAX_URL</h2>
+<pre>AJAX_URL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_ANTARCTICA"> </a><div class="element clickable constant  constant_ANTARCTICA" data-toggle="collapse" data-target=".constant_ANTARCTICA .collapse">
+<h2>ANTARCTICA</h2>
+<pre>ANTARCTICA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_ASIA"> </a><div class="element clickable constant  constant_ASIA" data-toggle="collapse" data-target=".constant_ASIA .collapse">
+<h2>ASIA</h2>
+<pre>ASIA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_AUTH_TWEETS"> </a><div class="element clickable constant  constant_AUTH_TWEETS" data-toggle="collapse" data-target=".constant_AUTH_TWEETS .collapse">
+<h2>AUTH_TWEETS</h2>
+<pre>AUTH_TWEETS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_CODE_DIR"> </a><div class="element clickable constant  constant_CODE_DIR" data-toggle="collapse" data-target=".constant_CODE_DIR .collapse">
+<h2>CODE_DIR</h2>
+<pre>CODE_DIR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_DATABASE"> </a><div class="element clickable constant  constant_DATABASE" data-toggle="collapse" data-target=".constant_DATABASE .collapse">
+<h2>DATABASE</h2>
+<pre>DATABASE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_DATABASE"> </a><div class="element clickable constant  constant_DATABASE" data-toggle="collapse" data-target=".constant_DATABASE .collapse">
+<h2>DATABASE</h2>
+<pre>DATABASE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_DB_CONFIG_DIR"> </a><div class="element clickable constant  constant_DB_CONFIG_DIR" data-toggle="collapse" data-target=".constant_DB_CONFIG_DIR .collapse">
+<h2>DB_CONFIG_DIR</h2>
+<pre>DB_CONFIG_DIR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_ENT_SUBSTITUTE"> </a><div class="element clickable constant  constant_ENT_SUBSTITUTE" data-toggle="collapse" data-target=".constant_ENT_SUBSTITUTE .collapse">
+<h2>ENT_SUBSTITUTE</h2>
+<pre>ENT_SUBSTITUTE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_EUROPE"> </a><div class="element clickable constant  constant_EUROPE" data-toggle="collapse" data-target=".constant_EUROPE .collapse">
+<h2>EUROPE</h2>
+<pre>EUROPE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEEL_FINE_API"> </a><div class="element clickable constant  constant_FEEL_FINE_API" data-toggle="collapse" data-target=".constant_FEEL_FINE_API .collapse">
+<h2>FEEL_FINE_API</h2>
+<pre>FEEL_FINE_API </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HASHTAG_TITLE"> </a><div class="element clickable constant  constant_HASHTAG_TITLE" data-toggle="collapse" data-target=".constant_HASHTAG_TITLE .collapse">
+<h2>HASHTAG_TITLE</h2>
+<pre>HASHTAG_TITLE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HASHTAG_URL"> </a><div class="element clickable constant  constant_HASHTAG_URL" data-toggle="collapse" data-target=".constant_HASHTAG_URL .collapse">
+<h2>HASHTAG_URL</h2>
+<pre>HASHTAG_URL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HOSTNAME"> </a><div class="element clickable constant  constant_HOSTNAME" data-toggle="collapse" data-target=".constant_HOSTNAME .collapse">
+<h2>HOSTNAME</h2>
+<pre>HOSTNAME </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HOSTNAME"> </a><div class="element clickable constant  constant_HOSTNAME" data-toggle="collapse" data-target=".constant_HOSTNAME .collapse">
+<h2>HOSTNAME</h2>
+<pre>HOSTNAME </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_LAT_LONG_SEPARATOR"> </a><div class="element clickable constant  constant_LAT_LONG_SEPARATOR" data-toggle="collapse" data-target=".constant_LAT_LONG_SEPARATOR .collapse">
+<h2>LAT_LONG_SEPARATOR</h2>
+<pre>LAT_LONG_SEPARATOR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_MORE_BUTTON"> </a><div class="element clickable constant  constant_MORE_BUTTON" data-toggle="collapse" data-target=".constant_MORE_BUTTON .collapse">
+<h2>MORE_BUTTON</h2>
+<pre>MORE_BUTTON </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_NEW_COUNT_REFRESH"> </a><div class="element clickable constant  constant_NEW_COUNT_REFRESH" data-toggle="collapse" data-target=".constant_NEW_COUNT_REFRESH .collapse">
+<h2>NEW_COUNT_REFRESH</h2>
+<pre>NEW_COUNT_REFRESH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_NEW_TWEETS_MESSAGE"> </a><div class="element clickable constant  constant_NEW_TWEETS_MESSAGE" data-toggle="collapse" data-target=".constant_NEW_TWEETS_MESSAGE .collapse">
+<h2>NEW_TWEETS_MESSAGE</h2>
+<pre>NEW_TWEETS_MESSAGE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_NEW_TWEET_MESSAGE"> </a><div class="element clickable constant  constant_NEW_TWEET_MESSAGE" data-toggle="collapse" data-target=".constant_NEW_TWEET_MESSAGE .collapse">
+<h2>NEW_TWEET_MESSAGE</h2>
+<pre>NEW_TWEET_MESSAGE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_NORTH_AMERICA"> </a><div class="element clickable constant  constant_NORTH_AMERICA" data-toggle="collapse" data-target=".constant_NORTH_AMERICA .collapse">
+<h2>NORTH_AMERICA</h2>
+<pre>NORTH_AMERICA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PASSWORD"> </a><div class="element clickable constant  constant_PASSWORD" data-toggle="collapse" data-target=".constant_PASSWORD .collapse">
+<h2>PASSWORD</h2>
+<pre>PASSWORD </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PASSWORD"> </a><div class="element clickable constant  constant_PASSWORD" data-toggle="collapse" data-target=".constant_PASSWORD .collapse">
+<h2>PASSWORD</h2>
+<pre>PASSWORD </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_SAMPLE_TWEETS_API"> </a><div class="element clickable constant  constant_SAMPLE_TWEETS_API" data-toggle="collapse" data-target=".constant_SAMPLE_TWEETS_API .collapse">
+<h2>SAMPLE_TWEETS_API</h2>
+<pre>SAMPLE_TWEETS_API </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_SOUTH_AMERICA"> </a><div class="element clickable constant  constant_SOUTH_AMERICA" data-toggle="collapse" data-target=".constant_SOUTH_AMERICA .collapse">
+<h2>SOUTH_AMERICA</h2>
+<pre>SOUTH_AMERICA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_STREAM_ACCOUNT"> </a><div class="element clickable constant  constant_STREAM_ACCOUNT" data-toggle="collapse" data-target=".constant_STREAM_ACCOUNT .collapse">
+<h2>STREAM_ACCOUNT</h2>
+<pre>STREAM_ACCOUNT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_STREAM_PASSWORD"> </a><div class="element clickable constant  constant_STREAM_PASSWORD" data-toggle="collapse" data-target=".constant_STREAM_PASSWORD .collapse">
+<h2>STREAM_PASSWORD</h2>
+<pre>STREAM_PASSWORD </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TIME_ZONE"> </a><div class="element clickable constant  constant_TIME_ZONE" data-toggle="collapse" data-target=".constant_TIME_ZONE .collapse">
+<h2>TIME_ZONE</h2>
+<pre>TIME_ZONE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TWEET_DISPLAY_COUNT"> </a><div class="element clickable constant  constant_TWEET_DISPLAY_COUNT" data-toggle="collapse" data-target=".constant_TWEET_DISPLAY_COUNT .collapse">
+<h2>TWEET_DISPLAY_COUNT</h2>
+<pre>TWEET_DISPLAY_COUNT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TWEET_DISPLAY_TITLE"> </a><div class="element clickable constant  constant_TWEET_DISPLAY_TITLE" data-toggle="collapse" data-target=".constant_TWEET_DISPLAY_TITLE .collapse">
+<h2>TWEET_DISPLAY_TITLE</h2>
+<pre>TWEET_DISPLAY_TITLE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TWEET_ERROR_ADDRESS"> </a><div class="element clickable constant  constant_TWEET_ERROR_ADDRESS" data-toggle="collapse" data-target=".constant_TWEET_ERROR_ADDRESS .collapse">
+<h2>TWEET_ERROR_ADDRESS</h2>
+<pre>TWEET_ERROR_ADDRESS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TWEET_ERROR_INTERVAL"> </a><div class="element clickable constant  constant_TWEET_ERROR_INTERVAL" data-toggle="collapse" data-target=".constant_TWEET_ERROR_INTERVAL .collapse">
+<h2>TWEET_ERROR_INTERVAL</h2>
+<pre>TWEET_ERROR_INTERVAL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_USERNAME"> </a><div class="element clickable constant  constant_USERNAME" data-toggle="collapse" data-target=".constant_USERNAME .collapse">
+<h2>USERNAME</h2>
+<pre>USERNAME </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_USERNAME"> </a><div class="element clickable constant  constant_USERNAME" data-toggle="collapse" data-target=".constant_USERNAME .collapse">
+<h2>USERNAME</h2>
+<pre>USERNAME </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_USER_MENTION_TITLE"> </a><div class="element clickable constant  constant_USER_MENTION_TITLE" data-toggle="collapse" data-target=".constant_USER_MENTION_TITLE .collapse">
+<h2>USER_MENTION_TITLE</h2>
+<pre>USER_MENTION_TITLE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_USER_MENTION_URL"> </a><div class="element clickable constant  constant_USER_MENTION_URL" data-toggle="collapse" data-target=".constant_USER_MENTION_URL .collapse">
+<h2>USER_MENTION_URL</h2>
+<pre>USER_MENTION_URL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-03-18T19:37:53Z.<br></footer></div>
+</div>
+</body>
+</html>

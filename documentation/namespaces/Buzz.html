@@ -1,0 +1,695 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » Buzz</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Buzz.html"><i class="icon-th"></i> Buzz</a></li>
+<li><a href="../namespaces/Composer.html"><i class="icon-th"></i> Composer</a></li>
+<li><a href="../namespaces/Geocoder.html"><i class="icon-th"></i> Geocoder</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">933</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Namespaces</li>
+<li>
+<a href="../namespaces/Buzz.html" title="Buzz"><i class="icon-th"></i>Buzz</a><ul class="nav nav-list nav-namespaces">
+<li>
+<a href="../namespaces/Buzz.Client.html" title="Client"><i class="icon-th"></i>Client</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Listener.html" title="Listener"><i class="icon-th"></i>Listener</a><ul class="nav nav-list nav-namespaces"><li>
+<a href="../namespaces/Buzz.Listener.History.html" title="History"><i class="icon-th"></i>History</a><ul class="nav nav-list nav-namespaces"></ul>
+</li></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Message.html" title="Message"><i class="icon-th"></i>Message</a><ul class="nav nav-list nav-namespaces">
+<li>
+<a href="../namespaces/Buzz.Message.Factory.html" title="Factory"><i class="icon-th"></i>Factory</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Message.Form.html" title="Form"><i class="icon-th"></i>Form</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Test.html" title="Test"><i class="icon-th"></i>Test</a><ul class="nav nav-list nav-namespaces">
+<li>
+<a href="../namespaces/Buzz.Test.Client.html" title="Client"><i class="icon-th"></i>Client</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Test.Cookie.html" title="Cookie"><i class="icon-th"></i>Cookie</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Test.History.html" title="History"><i class="icon-th"></i>History</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Test.Listener.html" title="Listener"><i class="icon-th"></i>Listener</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Test.Message.html" title="Message"><i class="icon-th"></i>Message</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Test.Util.html" title="Util"><i class="icon-th"></i>Util</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="../namespaces/Buzz.Util.html" title="Util"><i class="icon-th"></i>Util</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8 namespace-contents">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li class="active"><a href="../namespaces/Buzz.html">Buzz</a></li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Browser" class="element ajax clickable class">
+<h1>Browser<a href="../classes/Buzz.Browser.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Browser.html" class="more">« More »</a>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Client.html">Client</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="BatchClientInterface" class="element ajax clickable interface">
+<h1>BatchClientInterface<a href="../classes/Buzz.Client.BatchClientInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.BatchClientInterface.html" class="more">« More »</a>
+</div>
+<div id="ClientInterface" class="element ajax clickable interface">
+<h1>ClientInterface<a href="../classes/Buzz.Client.ClientInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.ClientInterface.html" class="more">« More »</a>
+</div>
+<div id="AbstractClient" class="element ajax clickable class">
+<h1>AbstractClient<a href="../classes/Buzz.Client.AbstractClient.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.AbstractClient.html" class="more">« More »</a>
+</div>
+<div id="AbstractCurl" class="element ajax clickable class">
+<h1>AbstractCurl<a href="../classes/Buzz.Client.AbstractCurl.html">¶</a>
+</h1>
+<p class="short_description">Base client class with helpers for working with cURL.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.AbstractCurl.html" class="more">« More »</a>
+</div>
+<div id="AbstractStream" class="element ajax clickable class">
+<h1>AbstractStream<a href="../classes/Buzz.Client.AbstractStream.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.AbstractStream.html" class="more">« More »</a>
+</div>
+<div id="Curl" class="element ajax clickable class">
+<h1>Curl<a href="../classes/Buzz.Client.Curl.html">¶</a>
+</h1>
+<p class="short_description">Base client class with helpers for working with cURL.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.Curl.html" class="more">« More »</a>
+</div>
+<div id="FileGetContents" class="element ajax clickable class">
+<h1>FileGetContents<a href="../classes/Buzz.Client.FileGetContents.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.FileGetContents.html" class="more">« More »</a>
+</div>
+<div id="MultiCurl" class="element ajax clickable class">
+<h1>MultiCurl<a href="../classes/Buzz.Client.MultiCurl.html">¶</a>
+</h1>
+<p class="short_description">Base client class with helpers for working with cURL.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Client.MultiCurl.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Listener.html">Listener</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="ListenerInterface" class="element ajax clickable interface">
+<h1>ListenerInterface<a href="../classes/Buzz.Listener.ListenerInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.ListenerInterface.html" class="more">« More »</a>
+</div>
+<div id="CallbackListener" class="element ajax clickable class">
+<h1>CallbackListener<a href="../classes/Buzz.Listener.CallbackListener.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.CallbackListener.html" class="more">« More »</a>
+</div>
+<div id="HistoryListener" class="element ajax clickable class">
+<h1>HistoryListener<a href="../classes/Buzz.Listener.HistoryListener.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.HistoryListener.html" class="more">« More »</a>
+</div>
+<div id="ListenerChain" class="element ajax clickable class">
+<h1>ListenerChain<a href="../classes/Buzz.Listener.ListenerChain.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.ListenerChain.html" class="more">« More »</a>
+</div>
+<div id="LoggerListener" class="element ajax clickable class">
+<h1>LoggerListener<a href="../classes/Buzz.Listener.LoggerListener.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.LoggerListener.html" class="more">« More »</a>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Listener.html">Listener</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Listener.History.html">History</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Entry" class="element ajax clickable class">
+<h1>Entry<a href="../classes/Buzz.Listener.History.Entry.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.History.Entry.html" class="more">« More »</a>
+</div>
+<div id="Journal" class="element ajax clickable class">
+<h1>Journal<a href="../classes/Buzz.Listener.History.Journal.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Listener.History.Journal.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Message.html">Message</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="MessageInterface" class="element ajax clickable interface">
+<h1>MessageInterface<a href="../classes/Buzz.Message.MessageInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP message.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.MessageInterface.html" class="more">« More »</a>
+</div>
+<div id="RequestInterface" class="element ajax clickable interface">
+<h1>RequestInterface<a href="../classes/Buzz.Message.RequestInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP request message.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.RequestInterface.html" class="more">« More »</a>
+</div>
+<div id="AbstractMessage" class="element ajax clickable class">
+<h1>AbstractMessage<a href="../classes/Buzz.Message.AbstractMessage.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.AbstractMessage.html" class="more">« More »</a>
+</div>
+<div id="Request" class="element ajax clickable class">
+<h1>Request<a href="../classes/Buzz.Message.Request.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Request.html" class="more">« More »</a>
+</div>
+<div id="Response" class="element ajax clickable class">
+<h1>Response<a href="../classes/Buzz.Message.Response.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Response.html" class="more">« More »</a>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Message.html">Message</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Message.Factory.html">Factory</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="FactoryInterface" class="element ajax clickable interface">
+<h1>FactoryInterface<a href="../classes/Buzz.Message.Factory.FactoryInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Factory.FactoryInterface.html" class="more">« More »</a>
+</div>
+<div id="Factory" class="element ajax clickable class">
+<h1>Factory<a href="../classes/Buzz.Message.Factory.Factory.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Factory.Factory.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Message.html">Message</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Message.Form.html">Form</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="FormRequestInterface" class="element ajax clickable interface">
+<h1>FormRequestInterface<a href="../classes/Buzz.Message.Form.FormRequestInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP request message sent by a web form.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormRequestInterface.html" class="more">« More »</a>
+</div>
+<div id="FormUploadInterface" class="element ajax clickable interface">
+<h1>FormUploadInterface<a href="../classes/Buzz.Message.Form.FormUploadInterface.html">¶</a>
+</h1>
+<p class="short_description">An HTTP message.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormUploadInterface.html" class="more">« More »</a>
+</div>
+<div id="FormRequest" class="element ajax clickable class">
+<h1>FormRequest<a href="../classes/Buzz.Message.Form.FormRequest.html">¶</a>
+</h1>
+<p class="short_description">FormRequest.</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormRequest.html" class="more">« More »</a>
+</div>
+<div id="FormUpload" class="element ajax clickable class">
+<h1>FormUpload<a href="../classes/Buzz.Message.Form.FormUpload.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Message.Form.FormUpload.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="BrowserTest" class="element ajax clickable class">
+<h1>BrowserTest<a href="../classes/Buzz.Test.BrowserTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.BrowserTest.html" class="more">« More »</a>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.Client.html">Client</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="AbstractStreamTest" class="element ajax clickable class">
+<h1>AbstractStreamTest<a href="../classes/Buzz.Test.Client.AbstractStreamTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.AbstractStreamTest.html" class="more">« More »</a>
+</div>
+<div id="FileGetContentsTest" class="element ajax clickable class">
+<h1>FileGetContentsTest<a href="../classes/Buzz.Test.Client.FileGetContentsTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.FileGetContentsTest.html" class="more">« More »</a>
+</div>
+<div id="FunctionalTest" class="element ajax clickable class">
+<h1>FunctionalTest<a href="../classes/Buzz.Test.Client.FunctionalTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.FunctionalTest.html" class="more">« More »</a>
+</div>
+<div id="StreamClient" class="element ajax clickable class">
+<h1>StreamClient<a href="../classes/Buzz.Test.Client.StreamClient.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Client.StreamClient.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.Cookie.html">Cookie</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="CookieJarTest" class="element ajax clickable class">
+<h1>CookieJarTest<a href="../classes/Buzz.Test.Cookie.CookieJarTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Cookie.CookieJarTest.html" class="more">« More »</a>
+</div>
+<div id="CookieTest" class="element ajax clickable class">
+<h1>CookieTest<a href="../classes/Buzz.Test.Cookie.CookieTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Cookie.CookieTest.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.History.html">History</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="EntryTest" class="element ajax clickable class">
+<h1>EntryTest<a href="../classes/Buzz.Test.History.EntryTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.History.EntryTest.html" class="more">« More »</a>
+</div>
+<div id="JournalTest" class="element ajax clickable class">
+<h1>JournalTest<a href="../classes/Buzz.Test.History.JournalTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.History.JournalTest.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.Listener.html">Listener</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="CallbackListenerTest" class="element ajax clickable class">
+<h1>CallbackListenerTest<a href="../classes/Buzz.Test.Listener.CallbackListenerTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.CallbackListenerTest.html" class="more">« More »</a>
+</div>
+<div id="HistoryListenerTest" class="element ajax clickable class">
+<h1>HistoryListenerTest<a href="../classes/Buzz.Test.Listener.HistoryListenerTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.HistoryListenerTest.html" class="more">« More »</a>
+</div>
+<div id="ListenerChainTest" class="element ajax clickable class">
+<h1>ListenerChainTest<a href="../classes/Buzz.Test.Listener.ListenerChainTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.ListenerChainTest.html" class="more">« More »</a>
+</div>
+<div id="LoggerListenerTest" class="element ajax clickable class">
+<h1>LoggerListenerTest<a href="../classes/Buzz.Test.Listener.LoggerListenerTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Listener.LoggerListenerTest.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.Message.html">Message</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="AbstractMessageTest" class="element ajax clickable class">
+<h1>AbstractMessageTest<a href="../classes/Buzz.Test.Message.AbstractMessageTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.AbstractMessageTest.html" class="more">« More »</a>
+</div>
+<div id="FactoryTest" class="element ajax clickable class">
+<h1>FactoryTest<a href="../classes/Buzz.Test.Message.FactoryTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.FactoryTest.html" class="more">« More »</a>
+</div>
+<div id="FormRequestTest" class="element ajax clickable class">
+<h1>FormRequestTest<a href="../classes/Buzz.Test.Message.FormRequestTest.html">¶</a>
+</h1>
+<p class="short_description">FormRequestTest</p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.FormRequestTest.html" class="more">« More »</a>
+</div>
+<div id="FormUploadTest" class="element ajax clickable class">
+<h1>FormUploadTest<a href="../classes/Buzz.Test.Message.FormUploadTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.FormUploadTest.html" class="more">« More »</a>
+</div>
+<div id="Message" class="element ajax clickable class">
+<h1>Message<a href="../classes/Buzz.Test.Message.Message.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.Message.html" class="more">« More »</a>
+</div>
+<div id="RequestTest" class="element ajax clickable class">
+<h1>RequestTest<a href="../classes/Buzz.Test.Message.RequestTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.RequestTest.html" class="more">« More »</a>
+</div>
+<div id="ResponseTest" class="element ajax clickable class">
+<h1>ResponseTest<a href="../classes/Buzz.Test.Message.ResponseTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Message.ResponseTest.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.html">Test</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Test.Util.html">Util</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="UrlTest" class="element ajax clickable class">
+<h1>UrlTest<a href="../classes/Buzz.Test.Util.UrlTest.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Test.Util.UrlTest.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Buzz.html">Buzz</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Buzz.Util.html">Util</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Cookie" class="element ajax clickable class">
+<h1>Cookie<a href="../classes/Buzz.Util.Cookie.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Util.Cookie.html" class="more">« More »</a>
+</div>
+<div id="CookieJar" class="element ajax clickable class">
+<h1>CookieJar<a href="../classes/Buzz.Util.CookieJar.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Util.CookieJar.html" class="more">« More »</a>
+</div>
+<div id="Url" class="element ajax clickable class">
+<h1>Url<a href="../classes/Buzz.Util.Url.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Buzz.Util.Url.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-03-18T19:37:52Z.<br></footer></div>
+</div>
+</body>
+</html>
