@@ -547,6 +547,8 @@ h2, p, li {
 
 #tags {
 	background: #111;
+	clear: left;
+	border-top: 5px solid #f1f5f6;
 }
 
 #tags h2 {
@@ -628,12 +630,12 @@ h1 {
 	background: none;
 	font-size: 12px;
 	padding: 10px 0 8px;
+	opacity: 1;
 }
 
 #desc {
 	display: table;
 	margin: 0 auto;
-	padding-bottom: 10px;
 }
 
 #desc ul {
@@ -779,7 +781,7 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	/* ...or something to trigger hasLayout, like zoom: 1; */
 	width: 100%;
 	width: 120px;
-	height: 75px;
+	height: 111px;
 
 	/* Theoretically for IE 8 & 9 (more valid) */
 	/* ...but not required as filter works too */
@@ -833,5 +835,117 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 
 #desc .container {
 	width: 800px;
+}
+
+#all_cities {
+	width: 1240px;
+	margin: 0 auto;
+}
+
+#all_cities div {
+	float: left;
+	width: 300px;
+	padding: 5px;
+}
+
+#all_cities h4 {
+	cursor: pointer;
+	background: #eee;
+	border-radius: 55px;
+	-webkit-border-radius: 55px;
+	-moz-border-radius: 55px;
+	height: 100px;
+	width: 100px;
+	vertical-align: middle;
+	line-height: 100px;
+	text-align: center;
+	border: 5px solid white;
+	webkit-box-shadow: rgba(0,0,0,0.3) 0px 3px 1px;
+	-moz-box-shadow: rgba(0,0,0,0.3) 0 3px 1px;
+	box-shadow: rgba(0,0,0,0.3) 0 3px 1px;
+}
+
+#all_cities h2 {
+	background: #eee;
+	opacity: 1;
+	width: 20%;
+	margin: 0 auto;
+	text-shadow: -1px 2px 0 #ccc;
+	color: #000;
+	background: none;
+	font-size: 250%;
+}
+
+#all_cities h4:hover {
+	background: #fafafa;
+	 -webkit-transition-property: background;
+	 -webkit-transition-duration: 0.1s;
+	 -webkit-transition-timing-function:  ease-in;
+	 color: #111;
+}
+
+#all_cities h4:first-letter {
+	font-size: 1.2em;
+	color: #111;
+}
+
+#all_cities h4.selected {
+	background: #CD0A1A;
+	color: #fafafa;
+}
+
+#all_cities h4.selected:first-letter {
+	color: #fafafa;
+}
+
+#all_cities ul {
+	padding: 5px;
+	background: #eee;
+	margin-top: 9px;
+	border-top: 1px solid #CD0A1A;
+}
+
+#all_cities blockquote {
+	color: #333;
+	font-family: georgia;
+	line-height: 1.4em;
+	font-size: 1.4em;
+	font-style: italic;
+}
+
+#all_cities li {
+	padding: 10px;
+	border-bottom: 1px solid white;
+}
+
+#all_cities li:last-child {
+	border-bottom: 0;
+}
+
+#all_cities .arrow-down {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #CD0A1A;
+	padding: 0;
+	position: relative;
+	left: 47px;
+	top: -7px;
+}
+
+#sample_tweets {
+	background: url("http://snag.gy/fwnla.jpg");
+	overflow: hidden;
+	background-position: top;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#sample_tweets ul {
+	-webkit-box-shadow: rgba(0,0,0,0.1) -5px 10px 10px;
+	-moz-box-shadow: rgba(0,0,0,0.1) -5px 10px 10px;
+	box-shadow: rgba(0,0,0,0.1) -5px 10px 10px;
 }
 

@@ -6,7 +6,8 @@
 
 	$tweets = new Tweets();
 	$allTweets = $tweets->index(); 
-	$recentTweets = $tweets->getRecentTweets(); 
+	$recentTweets = $tweets->getRecentTweets();
+	
 ?>
 <html>
 	<head>
@@ -47,6 +48,7 @@
 		</div>
 		<ul>
 			<li><a href="#christmas-bubble">Happiest Cities</a></li>
+			<li><a href="#all_cities">Cities Sample Tweets</a></li>
 			<li><a href="#tags">Tweet Tags</a></li>
 			<li><a href="#recentTweets">Recent Tweets</a></li>
 		</ul>
@@ -57,24 +59,8 @@
 
 	<div id="desc">
 		<div class="container">
-			<h2>Quick Explanation</h2>
-			<p>This webpage illustrates feelings of each main city of the United Kingdom, that was recorded from December 22 - December 29 2012.</p>
-			<ul>
-				<li>Feelings are:
-					<ul>
-						<li>Represented in grayscale.
-						<li>The brighter the gray, the happier the feeling. The darker the gray, the more sad the feeling
-						</li>
-						<li>
-							Feelings are also represented in numeric values, from 0 to 10.
-							<ul>
-								<li>0 represents the worst feeling and 10 the happiest.</li>
-								<li>Smiley faces illustrate these values.</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
+			<h2>Showing mood in the UK from Christmas</h2> <!--that was recorded from December 22 - December 29 2012-->
+		
 		</div>
 	</div>
 
@@ -83,7 +69,7 @@
 			<div id="quantities">
 
 				<div class="desc">
-					<p>Out of 5002 tweets</p>
+					<p>Out of 783 tweets</p>
 				</div>
 
 			</div>
@@ -103,6 +89,11 @@
 			</div>
 		</div>
 		
+	</div>
+	<div id="sample_tweets">
+		<div id="all_cities">
+			<h2>Cities Sample Tweets</h2>
+		</div>
 	</div>
 
 	<div id="tags">
@@ -159,8 +150,12 @@
 			</ul>
 		</div>
 	</div>
-
-
+<?php
+#debugging
+//include_once( dirname(__FILE__) . '/../../controller/cities.php' );
+//	$cities = new Cities();
+//	$cities->allCities();
+?>
 		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
 
@@ -169,10 +164,13 @@
 <!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 
 		<script>
+			
 			var data = <?php  echo $allTweets['json']; ?>;
+			
 			happiestCitiesImproved(data);
 			sadTagCloud();
 			happyTagCloud();
+			allCities();
 
 			//http://bl.ocks.org/3887193
 			var width = 400,
@@ -251,6 +249,9 @@
 					});
 				});
 			});
+
+
+
 
 
 //		  $(function() {

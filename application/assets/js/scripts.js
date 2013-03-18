@@ -505,7 +505,7 @@ function happiestCitiesImproved(nodes) {
 
 	var nodes = nodes;
 
-	var margin = {top: 0, right: 150, bottom: 0, left: 0},
+	var margin = {top: 0, right: 0, bottom: 0, left: 0},
 		width = 1170 - margin.left - margin.right,
 		height = 400 ;
 
@@ -517,10 +517,10 @@ function happiestCitiesImproved(nodes) {
 		.attr("class", "tooltip")
 		.style("opacity", 1e-6);
 
-	var color = d3.rgb(10, 10, 10);
+	var color = d3.rgb(20, 20, 20);
 
 	nodes = nodes.map(function(obj) {
-		obj.radius = obj.sentiment * 4.5;
+		obj.radius = obj.sentiment * 8.5;
 		obj.cx=width/2;
 		obj.cy=height/2;
 		return obj;
@@ -538,7 +538,7 @@ function happiestCitiesImproved(nodes) {
 	var svg = d3.select("#christmas-bubble").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
-		.append("g").attr("transform", "translate(" + 400 + "," + 0 + ")")
+		.append("g").attr("transform", "translate(" + 300 + "," + 0 + ")")
 		;
 
 	var circle = svg.selectAll("circle")
@@ -589,7 +589,7 @@ function happiestCitiesImproved(nodes) {
 		div
 		.text(d.name)
 		.style("left", (d3.event.pageX) + - 30 + "px")
-		.style("top", (d3.event.pageY)  + - 170 + "px")
+		.style("top", (d3.event.pageY)  + - 50 + "px")
 		.style("font-size", "200%");
 
 		div.append("image")
@@ -624,13 +624,12 @@ function happiestCitiesImproved(nodes) {
 			}); 
 		div
 		.append('p').text('Feeling value: '+ d.sentiment +'(/10)');
-
+		
 		div
 		.append('p').attr("class", "tweet")
-		.text("Sample tweet: “" + d.tweet + "” ")
+		.text("Sample tweet: " + d.tweet )
 		.style("left", (d3.event.pageX) + "px")
 		.style("top", (d3.event.pageY) + "px")
-
 
 	}
 
@@ -643,7 +642,7 @@ function happiestCitiesImproved(nodes) {
 	// Move nodes toward cluster focus.
 	function gravity(alpha) {
 	  return function(d) {
-		d.y += (d.cy - d.y) * alpha / 1;
+		d.y += (d.cy - d.y) * alpha / 0.7;
 		d.x += (d.cx - d.x) * alpha / 5;
 	  };
 	}
@@ -736,7 +735,7 @@ function happyTagCloud() {
 		  .start();
 
 	  function draw(words) {
-		  console.log(words);
+		  
 		  d3.select("#happyTagCloud").append("svg")
 			  .attr("height", 370)
 			  .append("g").attr("transform", "translate(300,200)")
@@ -753,5 +752,37 @@ function happyTagCloud() {
 			  .text(function(d) { return d.tweet; } );
 		  }
 	});
+
+}
+
+
+function allCities() {
+
+     $.get('../../controller/cities.php', function(result) { 
+       var citiesTweets = jQuery.parseJSON(result);
+       var $oneCity;
+	   
+       $.each( citiesTweets, function( k, v ) {
+             $oneCity = $( '<div/>' );
+             $oneCity.html('<h4>' + k + '</h4>');
+			 $oneCity.append('<div class="arrow-down"></div>');
+             $cityQuotes = $( '<ul/>' );
+
+             $.each(v, function(i,u){
+                   $cityQuotes.append('<li><blockquote>' + u + '</blockquote></li>');
+             });
+            $oneCity.append( $cityQuotes ).appendTo( '#all_cities' );
+       });
+
+
+		$('#all_cities ul, #all_cities .arrow-down').hide();
+
+		$('#all_cities h4').click(function(){
+			$(this).toggleClass('selected');
+			$(this).parent().find('ul, .arrow-down').slideToggle();
+		});
+	 });
+
+
 
 }

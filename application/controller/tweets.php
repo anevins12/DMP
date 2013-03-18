@@ -22,7 +22,7 @@ class Tweets extends Locations{
 
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();		
-		
+		$this->getTweetQuantities();
 		$this->getTweetTags();
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 		
@@ -53,37 +53,70 @@ class Tweets extends Locations{
 
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();
-		
+
 		$two = 0;
 		$four = 0;
 		$six = 0;
 		$eight = 0;
 		$ten = 0;
-		$quantities = array();
+		$quantities = array('2' => $two, '4' => $four, '6' => $six, '8' => $eight, '10' => $ten);
+		$cities_string = '
 
+					 Bath	 Birmingham	 Bradford
+					 Brighton and Hove	 Bristol	 Cambridge
+					 Canterbury	 Carlisle	 Chester
+					 Chichester	 Coventry	 Derby
+					 Durham	 Ely	 Exeter
+					 Gloucester	 Hereford	 Kingston upon Hull
+					 Lancaster	 Leeds	 Leicester
+					 Lichfield	 Lincoln	 Liverpool
+					 City of London	 Manchester	 Newcastle upon Tyne
+					 Norwich	 Nottingham	 Oxford
+					 Peterborough	 Plymouth	 Portsmouth
+					 Preston	 Ripon	 Salford
+					 Salisbury	 Sheffield	 Southampton
+					 St Albans	 Stoke-on-Trent	 Sunderland
+					 Truro	 Wakefield	 Wells
+					 Westminster	 Winchester	 Wolverhampton
+					 Worcester	 York
+
+					 Bangor	 Cardiff	 Newport
+					 St Davids	 Swansea
+
+					 Aberdeen	 Dundee	 Edinburgh
+					 Glasgow	 Inverness	 Stirling
+
+					 Armagh	 Belfast	 Londonderry
+					 Lisburn	 Newry
+
+					';
 		foreach ($tweets as $tweet) {
-			$sentiment = $tweet->sentiment;
-			if ($sentiment <= 2) {
-					$two++;
-			}
 
-			if ($sentiment > 2 && $sentiment <= 4) {
-				$four++;
-			}
+			if ( isset( $tweet->city ) && strstr( $cities_string, $tweet->city ) ) {
+				$sentiment = $tweet->sentiment;
+				if ($sentiment <= 2) {
+						$quantities['2']++;
+				}
 
-			if ($sentiment > 4 && $sentiment <= 6) {
-				$six++;
-			}
+				if ($sentiment > 2 && $sentiment <= 4) {
+					$quantities['4']++;
+				}
 
-			if ($sentiment > 6 && $sentiment <= 8) {
-				$eight++;
-			}
+				if ($sentiment > 4 && $sentiment <= 6) {
+					$quantities['6']++;
+				}
 
-			if ($sentiment > 8 && $sentiment <= 10) {
-				$ten++;
+				if ($sentiment > 6 && $sentiment <= 8) {
+					$quantities['8']++;
+				}
+
+				if ($sentiment > 8 && $sentiment <= 10) {
+					$quantities['10']++;
+				}
 			}
 
 		}
+		
 		
 	}
 
@@ -526,12 +559,6 @@ state,city,lat,lon,conditions&limit=100000');
 
 		if ( !empty( $happiest_cities ) ) {
 
-			//sort the array by sentiment ascending
-			//inspired by a comment on http://php.net/manual/en/function.array-multisort.php
-			foreach ( $happiest_cities as $k => $row ) {
-					$happiest_citiesSort[ $k ]  = $row->sentiment;
-			}
-			array_multisort( $happiest_citiesSort, SORT_ASC, $happiest_cities );
 
 			foreach ( $happiest_cities as $happiest_city ) {
 
@@ -577,30 +604,41 @@ state,city,lat,lon,conditions&limit=100000');
 			$new_array = array();
 			$names_and_tweets = array();
 
-			foreach ($cities as $city) {
+			if (!defined('ENT_SUBSTITUTE')) {
+				define('ENT_SUBSTITUTE', 8);
+			}
+
+			foreach ($cities as $city) { 
 				//count how many times the city name appears in the array
 				$city['tweet'] = utf8_encode(htmlspecialchars( $city['tweet'], ENT_SUBSTITUTE ));
-				$names_and_tweets[] = array( $city['name'] => $city['tweet'] );
 				
-			}
+				$names_and_tweets[] = array( $city['name'] => $city['tweet'] );
 			
+			}
+
+
 			foreach ($cities as $city) {
 			
 				$tweets = array();
 				foreach ($names_and_tweets as $name_and_tweet) {
 
 					if ( isset( $name_and_tweet[$city['name']] )) {
-						$tweets[] = $name_and_tweet[$city['name']];
+						$tweets[] =  $name_and_tweet[$city['name']];
 					}
 
 				}
 
-				//store the city name and all of its tweets so you can access them later
-				$cities_tweets[] = array( $city['name'] => $tweets );
+				
+
+				if (strstr($cities_string, $city['name'])) {
+					//store the city name and all of its tweets so you can access them later
+					$cities_tweets[] = array( $city['name'] => $tweets );
+				}
 				
 				$quan = count($tweets) -1;
+				
 				if ( $quan > 1 ) { 
-					$index = rand( 0, $quan );
+					$index = rand( 0, $quan ); 
 					$random_tweet = $tweets[$index];
 					$city['tweet'] = $random_tweet;
 				}
@@ -627,7 +665,7 @@ state,city,lat,lon,conditions&limit=100000');
 			$data = array();
 			$data['json'] = json_encode($output);
 			$data['cities_tweets'] = $cities_tweets;
-			
+			 
 			return $data;
 
 		}
@@ -867,6 +905,8 @@ state,city,lat,lon,conditions&limit=100000');
 		return $value;
 
 	}
+
+	
 
 }
 ?>
