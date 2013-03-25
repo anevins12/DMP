@@ -549,6 +549,7 @@ h2, p, li {
 	background: #111;
 	clear: left;
 	border-top: 5px solid #f1f5f6;
+	padding-bottom: 50px;
 }
 
 #tags h2 {

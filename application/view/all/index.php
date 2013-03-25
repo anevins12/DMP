@@ -4,6 +4,12 @@
 
 	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
 
+	include_once( dirname(__FILE__) . '/../../controller/users.php' );
+
+	$users = new Users();
+	$allUsers = $users->getAllUsers();
+	
+
 	$tweets = new Tweets();
 	$allTweets = $tweets->index(); 
 	$recentTweets = $tweets->getRecentTweets();
@@ -90,10 +96,16 @@
 		</div>
 		
 	</div>
+
 	<div id="sample_tweets">
 		<div id="all_cities">
 			<h2>Cities Sample Tweets</h2>
 		</div>
+	</div>
+
+	<div id="all_users">
+		<h2>Tweeters Ball of Hate</h2>
+	<?php //var_dump($allUsers);exit;?>
 	</div>
 
 	<div id="tags">
@@ -166,8 +178,10 @@
 		<script>
 			
 			var data = <?php  echo $allTweets['json']; ?>;
+			var users = <?php echo $allUsers; ?>;
 			
 			happiestCitiesImproved(data);
+			allUsers(users);
 			sadTagCloud();
 			happyTagCloud();
 			allCities();

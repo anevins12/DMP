@@ -1,9 +1,10 @@
 /* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
+ * The scripts.js file compiles all functions that are used in the applicaiton's view
+ *
+ * 
+ * @author_name Andrew Nevins
+ * @author_no 09019549
+*/
 function polymaps() {
 	
 	// Import the polymaps namespace into a variable (for convenience)
@@ -32,6 +33,13 @@ function polymaps() {
 
 }
 
+/**
+* Generates a choropleth map of the specified regions (not used)
+* Was used when exploring how to display UK cities on a geographical map
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 /* http://cartographer.visualmotive.com/ */
 function cartograph() {
 
@@ -55,7 +63,12 @@ function cartograph() {
 
 }
 
-
+/**
+* The very first bubble chart attempted before Christmas (not used)
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 function happiestCities() {
 	var diameter = 940,
 			format = d3.format(",d");
@@ -133,7 +146,7 @@ var div = d3.select("#breadcrumbs").append("div")
 			  }
 
 			  // Move nodes toward cluster focus.
-				function gravity(alpha) {
+				function gravity(alpha) { 
 				  return function(d) {
 					d.y += (d.cy - d.y) * alpha;
 					d.x += (d.cx - d.x) * alpha;
@@ -258,6 +271,13 @@ var div = d3.select("#breadcrumbs").append("div")
 
 }
 
+/**
+* Creates the original bubble chart that doesn't use D3 Force layout and collision methods.
+* It is less interactive than the improved verison.
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 function happiestCitiesAndTowns() {
 var diameter = 620,
 			format = d3.format(",d");
@@ -413,94 +433,13 @@ var diameter = 620,
 		});
 }
 
-function tabs() {
-	$(document).ready(function(){
-	/* This code is executed after the DOM has been completely loaded */
-
-	/* Defining an array with the tab text and AJAX pages: */
-	var Tabs = {
-		'Cities'	: '/application/view/happiest-cities/happiest-cities.php',
-		'Cities and Towns'	: '/application/view/happiest-cities/happiest-cities-and-towns.php',
-	}
-
-	/* The available colors for the tabs: */
-	var colors = ['blue','green'];
-
-	/* The colors of the line above the tab when it is active: */
-	var topLineColor = {
-		blue:'lightblue',
-		green:'lightgreen'
-	}
-
-	/* Looping through the Tabs object: */
-	var z=0;
-	$.each(Tabs,function(i,j){
-		/* Sequentially creating the tabs and assigning a color from the array: */
-		var tmp = $('<li><a href="#" class="tab '+colors[(z++%4)]+'">'+i+' <span class="left" /><span class="right" /></a></li>');
-
-		/* Setting the page data for each hyperlink: */
-		tmp.find('a').data('page',j);
-
-		/* Adding the tab to the UL container: */
-		$('ul.tabContainer').append(tmp);
-	})
-
-	/* Caching the tabs into a variable for better performance: */
-	var the_tabs = $('.tab');
-
-	the_tabs.click(function(e){
-		/* "this" points to the clicked tab hyperlink: */
-		var element = $(this);
-
-		/* If it is currently active, return false and exit: */
-		if(element.find('#overLine').length) {
-			return false;
-		}
-
-		/* Detecting the color of the tab (it was added to the class attribute in the loop above): */
-		var bg = element.attr('class').replace('tab ','');
-
-		/* Removing the line: */
-		$('#overLine').remove();
-		$('.tab.selected').removeClass('selected');
-
-		/* Creating a new line with jQuery 1.4 by passing a second parameter: */
-		$('<div>',{
-			id:'overLine',
-			css:{
-				display:'none',
-				width:element.outerWidth()-2,
-				background:topLineColor[bg] || 'white'
-			}}).appendTo(element).fadeIn('slow');
-
-		$(element).toggleClass('selected');
-
-		/* Checking whether the AJAX fetched page has been cached: */
-
-		if(!element.data('cache'))
-		{
-			/* If no cache is present, show the gif preloader and run an AJAX request: */
-			$('#contentHolder').html('<img src="/application/assets/i/ajax_preloader.gif" class="preloader" />');
-
-			$.get(element.data('page'),function(msg){
-				$('#contentHolder').html(msg);
-
-				/* After page was received, add it to the cache for the current hyperlink: */
-				element.data('cache',msg);
-			});
-		}
-		else $('#contentHolder').html(element.data('cache'));
-
-		e.preventDefault();
-	})
-
-	/* Emulating a click on the first tab so that the content area is not empty: */
-	the_tabs.eq(0).click();
-});
-
-}
-
-
+/**
+* Improves the Happiest Cities bubble chart.
+* It generates an SVG element with multiple <circle> elements for each bubble
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 function happiestCitiesImproved(nodes) {
 
 	var nodes = nodes;
@@ -562,8 +501,6 @@ function happiestCitiesImproved(nodes) {
 
 	//	.append("text")
 
-
-
 	function tick(e) {
 	  circle
 		  .each(gravity(.2 * e.alpha))
@@ -588,8 +525,8 @@ function happiestCitiesImproved(nodes) {
 
 		div
 		.text(d.name)
-		.style("left", (d3.event.pageX) + - 30 + "px")
-		.style("top", (d3.event.pageY)  + - 50 + "px")
+		.style("left", (d3.event.pageX) + - 270 + "px")
+		.style("top", (d3.event.pageY)  + -50 + "px")
 		.style("font-size", "200%");
 
 		div.append("image")
@@ -640,18 +577,18 @@ function happiestCitiesImproved(nodes) {
 	}
 
 	// Move nodes toward cluster focus.
-	function gravity(alpha) {
+	function gravity(alpha) { 
 	  return function(d) {
 		d.y += (d.cy - d.y) * alpha / 0.7;
-		d.x += (d.cx - d.x) * alpha / 5;
+		d.x += (d.cx - d.x) * alpha / 15;
 	  };
 	}
-
+	
 	// Resolve collisions between nodes.
 	function collide(alpha) {
 	  var quadtree = d3.geom.quadtree(nodes);
 	  return function(d) {
-		var r = d.radius + 22 + padding,
+		var r = d.radius +  padding ,
 			nx1 = d.x - r,
 			nx2 = d.x + r,
 			ny1 = d.y - r,
@@ -663,14 +600,14 @@ function happiestCitiesImproved(nodes) {
 				l = Math.sqrt(x * x + y * y ),
 				r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
 			if (l < r) {
-			  l = (l - r) / l * alpha ;
+			  l = (l - r) / l * alpha * 1.3 ;
 			  d.x -= x *= l;
 			  d.y -= y *= l;
 			  quad.point.x += x;
 			  quad.point.y += y;
 			}
 		  }
-		  return x1 > nx2
+		  return x1 > nx2 
 			  || x2 < nx1
 			  || y1 > ny2
 			  || y2 < ny1;
@@ -680,6 +617,12 @@ function happiestCitiesImproved(nodes) {
 
 }
 
+/**
+* Create a tag cloud of tweets with sad sentiment
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 function sadTagCloud() {
 
 	d3.json("../../assets/json/sadTweetTags.json", function(json) {
@@ -711,12 +654,19 @@ function sadTagCloud() {
 				  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
 			  })
 			  .text(function(d) { return d.text; }).append("svg:title")
-			  .text(function(d) { return d.tweet; } );
+			  .text(function(d) { return d.tweet; });
 		  }
 	});
 
 }
 
+/**
+* Create a tag cloud of tweets with happy sentiment
+* Pretty much the same as sadTagCloud() but feeds in a different json file and uses different colours
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 function happyTagCloud() {
 
 	d3.json("../../assets/json/happyTweetTags.json", function(json) {
@@ -755,7 +705,12 @@ function happyTagCloud() {
 
 }
 
-
+/**
+* Generates the circles for each city in the 'Cities Sample Tweets' section
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
 function allCities() {
 
      $.get('../../controller/cities.php', function(result) { 
@@ -782,7 +737,189 @@ function allCities() {
 			$(this).parent().find('ul, .arrow-down').slideToggle();
 		});
 	 });
+	 
+}
+
+/**
+* Returns a particle-like visualisation of multiple users.
+* Based on the code from HappiestCitiesImproved function
+*
+* @author_name Andrew Nevins
+* @author_no 09019549
+*/
+function allUsers(users) {
+
+	var users = users;
+
+	var margin = {top: 0, right: 0, bottom: 0, left: 0},
+		width = 1170 - margin.left - margin.right,
+		height = 400 ;
+
+	var n = 20,
+		m = 1,
+		padding = 6;
+
+	var div = d3.select("#all_users").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 1e-6);
+
+	var color = d3.rgb(20, 20, 20);
+
+	nodes = users.map(function(obj) {
+		obj.radius = 10;
+		obj.cx=width/2;
+		obj.cy=height/2;
+		return obj;
+	});
+
+	//FORCE taken from https://gist.github.com/3161074
+	var force = d3.layout.force()
+		.nodes(nodes)
+		.size([width, height])
+		.gravity(0)
+		.charge(0)
+		.on("tick", tick)
+		.start();
+	var nodes = force.nodes();
+	var svg = d3.select("#all_users").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g").attr("transform", "translate(" + 100 + "," + -100 + ")")
+		;
+
+	var circle = svg.selectAll("circle")
+		.data(nodes)
+		.enter().append("circle")
+		.style("fill", function(nodes) {return d3.scale.ordinal().range([ "#DAE3E6", "#d1dce0", "#E3EAEC", "#EDF1F3", "#F6F8F9", "#DFEEF4", "#C8D2D6", "#CED4D6"]);})
+		.style("text-anchor", "middle")
+		.attr("stroke", "#eee")
+		.attr("stroke-width", function(nodes){
+			return 0.5;
+		})
+		.attr("class", function(nodes, i) { return i; })
+		.attr("dy", ".3em")
+		.style("text-anchor", "middle")
+		//.text(function(nodes) {return nodes.name.substring(0, nodes.radius / 3);})
+		.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
+		.on("mouseout", mouseout)
+		.attr("r", function(d) { return d.radius; })
+		.call(force.drag);
 
 
+	//	.append("text")
+
+	function tick(e) {
+	  circle
+		  .each(gravity(.05))
+		  .each(collide(.5))
+		  .attr("cx", function(d) { return d.x; })
+		  .attr("cy", function(d) { return d.y; });
+	}
+
+	//https://gist.github.com/2952964
+	function mouseover(d, i) {
+	//debugging
+	//alert("circle." + i);
+
+	var iterator = i;
+	var cssClass = sprintf("circle.", iterator);
+
+	//	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
+
+		div.transition()
+		.duration(100)
+		.style("opacity", 1);
+
+		div
+		.text(d.name)
+		.style("left", (d3.event.pageX) + 200 + "px")
+		.style("top", (d3.event.pageY)  + 200 + "px")
+		.style("font-size", "200%");
+
+		div.append("image")
+		.attr("src", function() {
+			var src = "/application/assets/i/smiley-";
+			var ext = ".png";
+
+			if ( d.sentiment < 1 ) {
+				return src + 0 + ext;
+			}
+			if ( d.sentiment < 3 ) {
+				return src + 2 + ext;
+			}
+			if ( d.sentiment < 4 ) {
+				return src + 3 + ext;
+			}
+			if ( d.sentiment < 5 ) {
+				return src + 4 + ext;
+			}
+			if ( d.sentiment < 6 ) {
+				return src + 5 + ext;
+			}
+			if ( d.sentiment < 7 ) {
+				return src + 6 + ext;
+			}
+			if ( d.sentiment < 9 ) {
+				return src + 8 + ext;
+			}
+			if ( d.sentiment < 10 ) {
+				return src + 9 + ext;
+			}
+			});
+		//div
+		//.append('p').text('Feeling value: '+ d.sentiment +'(/10)');
+
+//		div
+//		.append('p').attr("class", "tweet")
+//		.text("Sample tweet: " + d.tweet )
+//		.style("left", (d3.event.pageX) + "px")
+//		.style("top", (d3.event.pageY) + "px")
+
+	}
+
+	function mouseout() {
+		div.transition()
+		.duration(100)
+		.style("opacity", 1e-6);
+	}
+
+	// Move nodes toward cluster focus.
+	function gravity(alpha) {
+	  return function(d) {
+		d.y += (d.cy - d.y) * alpha ;
+		d.x += (d.cx - d.x) * alpha ;
+	  };
+	}
+
+	// Resolve collisions between nodes.
+	function collide(alpha) {
+	  var quadtree = d3.geom.quadtree(nodes);
+	  return function(d) {
+		var r = d.radius +  padding ,
+			nx1 = d.x - r,
+			nx2 = d.x + r,
+			ny1 = d.y - r,
+			ny2 = d.y + r;
+		quadtree.visit(function(quad, x1, y1, x2, y2) {
+		  if (quad.point && (quad.point !== d)) {
+			var x = d.x - quad.point.x,
+				y = d.y - quad.point.y,
+				l = Math.sqrt(x * x + y * y ),
+				r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
+			if (l < r) {
+			  l = (l - r) / l * alpha * .23 ;
+			  d.x -= x *= l;
+			  d.y -= y *= l;
+			  quad.point.x += x;
+			  quad.point.y += y;
+			}
+		  }
+		  return x1 > nx2
+			  || x2 < nx1
+			  || y1 > ny2
+			  || y2 < ny1;
+		});
+	  };
+	}
 
 }
