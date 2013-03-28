@@ -440,7 +440,7 @@ h3 span.halloween {
 	stroke-width: 4px !important;
 	stroke: #CD0A1A !important;
 	-webkit-transition: all .2s ease-in-out;
-	cursor: pointer;
+	cursor: move;
 }
 
 #cities .bubble svg circle:active {
@@ -782,7 +782,7 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	/* ...or something to trigger hasLayout, like zoom: 1; */
 	width: 100%;
 	width: 120px;
-	height: 111px;
+	height: 155px;
 
 	/* Theoretically for IE 8 & 9 (more valid) */
 	/* ...but not required as filter works too */
@@ -811,6 +811,9 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	left: 10px;
 	display: block;
 	width: 100px;
+	list-style-type: inherit;
+	list-style-position: outside;
+	margin: 0 10px;
 }
 
 #sidebar a {
@@ -825,7 +828,6 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 }
 
 .container {
-	width: 1350px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -950,3 +952,64 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	box-shadow: rgba(0,0,0,0.1) -5px 10px 10px;
 }
 
+
+/* --------------------------- */
+/*    Tweeters Ball of Hate    */
+
+#all_users {
+	position: relative;
+	border-top: 10px solid #111;
+}
+
+#all_users  h2 {
+	font-size: 250%;
+	color: #111;
+	opacity: 1;
+}
+
+#all_users .tooltip {
+	position: absolute;
+	background: #000;
+	border: 10px solid #CD0A1A;
+	padding: 20px;
+	color: #ccc;
+}
+
+#all_users .tooltip {
+	vertical-align: top;
+	line-height: 30px;
+	max-width: 430px;
+	text-transform: capitalize;
+}
+
+#all_users .tooltip blockquote {
+	line-height: 1.3em;
+	position: relative;
+	top: -10px;
+	font-style: italic;
+	text-transform: none;
+}
+
+#all_users .tooltip,
+#all_users .tooltip q {
+	font-family: georgia;
+	font-size: 100%;
+}
+
+#all_users .tooltip .image {
+	float: left;
+	margin: 10px;
+}
+
+#all_users .tooltip .image img {
+	border-bottom: 5px solid #111;
+}
+
+#all_users .tooltip .image ~ img {
+	margin: 5px 10px;
+}
+
+#all_users circle:hover {
+	stroke: #CD0A1A;
+	stroke-width: 2px;
+}

@@ -63,384 +63,15 @@ function cartograph() {
 
 }
 
-/**
-* The very first bubble chart attempted before Christmas (not used)
-*
-* @author_name Andrew Nevins
-* @author_no 09019549
-*/
-function happiestCities() {
-	var diameter = 940,
-			format = d3.format(",d");
-
-		var bubble = d3.layout.pack()
-			.size([diameter, diameter]);
-
-		var svg = d3.select("#test").append("svg")
-			.attr("width", diameter)
-			.attr("height", diameter)
-			.attr("class", "bubble");
-
-		var force = d3.layout.force()
-			.gravity(0)
-			.charge(-10)
-			.size([diameter,diameter])
-			.on("tick", tick)
-			.start();
-
-		var nodes = force.nodes();
-		
-var div = d3.select("#breadcrumbs").append("div")
-		.attr("class", "tooltip")
-        .style("opacity", 1e-6);
-		
-
-		d3.json("../../../assets/json/christmas-cities.json", function(error, root) {
-//		d3.json("../../assets/json/test.json", function(error, root) {
-
-		var links, nodes = [];
-		var path = d3.geo.path(),
-	    force = d3.layout.force().size([diameter, diameter]);
-
-
-		var color = d3.rgb(30,30,30);
-
-		  var node = svg.selectAll(".node")
-			  .data(bubble.nodes(classes(root))
-			  .filter(function(d) {return !d.children;}))
-			.enter().append("g")
-			  .attr("class", "node")
-			  .attr("transform", function(d) {return "translate(" + d.x   + "," + d.y  + ")";});
-
-		  node.append("circle")
-			  .attr("r", function(d) {return d.r;})
-			  .attr("id", function(d) {return d.className;})
-			  .style("fill", function(d) {return color.brighter(d.sentiment );})
-			  //http://christopheviau.com/d3_tutorial/
-			  .attr("stroke", "#eee")
-			  .attr("stroke-width", function(d){
-			  	return d.r/25;
-			  })
-
-			  
-			  .on("mouseover", function(d, i){ return mouseover(d, i);})
-			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout);
-
-		  node.append("text")
-			  .attr("dy", ".3em")
-			  .style("text-anchor", "middle")
-			  .text(function(d) {return d.className.substring(0, d.r  );})
-			  .on("mouseover", mouseover)
-			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout)
-
-			  .call(force.drag);
-
-			  function tick(e) {
-				  node
-					  .each(gravity(.2 * e.alpha))
-					  .each(collide(.5))
-					  .attr("cx", function(d) { return d.x; })
-					  .attr("cy", function(d) { return d.y; });
-			  }
-
-			  // Move nodes toward cluster focus.
-				function gravity(alpha) { 
-				  return function(d) {
-					d.y += (d.cy - d.y) * alpha;
-					d.x += (d.cx - d.x) * alpha;
-				  };
-				}
-
-				// Resolve collisions between nodes.
-			function collide(alpha) {
-			  var quadtree = d3.geom.quadtree(nodes);
-			  return function(d) {
-				var r = d.radius + 12 + padding,
-					nx1 = d.x - r,
-					nx2 = d.x + r,
-					ny1 = d.y - r,
-					ny2 = d.y + r;
-				quadtree.visit(function(quad, x1, y1, x2, y2) {
-				  if (quad.point && (quad.point !== d)) {
-					var x = d.x - quad.point.x,
-						y = d.y - quad.point.y,
-						l = Math.sqrt(x * x + y * y),
-						r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
-					if (l < r) {
-					  l = (l - r) / l * alpha;
-					  d.x -= x *= l;
-					  d.y -= y *= l;
-					  quad.point.x += x;
-					  quad.point.y += y;
-					}
-				  }
-				  return x1 > nx2
-					  || x2 < nx1
-					  || y1 > ny2
-					  || y2 < ny1;
-				});
-			  };
-			}
-
-		});
-
-		//https://gist.github.com/2952964
-		function mouseover(d, i) {
-			
-			d3.select("nodes" + i).style("fill", "red");
-
-			div.transition()
-			.duration(100)
-			.style("opacity", 1)
-			.style("stroke", 1);
-		}
-
-		function mousemove(d) {
-			div
-			.text("City: " + d.className + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.value)
-			.style("left", (d3.event.pageX ) + "px")
-			.style("top", (d3.event.pageY) + "px")
-			.append("image")
-			.attr("src", function() {
-				var src = "/application/assets/i/smiley-";
-				var ext = ".png";
-
-				if ( d.sentiment < 1 ) {
-					return src + 0 + ext;
-				}
-				if ( d.sentiment < 3 ) {
-					return src + 2 + ext;
-				}
-				if ( d.sentiment < 4 ) {
-					return src + 3 + ext;
-				}
-				if ( d.sentiment < 5 ) {
-					return src + 4 + ext;
-				}
-				if ( d.sentiment < 6 ) {
-					return src + 5 + ext;
-				}
-				if ( d.sentiment < 7 ) {
-					return src + 6 + ext;
-				}
-				if ( d.sentiment < 9 ) {
-					return src + 8 + ext;
-				}
-				if ( d.sentiment < 10 ) {
-					return src + 9 + ext;
-				}
-			});
-
-		}
-
-		function mouseout() {
-			div.transition()
-			.duration(300)
-			.style("opacity", 1e-6);
-		}
-
-
-		// Returns a flattened hierarchy containing all leaf nodes under the root.
-		function classes(root) {
-		  var classes = [];
-
-		  function recurse(name, node) {
-			if (node.children) node.children.forEach(function(child) {recurse(node.name, child);});
-			else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
-		  }
-
-		  recurse(null, root);
-		  return {children: classes};
-		}
-
-		d3.select(self.frameElement).style("height", diameter + "px");
-
-		jQuery(document).ready(function($) {
-
-			$('header nav a.selected').hover(function(){
-				$('header nav a.selected .arrow').toggleClass('show');
-				$('#main').toggleClass('selected');
-			});
-			$('.submenu').hover(function() {
-				$(this).siblings().toggleClass('hover');
-				$(this).hover().parent().children('a').children('.pointer').toggleClass('hover');
-			});
-		});
-
-}
 
 /**
-* Creates the original bubble chart that doesn't use D3 Force layout and collision methods.
-* It is less interactive than the improved verison.
-*
-* @author_name Andrew Nevins
-* @author_no 09019549
-*/
-function happiestCitiesAndTowns() {
-var diameter = 620,
-			format = d3.format(",d");
-
-		var bubble = d3.layout.pack()
-			.sort(null)
-			.size([diameter, diameter])
-			.padding(1.5);
-
-		var svg = d3.select("#test2").append("svg")
-			.attr("width", diameter)
-			.attr("height", 800)
-			.attr("class", "bubble");
-
-		var div = d3.select("#breadcrumbs").append("div")
-		.attr("class", "tooltip")
-        .style("opacity", 1e-6);
-
-		d3.json("../../assets/json/cities-towns-average-tweets-quantity.json", function(error, root) {
-//		d3.json("../../assets/json/test.json", function(error, root) {
-
-		var nodes = [],
-			links = [];
-
-		var path = d3.geo.path(),
-	    force = d3.layout.force().size([diameter, 800]);
-
-
-		var color = d3.rgb(51,51,0);
-
-		 force
-		  .gravity(0)
-		  .nodes(nodes)
-		  .links(links)
-		  .linkDistance(function(d) {return d.distance;})
-		  .start();
-
-		  var node = svg.selectAll(".node")
-			  .data(bubble.nodes(classes(root))
-			  .filter(function(d) {return !d.children;}))
-			.enter().append("g")
-			  .attr("class", "node")
-			  .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";});
-
-		  node.append("circle")
-			  .attr("r", function(d) {return d.r;})
-			  .attr("id", function(d) {return d.className;})
-			  .style("fill", function(d) {return color.brighter(d.sentiment );})
-			  //http://christopheviau.com/d3_tutorial/
-			  .attr("stroke", "#eee")
-			  .attr("stroke-width", function(d){
-			  	return d.value / 45;
-			  })
-			  .on("mouseover", function(d){mouseover(d);})
-			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout);
-
-		  node.append("text")
-			  .attr("dy", ".3em")
-			  .style("text-anchor", "middle")
-			  .text(function(d) {return d.className.substring(0, d.r / 3);})
-			  .on("mouseover", mouseover)
-			  .on("mousemove", function(d){mousemove(d);})
-			  .on("mouseout", mouseout);
-
-
-		  force.start();
-		  force.on("tick", function() {
-			  node.attr("cx", function(d) {return d.x;})
-				  .attr("cy", function(d) {return d.y;});
-			});
-		node.call(force.drag)
-		});
-
-		//https://gist.github.com/2952964
-		function mouseover(d) {
-			div.transition()
-			.duration(100)
-			.style("opacity", 1)
-			.style("stroke", 1);
-		}
-
-		function mousemove(d) {
-			div
-			.text("City: " + d.className + " | Sentiment: " + d.sentiment + " | Tweet Count: " +d.value)
-			.style("left", (d3.event.pageX ) + "px")
-			.style("top", (d3.event.pageY) + "px")
-			.append("image")
-			.attr("src", function() {
-				var src = "/application/assets/i/smiley-";
-				var ext = ".png";
-
-				if ( d.sentiment < 1 ) {
-					return src + 0 + ext;
-				}
-				if ( d.sentiment < 3 ) {
-					return src + 2 + ext;
-				}
-				if ( d.sentiment < 4 ) {
-					return src + 3 + ext;
-				}
-				if ( d.sentiment < 5 ) {
-					return src + 4 + ext;
-				}
-				if ( d.sentiment < 6 ) {
-					return src + 5 + ext;
-				}
-				if ( d.sentiment < 7 ) {
-					return src + 6 + ext;
-				}
-				if ( d.sentiment < 9 ) {
-					return src + 8 + ext;
-				}
-				if ( d.sentiment < 10 ) {
-					return src + 9 + ext;
-				}
-			});
-
-		}
-
-		function mouseout() {
-			div.transition()
-			.duration(300)
-			.style("opacity", 1e-6);
-		}
-
-
-		// Returns a flattened hierarchy containing all leaf nodes under the root.
-		function classes(root) {
-		  var classes = [];
-
-		  function recurse(name, node) {
-			if (node.children) node.children.forEach(function(child) {recurse(node.name, child);});
-			else classes.push({packageName: name, className: node.name, value: node.tweet_quantity, sentiment: node.sentiment});
-		  }
-
-		  recurse(null, root);
-		  return {children: classes};
-		}
-
-		d3.select(self.frameElement).style("height", diameter + "px");
-
-		jQuery(document).ready(function($) {
-
-			$('header nav a.selected').hover(function(){
-				$('header nav a.selected .arrow').toggleClass('show');
-				$('#main').toggleClass('selected');
-			});
-			$('.submenu').hover(function() {
-				$(this).siblings().toggleClass('hover');
-				$(this).hover().parent().children('a').children('.pointer').toggleClass('hover');
-			});
-		});
-}
-
-/**
-* Improves the Happiest Cities bubble chart.
+* The Bubble chart that shows cities in relation to sentiment - animated
 * It generates an SVG element with multiple <circle> elements for each bubble
 *
 * @author_name Andrew Nevins
 * @author_no 09019549
 */
-function happiestCitiesImproved(nodes) {
+function happiestCities(nodes) {
 
 	var nodes = nodes;
 
@@ -480,22 +111,34 @@ function happiestCitiesImproved(nodes) {
 		.append("g").attr("transform", "translate(" + 300 + "," + 0 + ")")
 		;
 
+	// You need to first select all <circle> elements - so D3 will know which to apply the following functions to
 	var circle = svg.selectAll("circle")
+		// nodes is a variable that holds a json object that represents the dataset
 		.data(nodes)
+		// The enter() function needs to be called before functions apply to singular data in the dataset
 		.enter().append("circle")
+		// This fills the data with a shade of grey relative to the sentiment
+		// 'color' is a variable that holds an RGB value | var color = d3.rgb(20, 20, 20);
+		// Division on the sentiment is applied to lighten the shade of grey.
 		.style("fill", function(nodes) {return color.brighter(nodes.sentiment / 1.8 );})
-		.style("text-anchor", "middle")
+		// Styles each <circle> with a stroke.
 		.attr("stroke", "#eee")
+		// The stroke width is relative to the radius of the <circle> as not to over/underpower it.
 		.attr("stroke-width", function(nodes){
 			return nodes.radius/20;
 		})
+		// This is an attempt to manipulate each <circle> further,
+		// by applying an iterative and unique class to each one for further use.
 		.attr("class", function(nodes, i) { return i; })
-		.attr("dy", ".3em")
-		.style("text-anchor", "middle")
-		.text(function(nodes) {return nodes.name.substring(0, nodes.radius / 3);})
+		// Get the mouseover function and pass it the dataset.
+		// This function displays more information on particular cities on-hover of their <circle> elements.
 		.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
+		// Calls another function when users move their mouse - That just hides the on-hover displays
 		.on("mouseout", mouseout)
+		// Creates the radius for each <circle> by using a 'radius' method defined above
+		// The radius method actually uses the data's sentiment | obj.radius = obj.sentiment * 8.5;
 		.attr("r", function(d) { return d.radius; })
+		// Calls the force library that handles the gravity simulation
 		.call(force.drag);
 
 
@@ -516,8 +159,6 @@ function happiestCitiesImproved(nodes) {
 
 	var iterator = i;
 	var cssClass = sprintf("circle.", iterator);
-
-	//	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
 
 		div.transition()
 		.duration(100)
@@ -753,7 +394,7 @@ function allUsers(users) {
 
 	var margin = {top: 0, right: 0, bottom: 0, left: 0},
 		width = 1170 - margin.left - margin.right,
-		height = 400 ;
+		height = 290 ;
 
 	var n = 20,
 		m = 1,
@@ -784,7 +425,7 @@ function allUsers(users) {
 	var svg = d3.select("#all_users").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
-		.append("g").attr("transform", "translate(" + 100 + "," + -100 + ")")
+		.append("g").attr("transform", "translate(" + 100 + "," + -30 + ")")
 		;
 
 	var circle = svg.selectAll("circle")
@@ -797,16 +438,11 @@ function allUsers(users) {
 			return 0.5;
 		})
 		.attr("class", function(nodes, i) { return i; })
-		.attr("dy", ".3em")
-		.style("text-anchor", "middle")
-		//.text(function(nodes) {return nodes.name.substring(0, nodes.radius / 3);})
 		.on("mouseover", function(nodes, i){ return mouseover(nodes, i);})
 		.on("mouseout", mouseout)
 		.attr("r", function(d) { return d.radius; })
 		.call(force.drag);
 
-
-	//	.append("text")
 
 	function tick(e) {
 	  circle
@@ -824,17 +460,20 @@ function allUsers(users) {
 	var iterator = i;
 	var cssClass = sprintf("circle.", iterator);
 
-	//	d3.select(cssClass).style("fill", function(){ return color.brighter(d.sentiment  ); } );
-
 		div.transition()
 		.duration(100)
 		.style("opacity", 1);
 
 		div
-		.text(d.name)
-		.style("left", (d3.event.pageX) + 200 + "px")
-		.style("top", (d3.event.pageY)  + 200 + "px")
-		.style("font-size", "200%");
+		.style("left", 800 + "px")
+		.style("top", 100 + "px");
+
+		div
+		.text(d.screen_name);
+
+		div
+		.append('p').attr("class", "image")
+		.html('<img alt="' + d.screen_name + '" src="' + d.profile_image_url + '" />')
 
 		div.append("image")
 		.attr("src", function() {
@@ -866,14 +505,10 @@ function allUsers(users) {
 				return src + 9 + ext;
 			}
 			});
-		//div
-		//.append('p').text('Feeling value: '+ d.sentiment +'(/10)');
 
-//		div
-//		.append('p').attr("class", "tweet")
-//		.text("Sample tweet: " + d.tweet )
-//		.style("left", (d3.event.pageX) + "px")
-//		.style("top", (d3.event.pageY) + "px")
+			div
+			.append('blockquote')
+			.html('<q>' + d.tweet_text + '</q>');
 
 	}
 

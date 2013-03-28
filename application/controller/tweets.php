@@ -807,6 +807,12 @@ state,city,lat,lon,conditions&limit=100000');
 			$bad = true;
 		}
 
+		#if a tweet contains 'cut' but precedes with the word 'hair', increase the overal tweet sentiment by half
+		if ( strstr($tweet, ' hair cut ')) {
+			$value = 1.5;
+			$bad = true;
+		}
+
 		#enjoyment of food/drink
 		if ( strstr($tweet, ' full fat ')) {
 			$value = 1.5;

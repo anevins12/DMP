@@ -55,6 +55,7 @@
 		<ul>
 			<li><a href="#christmas-bubble">Happiest Cities</a></li>
 			<li><a href="#all_cities">Cities Sample Tweets</a></li>
+			<li><a href="#all_users">Tweeters Ball of Hate</a></li>
 			<li><a href="#tags">Tweet Tags</a></li>
 			<li><a href="#recentTweets">Recent Tweets</a></li>
 		</ul>
@@ -180,7 +181,7 @@
 			var data = <?php  echo $allTweets['json']; ?>;
 			var users = <?php echo $allUsers; ?>;
 			
-			happiestCitiesImproved(data);
+			happiestCities(data);
 			allUsers(users);
 			sadTagCloud();
 			happyTagCloud();
@@ -238,7 +239,7 @@
 				var $sidebar   = $("#sidebar"),
 					$window    = $(window),
 					offset     = $sidebar.offset(),
-					topPadding = 15;
+					topPadding = 0;
 
 				$window.scroll(function() {
 					if ($window.scrollTop() > offset.top) {
