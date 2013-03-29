@@ -266,6 +266,8 @@ function happiestCities(nodes) {
 */
 function sadTagCloud() {
 
+	$('#tags #sadTagCloud').append('<h2>Sad');
+
 	d3.json("../../assets/json/sadTweetTags.json", function(json) {
 
 	var fill = d3.scale.ordinal()
@@ -310,12 +312,14 @@ function sadTagCloud() {
 */
 function happyTagCloud() {
 
+	$('#tags #happyTagCloud').append('<h2>Happy</h2>');
+
 	d3.json("../../assets/json/happyTweetTags.json", function(json) {
 
-	var fill = d3.scale.ordinal()
+		var fill = d3.scale.ordinal()
 		.range([ "#DAE3E6", "#d1dce0", "#E3EAEC", "#EDF1F3", "#F6F8F9", "#DFEEF4", "#C8D2D6", "#CED4D6"]);
 
-	  d3.layout.cloud().size([600, 400])
+		 d3.layout.cloud().size([600, 400])
 		  .words(json.map(function(d) { 
 				return {text: d.word, size: d.sentiment * 6};
 		   }))
@@ -325,7 +329,7 @@ function happyTagCloud() {
 		  .on("end", draw)
 		  .start();
 
-	  function draw(words) {
+		  function draw(words) {
 		  
 		  d3.select("#happyTagCloud").append("svg")
 			  .attr("height", 370)
@@ -353,8 +357,11 @@ function happyTagCloud() {
 * @author_no 09019549
 */
 function allCities() {
+	
+	$('#all_cities').append('<img src="/application/assets/i/301.gif" alt="loading" class="loader" />').show();
 
-     $.get('../../controller/cities.php', function(result) { 
+     $.get('../../controller/cities.php', function(result) {
+
        var citiesTweets = jQuery.parseJSON(result);
        var $oneCity;
 	   
@@ -377,7 +384,12 @@ function allCities() {
 			$(this).toggleClass('selected');
 			$(this).parent().find('ul, .arrow-down').slideToggle();
 		});
+
+		$('#all_cities').load().find('.loader').remove();
+
 	 });
+
+	 
 	 
 }
 
@@ -421,7 +433,9 @@ function allUsers(users) {
 		.charge(0)
 		.on("tick", tick)
 		.start();
+
 	var nodes = force.nodes();
+	
 	var svg = d3.select("#all_users").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -450,6 +464,7 @@ function allUsers(users) {
 		  .each(collide(.5))
 		  .attr("cx", function(d) { return d.x; })
 		  .attr("cy", function(d) { return d.y; });
+		  
 	}
 
 	//https://gist.github.com/2952964

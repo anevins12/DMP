@@ -54,10 +54,10 @@
 		</div>
 		<ul>
 			<li><a href="#christmas-bubble">Happiest Cities</a></li>
-			<li><a href="#all_cities">Cities Sample Tweets</a></li>
+<!--			<li><a href="#all_cities">Cities Sample Tweets</a></li>
 			<li><a href="#all_users">Tweeters Ball of Hate</a></li>
 			<li><a href="#tags">Tweet Tags</a></li>
-			<li><a href="#recentTweets">Recent Tweets</a></li>
+			<li><a href="#recentTweets">Recent Tweets</a></li>-->
 		</ul>
 	</div>
 	<div id="intro">
@@ -73,6 +73,7 @@
 
 	<div id="cities">
 		<div class="container">
+
 			<div id="quantities">
 
 				<div class="desc">
@@ -94,35 +95,36 @@
 				<h1>christmas spirit</h1>
 				<h2>data gathered from UK-based tweets of twitter</h2>
 			</div>
+
 		</div>
 		
 	</div>
 
 	<div id="sample_tweets">
 		<div id="all_cities">
-			<h2>Cities Sample Tweets</h2>
+			<h2 class="trigger">Cities Sample Tweets</h2>
 		</div>
 	</div>
 
 	<div id="all_users">
-		<h2>Tweeters Ball of Hate</h2>
-	<?php //var_dump($allUsers);exit;?>
+		<h2 class="trigger">Tweeters Ball of Hate</h2>
 	</div>
 
 	<div id="tags">
+		<h2 class="trigger">Happy and Sad tagcloud</h2>
 		<div class="container">
 			<div id="sadTagCloud">
-				<h2>Sad Tags</h2>
+				
 			</div>
 			<div id="happyTagCloud">
-				<h2>Happy Tags</h2>
+				
 			</div>
 		</div>
 	</div>
 
 	<div id="recentTweets">
 		<div class="container">
-		<h2>Recent Tweets</h2>
+		<h2 class="trigger">Recent Tweets</h2>
 			<ul>
 			<?php foreach ( $recentTweets as $tweet ) {?>
 				<li>
@@ -163,18 +165,11 @@
 			</ul>
 		</div>
 	</div>
-<?php
-#debugging
-//include_once( dirname(__FILE__) . '/../../controller/cities.php' );
-//	$cities = new Cities();
-//	$cities->allCities();
-?>
+
 		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
-
 		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
-<!--		<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
 
 		<script>
 			
@@ -182,11 +177,37 @@
 			var users = <?php echo $allUsers; ?>;
 			
 			happiestCities(data);
-			allUsers(users);
-			sadTagCloud();
-			happyTagCloud();
-			allCities();
 
+			$(document).ready(function(){
+				$('img.loader, #recentTweets ul').hide();
+
+				$('#all_cities h2.trigger').one("click", function(){
+					allCities();
+					addToSidebar($(this));
+				});
+				$('#all_users h2.trigger').one("click", function(){
+					allUsers(users);
+					addToSidebar($(this));
+				});
+				$('#tags .trigger').one("click", function(){
+					sadTagCloud();
+					happyTagCloud();
+					addToSidebar($(this));
+				})
+				$('#recentTweets .trigger').one("click", function(){
+					$('#recentTweets ul').show();
+					addToSidebar($(this));
+				})
+
+				function addToSidebar($element) {
+
+					var heading = $element.context.innerHTML;
+					var parent = $element.context.parentNode.id;
+
+					$('#sidebar ul').append('<li><a href="#' + parent + '">' + heading + '</a></li>');
+
+				}
+			})
 			//http://bl.ocks.org/3887193
 			var width = 400,
 				height = 400,
