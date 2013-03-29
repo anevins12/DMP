@@ -50,8 +50,6 @@
 	<body>
 
 	<div id="sidebar">
-		<div id="opacity">
-		</div>
 		<ul>
 			<li><a href="#christmas-bubble">Happiest Cities</a></li>
 		</ul>

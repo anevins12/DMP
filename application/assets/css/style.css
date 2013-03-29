@@ -786,45 +786,13 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	top: 100px;
 }
 
-#sidebar #opacity {
-	position: relative;
-	background: black;
-		/* Required for IE 5, 6, 7 */
-	/* ...or something to trigger hasLayout, like zoom: 1; */
-	width: 100%;
-	width: 120px;
-	height: 155px;
-
-	/* Theoretically for IE 8 & 9 (more valid) */
-	/* ...but not required as filter works too */
-	/* should come BEFORE filter */
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-
-	/* This works in IE 8 & 9 too */
-	/* ... but also 5, 6, 7 */
-	filter: alpha(opacity=50);
-
-	/* Older than Firefox 0.9 */
-	-moz-opacity:0.5;
-
-	/* Safari 1.x (pre WebKit!) */
-	-khtml-opacity: 0.5;
-
-	/* Modern!
-	/* Firefox 0.9+, Safari 2?, Chrome any?
-	/* Opera 9+, IE 9+ */
-	opacity: 0.5;
-}
-
 #sidebar ul {
+	background: url("/application/assets/i/transparent_bg.png");
+	padding: 10px;
 	position: absolute;
-	top: 10px;
-	left: 10px;
 	display: block;
 	width: 100px;
-	list-style-type: inherit;
-	list-style-position: outside;
-	margin: 0 10px;
+	border-left: 2px solid #CD0A1A;
 }
 
 #sidebar a {
