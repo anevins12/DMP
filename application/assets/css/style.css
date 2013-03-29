@@ -96,7 +96,7 @@ h4 a,
 		0px 1px 3px rgba(000,000,000,0.5),
 		inset 0px 0px 3px rgba(255,255,255,1);
 	
-	border-bottom: 3px solid deeppink;
+	border-bottom: 3px solid #CD0A1A;
 	padding: 5px 0;
 	position: relative;
 	padding: 10px;
@@ -112,7 +112,7 @@ h4 a,
 #main h3 a:hover,
 #next h4 a:hover,
 .tabContainer a:hover {
-	background: deeppink;
+	background: #CD0A1A;
 	border-color: #93278F;
 	color: #fff;
 	-webkit-transition:background-color 0.1s linear;
@@ -143,13 +143,13 @@ h4 a,
 	/* http://css-tricks.com/snippets/css/css-triangle/ */
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-top: 10px solid deeppink;
+	border-top: 10px solid #CD0A1A;
 }
 
 #main h3 a:hover .pointer,
 #main h3:hover .pointer {
 	bottom: -9px;
-	border-top: 10px solid deeppink;
+	border-top: 10px solid #CD0A1A;
 }
 
 #main h3 a:active .pointer,
@@ -159,7 +159,7 @@ h4 a,
 
 #main h3:hover ~ div img,
 #main .image img:hover {
-	background-color: deeppink;
+	background-color: #CD0A1A;
 	opacity: 1;
 	-webkit-transition:background-color 0.2s linear;
 }
@@ -288,7 +288,7 @@ h4 a,
 }
 
 #next a:hover span.arrow-right {
-	border-left-color: deeppink;
+	border-left-color: #CD0A1A;
 }
 
 #next a:active span.icon {
@@ -375,7 +375,7 @@ h3 span.halloween {
 #cities .more-info {
 	width: 10px;
 	height: 10px;
-	border: 1px solid deeppink;
+	border: 1px solid #CD0A1A;
 }
 
 #cities #key {
@@ -422,7 +422,7 @@ h3 span.halloween {
 
 #cities a:hover.interaction {
 	background: none;
-	border: 3px solid deeppink;
+	border: 3px solid #CD0A1A;
 }
 
 #cities.interaction a.interaction {
@@ -523,7 +523,6 @@ h1,h2 {
 	font-size: 893%;
 	font-family: georgia !important;
 	color: #fafafa;
-	width: 100%;
 }
 
 #cities {
@@ -690,10 +689,6 @@ h1 {
 /* --------------------------- */
 /*    RECENT TWEETS            */
 
-#recentTweets {
-	padding-bottom: 50px;
-}
-
 #recentTweets ul {
 	text-align: center;
 }
@@ -808,7 +803,7 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 
 .container {
 	margin: 0 auto;
-	width: 1350px;
+	width: 1348px;
 	position: relative;
 }
 
@@ -938,7 +933,6 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 }
 
 #all_users  h2 {
-	font-size: 250%;
 	opacity: 1;
 }
 
@@ -1005,8 +999,7 @@ h2.trigger {
 	background: none;
 	cursor: pointer;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	color: #000000;
+	color: #666;
 	padding: 10px 20px;
 	background: -moz-linear-gradient(
 		top,
@@ -1020,8 +1013,8 @@ h2.trigger {
 	-webkit-border-radius: 0px;
 	border-radius: 0px;
 	border-bottom: 3px solid #eee;
-	font-size: 250%;
-	text-shadow: -1px 2px 0 #ccc;
+	font-size: 190%;
+	text-shadow: -1px 1px 0 #fafafa;
 	opacity: 1;
 }
 
@@ -1033,8 +1026,18 @@ h2.trigger:hover{
 /* --------------------------- */
 /*    CONCLUSION               */
 
+#conclusion .separator {
+	/* http://www.patternify.com/ */
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAO0lEQVQYV2NkgILz58//h7ENDQ0ZYWwYDRYAKUKWROeD1DBiE8SmmQYKiXYjSb5GDwpsfIzwwqWJaIUAIGYwC3L9GD8AAAAASUVORK5CYII=");
+	height: 7px;
+}
+
 #conclusion {
-	border-top: 10px solid #111;
+	border-top: 1px solid #fcfcfc;
+	padding-bottom: 100px;
+	overflow: hidden;
+	background: #fafafa;
+	margin-top: 80px;
 }
 
 #conclusion .container {
@@ -1047,4 +1050,72 @@ h2.trigger:hover{
 	font-size: 250%;
 	margin: 20px;
 	margin-top: 0;
+}
+
+#conclusion .col {
+	float: left;
+	width: 45%;
+	margin-right: 10%;
+}
+
+#conclusion .col:nth-child(2n){
+	margin-right: 0;
+}
+
+#conclusion .intro {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#conclusion h3,
+#conclusion h4,
+#conclusion h5 {
+	text-align: center;
+}
+
+#conclusion h3 {
+	margin: 20px;
+	margin-top: 0;
+}
+
+#conclusion h4 {
+	font-size: 150%;
+	margin: 50px auto 0 auto;
+	padding-bottom: 10px;
+	display: table;
+	border-bottom: 1px solid black;
+}
+
+#conclusion h5 {
+	font-size: 150%;
+	margin-bottom: 40px;
+	margin-top: 50px;
+}
+
+#conclusion p {
+	margin: 10px 0;
+	line-height: 1.5em;
+}
+
+#conclusion li {
+	float: left;
+}
+
+#conclusion li a{
+	margin: 10px 15px 10px 0;
+	background: #cd0a1a;
+	padding: 10px 20px;
+	color: #fff;
+	display: block;
+}
+
+#conclusion li:last-child {
+	margin-right: 0;
+}
+
+#conclusion #coming_soon h5 {
+	border-bottom: 5px solid #cd0a1a;
+	padding: 20px;
+	margin: 25px 0;
 }

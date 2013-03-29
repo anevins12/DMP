@@ -160,30 +160,56 @@
 
 
 	<div id="conclusion">
+		<div class="separator"></div>
 		<div class="container">
-			<h3>That's all</h3>
-			<p>That was my attempt at retrieving mood from tweets during the Christmas period</p>
-			<p>As you can see, it has not always worked.</p>
+			<div class="intro">
+				<h3>That's all</h3>
+				<p>That was my attempt at retrieving mood from tweets during the Christmas period</p>
+				<p>As you can see, it has not always worked.</p>
+			</div>
 			<h4>How I did it</h4>
-			<h5>Data visualisations</h5>
-			<p>The <a href="http://d3js.org">D3.js</a> library was used because it is particularly good at handling large datasets. Initially I was dealing with 40,000 tweets.</p>
-			<p>D3.js allows physical simulations to occur through its <a href="https://github.com/mbostock/d3/wiki/Force-Layout">Force Layout</a> class.
-				This simulation replicates gravity but, instead of objects falling downwards, they fall towards the centre of the SVG container.
-			</p>
-			<p><a href="http://140dev.com/free-twitter-api-source-code-library/">140Dev</a> provided a framework to stream Twitter's API and get around that
-				dreadful OAuth process.
-			</p>
-			<p> I manipulated the framework a bit and only brought in tweets from the United Kingdom, by using Rob Hawke's method (2011).
-				Hawkes describes how you can draw a hypothetical box around the UK, a box made up geographical coordinates for each of the four corners.
-				So, I only brought in tweets that were inside this coordinate range.
-			</p>
-			<h5>Sentiment Analysis</h5>
-			<p><a href="http://www.uvm.edu/~cdanfort/research/dodds-danforth-johs-2009.pdf">Danforth and Dodd's sentiment analysis methodology</a> (2009) was used to retrieve a sentimental value for each tweet.</p>
-			<p>Mood is really really difficult to retrieve!</p>
-			<p>The issue with using Danforth and Dodd's methodology is that it presupposes the user genuinely has the same emotion that they are writing.</p>
-			<p>For example, someone could be trolling, therefore their tweet could be nasty but they may be feeling happy about it.</p>
-			<p>There's also a large issue with Internet slang on Twitter, using that methodology. That methodology only works on perfect English.</p>
-			
+			<div class="col">
+				<h5>Data visualisations</h5>
+				<p>The <a href="http://d3js.org">D3.js</a> library was used because it is particularly good at handling large datasets. Initially I was dealing with 40,000 tweets.</p>
+				<p>D3.js allows physical simulations to occur through its <a href="https://github.com/mbostock/d3/wiki/Force-Layout">Force Layout</a> class.
+					This simulation replicates gravity but, instead of objects falling downwards, they fall towards the centre of the SVG container.
+				</p>
+				<p><a href="http://140dev.com/free-twitter-api-source-code-library/">140Dev</a> provided a framework to stream Twitter's API and get around that
+					dreadful OAuth process.
+				</p>
+				<p> I manipulated the framework a bit and only brought in tweets from the United Kingdom, 
+					by using <a href="http://rawkes.com/articles/people-love-a-good-smooch-on-a-balconyR">Rob Hawkes' method (2011)</a>.
+					Hawkes describes how you can draw a hypothetical box around the UK, a box made up geographical coordinates for each of the four corners.
+					So, I only brought in tweets that were inside this coordinate range.
+				</p>
+			</div>
+			<div class="col">
+				<h5>Sentiment Analysis</h5>
+				<p><a href="http://www.uvm.edu/~cdanfort/research/dodds-danforth-johs-2009.pdf">Danforth and Dodd's sentiment analysis methodology</a> (2009) was used to retrieve a sentimental value for each tweet.</p>
+				<p>Mood is really really difficult to retrieve!</p>
+				<p>The issue with using Danforth and Dodd's methodology is that it presupposes the user genuinely has the same emotion that they are writing.</p>
+				<p>For example, someone could be trolling, therefore their tweet could be nasty but they may be feeling happy about it.</p>
+				<p>There's also a large issue with Internet slang on Twitter, using that methodology. That methodology only works on perfect English.</p>				
+			</div>
+			<div class="col">
+				<h5>More information</h5>
+				<p>This project was completed for a year University module that allowed me to pick a subject of my own choice to explore for the academic year.</p>
+				<p>Blog posts have been made that recorded progress early on.</p>
+				<ul>
+					<li><a href="http://andrew2nevins.blogspot.co.uk/2012/10/notebook-for-digital-media-project.html">October '12</a></li>
+					<li><a href="http://andrew2nevins.blogspot.com/2012/11/digital-media-project-december.html">November '12</a></li>
+					<li><a href="http://andrew2nevins.blogspot.com/2012/12/christmas-mood-from-twitter.html">December '12</a></li>
+					<li><a href="http://andrew2nevins.blogspot.com/2013/01/januarys-logbook.html">January '13</a></li>
+				</ul>
+			</div>
+			<div class="col" id="coming_soon">
+				<h5>Coming soon</h5>
+				<p>
+					I will be writing up my conclusions regarding Danforth's and Dodds' implementation
+					in <a href="http://www.relevantdata.com/pdfs/IUStudy.pdf">Bollen <i>et al.</i>'s</a> theory that mood
+					<i>can</i> be recorded through Twitter.
+				</p>
+			</div>
 		</div>
 	</div>
 
