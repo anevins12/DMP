@@ -412,10 +412,6 @@ function allUsers(users) {
 		m = 1,
 		padding = 6;
 
-	var div = d3.select("#all_users").append("div")
-		.attr("class", "tooltip")
-		.style("opacity", 1e-6);
-
 	var color = d3.rgb(20, 20, 20);
 
 	nodes = users.map(function(obj) {
@@ -442,6 +438,12 @@ function allUsers(users) {
 		.append("g").attr("transform", "translate(" + 100 + "," + -30 + ")")
 		;
 
+		$('#all_users svg').wrap('<div class="container" />');
+
+	var div = d3.select("#all_users .container").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 1e-6);
+		
 	var circle = svg.selectAll("circle")
 		.data(nodes)
 		.enter().append("circle")
@@ -480,8 +482,8 @@ function allUsers(users) {
 		.style("opacity", 1);
 
 		div
-		.style("left", 800 + "px")
-		.style("top", 100 + "px");
+		.style("left", 814 + "px")
+		.style("top", 47 + "px");
 
 		div
 		.text(d.screen_name);

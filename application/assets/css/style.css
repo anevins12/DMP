@@ -172,6 +172,11 @@ h4 a,
 	line-height: 1.3em;
 }
 
+#desc h2 span {
+	font-size: 10px;
+	vertical-align: top;
+}
+
 #main .image {
 	padding: 20px 0 10px;
 	margin-top: 10px;
@@ -545,23 +550,36 @@ h2, p, li {
 	margin-top: 10px;
 }
 
+/* --------------------------- */
+/*    TAG CLOUDS               */
+
+#sadTagCloud {
+	border-right: 1px solid #000;
+}
+
+#happyTagCloud {
+	border-left: 1px solid #222;
+}
+
+#sadTagCloud svg,
+#happyTagCloud svg{
+	padding-bottom: 30px;
+}
+
 #tags {
 	background: #111;
 	clear: left;
-	border-top: 5px solid #f1f5f6;
-	padding-bottom: 50px;
+}
+
+#sadTagCloud h2,
+#happyTagCloud h2 {
+	color: #eee;
 }
 
 #tags h2 {
 	opacity: 1;
-    background: #111;
-	text-shadow: none;
-	color: #eee;
-	border-bottom: 2px solid #eee;
-	margin: 0 auto;
-	padding-top: 20px;
-	width: 200px;
 }
+
 
 #tags .pointer {
 	position: inherit;
@@ -577,7 +595,6 @@ h2, p, li {
 
 #quantities {
 	position: absolute;
-	
 	left: 20px;
 }
 
@@ -605,7 +622,6 @@ h2 {
 	font-style: normal;
 	letter-spacing: 0.1em;
 	text-align: center;
-	background: #fff;
 	opacity: 0.5;
 }
 
@@ -671,8 +687,11 @@ h1 {
 	margin-bottom: 20px;
 }
 
+/* --------------------------- */
+/*    RECENT TWEETS            */
+
 #recentTweets {
-	margin-bottom: 20px;
+	padding-bottom: 50px;
 }
 
 #recentTweets ul {
@@ -693,10 +712,6 @@ h1 {
 	border-top:0;
 }
 
-#recentTweets h2 {
-	margin-top: 10px;
-}
-
 #recentTweets span {
 	margin-right: 10px;
 }
@@ -709,10 +724,6 @@ h1 {
 
 #tags {
 	overflow: hidden;
-}
-
-#tags h2 {
-	margin-bottom: 20px;
 }
 
 #key {
@@ -829,6 +840,7 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 
 .container {
 	margin: 0 auto;
+	width: 1350px;
 	position: relative;
 }
 
@@ -838,11 +850,6 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 
 #desc .container {
 	width: 800px;
-}
-
-#all_cities {
-	width: 1240px;
-	margin: 0 auto;
 }
 
 #all_cities div {
@@ -869,13 +876,9 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 }
 
 #all_cities h2 {
-	background: #eee;
 	opacity: 1;
-	width: 20%;
 	margin: 0 auto;
 	text-shadow: -1px 2px 0 #ccc;
-	color: #000;
-	background: none;
 	font-size: 250%;
 }
 
@@ -953,18 +956,21 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	box-shadow: rgba(0,0,0,0.1) -5px 10px 10px;
 }
 
+#sample_tweets #all_cities {
+	width: 1240px;
+	margin: 0 auto;
+}
+
 
 /* --------------------------- */
 /*    TWEETERS BALL OF HATE    */
 
 #all_users {
 	position: relative;
-	border-top: 10px solid #111;
 }
 
 #all_users  h2 {
 	font-size: 250%;
-	color: #111;
 	opacity: 1;
 }
 
@@ -1021,4 +1027,56 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 img.loader {
 	display: table;
 	margin: 0 auto;
+}
+
+/* --------------------------- */
+/*    HEADING BUTTONS          */
+
+h2.trigger {
+	text-align: center;
+	background: none;
+	cursor: pointer;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#f6f8f9 0%,
+		#dae3e6);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#f6f8f9),
+		to(#dae3e6));
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	border-bottom: 3px solid #eee;
+	font-size: 250%;
+	text-shadow: -1px 2px 0 #ccc;
+	opacity: 1;
+}
+
+h2.trigger:hover{
+	border-bottom: 3px solid #cd0a1a;
+	color: #cd0a1a;
+}
+
+/* --------------------------- */
+/*    CONCLUSION               */
+
+#conclusion {
+	border-top: 10px solid #111;
+}
+
+#conclusion .container {
+	width: 1220px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+#conclusion h3 {
+	font-size: 250%;
+	margin: 20px;
+	margin-top: 0;
 }

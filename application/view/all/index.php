@@ -54,10 +54,6 @@
 		</div>
 		<ul>
 			<li><a href="#christmas-bubble">Happiest Cities</a></li>
-<!--			<li><a href="#all_cities">Cities Sample Tweets</a></li>
-			<li><a href="#all_users">Tweeters Ball of Hate</a></li>
-			<li><a href="#tags">Tweet Tags</a></li>
-			<li><a href="#recentTweets">Recent Tweets</a></li>-->
 		</ul>
 	</div>
 	<div id="intro">
@@ -66,8 +62,7 @@
 
 	<div id="desc">
 		<div class="container">
-			<h2>Showing mood in the UK from Christmas</h2> <!--that was recorded from December 22 - December 29 2012-->
-		
+			<h2>Data gathered Twitter - 22<span>nd</span> to 29<span>th</span> of December</h2> <!--that was recorded from December 22 - December 29 2012-->
 		</div>
 	</div>
 
@@ -93,7 +88,6 @@
 				</div>
 
 				<h1>christmas spirit</h1>
-				<h2>data gathered from UK-based tweets of twitter</h2>
 			</div>
 
 		</div>
@@ -101,17 +95,17 @@
 	</div>
 
 	<div id="sample_tweets">
+		<h2 class="trigger">Cities Sample Tweets</h2>
 		<div id="all_cities">
-			<h2 class="trigger">Cities Sample Tweets</h2>
 		</div>
 	</div>
 
 	<div id="all_users">
-		<h2 class="trigger">Tweeters Ball of Hate</h2>
+		<h2 class="trigger">Ball of Hate</h2>
 	</div>
 
 	<div id="tags">
-		<h2 class="trigger">Happy and Sad tagcloud</h2>
+		<h2 class="trigger">Tagclouds</h2>
 		<div class="container">
 			<div id="sadTagCloud">
 				
@@ -123,8 +117,8 @@
 	</div>
 
 	<div id="recentTweets">
-		<div class="container">
 		<h2 class="trigger">Recent Tweets</h2>
+		<div class="container">
 			<ul>
 			<?php foreach ( $recentTweets as $tweet ) {?>
 				<li>
@@ -166,151 +160,156 @@
 		</div>
 	</div>
 
-		<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
-		<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
 
-		<script>
+	<div id="conclusion">
+		<div class="container">
+			<h3>That's all</h3>
+			<p>That was my attempt at retrieving mood from tweets during the Christmas period</p>
+			<p>As you can see, it has not always worked.</p>
+			<h4>How I did it</h4>
+			<h5>Data visualisations</h5>
+			<p>The <a href="http://d3js.org">D3.js</a> library was used because it is particularly good at handling large datasets. Initially I was dealing with 40,000 tweets.</p>
+			<p>D3.js allows physical simulations to occur through its <a href="https://github.com/mbostock/d3/wiki/Force-Layout">Force Layout</a> class.
+				This simulation replicates gravity but, instead of objects falling downwards, they fall towards the centre of the SVG container.
+			</p>
+			<p><a href="http://140dev.com/free-twitter-api-source-code-library/">140Dev</a> provided a framework to stream Twitter's API and get around that
+				dreadful OAuth process.
+			</p>
+			<p> I manipulated the framework a bit and only brought in tweets from the United Kingdom, by using Rob Hawke's method (2011).
+				Hawkes describes how you can draw a hypothetical box around the UK, a box made up geographical coordinates for each of the four corners.
+				So, I only brought in tweets that were inside this coordinate range.
+			</p>
+			<h5>Sentiment Analysis</h5>
+			<p><a href="http://www.uvm.edu/~cdanfort/research/dodds-danforth-johs-2009.pdf">Danforth and Dodd's sentiment analysis methodology</a> (2009) was used to retrieve a sentimental value for each tweet.</p>
+			<p>Mood is really really difficult to retrieve!</p>
+			<p>The issue with using Danforth and Dodd's methodology is that it presupposes the user genuinely has the same emotion that they are writing.</p>
+			<p>For example, someone could be trolling, therefore their tweet could be nasty but they may be feeling happy about it.</p>
+			<p>There's also a large issue with Internet slang on Twitter, using that methodology. That methodology only works on perfect English.</p>
 			
-			var data = <?php  echo $allTweets['json']; ?>;
-			var users = <?php echo $allUsers; ?>;
-			
-			happiestCities(data);
+		</div>
+	</div>
 
-			$(document).ready(function(){
-				$('img.loader, #recentTweets ul').hide();
+	<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
+	<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
+	<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
+	<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
 
-				$('#all_cities h2.trigger').one("click", function(){
-					allCities();
-					addToSidebar($(this));
-				});
-				$('#all_users h2.trigger').one("click", function(){
-					allUsers(users);
-					addToSidebar($(this));
-				});
-				$('#tags .trigger').one("click", function(){
-					sadTagCloud();
-					happyTagCloud();
-					addToSidebar($(this));
-				})
-				$('#recentTweets .trigger').one("click", function(){
-					$('#recentTweets ul').show();
-					addToSidebar($(this));
-				})
+	<script>
 
-				function addToSidebar($element) {
+		var data = <?php  echo $allTweets['json']; ?>;
+		var users = <?php echo $allUsers; ?>;
 
-					var heading = $element.context.innerHTML;
-					var parent = $element.context.parentNode.id;
+		happiestCities(data);
 
-					$('#sidebar ul').append('<li><a href="#' + parent + '">' + heading + '</a></li>');
+		$(document).ready(function(){
+			$('img.loader, #recentTweets ul').hide();
 
-				}
+			$('#sample_tweets h2.trigger').one("click", function(){
+				allCities();
+				addToSidebar($(this));
+			});
+			$('#all_users h2.trigger').one("click", function(){
+				allUsers(users);
+				addToSidebar($(this));
+			});
+			$('#tags .trigger').one("click", function(){
+				sadTagCloud();
+				happyTagCloud();
+				addToSidebar($(this));
 			})
-			//http://bl.ocks.org/3887193
-			var width = 400,
-				height = 400,
-				radius = Math.min(width, height) / 2;
+			$('#recentTweets .trigger').one("click", function(){
+				$('#recentTweets ul').show();
+				addToSidebar($(this));
+			})
 
-			var color = d3.scale.ordinal()
-				.range(["#3c3c3c", "#5B5B5B", "#727272", "#848484", "#969696", "#A8A8A8", "#BABABA"]);
+			function addToSidebar($element) {
 
-			var arc = d3.svg.arc()
-				.outerRadius(radius - 10)
-				.innerRadius(radius - 70);
+				var heading = $element.context.innerHTML;
+				var parent = $element.context.parentNode.id;
 
-			var pie = d3.layout.pie()
-				.sort(null)
-				.value(function(d) { return d.tweets; });
+				$('#sidebar ul').append('<li><a href="#' + parent + '">' + heading + '</a></li>');
 
-			var svg = d3.select("#quantities").append("svg")
-				.attr("width", width)
-				.attr("height", height)
-			  .append("g")
-				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+			}
+		})
+		//http://bl.ocks.org/3887193
+		var width = 400,
+			height = 400,
+			radius = Math.min(width, height) / 2;
 
-			d3.csv("../../assets/csv/tweet_quantities.csv", function(data) {
+		var color = d3.scale.ordinal()
+			.range(["#3c3c3c", "#5B5B5B", "#727272", "#848484", "#969696", "#A8A8A8", "#BABABA"]);
 
-			  data.forEach(function(d) {
-				d.tweets = +d.tweets;
-			  });
+		var arc = d3.svg.arc()
+			.outerRadius(radius - 10)
+			.innerRadius(radius - 70);
 
-			  var g = svg.selectAll(".arc")
-				  .data(pie(data))
-				.enter().append("g")
-				  .attr("class", "arc");
+		var pie = d3.layout.pie()
+			.sort(null)
+			.value(function(d) { return d.tweets; });
 
-			  g.append("path")
-				  .attr("d", arc)
-				  .style("fill", function(d) { return color(d.data.sentiment); });
+		var svg = d3.select("#quantities").append("svg")
+			.attr("width", width)
+			.attr("height", height)
+		  .append("g")
+			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-			  g.append("text")
-				  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-				  .attr("dy", ".35em")
-				  .style("fill", "#fff")
-				  .style("text-anchor", "middle")
-				  .text(function(d) { return d.data.sentiment; });
+		d3.csv("../../assets/csv/tweet_quantities.csv", function(data) {
 
-			});
-			
-			//http://css-tricks.com/scrollfollow-sidebar/
-			$(function() {
+		  data.forEach(function(d) {
+			d.tweets = +d.tweets;
+		  });
 
-				var $sidebar   = $("#sidebar"),
-					$window    = $(window),
-					offset     = $sidebar.offset(),
-					topPadding = 0;
+		  var g = svg.selectAll(".arc")
+			  .data(pie(data))
+			.enter().append("g")
+			  .attr("class", "arc");
 
-				$window.scroll(function() {
-					if ($window.scrollTop() > offset.top) {
-						$sidebar.stop().animate({
-							marginTop: $window.scrollTop() - offset.top + topPadding
-						});
-					} else {
-						$sidebar.stop().animate({
-							marginTop: 0
-						});
-					}
-				});
+		  g.append("path")
+			  .attr("d", arc)
+			  .style("fill", function(d) { return color(d.data.sentiment); });
 
-				$('#sidebar a[href^="#"]').bind('click.smoothscroll',function (e) {
-					e.preventDefault();
-					var target = this.hash;
-						$target = $(target);
-					$('html, body').stop().animate({
-						'scrollTop': $target.offset().top
-					}, 500, 'swing', function () {
-						window.location.hash = target;
+		  g.append("text")
+			  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+			  .attr("dy", ".35em")
+			  .style("fill", "#fff")
+			  .style("text-anchor", "middle")
+			  .text(function(d) { return d.data.sentiment; });
+
+		});
+
+		//http://css-tricks.com/scrollfollow-sidebar/
+		$(function() {
+
+			var $sidebar   = $("#sidebar"),
+				$window    = $(window),
+				offset     = $sidebar.offset(),
+				topPadding = 0;
+
+			$window.scroll(function() {
+				if ($window.scrollTop() > offset.top) {
+					$sidebar.stop().animate({
+						marginTop: $window.scrollTop() - offset.top + topPadding
 					});
-				});
+				} else {
+					$sidebar.stop().animate({
+						marginTop: 0
+					});
+				}
 			});
 
+			$('#sidebar a[href^="#"]').bind('click.smoothscroll',function (e) {
+				e.preventDefault();
+				var target = this.hash;
+					$target = $(target);
+				$('html, body').stop().animate({
+					'scrollTop': $target.offset().top
+				}, 500, 'swing', function () {
+					window.location.hash = target;
+				});
+			});
+		});
 
+	</script>
 
-
-
-//		  $(function() {
-//
-//			$( "circle" ).click(function(){
-//				$(this).draggable();
-//				$(this).mouseup(function(d) {
-//					console.log("HII");
-//				});
-//			});
-//
-//			$( "#test" ).droppable({
-//			  drop: function( event, ui ) {
-//				$( this )
-//				  .toggleClass( "ui-state-highlight" )
-//				  .find( "p" )
-//					.html( "Dropped!" );
-//			  }
-//			});
-//
-//		  });
-
-
-</script>
 </body>
 </html>
