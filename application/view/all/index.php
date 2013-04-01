@@ -32,7 +32,16 @@
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" language="javascript"></script>
 		<script type="text/javascript" src="/application/assets/js/geom.js" language="javascript"></script>
 		<script src="http://mbostock.github.com/d3/talk/20110921/d3/d3.js" language="javascript"></script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-39728844-1', 'andrewnevins.co.uk');
+	  ga('send', 'pageview');
+
+	</script>
 	<meta charset="utf-8">
 	<style>
 

@@ -17,6 +17,11 @@
 ::-moz-selection {
 	background: #eee; /* Firefox */
 }
+
+i {
+	font-style: italic;
+}
+
 .show {
 	display: block !important;
 }
@@ -777,7 +782,7 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 #sidebar {
 	width: 100px;
 	position: absolute;
-	z-index: 10000;
+	z-index: 10002;
 	top: 100px;
 }
 
@@ -911,6 +916,8 @@ div#test { width: 150px; height: 150px; padding: 0.5em; float: left; margin-left
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: 100%;
+	position: relative;
+	z-index: 10001;
 }
 
 #sample_tweets ul {
