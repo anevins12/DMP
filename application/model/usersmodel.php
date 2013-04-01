@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Gets data from the 'users' table
+ *
+ * @author_name Andrew Nevins
+ * @author_no 09019549
+ */
 class Usersmodel {
 
 	protected $tableName = "users";
@@ -8,6 +14,11 @@ class Usersmodel {
 		include_once( dirname(__FILE__) . '/../config/database.php' );
 	}
 
+	/**
+	 * Gets all users from the 'users' table
+	 *
+	 * @return array | string
+	 */
 	public function getAllUsers() {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
@@ -17,6 +28,10 @@ class Usersmodel {
 			$error = "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 
+		//Get all users that tweets that follow the general feeling rules and that are the most recent
+		//Actually enhanced only to retrieve really negative sentiment
+		//Because the dataset already shows a slump in mood
+		//Used in the 'Ball of hate' data vis.
 		$query = "SELECT DISTINCT * FROM $this->tableName
 					INNER JOIN tweets
 					ON tweets.user_id = $this->tableName.user_id
