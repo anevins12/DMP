@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Gets and Inserts sentimental values in the 'sentiment' table
+ *
+ *
+ * @author_name Andrew Nevins
+ * @author_no 09019549
+ */
 class sentimentmodel {
 
 	protected $tableName = 'sentiment';
@@ -8,6 +14,13 @@ class sentimentmodel {
 		include( dirname(__FILE__) . '/../config/database.php' );
 	}
 
+	/**
+	 * Insert sentiment into one row of the 'sentiment' table
+	 *
+	 * @param   $tweet_id          To identify the tweet associated with the sentiment
+	 * @param   $sentiment_value   Integer, but may be double. Ranges from 0 to 10.
+	 * @return  boolean
+	 */
 	public function insertSentiment( $tweet_id, $sentiment_value ) {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
@@ -36,6 +49,13 @@ class sentimentmodel {
 
 	}
 
+	/**
+	 * Gets all tweets' sentimental vale
+	 * Was used when there was a separate table for sentimental values.
+	 * [Not active in application]
+	 *
+	 * @return  array | boolean
+	 */
 	public function getTweetsSentiment () {
 
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );

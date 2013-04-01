@@ -11,7 +11,7 @@
  */
 include_once ( 'locations.php' );
 
-class Tweets extends Locations{
+class Tweets {
 
     function __construct() {
 		include_once ( dirname(__FILE__) . '/../model/tweetsmodel.php' );
@@ -25,16 +25,6 @@ class Tweets extends Locations{
 		$this->getTweetQuantities();
 		$this->getTweetTags();
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
-		
-//		$this->writeJSONFile($AverageTweetsJSON, 'christmas-cities-13-02-2013');
-//		$this->writeJSONFile($AverageTweetsJSON, 'cities-towns-average-tweets-quantity');
-
-		//set the sentiment values
-//		foreach ($tweets as $tweet){
-//			$this->getANEWSentiment($tweet);
-//		}
-
-		//$this->setLocations($tweets);
 
 		return $AverageTweetsJSON;
 
