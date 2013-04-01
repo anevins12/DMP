@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class retrieves data from the 'tweets' table of the database.
+ * This class retrieves and updates data from the 'tweets' table of the database.
  *
  * It doesn't do enough manipulating of data. The 'tweets' controller does this - Bad, I know.
  * Unfortunately, the tweets controller tries to play God. 
