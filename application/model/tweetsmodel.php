@@ -265,7 +265,7 @@ class Tweetsmodel {
 	 *
 	 * @param  $tweet_id  The tweet's id to identify the database row
 	 * @param  $city      The city to be inserted to that tweet
-	 * @return true | string
+	 * @return boolean | string
 	 */
 	public function insertTweetCity ( $tweet_id, $city ) {
 
@@ -295,7 +295,7 @@ class Tweetsmodel {
 	 *
 	 * @param  $tweet       A tweet object that must hold a tweet_id
 	 * @param  $sentiment   The sentimental value (usually from 0 - 10) to be associated with that tweet
-	 * @return true | string
+	 * @return boolean | string
 	 */
 	public function setSentiment( $tweet, $sentiment ) {
 
