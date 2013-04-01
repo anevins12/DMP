@@ -1,13 +1,11 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of locations
+ * Interacts with the Geocoder API to create an object
  *
- * @author andrew
+ *
+ * @author_name Andrew Nevins
+ * @author_no 09019549
  */
 class Locations {
 
@@ -17,6 +15,11 @@ class Locations {
 
 	}
 
+	/**
+	 * Calls to the Geocoder class and creates a Geocoder object
+	 *
+	 * @return  object
+	 */
 	function geocoder() {
 	 
 		// Create an adapter
