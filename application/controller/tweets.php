@@ -1,13 +1,11 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of tweets
+ * Handles displaying and manipulation of all tweet data
+ * Some funcitons should be in the tweetsmodel - Sorry if this class tries to play God.
  *
- * @author andrew
+ *
+ * @author_name Andrew Nevins
+ * @author_no 09019549
  */
 include_once ( 'locations.php' );
 
@@ -18,18 +16,27 @@ class Tweets {
 		include_once ( dirname(__FILE__) . '/../model/sentimentmodel.php' );
 	}
 
+	/**
+	 * Runs as default function. It calls upon other functions within this controller and the tweetsmodel.
+	 *
+	 * @return  JSONstring
+	 */
 	public function index() {
 
 		$tweetsmodel = new Tweetsmodel;
 		$tweets = $tweetsmodel->getTweets();		
 		$this->getTweetQuantities();
-		$this->getTweetTags();
 		$AverageTweetsJSON = $this->getAverageSentimentPerCity($tweets);
 
 		return $AverageTweetsJSON;
 
 	}
 
+	/**
+	 * Calls the tweetsmodel function to get the recent tweets
+	 *
+	 * @return  array
+	 */
 	public function getRecentTweets() {
 
 		$tweetsmodel = new Tweetsmodel;
@@ -39,6 +46,13 @@ class Tweets {
 
 	}
 
+	/**
+	 * Uses the tweetsmodel to get all tweets.
+	 * Then narrow down the tweets to only those belonging to major cities in the UK.
+	 * And construct an array with the amount of tweets that have certain sentimental values
+	 *
+	 * @return  array
+	 */
 	public function getTweetQuantities() {
 
 		$tweetsmodel = new Tweetsmodel;
@@ -80,10 +94,18 @@ class Tweets {
 					 Lisburn	 Newry
 
 					';
+
 		foreach ($tweets as $tweet) {
 
+			//Check if the tweet's city has a value. If it has, check whether it's within the list of popular cities (above).
 			if ( isset( $tweet->city ) && strstr( $cities_string, $tweet->city ) ) {
+
 				$sentiment = $tweet->sentiment;
+
+				//This should be a switch statement - sorry
+				//It just checks whether the sentiment is within a particular range.
+				//When it matches a range, it increments the associative array's value for that range.
+				//It basically counts how many tweets are sad and happy.
 				if ($sentiment <= 2) {
 						$quantities['2']++;
 				}
@@ -110,15 +132,26 @@ class Tweets {
 		
 	}
 
+	/**
+	 * Get both the happy tags and sad tags data from the tweets model
+	 * Instead of returning data, write it directly to a JSON file.
+	 */
 	public function getTweetTags() {
 		$tweetsmodel = new Tweetsmodel;
 		$sadTags= $tweetsmodel->getSadTweetTags();
 		$happyTags = $tweetsmodel->getHappyTweetTags();
 	
-//		$this->writeJSONFile($sadTags, 'sadTweetTags');
-//		$this->writeJSONFile($happyTags, 'happyTweetTags');
+		$this->writeJSONFile($sadTags, 'sadTweetTags');
+		$this->writeJSONFile($happyTags, 'happyTweetTags');
 	}
 
+	/**
+	 * Part of the sentiment analysis process - This gets the tweet's sentimental value in conjunction with the ANEW dataset
+	 * Uses the tweetsmodel to get all tweets.
+	 * Then narrow down the tweets to only those belonging to major cities in the UK.
+	 * And construct an array with the amount of tweets that have certain sentimental values
+	 *
+	 */
 	public function getANEWSentiment( $tweet ) {
 
 		$anew_dataset_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/ANEW2010All.txt');
@@ -141,8 +174,6 @@ class Tweets {
 		$sentiment = array();
 		$multiplication = array();
 		$tweet_text = $tweet->tweet_text;
-		/*Test tweet text */
-//		$tweet_text = "Imagine if you won the lottery tonight. Would be the best thing in the world!";
 		$tweet_words = explode( ' ' , $tweet_text );
 		$flag = false;
 		$count_multiplication_occurrence = 1;
@@ -217,6 +248,8 @@ class Tweets {
 			//maybe need to convert integer to float
 			$sentiment = $multiplication_sum / $count_multiplication_occurrence;
 
+			//Applying the patterns from the Linear Regression processes.
+			//'refineTweet' returns a numeric value
 			if ( $refined_sentiment = $this->refineTweet( $tweet ) ) {
 				$refined_sentiment = $refined_sentiment * $sentiment;
 			}
@@ -232,6 +265,15 @@ class Tweets {
 
 	}
 
+	/**
+	 * Uses the 140Sentiment API to get sentiment on tweets
+	 * [Not active in the application]
+	 * Decided not to go with this because the API only returned 3 values.
+	 * Values of zero, 2 or four.
+	 * I wanted more range.
+	 *
+	 * @return  array | string
+	 */
 	function get140Sentiment ( $tweets ) {
 		$app_id = 'andrew2.nevins@live.uwe.ac.uk';
 		$url = "http://www.sentiment140.com/api/bulkClassifyJson?appid=$app_id";
@@ -272,6 +314,11 @@ class Tweets {
 
 	}
 
+	/**
+	 * Just inserting the value from the get140Sentiment function to into the database.
+	 *
+	 * @return  boolean
+	 */
 	function set140Sentiment( $tweets_sentiment ) {
 
 		foreach ( $tweets_sentiment as $tweet_sentiment ) {
@@ -280,11 +327,18 @@ class Tweets {
 			$tweet_text = $tweet_sentiment->text;
 
 			//wont work because I've changed the setSentiment function to work with ANEWSentiment
-			//$query = $tweetsmodel->setSentiment( $tweet_text, $sentiment_value );
+			$query = $tweetsmodel->setSentiment( $tweet_text, $sentiment_value );
 		}
+
+		return true;
 
 	}
 
+	/**
+	 * Updates a row from the tweets table to hold a sentimental value
+	 *
+	 * @return  boolean
+	 */
 	function setANEWSentiment( $tweet, $sentiment ) {
 
 		$tweetsmodel = new Tweetsmodel;
@@ -298,6 +352,13 @@ class Tweets {
 
 	}
 
+	/**
+	 * Uses the WeFeelFine API to call on all feelings from everywhere
+	 * I didn't use this function or API because there was little data to collect,
+	 * Especially when narrowing down data to "I feel" excerpts.
+	 *
+	 * @return  xml
+	 */
 	function interactWeFeelFine() {
 		//example of We Feel Fine Api's call to include locations
 		define('FEEL_FINE_API','http://api.wefeelfine.org:8080/ShowFeelings?display=xml&returnfields=country,
@@ -307,30 +368,34 @@ state,city,lat,lon,conditions&limit=100000');
 		return $xml;
 	}
 
-	function getTweetsFromAPI() {
-		define('SAMPLE_TWEETS_API', 'https://stream.twitter.com/1.1/statuses/sample.json');
-		define('AUTH_TWEETS', 'https://api.twitter.com/oauth/authorize?oauth_token=208726108-e0qS5K2a97ngzCqQKsZjCpC6p7dkoeUhvXERPsml');
-		
-		$json = file_get_contents(AUTH_TWEETS);
-		$json_output = json_decode($json);
-
-		return $json_output;
-
-	}
-
+	/**
+	 * Calls on the Geocoder object from the Locations controller
+	 * Gets data about that location
+	 *
+	 * @param   $long   The longitude coordinate
+	 * @param   $lat    The latitude coordinate
+	 * @return  object;
+	 */
 	function getGeocoder( $lat = 0, $long = 0 ) {
 		include_once ( '../controller/locations.php' );
 
 		$locations = new Locations();
 		//initiate geocoder
 		$geocoder = $locations->geocoder();
-		
+
+		//has to reverse the coordinates to retrieve town and city names
 		$result = $geocoder->reverse( $lat, $long );
 
 		return $result;
 
 	}
 
+	/**
+	 * Sets the city names from the geolocations of tweets 
+	 *
+	 * @param   $tweets   An array of all tweets 
+	 * @return  true;
+	 */
 	function setLocations( $tweets ) {
 
 		$tweetsmodel = new Tweetsmodel;
@@ -340,13 +405,19 @@ state,city,lat,lon,conditions&limit=100000');
 			// Check for empty locations on tweets
 			if ( !empty ( $tweet->geo_lat ) && !empty ( $tweet->geo_long ) ) {
 
-				
+				//Only apply this function to tweets that have not yet received a city name
+				//And have an empty sentiment
 				if (empty($tweet->city) && !empty($tweet->sentiment)){
+
+					//Call the getGeocoder function from within this controller
 					$location = $this->getGeocoder( $tweet->geo_lat, $tweet->geo_long );
+
+					//Pick off only the Geocoder city attribute's value from the object
 					$city = $location->getCity();
+
 				}
 				
-				// Check if the GeoCoder returns a country code that is not null/ empty
+				// Check if the GeoCoder returns a city that is not null/ empty
 				if ( !empty ( $city ) || isset ( $city ) ) {
 					
 					// Set the Country Code aside of each tweet.
@@ -358,13 +429,23 @@ state,city,lat,lon,conditions&limit=100000');
 
 		}
 		
+		return true;
+		
 	}
 
+	/**
+	 * Constructs data ready to be used within GoogleGraph's line graph API.
+	 * [Not active in the application]
+	 * I scrapped this because the line graph didn't depict the data as I hoped.
+	 *
+	 * @param   $data   Array data to be viewed on the line graph.
+	 * @return  array;
+	 */
 	function getGoogleLineGraphFormat( $data ) {
 
 		//sorry, hard-coding it because I can't get my head around it otherwise
-		//CHRISTMAS
 
+		//Chrismtas dates
 		$day2 = 20121221;
 		$day3 = 20121222;
 		$day4 = 20121223;
@@ -396,7 +477,8 @@ state,city,lat,lon,conditions&limit=100000');
 			$explode_day = explode( "-", $day );
 			$implode_day = implode( '', $explode_day );
 			$implode_day = intval( $implode_day );
-				
+
+			//So I'm just checking which date the tweet belongs to, then shoving it into that date's array
 			if ( $implode_day == $day2 ) {
 				$day2Tweets[] = $tweet;
 			}
@@ -429,7 +511,6 @@ state,city,lat,lon,conditions&limit=100000');
 			}
 			
 		}
-
 		
 		$days = array();
 		$days = array( 'day2' => array( $day2 => $day2Tweets ), 'day3' => array( $day3 => $day3Tweets ),
@@ -440,10 +521,9 @@ state,city,lat,lon,conditions&limit=100000');
 				  'day10' => array( $day10 => $day10Tweets ),
 				  'day11' => array( $day11 => $day11Tweets ));
 
-		//now you can normalise the data for each day
-		// http://sonia.hubpages.com/hub/stddev
-
 		
+		// DATA NORMALISATION for the line graph
+		// http://sonia.hubpages.com/hub/stddev
 		$sentiment = array();
 		$means = array();
 		$normalised_sentiment = array();
@@ -508,6 +588,13 @@ state,city,lat,lon,conditions&limit=100000');
 
 	}
 
+	/**
+	 * Finds the average sentiment per city.
+	 * It's used in the Bubble graph.
+	 *
+	 * @param   $happiest_cities   Array containing all cities
+	 * @return  array
+	 */
 	function getAverageSentimentPerCity( $happiest_cities ) {
 
 		$cities = array();
@@ -545,7 +632,6 @@ state,city,lat,lon,conditions&limit=100000');
 					 Lisburn	 Newry
 
 					';
-		$temp_city = '';
 
 		if ( !empty( $happiest_cities ) ) {
 
@@ -555,11 +641,12 @@ state,city,lat,lon,conditions&limit=100000');
 				$city = $happiest_city->city;
 				$sentiment = $happiest_city->sentiment;
 
+				//Check if the city is not empty
 				if ( !empty( $city ) && $city != null ) {
 
 					$city = $happiest_city->city;
 
-						//check if city name is within the list of cities (above)
+						//Check if city name is within the list of cities (above)
 						//so you don't get the towns, which Geocoder picks up as 'cities'
 						if (strstr($cities_string, $city)) {
 
@@ -594,11 +681,14 @@ state,city,lat,lon,conditions&limit=100000');
 			$new_array = array();
 			$names_and_tweets = array();
 
+			//A fallback for servers not using PHP 5.4
 			if (!defined('ENT_SUBSTITUTE')) {
 				define('ENT_SUBSTITUTE', 8);
 			}
 
-			foreach ($cities as $city) { 
+			//Construct a new array with City names and their tweets
+			foreach ($cities as $city) {
+				
 				//count how many times the city name appears in the array
 				$city['tweet'] = utf8_encode(htmlspecialchars( $city['tweet'], ENT_SUBSTITUTE ));
 				
@@ -606,54 +696,77 @@ state,city,lat,lon,conditions&limit=100000');
 			
 			}
 
-
-			foreach ($cities as $city) {
+			//Using the City names and tweets, construct a new array with the city's sentiment and one random tweet
+			foreach ( $cities as $city ) {
 			
 				$tweets = array();
-				foreach ($names_and_tweets as $name_and_tweet) {
+				foreach ( $names_and_tweets as $name_and_tweet ) {
 
+					//Checks if the city field is set within the array
 					if ( isset( $name_and_tweet[$city['name']] )) {
+
+						//Constructs a new array with just the tweets for that city
 						$tweets[] =  $name_and_tweet[$city['name']];
+
 					}
 
 				}
 
-				
+				//Again checks if city is within the listed cities above; if the city is a major city
+				if ( strstr($cities_string, $city['name']) ) {
 
-				if (strstr($cities_string, $city['name'])) {
 					//store the city name and all of its tweets so you can access them later
 					$cities_tweets[] = array( $city['name'] => $tweets );
+					
 				}
-				
+
+				//Count how many tweets are within the array 
 				$quan = count($tweets) -1;
-				
-				if ( $quan > 1 ) { 
-					$index = rand( 0, $quan ); 
+
+				//If there are more than one tweet, get a random one
+				if ( $quan > 1 ) {
+
+					//Generate a random number between zero and the total amount of tweets
+					$index = rand( 0, $quan );
+
+					//Get the tweet with this random index
 					$random_tweet = $tweets[$index];
+
+					//Restore the city array's tweet index with the value of this 1 random tweet
 					$city['tweet'] = $random_tweet;
+					
 				}
+
+				// If there is only one tweet, just construct the city array's "tweet" index with the first tweet
 				else $city['tweet'] = $tweets[0];
-				
-				$temp_city = $city['name'];
 
 				//taken from http://board.phpbuilder.com/showthread.php?10388043-How-To-Pick-Out-Array-Values-amp-Sum-Them&p=11019071#post11019071
+				//Construct a new array that within its key as the city name, it holds the city's sentiment and tweet
 				$new_array[$city['name']] = array(floatval($city['sentiment']), $city['tweet']);
 
 			}
 			
 
-			//construct new array
+			//Use this new array to average out the city's sentimental value
 			foreach ($new_array as $k => $v) {
-			
+		
 				$division = count($v);
 				$average = array_sum($v)/$division;
 
+				//Store the averaged
+				//I did have some code here to store it but it looks like I deleted it :(
+
+				//Create the final array tha just formats data into particular keys
 				$output[] = array('name' => $k, 'sentiment' => $v[0], 'tweet' => $v[1]);
 				
 			}
 
 			$data = array();
+
+			//Convert the $output array into a JSONstring for easier reading in the View.
 			$data['json'] = json_encode($output);
+
+			//Just lists the cities and their tweets for the Cities Sample Tweets data visualisation.
 			$data['cities_tweets'] = $cities_tweets;
 			 
 			return $data;
@@ -662,42 +775,56 @@ state,city,lat,lon,conditions&limit=100000');
 	
 	}
 
-	/*Specifying JSON because JSON should be the only input to write to the file */
+	/**
+	 * Creates and/or writes to a JSON file in the /assets/json directory
+	 * Used by the D3 library when reading data easily more efficiently than generating it by PHP on every call
+	 *
+	 * @param  $JSON       The JSONstring of data
+	 * @param  $fileName   The name of the file written to
+	 * @return boolean
+	 */
 	function writeJSONFile( $JSON, $fileName ) {
 
 		if ( isset( $JSON ) && isset( $fileName ) ) {
 
-		 file_put_contents( dirname( __FILE__ ) . '/../assets/json/'. $fileName . '.json', $JSON);
-			
+			file_put_contents( dirname( __FILE__ ) . '/../assets/json/'. $fileName . '.json', $JSON);
+
+			return true;
 		}
 
 
 	}
 
+	/**
+	 * Uses Dictionary.com's API to pull in slang definitions of words.
+	 * [Not active in application]
+	 * I never actually received the API key that I requested to use this API. So, I couldn't get the slang definitions.
+	 *
+	 * @param   $word         A string, the slang word
+	 * @return  $definition   
+	 */
 	function getSlangSentiment( $word ) {
 
 		//http://developer.dictionary.com/account/apikeys
 		$apikey = "t0851pyartj4wzhzbe643jabzsbrm04f1cl21jcsdv";
 		$definition = file_get_contents("http://api-pub.dictionary.com/v001?vid=$apikey&q=hey&type=define&site=slang");
 
-		var_dump($definition);exit;
+		return $definition;
 	}
 
-# refineTweet function
-# returns integer
-# returned values reflect the amount of increasement / decreasement to multiply the tweet entire tweet against (after sentiment analysis per each word)
-#
-# Need to figure out a way to decrease/increase the sentiment of tweets, still within the range of 0 - 9,
-# that reflects certain words, characters or phrases in a tweet.
+	/**
+	 * Applies patterns into methods from the Linear Regression methodology
+	 *
+	 * @param   $tweet   The singular tweet to be refined
+	 * @return  integer
+	 */
 	function refineTweet( $tweet ) {
 
 		$bad = false;
 		$value = 1;
-
 		$tweet = $tweet->tweet_text;
 
-
-		#Grabbing laughter from tweets and returning a high sentiment value
+		//Grabbing laughter from tweets and returning a high sentiment value
 		if ( strstr($tweet, 'hehe' ) || strstr($tweet, ' ha ') || strstr($tweet, 'haha')  || strstr($tweet, ' lol ') ||
 			strstr($tweet, ' lmao ')  || strstr($tweet, ' rofl ') || strstr($tweet, ' haa ') || strstr($tweet, ' :) ') ||
 			strstr($tweet, 'laughing out loud') ) {
@@ -706,16 +833,17 @@ state,city,lat,lon,conditions&limit=100000');
 
 		}
 
-		#I changed 'hate' to have a value of 1 in the ANEW dataset | from 2.12
-		#I changed 'dead' to have a vlaue of 0 in the ANEW dataset | from 1.94
+		// -- I will be also stating which values I've changed from the ANEW dataset --
 
-		#If the tweet has the phrase, "in a good way", return a higher sentiment value;
+		//I changed 'hate' to have a value of 1 in the ANEW dataset | from 2.12
+		//I changed 'dead' to have a vlaue of 0 in the ANEW dataset | from 1.94
 
+		//If the tweet has the phrase, "in a good way", return a higher sentiment value;
 		if ( strstr($tweet, 'in a good way') ) {
 			$value = 1.5;
 		}
 
-		#if the sentence contains the word, "die" then give the sentiment a lower sentiment value;
+		//if the sentence contains the word, "die" then give the sentiment a lower sentiment value;
 		if ( strstr($tweet, ' die ') || strstr($tweet, ' died ')) {
 			$value = .5;
 			$bad = true;
@@ -726,8 +854,9 @@ state,city,lat,lon,conditions&limit=100000');
 			$value = 1.5;
 		}
 
-		#superheros sourced http://en.wikipedia.org/wiki/List_of_superheroes_and_villains_without_superpowers
+		//superheros sourced http://en.wikipedia.org/wiki/List_of_superheroes_and_villains_without_superpowers
 		if ( $match = strstr($tweet, strtolower('i am') || $match = strstr($tweet, strtolower('i\'m') )) ) {
+			
 			$superheros_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/superheros.txt');
 			$rows = explode( "\n", $superheros_file );
 			$superheros = $rows;
@@ -745,35 +874,34 @@ state,city,lat,lon,conditions&limit=100000');
 
 		}
 
-		#increasing sentiment in relation to recreational drug use
+		//increasing sentiment in relation to recreational drug use
 		if ( strstr($tweet, 'got high')) {
 			$value =  1.5;
 		}
 
-		#increase sentiment if mention of "time of my life"
+		//increase sentiment if mention of "time of my life"
 		if ( strstr($tweet, 'time of my life') ) {
 			$value = 1.5;
 		}
 
-		#increase sentiment if having time off work
+		//increase sentiment if having time off work
 		if ( strstr($tweet, 'stay off') || strstr($tweet, 'time off') ) {
 			$value = 1.5;
 		}
 
-		#hangover
+		//hangover
 		if ( strstr($tweet, 'hangover') ) {
 			$value = 0.5;
 			$bad = true;
 		}
 
-		#ill
+		//ill
 		if ( strtolower(strstr($tweet, 'I don\'t feel well')) || strtolower(strstr($tweet, 'I dont feel well')) ) {
 			$value = 0.5;
 			$bad = true;
 		}
 
-		#gossip about tv show - http://www.imdb.com/search/title?countries=gb&sort=moviemeter&title_type=tv_series
-		
+		//gossip about tv show - http://www.imdb.com/search/title?countries=gb&sort=moviemeter&title_type=tv_series
 		$tvshows_file    = file_get_contents(dirname(__FILE__) . '/../anew_2010/tvshows.txt');
 		$rows = explode( "\n", $tvshows_file );
 		$soap_operas = $rows;
@@ -781,6 +909,7 @@ state,city,lat,lon,conditions&limit=100000');
 		$words = array();
 		$words = explode(' ', $match);
 
+		//Increase the sentiment slightly because the person is likely to be acting cheaky and therefore slightly cheerful
 		foreach ( $soap_operas as $soap ) {
 
 			strtolower($soap);
@@ -791,38 +920,35 @@ state,city,lat,lon,conditions&limit=100000');
 
 		}
 
-		#calory counting - guilt - shame
+		//calory counting - guilt - shame
 		if ( strstr($tweet, ' calories ')) {
 			$value = 0.5;
 			$bad = true;
 		}
 
-		#if a tweet contains 'cut' but precedes with the word 'hair', increase the overal tweet sentiment by half
+		//if a tweet contains 'cut' but precedes with the word 'hair', increase the overal tweet sentiment by half
 		if ( strstr($tweet, ' hair cut ')) {
 			$value = 1.5;
 			$bad = true;
 		}
 
-		#enjoyment of food/drink
+		//enjoyment of food/drink
 		if ( strstr($tweet, ' full fat ')) {
 			$value = 1.5;
 		}
 		
-
-		#check uppercase - emphasis of word
-
-		#Smiley face
+		//Smiley face
 		if (strstr($tweet, ' :) ')) {
 			$value = 1.5;
 		}
 
-		#Sad face
+		//Sad face
 		if (strstr($tweet, ' :( ')) {
 			$value = 0.5;
 			$bad = true;
 		}
 
-		#slang = stonker
+		//slang = stonker
 		if (strstr($tweet, ' stonker ')) {
 			$value = 1.5;
 			if ( $bad ) {
@@ -830,7 +956,7 @@ state,city,lat,lon,conditions&limit=100000');
 			}
 		}
 
-		#kiss
+		//kiss
 		if ( strstr($tweet, 'xx') || strstr($tweet, ' x ')) {
 			$value = 1.5;
 			if ( $bad ) {
@@ -838,71 +964,68 @@ state,city,lat,lon,conditions&limit=100000');
 			}
 		}
 
-
-		#boo
+		//boo (theatre boo)
 		if ( strstr($tweet, ' boo ')) {
 			$value = 0.7;
 		}
 
-		#mentioning a murder
+		//mentioning a murder
 		if ( strtolower(strstr($tweet, ' i\'ll kill ')) || strtolower(strstr($tweet, 'ill kill')) || strtolower(strstr($tweet, 'i will kill')) ) {
 			$value = 0.3;
 		}
 
-		#Empathy for bad joke
+		//Empathy for bad joke
 		if ( strtolower(strstr($tweet, 'i\'m joking') || strtolower(strstr($tweet, 'i am joking')) || strtolower (strstr($tweet, 'im joking')) )) {
 			$value = 0.9;
 		}
 
-		#Sympathy
+		//Sympathy
 		if ( strtolower(strstr($tweet, 'don\'t worry about it')) || strtolower(strstr($tweet, ' dont worry '))) {
 			$value = 0.8;
 		}
 
-		#Given 'shock' a value of 2 from 4.03
+		//Given 'shock' a value of 2 from 4.03
 		if ( strtolower(strstr($tweet, 'shocking'))) {
 			$value = 0.5;
 		}
 
-		#self pitty
+		//self pitty
 		if ( strtolower(strstr($tweet, 'i\m fat')) || strtolower(strstr($tweet, 'i am fat')) || strtolower(strstr($tweet, 'im fat'))) {
 			$value = 0.5;
 		}
 
-		#Note 'fat' added more sentiment in ANEW dataset - from 2.28 to 4
+		//Note 'fat' added more sentiment in ANEW dataset - from 2.28 to 4
 
-		#excitement
+		//excitement
 		if ( strstr($tweet, ' too excited ')) {
 			$value = 1.5;
 		}
 
-		#more murder
+		//more murder
 		if ( strtolower(strstr($tweet, 'cut your head off'))) {
 			$value = 0.3;
 		}
 
-		#sarcasm, frustration
+		//sarcasm, frustration
 		if ( strstr($tweet, 'merry fucking christmas') || strstr($tweet, 'merry shitty christmas') || strstr($tweet, 'merry fuckin christmas')) {
 			$value = 0.3;
 		}
 
-		#acknowledgement
+		//acknowledgement
 		if ( strstr($tweet, ' not bad ') ) {
 			$value = 1.5;
 		}
 
-		#angry
+		//angry
 		if ( strstr($tweet, ' fuckers ') ) {
 			$value = 0.5;
 		}
 
-		#hell given a higher sentiment of 4 from 2.24
+		//hell given a higher sentiment of 4 from 2.24
 
 		return $value;
 
 	}
-
-	
 
 }
 ?>
