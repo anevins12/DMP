@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Retrieves data from the 'tweets' table and echos it out.
+ *
+ *
+ * @author_name Andrew Nevins
+ * @author_no 09019549
+ */
 class Cities{
 
 	function __construct() {
@@ -6,6 +14,11 @@ class Cities{
 		include_once ( dirname(__FILE__) . '/tweets.php' );
 	}
 
+	/**
+	 * Retrieves a small sample of tweets from main United Kingdom cities
+	 *
+	 * @return  JSONstring
+	 */
 	function allCities() {
 
 		$tweetsmodel = new Tweetsmodel;

@@ -108,7 +108,7 @@ class Tweetsmodel {
 	/**
 	 * Gets the tags associated to sad tweets
 	 *
-	 * @return JSONobject
+	 * @return JSONstring
 	 */
 	public function getSadTweetTags() {
 
@@ -168,7 +168,7 @@ class Tweetsmodel {
 	/**
 	 * Gets the tags associated to happy tweets
 	 *
-	 * @return JSONobject
+	 * @return JSONstring
 	 */
 	public function getHappyTweetTags() {
 		$mysqli = new mysqli( HOSTNAME, USERNAME, PASSWORD, DATABASE );
