@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 
 <?php
-
+/**
+ * Displays data visualisations by using the 'tweets' and 'users' controllers.
+ *
+ *
+ * @author_name Andrew Nevins
+ * @author_no 09019549
+ * @package My work
+ */
 	include_once( dirname(__FILE__) . '/../../controller/tweets.php' );
 
 	include_once( dirname(__FILE__) . '/../../controller/users.php' );

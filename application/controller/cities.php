@@ -1,11 +1,12 @@
 <?php
 
 /**
- * Retrieves data from the 'tweets' table and echos it out.
+ * Retrieves data from the 'tweets' table from the 'tweetsmodel' class.
  *
  *
  * @author_name Andrew Nevins
  * @author_no 09019549
+ * @package My work
  */
 class Cities{
 

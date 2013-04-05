@@ -6,6 +6,8 @@
  *
  * @author_name Andrew Nevins
  * @author_no 09019549
+ * @used-by /application/view/all/index.php
+ * @package My work
  */
 class Users {
 

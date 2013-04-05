@@ -5,6 +5,7 @@
  *
  * @author_name Andrew Nevins
  * @author_no 09019549
+ * @package My work
  */
 class sentimentmodel {
 

@@ -1312,69 +1312,93 @@ Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library
       <error line="6" code="50010">No DocBlock was found for method passUWEProxy()</error>
     </parse_markers>
   </file>
-  <file path="controller\cities.php" hash="6e24ec0013afda248a101e7fd94f7c32" package="Default">
-    <include line="5" type="Include Once" package="Default">
+  <file path="controller\cities.php" hash="a6dbbf2db5317c2e33a2a2090dbdc1c2" package="Default">
+    <include line="14" type="Include Once" package="Default">
       <name/>
     </include>
-    <include line="6" type="Include Once" package="Default">
+    <include line="15" type="Include Once" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="2" package="Default">
+    <class final="false" abstract="false" namespace="global" line="11" package="My work">
       <extends/>
       <name>Cities</name>
       <full_name>\Cities</full_name>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="4" package="Default">
+      <docblock line="3">
+        <description>Retrieves data from the 'tweets' table from the 'tweetsmodel' class.</description>
+        <long-description/>
+        <tag line="3" name="author_name" description="Andrew Nevins"/>
+        <tag line="3" name="author_no" description="09019549"/>
+        <tag line="3" name="package" description="My work"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="My work">
         <name>__construct</name>
         <full_name>__construct</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="9" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="23" package="My work">
         <name>allCities</name>
         <full_name>allCities</full_name>
+        <docblock line="18">
+          <description>Retrieves a small sample of tweets from main United Kingdom cities</description>
+          <long-description/>
+          <tag line="18" name="return" description="" type="\JSONstring">
+            <type by_reference="false">\JSONstring</type>
+          </tag>
+        </docblock>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controller\cities.php</error>
-      <error line="2" code="50000">No DocBlock was found for \Cities</error>
-      <error line="4" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="9" code="50010">No DocBlock was found for method allCities()</error>
+      <error line="13" code="50010">No DocBlock was found for method __construct()</error>
     </parse_markers>
   </file>
-  <file path="controller\locations.php" hash="28574b01e61961add159ef4bb21a8254" package="Default">
-    <include line="16" type="Include Once" package="Default">
+  <file path="controller\locations.php" hash="2c0af526a76263ff8ee127157ad825ec" package="Default">
+    <include line="15" type="Include Once" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="12" package="Default">
+    <class final="false" abstract="false" namespace="global" line="11" package="My work">
       <extends/>
       <name>Locations</name>
       <full_name>\Locations</full_name>
-      <docblock line="7">
-        <description>Description of locations</description>
+      <docblock line="3">
+        <description>Interacts with the Geocoder API to create an object</description>
         <long-description/>
-        <tag line="7" name="author" description="andrew"/>
+        <tag line="3" name="author_name" description="Andrew Nevins"/>
+        <tag line="3" name="author_no" description="09019549"/>
+        <tag line="3" name="package" description="My work"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="14" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="My work">
         <name>__construct</name>
         <full_name>__construct</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="20" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="24" package="My work">
         <name>geocoder</name>
         <full_name>geocoder</full_name>
+        <docblock line="19">
+          <description>Calls to the Geocoder class and creates a Geocoder object</description>
+          <long-description/>
+          <tag line="19" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controller\locations.php</error>
-      <error line="14" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="20" code="50010">No DocBlock was found for method geocoder()</error>
+      <error line="13" code="50010">No DocBlock was found for method __construct()</error>
     </parse_markers>
   </file>
-  <file path="controller\tweets.php" hash="96d9076eb55913878bc45d1aec41660a" package="Default">
+  <file path="controller\tweets.php" hash="14d6e35a6609dedf6e980254a13237d1" package="My work">
+    <docblock line="2">
+      <description>Handles displaying and manipulation of all tweet data
+Some funcitons should be in the tweetsmodel - Sorry if this class tries to play God.</description>
+      <long-description></long-description>
+      <tag line="2" name="author_name" description="Andrew Nevins"/>
+      <tag line="2" name="author_no" description="09019549"/>
+      <tag line="2" name="used-by" description="/application/view/all/index.php"/>
+      <tag line="2" name="package" description="My work"/>
+    </docblock>
     <include line="12" type="Include Once" package="Default">
       <name>locations.php</name>
-      <docblock line="7">
-        <description>Description of tweets</description>
-        <long-description/>
-        <tag line="7" name="author" description="andrew"/>
-      </docblock>
     </include>
     <include line="17" type="Include Once" package="Default">
       <name/>
@@ -1382,234 +1406,400 @@ Latest copy of this code: http://140dev.com/free-twitter-api-source-code-library
     <include line="18" type="Include Once" package="Default">
       <name/>
     </include>
-    <include line="332" type="Include Once" package="Default">
+    <include line="382" type="Include Once" package="Default">
       <name>../controller/locations.php</name>
     </include>
-    <constant namespace="global" line="313" package="Default">
+    <constant namespace="global" line="366" package="My work">
       <name>FEEL_FINE_API</name>
       <full_name>\FEEL_FINE_API</full_name>
       <value>'http://api.wefeelfine.org:8080/ShowFeelings?display=xml&amp;returnfields=country,
 state,city,lat,lon,conditions&amp;limit=100000'</value>
     </constant>
-    <constant namespace="global" line="321" package="Default">
-      <name>SAMPLE_TWEETS_API</name>
-      <full_name>\SAMPLE_TWEETS_API</full_name>
-      <value>'https://stream.twitter.com/1.1/statuses/sample.json'</value>
-    </constant>
-    <constant namespace="global" line="322" package="Default">
-      <name>AUTH_TWEETS</name>
-      <full_name>\AUTH_TWEETS</full_name>
-      <value>'https://api.twitter.com/oauth/authorize?oauth_token=208726108-e0qS5K2a97ngzCqQKsZjCpC6p7dkoeUhvXERPsml'</value>
-    </constant>
-    <constant namespace="global" line="608" package="Default">
+    <constant namespace="global" line="688" package="My work">
       <name>ENT_SUBSTITUTE</name>
       <full_name>\ENT_SUBSTITUTE</full_name>
       <value>8</value>
     </constant>
     <class final="false" abstract="false" namespace="global" line="14" package="Default">
-      <extends>\Locations</extends>
+      <extends/>
       <name>Tweets</name>
       <full_name>\Tweets</full_name>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="16" package="Default">
         <name>__construct</name>
         <full_name>__construct</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="21" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="26" package="Default">
         <name>index</name>
         <full_name>index</full_name>
+        <docblock line="21">
+          <description>Runs as default function.</description>
+          <long-description>&lt;p&gt;It calls upon other functions within this controller and the tweetsmodel.&lt;/p&gt;</long-description>
+          <tag line="21" name="return" description="" type="\JSONstring">
+            <type by_reference="false">\JSONstring</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="43" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="42" package="Default">
         <name>getRecentTweets</name>
         <full_name>getRecentTweets</full_name>
+        <docblock line="37">
+          <description>Calls the tweetsmodel function to get the recent tweets</description>
+          <long-description></long-description>
+          <tag line="37" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="52" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="58" package="Default">
         <name>getTweetQuantities</name>
         <full_name>getTweetQuantities</full_name>
+        <docblock line="51">
+          <description>Uses the tweetsmodel to get all tweets.</description>
+          <long-description>&lt;p&gt;Then narrow down the tweets to only those belonging to major cities in the UK.
+And construct an array with the amount of tweets that have certain sentimental values&lt;/p&gt;</long-description>
+          <tag line="51" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="123" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="141" package="Default">
         <name>getTweetTags</name>
         <full_name>getTweetTags</full_name>
+        <docblock line="137">
+          <description>Get both the happy tags and sad tags data from the tweets model
+Instead of returning data, write it directly to a JSON file.</description>
+          <long-description></long-description>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="132" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="157" package="Default">
         <name>getANEWSentiment</name>
         <full_name>getANEWSentiment</full_name>
-        <argument line="132">
+        <docblock line="150">
+          <description>Part of the sentiment analysis process - This gets the tweet's sentimental value in conjunction with the ANEW dataset
+Uses the tweetsmodel to get all tweets.</description>
+          <long-description>&lt;p&gt;Then narrow down the tweets to only those belonging to major cities in the UK.
+And construct an array with the amount of tweets that have certain sentimental values&lt;/p&gt;</long-description>
+        </docblock>
+        <argument line="157">
           <name>$tweet</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="245" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="279" package="Default">
         <name>get140Sentiment</name>
         <full_name>get140Sentiment</full_name>
-        <argument line="245">
+        <docblock line="270">
+          <description>Uses the 140Sentiment API to get sentiment on tweets
+[Not active in the application]
+Decided not to go with this because the API only returned 3 values.</description>
+          <long-description>&lt;p&gt;Values of zero, 2 or four.
+I wanted more range.&lt;/p&gt;</long-description>
+          <tag line="270" name="return" description="| string" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="279">
           <name>$tweets</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="285" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="324" package="Default">
         <name>set140Sentiment</name>
         <full_name>set140Sentiment</full_name>
-        <argument line="285">
+        <docblock line="319">
+          <description>Just inserting the value from the get140Sentiment function to into the database.</description>
+          <long-description></long-description>
+          <tag line="319" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="324">
           <name>$tweets_sentiment</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="298" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="344" package="Default">
         <name>setANEWSentiment</name>
         <full_name>setANEWSentiment</full_name>
-        <argument line="298">
+        <docblock line="339">
+          <description>Updates a row from the tweets table to hold a sentimental value</description>
+          <long-description></long-description>
+          <tag line="339" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="344">
           <name>$tweet</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="298">
+        <argument line="344">
           <name>$sentiment</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="311" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="364" package="Default">
         <name>interactWeFeelFine</name>
         <full_name>interactWeFeelFine</full_name>
+        <docblock line="357">
+          <description>Uses the WeFeelFine API to call on all feelings from everywhere
+I didn't use this function or API because there was little data to collect,
+Especially when narrowing down data to "I feel" excerpts.</description>
+          <long-description></long-description>
+          <tag line="357" name="return" description="" type="\xml">
+            <type by_reference="false">\xml</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="320" package="Default">
-        <name>getTweetsFromAPI</name>
-        <full_name>getTweetsFromAPI</full_name>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="331" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="381" package="Default">
         <name>getGeocoder</name>
         <full_name>getGeocoder</full_name>
-        <argument line="331">
+        <docblock line="373">
+          <description>Calls on the Geocoder object from the Locations controller
+Gets data about that location</description>
+          <long-description></long-description>
+          <tag line="373" name="param" description="The longitude coordinate" type="\" variable="$long"/>
+          <tag line="373" name="param" description="The latitude coordinate" type="\" variable="$lat"/>
+          <tag line="373" name="return" description="" type="\object;">
+            <type by_reference="false">\object;</type>
+          </tag>
+        </docblock>
+        <argument line="381">
           <name>$lat</name>
           <default>0</default>
           <type/>
         </argument>
-        <argument line="331">
+        <argument line="381">
           <name>$long</name>
           <default>0</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="344" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="401" package="Default">
         <name>setLocations</name>
         <full_name>setLocations</full_name>
-        <argument line="344">
+        <docblock line="395">
+          <description>Sets the city names from the geolocations of tweets</description>
+          <long-description></long-description>
+          <tag line="395" name="param" description="An array of all tweets" type="\" variable="$tweets"/>
+          <tag line="395" name="return" description="" type="\true;">
+            <type by_reference="false">\true;</type>
+          </tag>
+        </docblock>
+        <argument line="401">
           <name>$tweets</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="373" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="446" package="Default">
         <name>getGoogleLineGraphFormat</name>
         <full_name>getGoogleLineGraphFormat</full_name>
-        <argument line="373">
+        <docblock line="438">
+          <description>Constructs data ready to be used within GoogleGraph's line graph API.</description>
+          <long-description>&lt;p&gt;[Not active in the application]
+I scrapped this because the line graph didn't depict the data as I hoped.&lt;/p&gt;</long-description>
+          <tag line="438" name="param" description="Array data to be viewed on the line graph." type="\" variable="$data"/>
+          <tag line="438" name="return" description="" type="\array;">
+            <type by_reference="false">\array;</type>
+          </tag>
+        </docblock>
+        <argument line="446">
           <name>$data</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="521" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="600" package="Default">
         <name>getAverageSentimentPerCity</name>
         <full_name>getAverageSentimentPerCity</full_name>
-        <argument line="521">
+        <docblock line="593">
+          <description>Finds the average sentiment per city.</description>
+          <long-description>&lt;p&gt;It's used in the Bubble graph.&lt;/p&gt;</long-description>
+          <tag line="593" name="param" description="Array containing all cities" type="\" variable="$happiest_cities"/>
+          <tag line="593" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="600">
           <name>$happiest_cities</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="676" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="788" package="Default">
         <name>writeJSONFile</name>
         <full_name>writeJSONFile</full_name>
-        <argument line="676">
+        <docblock line="780">
+          <description>Creates and/or writes to a JSON file in the /assets/json directory
+Used by the D3 library when reading data easily more efficiently than generating it by PHP on every call</description>
+          <long-description></long-description>
+          <tag line="780" name="param" description="The JSONstring of data" type="\" variable="$JSON"/>
+          <tag line="780" name="param" description="The name of the file written to" type="\" variable="$fileName"/>
+          <tag line="780" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="788">
           <name>$JSON</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="676">
+        <argument line="788">
           <name>$fileName</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="687" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="808" package="Default">
         <name>getSlangSentiment</name>
         <full_name>getSlangSentiment</full_name>
-        <argument line="687">
+        <docblock line="800">
+          <description>Uses Dictionary.com's API to pull in slang definitions of words.</description>
+          <long-description>&lt;p&gt;[Not active in application]
+I never actually received the API key that I requested to use this API. So, I couldn't get the slang definitions.&lt;/p&gt;</long-description>
+          <tag line="800" name="param" description="A string, the slang word" type="\" variable="$word"/>
+          <tag line="800" name="return" description="" type="\$definition">
+            <type by_reference="false">\$definition</type>
+          </tag>
+        </docblock>
+        <argument line="808">
           <name>$word</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="702" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="823" package="Default">
         <name>refineTweet</name>
         <full_name>refineTweet</full_name>
-        <argument line="702">
+        <docblock line="817">
+          <description>Applies patterns into methods from the Linear Regression methodology</description>
+          <long-description></long-description>
+          <tag line="817" name="param" description="The singular tweet to be refined" type="\" variable="$tweet"/>
+          <tag line="817" name="return" description="" type="integer">
+            <type by_reference="false">integer</type>
+          </tag>
+        </docblock>
+        <argument line="823">
           <name>$tweet</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
     </class>
     <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file controller\tweets.php</error>
       <error line="14" code="50000">No DocBlock was found for \Tweets</error>
       <error line="16" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="21" code="50010">No DocBlock was found for method index()</error>
-      <error line="43" code="50010">No DocBlock was found for method getRecentTweets()</error>
-      <error line="52" code="50010">No DocBlock was found for method getTweetQuantities()</error>
-      <error line="123" code="50010">No DocBlock was found for method getTweetTags()</error>
-      <error line="132" code="50010">No DocBlock was found for method getANEWSentiment()</error>
-      <error line="245" code="50010">No DocBlock was found for method get140Sentiment()</error>
-      <error line="285" code="50010">No DocBlock was found for method set140Sentiment()</error>
-      <error line="298" code="50010">No DocBlock was found for method setANEWSentiment()</error>
-      <error line="311" code="50010">No DocBlock was found for method interactWeFeelFine()</error>
-      <error line="320" code="50010">No DocBlock was found for method getTweetsFromAPI()</error>
-      <error line="331" code="50010">No DocBlock was found for method getGeocoder()</error>
-      <error line="344" code="50010">No DocBlock was found for method setLocations()</error>
-      <error line="373" code="50010">No DocBlock was found for method getGoogleLineGraphFormat()</error>
-      <error line="521" code="50010">No DocBlock was found for method getAverageSentimentPerCity()</error>
-      <error line="676" code="50010">No DocBlock was found for method writeJSONFile()</error>
-      <error line="687" code="50010">No DocBlock was found for method getSlangSentiment()</error>
-      <error line="702" code="50010">No DocBlock was found for method refineTweet()</error>
+      <error line="150" code="50015">Argument $tweet is missing from the Docblock of getANEWSentiment()</error>
+      <error line="270" code="50015">Argument $tweets is missing from the Docblock of get140Sentiment()</error>
+      <error line="319" code="50015">Argument $tweets_sentiment is missing from the Docblock of set140Sentiment()</error>
+      <error line="339" code="50015">Argument $tweet is missing from the Docblock of setANEWSentiment()</error>
+      <error line="339" code="50015">Argument $sentiment is missing from the Docblock of setANEWSentiment()</error>
+      <error line="373" code="50014">Name of argument $lat does not match with the DocBlock's name $long in getGeocoder()</error>
+      <error line="373" code="50014">Name of argument $long does not match with the DocBlock's name $lat in getGeocoder()</error>
     </parse_markers>
   </file>
-  <file path="model\locationsmodel.php" hash="98564ffec458f19f18b9c4df99d602df" package="Default">
-    <include line="8" type="Include" package="Default">
+  <file path="controller\users.php" hash="f017bd4697d291e7b5bc6cf0972a207a" package="Default">
+    <include line="15" type="Include Once" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+    <class final="false" abstract="false" namespace="global" line="12" package="My work">
       <extends/>
-      <name>Locationsmodel</name>
-      <full_name>\Locationsmodel</full_name>
-      <property final="false" static="false" visibility="protected" line="5" namespace="global" package="Default">
-        <name>$tableName</name>
-        <default>"countries"</default>
-      </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="7" package="Default">
+      <name>Users</name>
+      <full_name>\Users</full_name>
+      <docblock line="3">
+        <description>Grabs data from the Usersmodel and returns it</description>
+        <long-description></long-description>
+        <tag line="3" name="author_name" description="Andrew Nevins"/>
+        <tag line="3" name="author_no" description="09019549"/>
+        <tag line="3" name="used-by" description="/application/view/all/index.php"/>
+        <tag line="3" name="package" description="My work"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="14" package="My work">
         <name>__construct</name>
         <full_name>__construct</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="11" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="23" package="My work">
+        <name>getAllUsers</name>
+        <full_name>getAllUsers</full_name>
+        <docblock line="18">
+          <description>Gets all users (remember, it gets unhappy users) and convert it to a JSONstring</description>
+          <long-description></long-description>
+          <tag line="18" name="return" description="" type="\JSONstring">
+            <type by_reference="false">\JSONstring</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file controller\users.php</error>
+      <error line="14" code="50010">No DocBlock was found for method __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="model\locationsmodel.php" hash="76d2f98eb0d91b4a668379ccb4250bc0" package="Default">
+    <include line="19" type="Include" package="Default">
+      <name/>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="14" package="My work">
+      <extends/>
+      <name>Locationsmodel</name>
+      <full_name>\Locationsmodel</full_name>
+      <docblock line="3">
+        <description>Gets data from the 'countries' table.</description>
+        <long-description>&lt;p&gt;[Not active in application]
+The aim was to associate tweets' geolocations with a set of coordinates in the 'countries' table and associated country name.
+Was scrapped to be replaced with the Geocoder API service&lt;/p&gt;</long-description>
+        <tag line="3" name="author_name" description="Andrew Nevins"/>
+        <tag line="3" name="author_no" description="09019549"/>
+        <tag line="3" name="package" description="My work"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="16" namespace="global" package="Default">
+        <name>$tableName</name>
+        <default>"countries"</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="18" package="My work">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="28" package="My work">
         <name>getCountry</name>
         <full_name>getCountry</full_name>
-        <argument line="11">
+        <docblock line="22">
+          <description>Gets the country from the 'countries' table, by country_id</description>
+          <long-description/>
+          <tag line="22" name="param" description="The actual ID of the country to be matched in the database table" type="\" variable="$country_id"/>
+          <tag line="22" name="return" description="| string" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="28">
           <name>$country_id</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="36" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="60" package="My work">
         <name>getCountries</name>
         <full_name>getCountries</full_name>
-        <argument line="36">
+        <docblock line="53">
+          <description>Gets all countries from the countries table</description>
+          <long-description/>
+          <tag line="53" name="param" description="To order the data returned from the SQL statement" type="\" variable="$order"/>
+          <tag line="53" name="param" description="To limit the data returned" type="\" variable="$limit"/>
+          <tag line="53" name="return" description="| string" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="60">
           <name>$order</name>
           <default>NULL</default>
           <type/>
         </argument>
-        <argument line="36">
+        <argument line="60">
           <name>$limit</name>
           <default>NULL</default>
           <type/>
@@ -1618,154 +1808,276 @@ state,city,lat,lon,conditions&amp;limit=100000'</value>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file model\locationsmodel.php</error>
-      <error line="3" code="50000">No DocBlock was found for \Locationsmodel</error>
-      <error line="5" code="50018">No DocBlock was found for property $tableName</error>
-      <error line="7" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="11" code="50010">No DocBlock was found for method getCountry()</error>
-      <error line="36" code="50010">No DocBlock was found for method getCountries()</error>
+      <error line="16" code="50018">No DocBlock was found for property $tableName</error>
+      <error line="18" code="50010">No DocBlock was found for method __construct()</error>
     </parse_markers>
   </file>
-  <file path="model\sentimentmodel.php" hash="cc770148256875a9adaccebc5224886a" package="Default">
-    <include line="8" type="Include" package="Default">
+  <file path="model\sentimentmodel.php" hash="864cd9540466303ee130e3f6db07136b" package="Default">
+    <include line="15" type="Include" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+    <class final="false" abstract="false" namespace="global" line="10" package="My work">
       <extends/>
       <name>sentimentmodel</name>
       <full_name>\sentimentmodel</full_name>
-      <property final="false" static="false" visibility="protected" line="5" namespace="global" package="Default">
+      <docblock line="2">
+        <description>Gets and Inserts sentimental values in the 'sentiment' table</description>
+        <long-description/>
+        <tag line="2" name="author_name" description="Andrew Nevins"/>
+        <tag line="2" name="author_no" description="09019549"/>
+        <tag line="2" name="package" description="My work"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="12" namespace="global" package="Default">
         <name>$tableName</name>
         <default>'sentiment'</default>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="7" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="14" package="My work">
         <name>__construct</name>
         <full_name>__construct</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="11" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="25" package="My work">
         <name>insertSentiment</name>
         <full_name>insertSentiment</full_name>
-        <argument line="11">
+        <docblock line="18">
+          <description>Insert sentiment into one row of the 'sentiment' table</description>
+          <long-description/>
+          <tag line="18" name="param" description="To identify the tweet associated with the sentiment" type="\" variable="$tweet_id"/>
+          <tag line="18" name="param" description="Integer, but may be double. Ranges from 0 to 10." type="\" variable="$sentiment_value"/>
+          <tag line="18" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="25">
           <name>$tweet_id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="11">
+        <argument line="25">
           <name>$sentiment_value</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="39" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="60" package="My work">
         <name>getTweetsSentiment</name>
         <full_name>getTweetsSentiment</full_name>
+        <docblock line="53">
+          <description>Gets all tweets' sentimental vale
+Was used when there was a separate table for sentimental values.</description>
+          <long-description>&lt;p&gt;[Not active in application]&lt;/p&gt;</long-description>
+          <tag line="53" name="return" description="| boolean" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file model\sentimentmodel.php</error>
-      <error line="3" code="50000">No DocBlock was found for \sentimentmodel</error>
-      <error line="5" code="50018">No DocBlock was found for property $tableName</error>
-      <error line="7" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="11" code="50010">No DocBlock was found for method insertSentiment()</error>
-      <error line="39" code="50010">No DocBlock was found for method getTweetsSentiment()</error>
+      <error line="12" code="50018">No DocBlock was found for property $tableName</error>
+      <error line="14" code="50010">No DocBlock was found for method __construct()</error>
     </parse_markers>
   </file>
-  <file path="model\tweetsmodel.php" hash="9b7f7b1b02c9bf185f7829835e50de82" package="Default">
-    <include line="8" type="Include Once" package="Default">
+  <file path="model\tweetsmodel.php" hash="3860af8d93bcb89d148ea41b45db1e19" package="Default">
+    <include line="19" type="Include Once" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+    <class final="false" abstract="false" namespace="global" line="14" package="My work">
       <extends/>
       <name>Tweetsmodel</name>
       <full_name>\Tweetsmodel</full_name>
-      <property final="false" static="false" visibility="protected" line="5" namespace="global" package="Default">
+      <docblock line="3">
+        <description>This class retrieves and updates data from the 'tweets' table of the database.</description>
+        <long-description>&lt;p&gt;It doesn't do enough manipulating of data. The 'tweets' controller does this - Bad, I know.
+Unfortunately, the tweets controller tries to play God.&lt;/p&gt;</long-description>
+        <tag line="3" name="author_name" description="Andrew Nevins"/>
+        <tag line="3" name="author_no" description="09019549"/>
+        <tag line="3" name="package" description="My work"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="16" namespace="global" package="Default">
         <name>$tableName</name>
         <default>"tweets"</default>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="7" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="18" package="My work">
         <name>__construct</name>
         <full_name>__construct</full_name>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="11" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="27" package="My work">
         <name>getRecentTweets</name>
         <full_name>getRecentTweets</full_name>
+        <docblock line="22">
+          <description>Gets a sample of the most recent tweets</description>
+          <long-description/>
+          <tag line="22" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="46" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="71" package="My work">
         <name>getTweets</name>
         <full_name>getTweets</full_name>
-        <argument line="46">
+        <docblock line="64">
+          <description>Retrieves all tweets</description>
+          <long-description/>
+          <tag line="64" name="param" description="To order the SQL returned data" type="\" variable="$order"/>
+          <tag line="64" name="param" description="To limit the SQL returned data" type="\" variable="$limit"/>
+          <tag line="64" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="71">
           <name>$order</name>
           <default>NULL</default>
           <type/>
         </argument>
-        <argument line="46">
+        <argument line="71">
           <name>$limit</name>
           <default>NULL</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="82" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="114" package="My work">
         <name>getSadTweetTags</name>
         <full_name>getSadTweetTags</full_name>
+        <docblock line="109">
+          <description>Gets the tags associated to sad tweets</description>
+          <long-description/>
+          <tag line="109" name="return" description="" type="\JSONstring">
+            <type by_reference="false">\JSONstring</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="131" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="174" package="My work">
         <name>getHappyTweetTags</name>
         <full_name>getHappyTweetTags</full_name>
+        <docblock line="169">
+          <description>Gets the tags associated to happy tweets</description>
+          <long-description/>
+          <tag line="169" name="return" description="" type="\JSONstring">
+            <type by_reference="false">\JSONstring</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="179" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="235" package="My work">
         <name>getTweet</name>
         <full_name>getTweet</full_name>
-        <argument line="179">
+        <docblock line="229">
+          <description>Gets one row of data from a matched tweet_id</description>
+          <long-description/>
+          <tag line="229" name="param" description="The actual tweet_id to match in the database table" type="\" variable="$tweet_id"/>
+          <tag line="229" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="235">
           <name>$tweet_id</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="207" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="271" package="My work">
         <name>insertTweetCity</name>
         <full_name>insertTweetCity</full_name>
-        <argument line="207">
+        <docblock line="264">
+          <description>Inserts a city into a tweet's table row</description>
+          <long-description/>
+          <tag line="264" name="param" description="The tweet's id to identify the database row" type="\" variable="$tweet_id"/>
+          <tag line="264" name="param" description="The city to be inserted to that tweet" type="\" variable="$city"/>
+          <tag line="264" name="return" description="| string" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="271">
           <name>$tweet_id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="207">
+        <argument line="271">
           <name>$city</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="225" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="301" package="My work">
         <name>setSentiment</name>
         <full_name>setSentiment</full_name>
-        <argument line="225">
+        <docblock line="294">
+          <description>Inserts a sentimental value to the tweet's table row</description>
+          <long-description/>
+          <tag line="294" name="param" description="A tweet object that must hold a tweet_id" type="\" variable="$tweet"/>
+          <tag line="294" name="param" description="The sentimental value (usually from 0 - 10) to be associated with that tweet" type="\" variable="$sentiment"/>
+          <tag line="294" name="return" description="| string" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="301">
           <name>$tweet</name>
           <default/>
           <type/>
         </argument>
-        <argument line="225">
+        <argument line="301">
           <name>$sentiment</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="248" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="331" package="My work">
         <name>getHappiestCities</name>
         <full_name>getHappiestCities</full_name>
+        <docblock line="325">
+          <description>Gets all cities where the sentiment is not zero
+Doesn't actually get the 'happiest' cities.</description>
+          <long-description>&lt;p&gt;The name of this function was in relation to the application's original intent.&lt;/p&gt;</long-description>
+          <tag line="325" name="return" description="| string" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file model\tweetsmodel.php</error>
-      <error line="3" code="50000">No DocBlock was found for \Tweetsmodel</error>
-      <error line="5" code="50018">No DocBlock was found for property $tableName</error>
-      <error line="7" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="11" code="50010">No DocBlock was found for method getRecentTweets()</error>
-      <error line="46" code="50010">No DocBlock was found for method getTweets()</error>
-      <error line="82" code="50010">No DocBlock was found for method getSadTweetTags()</error>
-      <error line="131" code="50010">No DocBlock was found for method getHappyTweetTags()</error>
-      <error line="179" code="50010">No DocBlock was found for method getTweet()</error>
-      <error line="207" code="50010">No DocBlock was found for method insertTweetCity()</error>
-      <error line="225" code="50010">No DocBlock was found for method setSentiment()</error>
-      <error line="248" code="50010">No DocBlock was found for method getHappiestCities()</error>
+      <error line="16" code="50018">No DocBlock was found for property $tableName</error>
+      <error line="18" code="50010">No DocBlock was found for method __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="model\usersmodel.php" hash="a44317955000d6ddf1baf12467a7b9d5" package="Default">
+    <include line="15" type="Include Once" package="Default">
+      <name/>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="10" package="My work">
+      <extends/>
+      <name>Usersmodel</name>
+      <full_name>\Usersmodel</full_name>
+      <docblock line="3">
+        <description>Gets data from the 'users' table</description>
+        <long-description/>
+        <tag line="3" name="author_name" description="Andrew Nevins"/>
+        <tag line="3" name="author_no" description="09019549"/>
+        <tag line="3" name="package" description="My work"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="12" namespace="global" package="Default">
+        <name>$tableName</name>
+        <default>"users"</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="14" package="My work">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="23" package="My work">
+        <name>getAllUsers</name>
+        <full_name>getAllUsers</full_name>
+        <docblock line="18">
+          <description>Gets all users from the 'users' table</description>
+          <long-description/>
+          <tag line="18" name="return" description="| string" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file model\usersmodel.php</error>
+      <error line="12" code="50018">No DocBlock was found for property $tableName</error>
+      <error line="14" code="50010">No DocBlock was found for method __construct()</error>
     </parse_markers>
   </file>
   <file path="vendor\autoload.php" hash="38b533b5743551cbac4fd8011b96d11e" package="Default">
@@ -10609,123 +10921,23 @@ sublocality, or neighborhood.</description>
       <error line="10" code="50015">Argument $expects is missing from the Docblock of getMockAdapter()</error>
     </parse_markers>
   </file>
-  <file path="view\all\index.php" hash="9fbcc4460a621fb15a1a9bea9f48112e" package="Default">
-    <include line="5" type="Include Once" package="Default">
+  <file path="view\all\index.php" hash="dc54b86deb517468d31ddedee7d1db47" package="My work">
+    <docblock line="4">
+      <description>Displays data visualisations by using the 'tweets' and 'users' controllers.</description>
+      <long-description/>
+      <tag line="4" name="author_name" description="Andrew Nevins"/>
+      <tag line="4" name="author_no" description="09019549"/>
+      <tag line="4" name="package" description="My work"/>
+    </docblock>
+    <include line="12" type="Include Once" package="Default">
       <name/>
     </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\all\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\christmas\happiest-cities.php" hash="47d019cd3d2e0d6d81e9d62b84515be1" package="Default">
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\christmas\happiest-cities.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\christmas\index.php" hash="53937d14548b16db28bbae36fd4eafe2" package="Default">
-    <include line="5" type="Include Once" package="Default">
+    <include line="14" type="Include Once" package="Default">
       <name/>
     </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\christmas\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\christmas\tweet-tags.php" hash="5d8245104c52d425727f871c62a29d97" package="Default">
-    <include line="5" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\christmas\tweet-tags.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\halloween-and-fireworks\index.php" hash="1811adb4cb09773bcc96cc93617d54f8" package="Default">
-    <include line="5" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\halloween-and-fireworks\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\happiest-cities-and-towns.php" hash="5c28edbf90c5f5cba49ad4c05f821f84" package="Default">
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\happiest-cities-and-towns.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\happiest-cities.php" hash="47d019cd3d2e0d6d81e9d62b84515be1" package="Default">
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\happiest-cities.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\happiest-cities\interaction.php" hash="eeed10aa46a35807d0cc8f81b6bf47e0" package="Default">
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\happiest-cities\interaction.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\head.php" hash="148f3e56b6552bcbe888bd1accba31a5" package="Default">
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\head.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\index.php" hash="77e6b521ee40ffa87f3116b44e71873b" package="Default">
-    <include line="3" type="Include" package="Default">
-      <name>head.php</name>
-    </include>
-    <include line="4" type="Include" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\moodgraphs\christmas\index.php" hash="87feaa44cafa76f4d3b4368ebe930529" package="Default">
-    <include line="4" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\moodgraphs\christmas\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\moodgraphs\halloween-and-fireworks\index.php" hash="6b03b6db39af99c206da5d881f75b82c" package="Default">
-    <include line="5" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\moodgraphs\halloween-and-fireworks\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\moodgraphs\index.php" hash="69270b1e76be93ec05b51d179c0adb2f" package="Default">
-    <include line="1" type="Require" package="Default">
-      <name>../head.php</name>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\moodgraphs\index.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\test.php" hash="a7a4b3650ad1305784fdda29aac1111d" package="Default">
-    <include line="4" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\test.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\test2.php" hash="1193e6677222d4ab7579e034b1244d5c" package="Default">
-    <include line="4" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\test2.php</error>
-    </parse_markers>
-  </file>
-  <file path="view\test3.php" hash="8cf215d9c3d25aa8ce9f91f16b6661bd" package="Default">
-    <include line="4" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file view\test3.php</error>
-    </parse_markers>
   </file>
   <package name="Default" full_name="Default"/>
+  <package name="My work" full_name="My work"/>
   <namespace name="Buzz" full_name="Buzz">
     <namespace name="Client" full_name="Buzz\Client"/>
     <namespace name="Listener" full_name="Buzz\Listener">
