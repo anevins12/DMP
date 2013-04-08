@@ -173,7 +173,7 @@ function happiestCities(nodes) {
 		div.append("image")
 		.attr("src", function() {
 			var src = "/application/assets/i/smiley-";
-			var ext = ".png";
+			var ext = "-light.png";
 
 			if ( d.sentiment < 1 ) {
 				return src + 0 + ext;
