@@ -1,7 +1,7 @@
 <?php
 
 /* Defining continents' geographical locations */
-/*
+/* Not actually used.
  *							   LATITUDE                               LONGITUDE
 */
 
