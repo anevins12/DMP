@@ -250,6 +250,7 @@
 			$('#sample_tweets h2.trigger').one("click", function(){
 				allCities();
 				$('#all_cities').hide().slideToggle();
+
 				addToSidebar($(this));
 			});
 			$('#all_users h2.trigger').one("click", function(){

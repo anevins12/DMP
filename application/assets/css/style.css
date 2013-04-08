@@ -1126,3 +1126,10 @@ h2.trigger:hover{
 	padding: 20px;
 	margin: 25px 0;
 }
+
+/* --------------------------- */
+/*    MISC                     */
+
+.blur {
+	-webkit-filter: blur(2px);
+}
