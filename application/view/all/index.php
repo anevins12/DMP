@@ -229,7 +229,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="/application/assets/js/cloud.js" language="javascript"></script>
 	<script type="text/javascript" src="/application/assets/js/d3.layout.cloud.js" language="javascript"></script>
 	<script type="text/javascript" src="/application/assets/js/scripts.js" language="javascript"></script>
 	<script type="text/javascript" src="/application/assets/js/sprintf.js" language="javascript"></script>
@@ -239,26 +238,32 @@
 		var data = <?php  echo $allTweets['json']; ?>;
 		var users = <?php echo $allUsers; ?>;
 
+		//Load the "Happiest Cities" Bubble chart first.
 		happiestCities(data);
 
+		//Hiding other data visualisations until they are clicked on
+		//To speed up loading time and reduce unnecessary bandwidth consumption.
 		$(document).ready(function(){
 			$('img.loader, #recentTweets ul').hide();
 
 			$('#sample_tweets h2.trigger').one("click", function(){
 				allCities();
+				$('#all_cities').hide().slideToggle();
 				addToSidebar($(this));
 			});
 			$('#all_users h2.trigger').one("click", function(){
 				allUsers(users);
+				$('#all_users div').hide().slideToggle();
 				addToSidebar($(this));
 			});
 			$('#tags .trigger').one("click", function(){
 				sadTagCloud();
 				happyTagCloud();
+				$('#sadTagCloud svg, #happyTagCloud svg').hide().slideToggle();
 				addToSidebar($(this));
 			})
 			$('#recentTweets .trigger').one("click", function(){
-				$('#recentTweets ul').show();
+				$('#recentTweets ul').show().slideDown();
 				addToSidebar($(this));
 			})
 

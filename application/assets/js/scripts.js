@@ -15,10 +15,10 @@ function polymaps() {
 	.container(document.getElementById("map").appendChild(poly.svg("svg")))
 	.add(poly.interact())
     .add(poly.hash());
+	
 	// Use the map instance and insert into it a new SVG instance.
 	// The new SVN instance will add a new element in the documet body.
 	// Then add an image title layer.
-
     map.add(poly.image().url(poly.url("http://{S}tile.cloudmade.com"
 							+ "/c3060cc966ce4cd89382d09b14e0d1eb" // http://cloudmade.com/register
 							+ "/70184/256/{Z}/{X}/{Y}.png")
