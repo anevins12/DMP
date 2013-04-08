@@ -142,6 +142,7 @@
 				$tweet->sentiment = (float)$tweet->sentiment;
 				$sentiment = $tweet->sentiment;
 
+				//Load different smiley/frowny faces dependant on the sentimental values
 				if ( $sentiment < 1 ) {
 					$img = $imgPath . 0 . $imgExt;
 				}
@@ -267,6 +268,7 @@
 				addToSidebar($(this));
 			})
 
+			//Construct the sidebar dependent on which page section the user selects.
 			function addToSidebar($element) {
 
 				var heading = $element.context.innerHTML;
@@ -276,43 +278,52 @@
 
 			}
 		})
-		//http://bl.ocks.org/3887193
+		
+		//Creation of the ring chart that depicts the amount and range of sentiment.
+		//Inspired by http://bl.ocks.org/3887193
+
+		//Define the dimensions of the ring chart.
 		var width = 400,
 			height = 400,
 			radius = Math.min(width, height) / 2;
 
+		//The colour scheme is the same
 		var color = d3.scale.ordinal()
 			.range(["#3c3c3c", "#5B5B5B", "#727272", "#848484", "#969696", "#A8A8A8", "#BABABA"]);
 
+		//Define the arc dimensions
 		var arc = d3.svg.arc()
 			.outerRadius(radius - 10)
 			.innerRadius(radius - 70);
 
+		//Define the D3 class to use, in relation to the data
 		var pie = d3.layout.pie()
 			.sort(null)
 			.value(function(d) { return d.tweets; });
 
+		//Give the SVG elements the dimensions of the ring chart.
 		var svg = d3.select("#quantities").append("svg")
 			.attr("width", width)
 			.attr("height", height)
 		  .append("g")
 			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+		//Load in the data from a CSV file.
 		d3.csv("../../assets/csv/tweet_quantities.csv", function(data) {
 
-		  data.forEach(function(d) {
-			d.tweets = +d.tweets;
-		  });
-
+		//Apply D3's Pie class to the data, while selecting the elements containing the arc class
 		  var g = svg.selectAll(".arc")
-			  .data(pie(data))
+			.data(pie(data))
 			.enter().append("g")
-			  .attr("class", "arc");
+			.attr("class", "arc");
 
+		//Fill the arc with a shade of grey that is relative to the sentiment
 		  g.append("path")
 			  .attr("d", arc)
 			  .style("fill", function(d) { return color(d.data.sentiment); });
 
+		//Compute the centroid of the arch - https://github.com/mbostock/d3/wiki/SVG-Shapes#wiki-arc_centroid
+		//Then write the data's sentimental value within the middle of each arc.
 		  g.append("text")
 			  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
 			  .attr("dy", ".35em")
@@ -322,7 +333,8 @@
 
 		});
 
-		//http://css-tricks.com/scrollfollow-sidebar/
+		//This applies CSS positioning to the sidebar, in such a way that it follows you (or the user) through the page.
+		//Taken from http://css-tricks.com/scrollfollow-sidebar/
 		$(function() {
 
 			var $sidebar   = $("#sidebar"),
