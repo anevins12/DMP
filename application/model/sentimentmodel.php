@@ -52,7 +52,7 @@ class sentimentmodel {
 	}
 
 	/**
-	 * Gets all tweets' sentimental vale
+	 * Gets all tweets' sentimental value. 
 	 * Was used when there was a separate table for sentimental values.
 	 * [Not active in application]
 	 *
