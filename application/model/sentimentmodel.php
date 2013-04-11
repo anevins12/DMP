@@ -17,7 +17,8 @@ class sentimentmodel {
 
 	/**
 	 * Insert sentiment into one row of the 'sentiment' table
-	 *
+	 * [Not active in application]
+	 * 
 	 * @param   $tweet_id          To identify the tweet associated with the sentiment
 	 * @param   $sentiment_value   Integer, but may be double. Ranges from 0 to 10.
 	 * @return  boolean

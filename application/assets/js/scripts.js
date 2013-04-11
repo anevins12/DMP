@@ -364,7 +364,8 @@ function allCities() {
 
        var citiesTweets = jQuery.parseJSON(result);
        var $oneCity;
-	   
+
+	   //For each city, create a <div> that contains its information and sample tweets
        $.each( citiesTweets, function( k, v ) {
              $oneCity = $( '<div/>' );
              $oneCity.html('<h4>' + k + '</h4>');
@@ -385,6 +386,7 @@ function allCities() {
 			$(this).parent().find('ul, .arrow-down').slideToggle();
 		});
 
+		//Remove the AJAX loader gif
 		$('#all_cities').load().find('.loader').remove();
 
 	 });

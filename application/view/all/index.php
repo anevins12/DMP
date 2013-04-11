@@ -133,6 +133,7 @@
 	<div id="recentTweets">
 		<h2 class="trigger">Recent Tweets</h2>
 		<div class="container">
+			<!-- Allocate smiley faces dependant on sentimental value, just as done in happiestCities JavaScript function in scripts.js -->
 			<ul>
 			<?php foreach ( $recentTweets as $tweet ) {?>
 				<li>
