@@ -2,9 +2,9 @@
 
 if ($GLOBALS['_SERVER']['HTTP_HOST'] !== 'dmp') {
     define('HOSTNAME'    ,    'localhost');
-    define('USERNAME'    ,    'andrewne_2013');
-    define('PASSWORD'    ,    'X84cU5tk4a');
-    define('DATABASE'    ,    'andrewne_dmp');
+    define('USERNAME'    ,    '****');
+    define('PASSWORD'    ,    '****');
+    define('DATABASE'    ,    '****');
 }
 else {
     define('HOSTNAME'    ,    'localhost');
